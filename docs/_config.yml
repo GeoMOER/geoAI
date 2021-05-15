@@ -24,12 +24,12 @@
 
 # Serve on GitHub
 url: https://geomoer.github.io
-baseurl: "/moer-meko/"
+baseurl: "/geoAI/"
 
 
 ##### Title ###################################################################
-title: Medienkompetenz
-name: &name "Medienkompetenz" # &name is a YAML anchor which can be *referenced later
+title: GeoAI
+name: &name "GeoAI" # &name is a YAML anchor which can be *referenced later
 #email: nauss@geo.uni-marburg.de
 description: >- # this means to ignore newlines until next item
   course course-materials geography remote-sensing marburg-open-educational-resource
@@ -46,7 +46,7 @@ description: >- # this means to ignore newlines until next item
 title_separator          : "|"
 excerpt_separator        : <!--more-->
 locale                   : "de-DE"
-
+repository               : "GeoMOER"
 
 
 # Build settings

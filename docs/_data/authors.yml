@@ -1,43 +1,35 @@
 
 # /_data/authors.yml
 
-- ammoneit:
-  name             : "Rieke Ammoneit"
-  avatar           : "/assets/images/ammoneit.jpg"
+- bald:
+  name             : "Lisa Bald"
+  avatar           : "/assets/images/authors/peter.jpg"
   email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
-- dippel:
-  name             : "Kevin Dippell"
-  avatar           : "/assets/images/dippell.jpg"
-  email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
-- beckmann:
-  name             : "Jonas Beckmann"
-  avatar           : "/assets/images/beckmann.jpg"
-  email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
-- langenohl:
-  name             : "David Langenohl"
-  avatar           : "/assets/images/langenohl.jpg"
-  email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
+  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
+  bio              : "Philipps-Universität Marburg"
+  location         : "Marburg, DE"
+  uri              : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
 - nauss:
   name             : "Thomas Nauss"
-  avatar           : "/assets/images/nauss.jpg"
+  avatar           : "/assets/images/authors/nauss.jpg"
   email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
-- peter:
-  name             : "Carina Peter"
-  avatar           : "/assets/images/peter.jpg"
-  email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
+  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/team/thomas-nauss"
+  bio              : "Philipps-Universität Marburg"
+  location         : "Marburg, DE"
+  uri              : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
 - reudenbach:
   name             : "Chris Reudenbach"
-  avatar           : "/assets/images/reudenbach.jpg"
+  avatar           : "/assets/images/authors/reudenbach.jpg"
   email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
-- ziegler:
-  name             : "Alice Ziegler"
-  avatar           : "/assets/images/ziegler.jpg"
-  email            : "ui-lehre@geo.uni-marburg.de"
-  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik"
+  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
+  bio              : "Philipps-Universität Marburg"
+  location         : "Marburg, DE"
+  uri              : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
+- zeuss:
+  name             : "Dirk Zeuss"
+  avatar           : "/assets/images/authors/zeuss.jpg"
+  email            : "dirk.zeuss@uni-marburg.de"
+  bio              : "Philipps-Universität Marburg"
+  location         : "Marburg, DE"
+  home             : "https://www.uni-marburg.de/de/fb19/fachbereich/staff/dirk-zeuss"
+  uri              : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
