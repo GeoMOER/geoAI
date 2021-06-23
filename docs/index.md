@@ -43,27 +43,30 @@ Der Kurs erstreckt sich über 10 Sitzungen, mit Ausnahme von Sitzung 10 auf wöc
 | Kurseinheit | Thema | Lerninhalte |
 |-------------|-------|-------------|
 || **Große Fragen sind räumlich** ||
-| 1. | Lebensräume | Die Bedeutung der räumlichen Komposition und Konfiguration von Landschaften am Beispiel des IPBES-Frameworks "Nature's Contributions to People". |
-| 2. | Informationen in Raum und Zeit | Räumliche und zeitliche Eigenschaften von Daten und deren Bedeutung für umweltwissenschaftliche Fragen. |
-| 3. | Nähe macht keine Beziehungen | Zur Ungültigkeit des ersten Hauptsatzes der Geographie in heterogenen Räumen. |
-|| **Anschauen, nicht anfassen** ||
+| U1. | Lebensräume | Die Bedeutung der räumlichen Komposition und Konfiguration von Landschaften am Beispiel des IPBES-Frameworks "Nature's Contributions to People". |
+| U2. | Nähe macht keine Beziehungen | Zur Ungültigkeit des ersten Hauptsatzes der Geographie in heterogenen Räumen. |
+| E1. | "Raumübung" | ... |
+| S1. | "Raum" | ... |
+|| **Fernerkundung 101** ||
+| U3. | Fernerkundung | .... |
+| U4. | Datenformaten | how to read |
+| E2. | "FE" | ... |
+| S2. | "FE" | ... |
+|| **Zufällig richtig ist nicht vorhergesagt** ||
+| S3a. |    Von der Datenreproduktion zur räumlichen Vorhersage. | Warum die geographischen Breite und Länge (fast) nie gute Vorhersagevariablen sind. |
+| S3b. | Zufällig gut. | Vorhersage räumlicher Eigenschaften mit maschinellen Lernverfahren und zufälliger Validierung. |
+| S4. | Räumlich gut. | Belastbare räumliche Vorhersagen durch geeignete Selektions- und Validierungsstrategien |
+| S5. | Tiefgehend gut. | Deep-learning in der breite des Raums |
+|| **Abschlussprojekt im Team: Raum-zeitliche Vorhersage** ||
+| S6. |    Forschungsfrage | Entwicklung, Dokumentation und Diskussion einer raum-zeitlich belastbaren Vorhersagestrategie auf Basis auswählbarer, beispielhafter Forschungsfragen. |
+| S7. |    Forschungsantwort | Dokumentation und Kommunikation von Ergebnissen. |
+| S8.    | Prüfungsleistung | Web-/Screencast (Perspektive Wissenschaft/Anwendung) |
+| S9.    | Auf Wiedersehen | Evaluation, Danke und Tschüss. |
+|| **Spotlights** ||
 | 4. | Fernerkundungssysteme | Komponenten und Eigenschaften von Fernerkundungssystemen. |
 | 5. | Informationsträger | Elektromagentische Strahlung als Trägermedium von Informationen in der Fernerkundung. |
 | 6. | Datenquellen | Repositorien für Fernerkundungsdaten. |
 | 7. | Ein Bild sagt mehr als 1000 Worte | Fernerkundungsdaten visualisieren. |
-|| **Erst die Arbeit, dann das Vergnügen** ||
-| 8. | Datenverständnis | Fernerkundungsdaten prozessieren und organisieren. |
-| 9. | Künstliche Bilder | Filtern, transformieren, manipulieren. |
-|| **Zufällig richtig ist nicht vorhergesagt** ||
-| 9. |	Von der Datenreproduktion zur räumlichen Vorhersage. | Warum die geographischen Breite und Länge (fast) nie gute Vorhersagevariablen sind. |
-| 9. | Zufällig gut. | Vorhersage räumlicher Eigenschaften mit maschinellen Lernverfahren und zufälliger Validierung. |
-| 10. | Räumlich gut. | Belastbare räumliche Vorhersagen durch geeignete Selektions- und Validierungsstrategien |
-| 11. | Tiefgehend gut. | Deep-learning in der breite des Raums |
-|| **Abschlussprojekt im Team: Raum-zeitliche Vorhersage** ||
-| 12. |	Forschungsfrage | Entwicklung, Dokumentation und Diskussion einer raum-zeitlich belastbaren Vorhersagestrategie auf Basis auswählbarer, beispielhafter Forschungsfragen. |
-| 13. |	Forschungsantwort | Dokumentation und Kommunikation von Ergebnissen. |
-| 14.	| Prüfungsleistung | Präsentation der Ergebnisse (Poster, Webinar o.ä. nach konkretem Blended Learning Konzept im spezifischen Studiengang) |
-| 15.	| Auf Wiedersehen | Evaluation, Danke und Tschüss. |
 
 ## Kursmerkmale
 Der Kurs ist primär für Studierende unserer Präsenzveranstaltung gedacht, eignet sich in gewissem Maße aber auch zum Selbststudium.
