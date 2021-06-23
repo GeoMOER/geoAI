@@ -2,7 +2,7 @@
 Module on geospatial data prediction and remote sensing of the Honour Degree Programm „AI und Entrepreneurship"
 
 ## Responsible for the module
-Lisa Bald, Thomas Nauss, Christoph Reudenbach and Dirk Zeuss (in agreement with Hanna Meyer, University of Münster, https://www.uni-muenster.de/RemoteSensing/team/meyer/index.html for use in teaching there as well).  
+Lisa Bald, Kevin Frac, Thomas Nauss, Christoph Reudenbach and Dirk Zeuss (in agreement with Hanna Meyer, University of Münster, https://www.uni-muenster.de/RemoteSensing/team/meyer/index.html for use in teaching there as well).  
 
 ## Available basics as a basis for the module developed in the project
 Those responsible for the module have been using and developing digitally-supported forms of teaching/learning for more than 10 years and have already developed online formats for the training of geoinfomation content and skills at an early stage, both in theory and in practice, which are action- and competence-centred (Ammoneit et al. 2019, Schulze et al. 2012, Reudenbach et al. 2010).
