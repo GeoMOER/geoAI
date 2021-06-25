@@ -3,7 +3,7 @@
 
 - bald:
   name             : "Lisa Bald"
-  avatar           : "/assets/images/authors/peter.jpg"
+  avatar           : "/assets/images/authors/dummy.jpg"
   email            : "ui-lehre@geo.uni-marburg.de"
   home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
   bio              : "Philipps-Universität Marburg"
@@ -33,3 +33,11 @@
   location         : "Marburg, DE"
   home             : "https://www.uni-marburg.de/de/fb19/fachbereich/staff/dirk-zeuss"
   uri              : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
+- frac:
+  name             : "Kevin Frac"
+  avatar           : "/assets/images/authors/dummy.jpg"
+  email            : "ui-lehre@geo.uni-marburg.de"
+  home             : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"
+  bio              : "Philipps-Universität Marburg"
+  location         : "Marburg, DE"
+  uri              : "https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik"  
