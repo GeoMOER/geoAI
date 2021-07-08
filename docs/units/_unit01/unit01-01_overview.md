@@ -1,11 +1,17 @@
 ---
-title: Übersicht
+title: Geographic space
 toc: false
 header:
   image: /assets/images/01-splash.jpg
   image_description: "John Snows "
   caption: "Map: [**Dr. John Snow**](https://de.wikipedia.org/wiki/John_Snow_(Mediziner)) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
 ---
+Description of Session / Unit / Exercise 1
+U1. Lebensräume
+U2. Nähe macht keine Beziehung
+E1. Raumübung
+
+
 Geographische Medien sind divers: Karten, Diagramme, Fotos, Videos,... Sie können analog oder digital, simpel oder elaboriert, schön oder unansehnlich ausgestaltet sein. Sie dienen zur Strukturierung und Kommunikation einer raum-zeitlichen Perspektive auf diese Welt. Die Aufbereitung dieser Perspektive ist von vielen subjektiven Entscheidungen geprägt, die im Herstellungsprozess eines Mediums gefällt werden müssen. Die grundsätzliche Frage ist: Was soll wie dargestellt werden?
 
 
