@@ -1,5 +1,5 @@
 ---
-title: GeoKI
+title: GeoAI
 layout: splash
 date: '2018-02-06 13:00:00 +0100'
 header:
@@ -7,11 +7,11 @@ header:
   overlay_filter: 0.6
   overlay_image: "/assets/images/title_1600_500.jpg"
   caption: 'Photo: [**Environmental Informatics Marburg**](https://www.flickr.com/environmentalinformatics-marburg/)'
-  cta_label: Zum Kursinhalt
+  cta_label: go to course units
   cta_url: "/units.html"
-excerpt: Räumliche Probleme verstehen, Fernerkundung anwenden und mit KI räumliche Muster belastbar vorhersagen.
+excerpt: Understand spatial problems, apply remote sensing, and use AI to resiliently predict spatial patterns.
 feature_row_intro:
-- excerpt: Modul im Honors Degree Program "KI und Entrepreneurship" - ein Beitrag des [Umweltinformatik Labs der Philipps-Universität Marburg](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik) zu [hessian.AI - The Hessian Center for Artificial Intelligence](https://hessian.ai/).
+- excerpt: This Module is part of Honors Degree Program "AI and Entrepreneurship" - a contribution of [Environmental Informatics Lab of Philipps-University of Marburg](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik) to [hessian.AI - The Hessian Center for Artificial Intelligence](https://hessian.ai/).
 feature_row_ilos:
 - image_path: "/assets/images/envobs_ilos.jpg"
   alt: PC monitor laying in the garden of the institute.
@@ -21,79 +21,57 @@ feature_row_ilos:
 
 {% include feature_row id="feature_row_intro" type="center" %}
 
-## Allgemeines
-Medien und Modelle sind wissenschaftliche Grundelemente der Geographie. Sie bilden die Basis für den Erkenntnisgewinn in der Forschung und dienen als Kommunikationsmittel. Medien und Modelle sind damit in erster Linie kein pädagogisches Element, sondern fester Bestandteil einer fachlichen Auseinandersetzung mit einem Thema. Deshalb stellt die fachlich begründete Auswahl und der themenspezifische Einsatz von Medien und Modellen eine wichtige Kernkompetenz von Lehrerinnen und Lehrern für die Planung eines fachlich begründeten Unterrichts dar.
+## Motivation
+“Everything is related to everything else, but near things are more related than distant things” [(Tobler, 1970)](https://www.tandfonline.com/doi/abs/10.2307/143141). With this sentence, Waldo R. Tobler made geographic history, although his main concern was to reduce the complexity of his population simulation model so that it could be calculated at all on the IT infrastructure of the 1970s.
+Fifty years later, society is facing other major challenges. Environmental and climate change is leading to species loss rates comparable only to the great mass extinctions. Ecosystem functionality will change, with consequences for ecosystem services such as food production, climate regulation, or recreation.
+Understanding environmental change and assessing consequences requires spatial information from landscapes. The crucial question is not whether a landscape contains forest, meadow, field, and river, but how they relate to each other spatially. Simply put, if a strip of forest separates the river from the cropland, the forest acts as an important barrier to the input of nutrients from the cropland into the river. If a clearing is present in the forest, habitat complexity increases, increasing the likelihood of biodiversity and resilience to environmental change. 
+When collecting spatial information in the field, a tradeoff must be made between level of detail, scale, and temporal repetition. Selected processes can either be studied in detail at a very limited number of observation sites or estimated at a generalized scale for a landscape. The constraints loosen when linking local surveys with area-wide remote sensing observations and predicting the locally collected information in space with artificial intelligence methods.
 
 
-## Lernziele
-Am Ende dieses Moduls können Sie
-•	Räumliche Daten (z.B. aus Punktmessungen, Befragungen, Fernerkundung) aufgrund ihrer Eigenschaften einordnen und verstehen die sich daraus ergebenden Besonderheiten räumlicher bzw. raum-zeitlicher Vorhersagen,
-•	Methoden maschinellen Lernens zur Lösung raum-zeitlicher Problemstellungen der Mensch-Umwelt-Forschung auswählen, anpassen und anwenden,
-•	zielgerichtet Trainings-/Teststrategien zur zuverlässigen Fehler- und Gültigkeitsabschätzung entwerfen, anwenden und evaluieren,
-•	hochdiverse, große (Fernerkundungs-)Datensätze fragestellungsspezifisch vorverarbeiten und standardisieren,
-•	geeignete Darstellungen zur visuellen Analyse und Ergebnispräsentation auswählen und erstellen
-•	digitale Plattformen zum gemeinsamen Projektmanagement, zur Softwareentwicklung und zum aktiven Datenmanagement nutzen,
-•	in Teams agil zusammenarbeiten,
-•	ihr Vorgehen und ihre Ergebnisse nachvollziehbar und transparent dokumentieren, und die Ergebnisse analysieren und kritisch bewerten.
+## Learning objectives
+The participants will be able to:
+
+* classify spatial data (e.g., from point measurements, surveys, remote sensing) based on their properties and understand the resulting properties of spatial or spatiotemporal predictions;
+
+* select, adapt, and apply machine learning methods to solve spatiotemporal problems in human-environment research;
+
+* design, use, and evaluate training/testing strategies for reliable error and validity estimation;
+
+* select and create appropriate representations for visual analysis and presentation of results;
+
+* use digital platforms for collaborative project management, software development, and active data management;
+
+* work together in teams in an agile manner;
+
+* document procedures and results in a comprehensible and transparent manner and critically evaluate results.
+
+
+
 
 # Syllabus
+The course covers 10 sessions, with the exception of session 10 on a weekly basis.
 
-Der Kurs erstreckt sich über 10 Sitzungen, mit Ausnahme von Sitzung 10 auf wöchentlicher Basis.
-
-| Kurseinheit | Thema | Lerninhalte |
+| Unit | Topic | Learning Content |
 |-------------|-------|-------------|
-|| **Große Fragen sind räumlich** ||
-| U1. | Lebensräume | Die Bedeutung der räumlichen Komposition und Konfiguration von Landschaften am Beispiel des IPBES-Frameworks "Nature's Contributions to People". |
-| U2. | Nähe macht keine Beziehungen | Zur Ungültigkeit des ersten Hauptsatzes der Geographie in heterogenen Räumen. |
-| E1. | "Raumübung" | ... |
-| S1. | "Raum" | ... |
-|| **Fernerkundung 101** ||
-| U3. | Fernerkundung | .... |
-| U4. | Datenformaten | how to read |
-| E2. | "FE" | ... |
-| S2. | "FE" | ... |
-|| **Zufällig richtig ist nicht vorhergesagt** ||
-| S3a. |    Von der Datenreproduktion zur räumlichen Vorhersage. | Warum die geographischen Breite und Länge (fast) nie gute Vorhersagevariablen sind. |
-| S3b. | Zufällig gut. | Vorhersage räumlicher Eigenschaften mit maschinellen Lernverfahren und zufälliger Validierung. |
-| S4. | Räumlich gut. | Belastbare räumliche Vorhersagen durch geeignete Selektions- und Validierungsstrategien |
-| S5. | Tiefgehend gut. | Deep-learning in der breite des Raums |
-|| **Abschlussprojekt im Team: Raum-zeitliche Vorhersage** ||
-| S6. |    Forschungsfrage | Entwicklung, Dokumentation und Diskussion einer raum-zeitlich belastbaren Vorhersagestrategie auf Basis auswählbarer, beispielhafter Forschungsfragen. |
-| S7. |    Forschungsantwort | Dokumentation und Kommunikation von Ergebnissen. |
-| S8.    | Prüfungsleistung | Web-/Screencast (Perspektive Wissenschaft/Anwendung) |
-| S9.    | Auf Wiedersehen | Evaluation, Danke und Tschüss. |
-|| **Spotlights** ||
-| 4. | Fernerkundungssysteme | Komponenten und Eigenschaften von Fernerkundungssystemen. |
-| 5. | Informationsträger | Elektromagentische Strahlung als Trägermedium von Informationen in der Fernerkundung. |
-| 6. | Datenquellen | Repositorien für Fernerkundungsdaten. |
-| 7. | Ein Bild sagt mehr als 1000 Worte | Fernerkundungsdaten visualisieren. |
-
-## Kursmerkmale
-Der Kurs ist primär für Studierende unserer Präsenzveranstaltung gedacht, eignet sich in gewissem Maße aber auch zum Selbststudium.
-
-Information aufgrund der **Coronavirus-Pandemie**: Aus Gründen des Infektionsschutzes sind Präsenzveranstaltung derzeit nicht möglich. Der Kurs findet deshalb in der digitalen Welt statt. Studierende, die den Kurs im Sommersemester 2020 besuchen, finden alle notwendigen Informationen im Bereich [How-to MeKo]({{ site.baseurl }}{% link _unit00/unit00-01_overview.md %}) auf dieser Webseiten oder im geschlossenen [Kursbereich der Ilias-Lernplattform](https://ilias.uni-marburg.de/ilias.php?ref_id=1858892&cmd=frameset&cmdClass=ilrepositorygui&cmdNode=ts&baseClass=ilRepositoryGUI).
-{: .notice--info}
+|**01**| **Big questions are spatial** ||
+| 01-1 | Habitat | The importance of spatial composition and configuration of landscapes exemplified by the IPBES Nature's Contributions to People framework.
+| 01-2 | Proximity does not make relationships | On the invalidity of the first law of geography in heterogeneous spaces. |
+|**02**| **Remote Sensing 101** ||
+| 02-1 | Remote Sensing | A brief introduction to remote sensing using optical sensors as an example. |
+| 02-2 | Data Formats | Features and differences of spatial data collected in the field or acquired by remote sensing systems. |
+|**03**| **Randomly correct is not predicted** ||
+| 03-1 | From data reproduction to spatial prediction. | Why latitude and longitude are (almost) never good predictive variables. |
+| 03-2 | Randomly good. | Predicting spatial features with machine learning and random validation. |
+|**04**| **Spatial predictions and robust error estimation** ||
+| 04-1 |    Spatially good | Resilient spatial predictions using appropriate selection and validation strategies. |
+| 04-2 |    Deeply good | Deep-learning and spatial patterns. |
+|**05**| **Final team project: spatial prediction** ||
+| 05-1 | Research questions | From curiosity to reasearch question and project planning. |
+| 05-2 | Research response | From project planning to implementation, research documentation and presentation. |
+| 05-3 | Research presentation | Presentation of a web/screencast on the project work.|
+|**06**| **Wrap-up**||
 
 
-## Studien- und Prüfungsleistung
-
-In jeder der sechs Kurseinheiten werden mehrere Aufgaben gestellt. Jede Aufgabe umfasst drei Unteraufgaben in den Schwierigkeitsniveaus L1 (minimal), L2 (solide) und L3 (vertieft), die jeweils mit maximal zwei Punkten bewertet werden. Die Bearbeitung und auch die Bewertung der höheren Schwierigkeitsniveaus (L2 bzw. L3) setzt immer auch die Bearbeitung der niedrigeren Niveaus voraus. Die Studienleistung gilt als bestanden, wenn durch die frist- und formgerechte Abgabe der Übungsergebnisse mindestens so viele Bewertungspunkte erreicht wurden, wie durch die vollständig erfolgreiche Bearbeitung aller Unteraufgaben des Niveaus L1 erreicht werden können. Dies entspricht einem Drittel der insgesamt für alle Aufgaben möglichen Punktzahl. Details zur Abgabe von Aufgaben und dem begleitenden Tutorium finden Sie im Bereich [How-to MeKo]({{ site.baseurl }}{% link _unit00/unit00-01_overview.md %}) auf dieser Webseiten.
-
-Die Prüfungsleistung ist eine Klausur mit theoretischen und praktischen Aufgaben.
-
-Die Studienleistung und die Prüfungsleistung ist individuell zu erbringen.
-
-
-## Ablauf
-
-Jede Kurseinheit ist auf einen Zeitraum von zwei Wochen ausgelegt und besteht aus einem Lern- und einem Übungsteil. Die Übungsphase wird durch ein Tutorium begleitet. Die abgegebenen Aufgaben werden in der jeweils folgenden Kurseinheit nachbereitet.
-
-{% include figure image_path="/assets/images/ablaufplan.jpg" alt="Ablaufplan des Kurses." %}
-
-## Kurs- und Tutoriumszeiten
-**Kurszeiten**: Donnerstags, 8:15 bis 10:45 Uhr
-
-**Tutorien**: Mittwochs, 7:00 bis 8:15 Uhr / 10:00 bis 12:00 Uhr / 12:00 bis 14:00 Uhr
 
 ## Team
 
