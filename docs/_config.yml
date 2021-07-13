@@ -86,10 +86,7 @@ collections:
   unit05:
     output: true
     permalink: /:collection/:title.html
-  unit06:
-    output: true
-    permalink: /:collection/:title.html
-  unit07:
+  spotlight01:
     output: true
     permalink: /:collection/:title.html
   worksheets:
@@ -108,12 +105,12 @@ defaults:
       layout: single
       sidebar:
         nav: "course_unit"
-  # unit00
+        # unit00
   - scope:
       path: ""
       type: unit00
     values:
-      category: "How-to Meko"
+      category: "00 The Beginning"
       tags: "Unit 00"
       layout: single
       sidebar:
@@ -123,7 +120,7 @@ defaults:
       path: ""
       type: unit01
     values:
-      category: "01 Raumbeschreibung & Interpretation"
+      category: "01 Big questions are spatial"
       tags: "Unit 01"
       layout: single
       sidebar:
@@ -133,7 +130,7 @@ defaults:
       path: ""
       type: unit02
     values:
-      category: "02 Räumliche Modellierung"
+      category: "02 Remote Sensing 101"
       tags: "Unit 02"
       layout: single
       sidebar:
@@ -143,7 +140,7 @@ defaults:
       path: ""
       type: unit03
     values:
-      category: "03 Kartographische Modellierung"
+      category: "03 Randomly correct is not predicted"
       tags: "Unit 03"
       layout: single
       sidebar:
@@ -153,7 +150,7 @@ defaults:
       path: ""
       type: unit04
     values:
-      category: "04 Datenanalyse & Informationsgewinn"
+      category: "04 Spatial predictions and robust error estimation"
       tags: "Unit 04"
       layout: single
       sidebar:
@@ -163,28 +160,19 @@ defaults:
       path: ""
       type: unit05
     values:
-      category: "05 Reflexive Kartenkompetenz"
+      category: "05 Final team project: spatial prediction"
       tags: "Unit 05"
       layout: single
       sidebar:
         nav: "course_unit"
-  # unit06
+
+        # spotlight 01
   - scope:
       path: ""
-      type: unit06
+      type: spotlight01
     values:
-      category: "06 Mediennutzung & Reflexion"
-      tags: "Unit 06"
-      layout: single
-      sidebar:
-        nav: "course_unit"
-  # unit07
-  - scope:
-      path: ""
-      type: unit07
-    values:
-      category: "Materialien"
-      tags: "Unit 07"
+      category: "Spotlight: Jekyll & GitHubPages"
+      tags: "Spotlight 1"
       layout: single
       sidebar:
         nav: "course_unit"
