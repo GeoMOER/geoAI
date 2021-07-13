@@ -7,14 +7,14 @@ header:
 ---
 
 
-Getting started with your own GitHub page using Jekyll and Minimal Mistakes. Das Erstellen von GitHub pages mithilfe von Jekyll ermöglicht es dir schnell, einfach und (hoffentlich) unkomliziert eine eigene Website zu bauen, mit deren Hilfe du deine Ergebnisse schön präsentieren kannst.
+Getting started with your own GitHub page using Jekyll and Minimal Mistakes. Creating GitHub pages using Jekyll allows you to quickly, easily and (hopefully) effortlessly build your own website, with the help of which you can present your results.
 
 <!--more-->
 # zu Jekyll
-Jekyll ermöglicht es dir mithilfe von Markdown files tolle Websites zu erstellen...
+Jekyll allows you to create websites using Markdown files...
 
 # zu GitHub pages
-Du kannst deine mit Jekyll erstellte Seite einfach auf GitHub hosten...
+You can easily host your site created with Jekyll on GitHub....
 
 
 
