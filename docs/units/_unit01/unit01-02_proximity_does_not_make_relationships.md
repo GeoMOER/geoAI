@@ -1,5 +1,5 @@
 ---
-title: A01 | Karteninterpretation
+title: Proximity does not make relationships
 toc: false
 header:
   image: /assets/images/01-splash.jpg

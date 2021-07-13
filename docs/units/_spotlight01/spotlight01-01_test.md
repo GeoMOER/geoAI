@@ -7,8 +7,7 @@ header:
   caption: "Foto: T. Nauss / CC0"
 ---
 
-Die reale Welt ist komplex. Im Alltag konstruieren wir deshalb ständig kognitive Modelle, um unsere Umwelt zu vereinfachen und sie wahrnehmen zu können. In der geographischen Forschung erfolgt diese Vereinfachung zielgerichtet auf Basis einer Fragestellung. Einfach gefragt: Was macht einen Raum aus?
-
+test test test
 <!--more-->
 
 # Serve the page 

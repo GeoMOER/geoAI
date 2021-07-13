@@ -1,5 +1,5 @@
 ---
-title: LM | Raumbeschreibung und Interpretation
+title: Habitat
 toc: true
 header:
   image: /assets/images/01-splash.jpg
@@ -8,4 +8,3 @@ header:
 ---
 
 
-#test
