@@ -7,11 +7,11 @@ header:
   caption: "Foto: T. Nauss / CC0"
 ---
 
-test test test
+
 <!--more-->
 
 # Serve the page 
-poihji poihhio opohghiok hijkkjbhj 
+
 ## Locally
 
 Run "bundle exec jekyll serve" (switch to /docs folder before in the terminal).
