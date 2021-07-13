@@ -6,42 +6,31 @@ header:
   caption: "Bild: [jekyll](https://jekyllrb.com/)"
 ---
 
-
-Getting started with your own GitHub page using Jekyll and Minimal Mistakes. Creating GitHub pages using Jekyll allows you to quickly, easily and (hopefully) effortlessly build your own website, with the help of which you can present your results.
+Getting started with your own GitHub page using Jekyll and Minimal Mistakes. Creating GitHub pages using Jekyll allows you to quickly, easily and (hopefully) effortlessly build your own website, which you can use to present your results.
 
 <!--more-->
-# zu Jekyll
-Jekyll allows you to create websites using Markdown files...
-
-# zu GitHub pages
-You can easily host your site created with Jekyll on GitHub....
-
-
 
 # Prerequisites
+Before you start creating your website check if the following requirements are met:
 
 
 1. Install the latest version of the rubygems with devkit 64
-  - https://rubyinstaller.org/downloads/
-  - Restart the computer afterwards, just to make sure, especially if you are under Windows.
+	* [Ruby Installer](https://rubyinstaller.org/downloads/)
+	* Restart the computer afterwards, just to make sure, especially if you are under Windows.
 
 2. Install bundler from terminal: "gem install bundler" 
-  - The path does not matter where you execute it
-  - Close and restart the terminal to update the PATH Variables (otherwise the gem function is not available). If this does not work, restart the computer, especially if you are under Windows.
+	* The path does not matter where you execute it
+	* Close and restart the terminal to update the PATH Variables (otherwise the gem function is not available). If this does not work, restart the computer, especially if you are under Windows.
 
-3. Check if you have all other prerequisites installed (if any), here:
-    https://jekyllrb.com/docs/
--	Gcc installiert mit: https://dev.to/gamegods3/how-to-install-gcc-in-windows-10-the-easier-way-422j
--	Make installieren: 
--	Windows cmd: copy c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
-
+3. Check if you have all [other prerequisites for Jekyll](https://jekyllrb.com/docs/) installed
+    
 
 4. Get a "docs" folder in your GitHub repository, which follows the required Jekyll structure (assets, _data, _includes, _pages, etc.)
-  - Check here for details: 
-  - You can also use a template like https://github.com/GeoMOER/moer-html-module-template
+	* Check here for details: 
+    * You can also use a template like https://github.com/GeoMOER/moer-html-module-template
 
-5. Run "bundle install" in this "docs" folder (switch to /docs folder before in the terminal) for installing the required gems for your webpage.
- - the gems will be installed in your local repository folder. If you want, and often you should want, exclude them from synchronizing with GitHub by adding the ".bundle" or "vendor" folders to your 	 file
+5. Switch the directory in your terminal to "docs" folder and run "bundle install" there, for installing the required gems for your webpage.
 
-<!--more-->
+	* the gems will be installed in your local repository folder. If you want, and often you should want, exclude them from synchronizing with GitHub by adding the ".bundle" or "vendor" folders to your 	 file
+
 

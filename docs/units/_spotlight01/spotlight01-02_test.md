@@ -1,5 +1,5 @@
 ---
-  title: GitHubPages
+  title: What is what?
 toc: true
 header:
   image: /assets/images/02-splash.jpg

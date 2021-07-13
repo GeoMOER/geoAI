@@ -1,5 +1,5 @@
 ---
-  title: Jekyll
+  title: Serve the page
 toc: true
 header:
   image: /assets/images/02-splash.jpg
@@ -7,7 +7,7 @@ header:
   caption: "Foto: T. Nauss / CC0"
 ---
 
-
+test
 <!--more-->
 
 # Serve the page 
