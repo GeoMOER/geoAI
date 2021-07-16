@@ -1,5 +1,5 @@
 ---
-  title: What is what?
+  title: Important files and folders for your page
 toc: true
 header:
   image: /assets/images/02-splash.jpg
@@ -8,7 +8,7 @@ header:
 ---
 
 
-# Important files and folders for your page
+
 here you have a short overview over all important *files* and *folders* for your page.
 
 ## Files
