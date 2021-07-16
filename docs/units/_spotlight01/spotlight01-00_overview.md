@@ -1,7 +1,7 @@
 ---
 title: Jekyll and GitHub pages
 header:
-  image: /assets/images/02-splash.jpg
+  image: /assets/images/spotlight01/jekyll_github_pages.png
   image_description: "Cutout from  Measured carbon dioxide concentrations in Vancouver"
   caption: "Bild: [jekyll](https://jekyllrb.com/)"
 ---
@@ -24,13 +24,11 @@ Before you start creating your website check if the following requirements are m
 
 3. Check if you have all [other prerequisites for Jekyll](https://jekyllrb.com/docs/) installed
     
-
 4. Get a "docs" folder in your GitHub repository, which follows the required Jekyll structure (assets, _data, _includes, _pages, etc.)
-	* Check here for details: 
-    * You can also use a template like https://github.com/GeoMOER/moer-html-module-template
+	* Check [here](https://jekyllrb.com/docs/structure/) for more details on the Jekyll structure
+	* You can also use a [template](https://github.com/GeoMOER/moer-html-module-template)
 
 5. Switch the directory in your terminal to "docs" folder and run "bundle install" there, for installing the required gems for your webpage.
-
 	* the gems will be installed in your local repository folder. If you want, and often you should want, exclude them from synchronizing with GitHub by adding the ".bundle" or "vendor" folders to your 	 file
 
 

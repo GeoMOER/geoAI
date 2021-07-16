@@ -9,6 +9,7 @@ header:
 
 
 # Important files and folders for your page
+here you have a short overview over all important *files* and *folders* for your page.
 
 ## Files
 
@@ -17,9 +18,9 @@ header:
 The most important file for your webpage. If you change something there, you need to build the site again with "bundle exec jekyll serve" for changes to take effect.
 
 In this file you set e.g. 
-  - the url for your page. If this url is wrong, everything will become a mess. If you serve your page on github, include the GitHub url here.
-  - collections_dir: directory in /docs where Jekyll looks for pages to display. 
-  - :collections and :defaults - set the structure of your page. Make your collection content appear there, otherwiese they will not be displayed in the page.
+* the url for your page. If this url is wrong, everything will become a mess. If you serve your page on github, include the GitHub url here.
+* collections_dir: directory in /docs where Jekyll looks for pages to display. 
+* :collections and :defaults - set the structure of your page. Make your collection content appear there, otherwiese they will not be displayed in the page.
   
   
 ### index.md
@@ -34,7 +35,7 @@ The gems, which will be used (and installed with "bundle install") for your site
 
 ### Gemfile.lock
 
-If you want to fix a certain combination of Gems and versions thereof, use this file. It assures (hopefully) that the page can be served independent of the local gem installation.
+If you want to fix a certain combination of Gems and versions there of, use this file. It assures (hopefully) that the page can be served independent of the local gem installation.
 
 
 ## Folders
@@ -47,14 +48,14 @@ Your media content for the page lives here (images, pdfs, videos, etc.)
 ### _data
 
 Important things for controlling your page live here, e.g.
-  - navigation.yml: Can control the navigation for your page. 
-    - main: navigation on the top of the page
-    - docs: navigation on the left of the page
+* navigation.yml: Can control the navigation for your page. 
+	* main: navigation on the top of the page
+    * docs: navigation on the left of the page
 
 ### _includes
 
 Files controling how to include contents live here, e.g.
-  - masthead.html: controlls the appearance of the navigation panel on the top.
+* masthead.html: controlls the appearance of the navigation panel on the top.
   
   
 ### _pages
@@ -71,9 +72,8 @@ This is the folder where the compiled HTML files of your page live. If fact, thi
 This is the folder for the collections. The collections are defined in the _config.yml file. All files in folders will be compiled as content in the navigation of the collections of your page. This folder is called "units" here because of the background in teaching at the Lab of Environmental Informatics. Note that only folders will be displayed, which are refered to in the _config.yml file. Note also that the alphabetical order of the files and folders equals the order of appearance of content in the webpage. You can change this order in the _config.yml file (good luck).
 
 
-
 ## Notes
 
-- md. files are compiles by Jekyll to HTML for display in the webpage
-- For local serving: if you change files (and save them), the changes will directly be processed for updating the page. Do not forget to refresh the page in your browser for seeing the changes.
+* md. files are compiles by Jekyll to HTML for display in the webpage
+* For local serving: if you change files (and save them), the changes will directly be processed for updating the page. Do not forget to refresh the page in your browser for seeing the changes.
 
