@@ -8,7 +8,7 @@ header:
 
 
 
-The structure for a 
+Example of a Jekyll files and folder structure that you can use for your project:
 
 ```yaml
 └── docs
@@ -32,8 +32,6 @@ The structure for a
 	
 ```
 
-All important folders and files you need for your site at a glance.
-
 ## Your Files
 
 
@@ -41,7 +39,7 @@ All important folders and files you need for your site at a glance.
 
 The most important file for your webpage. If you change something there, you need to build the site again with "bundle exec jekyll serve" for changes to take effect.
 
-In this file you set e.g. 
+In this file you set e.g.: 
 * the url for your page. If this url is wrong, everything will become a mess. If you serve your page on github, include the GitHub url here.
 * collections_dir: directory in /docs where Jekyll looks for pages to display. 
 * :collections and :defaults - set the structure of your page. Make your collection content appear there, otherwiese they will not be displayed in the page.
