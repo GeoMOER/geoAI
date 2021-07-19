@@ -23,6 +23,7 @@ Before you start creating your website check if the following requirements are m
 ```console
 C:your_repository> gem install bundler
 ```
+
 	* It does not matter in which path you execute it
 	* Close and restart the terminal to update the PATH Variables (otherwise the gem function is not available). If this does not work, restart the computer, especially if you are under Windows.
 
