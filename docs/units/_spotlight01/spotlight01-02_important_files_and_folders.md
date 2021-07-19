@@ -1,15 +1,12 @@
 ---
-  title: Important files and folders for your page
-toc: true
+title: Important files and folders for your page
 header:
-  image: /assets/images/02-splash.jpg
+  image: /assets/images/spotlight01/jekyll.png
   image_description: "Blick ins Lahntal mit Grünlandwirtschaft, Baustelle für Stromtrassen und Regenbogen."
   caption: "Foto: T. Nauss / CC0"
 ---
 
 
-
-here you have a short overview over all important *files* and *folders* for your page.
 
 ## Files
 

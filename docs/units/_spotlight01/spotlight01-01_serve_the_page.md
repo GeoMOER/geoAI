@@ -1,6 +1,5 @@
 ---
-  title: Serve the page
-toc: true
+title: Serve the page
 header:
   image: /assets/images/spotlight01/jekyll.png
   image_description: "Blick ins Lahntal mit Grünlandwirtschaft, Baustelle für Stromtrassen und Regenbogen."
