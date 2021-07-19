@@ -25,21 +25,21 @@ The participants will be able to
 
 
 ## Syllabus
-| Unit | Content | Details |
-|------|---------|---------|
-| Unit  01 | Big questions are spatial | 
+| Unit | Content | Details | Time span |
+|------|---------|---------|-----------|
+| Unit  01 | Big questions are spatial | 1 week | 
 | 01-1 | Habitats | The importance of spatial composition and configuration of landscapes exemplified by the IPBES Nature's Contributions to People framework. | 
 | 01-2 | Proximity does not make relationships | On the invalidity of the first law of geography in heterogeneous spaces.
-| Unit  02 | Remote Sensing 101 | 
+| Unit  02 | Remote Sensing 101 |  1 week |
 | 02-1 | Remote Sensing | A brief introduction to remote sensing using optical sensors as an example. | 
 | 02-2 | Data Formats | Features and differences of spatial data collected in the field or acquired by remote sensing systems. | 
-| Unit  03 | Randomly correct is not predicted | 
+| Unit  03 | Randomly correct is not predicted |  2 week |
 | 03-1 | From data reproduction to spatial prediction. | Why latitude and longitude are (almost) never good predictive variables. | 
 | 03-2 | Randomly good. | Predicting spatial features with machine learning and random validation. | 
-| Unit  04 | Spatial predictions and robust error estimation. | 
+| Unit  04 | Spatial predictions and robust error estimation. | 4 week |
 | 04-1 | Spatially good. | Resilient spatial predictions using appropriate selection and validation strategies. | 
 | 04-2 | Deeply good. | Deep-learning and spatial patterns. | 
-| Unit  05 | Final team project: spatial prediction. | 
+| Unit  05 | Final team project: spatial prediction. | 3-4 week |
 | 05-1 | Research question | From curiosity to research question and project planning. | 
 | 05-2 | Research Response | From project planning to implementation, research documentation and presentation. | 
 | 05-3 | Research Presentation | Presentation of a web/screencast on the project work. | 
