@@ -25,8 +25,8 @@ The participants will be able to
 
 
 ## Syllabus
-| Unit | Content |
-|------|---------|
+| Unit | Content | Details |
+|------|---------|---------|
 | Unit  01 | Big questions are spatial | 
 | 01-1 | Habitats | The importance of spatial composition and configuration of landscapes exemplified by the IPBES Nature's Contributions to People framework. | 
 | 01-2 | Proximity does not make relationships | On the invalidity of the first law of geography in heterogeneous spaces.
