@@ -18,8 +18,11 @@ Before you start creating your website check if the following requirements are m
 	* [Ruby Installer](https://rubyinstaller.org/downloads/)
 	* Restart the computer afterwards, just to make sure, especially if you are under Windows.
 
-2. Install bundler from terminal: "gem install bundler" 
-	* The path does not matter where you execute it
+2. Install bundler from the terminal:
+```console
+C:your_repository> gem install bundler
+```
+	* It does not matter in which path you execute it
 	* Close and restart the terminal to update the PATH Variables (otherwise the gem function is not available). If this does not work, restart the computer, especially if you are under Windows.
 
 3. Check if you have all [other prerequisites for Jekyll](https://jekyllrb.com/docs/) installed
@@ -29,6 +32,11 @@ Before you start creating your website check if the following requirements are m
 	* You can also use a [template](https://github.com/GeoMOER/moer-html-module-template)
 
 5. Switch the directory in your terminal to "docs" folder and run "bundle install" there, for installing the required gems for your webpage.
-	* the gems will be installed in your local repository folder. If you want, and often you should want, exclude them from synchronizing with GitHub by adding the ".bundle" or "vendor" folders to your 	 file
+
+```console
+C:your_repository/docs> bundle install
+```
+
+* the gems will be installed in your local repository folder. If you want, and often you should want, exclude them from synchronizing with GitHub by adding the ".bundle" or "vendor" folders to your 	 file
 
 
