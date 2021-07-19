@@ -19,6 +19,7 @@ Before you start creating your website check if the following requirements are m
 	* Restart the computer afterwards, just to make sure, especially if you are under Windows.
 
 2. Install bundler from the terminal:
+
 ```console
 C:your_repository> gem install bundler
 ```
