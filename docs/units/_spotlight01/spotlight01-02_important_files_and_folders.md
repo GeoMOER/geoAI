@@ -8,13 +8,33 @@ header:
 
 
 
+The structure for a 
+
+```yaml
+└── docs
+    ├── _data
+    │  └── navigation.yml
+    ├── _includes  
+    ├── _pages
+    ├── _site
+    ├── assets
+    │   ├── images
+    │   └── pdf
+    ├── units
+    │	├── _unit01
+    │	│	└── 01_00_example.md
+    │   ├── _unit02
+    │   └── ... 
+    ├── _config.yml
+    ├── Gemfile 
+    ├── Gemfile.lock 
+    └── index.md 
+	
+```
+
 All important folders and files you need for your site at a glance.
 
-
-## The Jekyll structure
-
-
-## Files
+## Your Files
 
 
 ### _config.yml
@@ -41,16 +61,15 @@ The gems, which will be used (and installed with "bundle install") for your site
 If you want to fix a certain combination of Gems and versions there of, use this file. It assures (hopefully) that the page can be served independent of the local gem installation.
 
 
-## Folders
+## Your Folders
 
 ### assets
 
 Your media content for the page lives here (images, pdfs, videos, etc.)
 
-
 ### _data
 
-Important things for controlling your page live here, e.g.
+Important things for controlling your page live here e.g.:
 * navigation.yml: Can control the navigation for your page. 
 	* main: navigation on the top of the page
     * docs: navigation on the left of the page
@@ -75,8 +94,6 @@ This is the folder where the compiled HTML files of your page live. If fact, thi
 This is the folder for the collections. The collections are defined in the _config.yml file. All files in folders will be compiled as content in the navigation of the collections of your page. This folder is called "units" here because of the background in teaching at the Lab of Environmental Informatics. Note that only folders will be displayed, which are refered to in the _config.yml file. Note also that the alphabetical order of the files and folders equals the order of appearance of content in the webpage. You can change this order in the _config.yml file (good luck).
 
 
-**Notes**: 
-* The md. files are compiled by Jekyll to HTML for display in the webpage
-* For local serving: if you change files (and save them), the changes will directly be processed for updating the page. Do not forget to refresh the page in your browser for seeing the changes.
+**Notes**: The md. files are compiled by Jekyll to HTML for display in the webpage. For local serving: if you change files (and save them), the changes will directly be processed for updating the page. Do not forget to refresh the page in your browser for seeing the changes.
 {: .notice--info}
 
