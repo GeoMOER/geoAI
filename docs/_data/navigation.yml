@@ -6,7 +6,7 @@ main:
     url: https://ilias.uni-marburg.de/ilias.php?ref_id=1858892&cmdClass=ilrepositorygui&cmdNode=ts&baseClass=ilrepositorygui
   - title: "go to OER"
     url: https://oer.uni-marburg.de/goto.php?target=cat_1651239&client_id=UNIMR
-  - title: "Seitenübersicht"
+  - title: "Page overview"
     url: /sitemap.html
 
 
@@ -18,5 +18,5 @@ docs:
         url: /units.html
       - title: "go to ILIAS"
         url: https://ilias.uni-marburg.de/ilias.php?ref_id=1858892&cmdClass=ilrepositorygui&cmdNode=ts&baseClass=ilrepositorygui
-      - title: "Zum OER"
+      - title: "go to OER"
         url: https://oer.uni-marburg.de/goto.php?target=cat_1651239&client_id=UNIMR
