@@ -105,16 +105,6 @@ defaults:
       layout: single
       sidebar:
         nav: "course_unit"
-        # unit00
-  - scope:
-      path: ""
-      type: unit00
-    values:
-      category: "00 The Beginning"
-      tags: "Unit 00"
-      layout: single
-      sidebar:
-        nav: "course_unit"
   # unit01
   - scope:
       path: ""
