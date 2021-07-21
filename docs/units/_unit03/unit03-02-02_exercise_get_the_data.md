@@ -1,5 +1,5 @@
 ---
-title: "Exersice: Get your data"
+title: "Exercise: Get your data"
 --- 
 
 In this exersice you prepare the data that is neccessary to predict tree species groups for a forest in Rhineland-Palatinate with Random Forest.

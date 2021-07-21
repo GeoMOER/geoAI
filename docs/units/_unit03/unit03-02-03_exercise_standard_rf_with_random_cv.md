@@ -1,5 +1,5 @@
 ---
-title: "Exersice: Standard Random Forest Model with random Cross-Validation und internem Fehler als Gütemaß"
+title: "Exercise: Standard Random Forest Model with random Cross-Validation und internem Fehler als Gütemaß"
 ---
 
 You can use the Docker environment that is part of this course.
