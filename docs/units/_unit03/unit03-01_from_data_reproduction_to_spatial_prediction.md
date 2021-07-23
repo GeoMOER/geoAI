@@ -7,9 +7,11 @@ header:
   caption: "Bild: [flickr](https://flic.kr/p/RNxn74) / CC-BY-2.0"
 ---
 
-## Why latitude and longitude are (almost) never good predictor variables
+Why latitude and longitude are (almost) never good predictor variables
 
 
-test test test
-https://ilias.uni-marburg.de/data/UNIMR/lm_data/lm_2285471/unit05/unit04-07_spatial_trainingdata.html
+
 <!--more-->
+
+
+https://ilias.uni-marburg.de/data/UNIMR/lm_data/lm_2285471/unit05/unit04-07_spatial_trainingdata.html
