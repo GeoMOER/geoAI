@@ -1,33 +1,32 @@
 ---
-title: "Exercise: Get your data"
+title: "Exercise: Import and prepare your data"
+
+header:
+  image: /assets/images/unit03/sentinel_summer.png
+  image_description: "Sentinel-2 summer 2019"
+  caption: "Bild: [ESA](https://scihub.copernicus.eu/dhus/#/home)"
+ 
 --- 
 
 In this exersice you prepare the data that is neccessary to predict tree species groups for a forest in Rhineland-Palatinate with Random Forest.
 
 
-## 1. Sentinel2 data
+## 1. Sentinel-2 data
 
-Create a raster stack containing all Sentinel2 bands and a selection of Indices.
-	* You can use the function spectralInd from the package RStools to 
-	
+* Download a winter and a summer Sentinel-2 scene from here,
+* Load all bands into R and plot an RGB image of one scene,
+* Calculate a bunch of vegetation indices on both scenes (Have a look at the RStoolbox for this),	
 	
 ## 2. LiDAR
 
-Create a raster stack containing lidar Indices 
-During the processing the three dimensional lidar data they get rasterized to different lidar indices
-
-For example:
-
-* Penetration rate understory vegetation
-* Canopy Height Model
-* BE_H_50 etc.
-*...
+* calculate lidar indices
 
 
+## 3. Forest inverntory data
 
-* Create a rasterstack containing the Sentinel-2 Bands 02, 03, 04, 08, the NDVI and the LiDAR Mean Vegetation Height
-* Rename the columns accordingly
-* Convert the stack to a data frame
-* Print the first five lines of the data frame. What do the rows and columns represent?
-* Remove all the rows which contain missing values
-* Save your dataframe as an RDS file
+
+* load the Polygons containing the forest inventory data
+* filter them to a tree species purity of at least 80%
+
+
+
