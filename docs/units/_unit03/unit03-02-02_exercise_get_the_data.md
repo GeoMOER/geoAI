@@ -20,13 +20,14 @@ In this exersice you prepare the data that is neccessary to predict tree species
 ## 2. LiDAR
 
 * calculate lidar indices
+* ...
 
 
 ## 3. Forest inverntory data
 
 
-* load the Polygons containing the forest inventory data
-* filter them to a tree species purity of at least 80%
+* load the Polygons containing the forest inventory data into R,
+* filter them to a tree species purity of at least 80%,
 
 
 

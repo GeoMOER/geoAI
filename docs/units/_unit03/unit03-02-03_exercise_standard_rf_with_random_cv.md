@@ -21,6 +21,33 @@ create your own random forest model to predict the tree species in Rhineland-Pal
 * Predict the tree species groups 
 
 
+```r
+#######################################
+#### A "random" Random Forest Model ###
+#######################################
+
+library(caret)
+library(CAST)
+
+# set control settings to random cross-validation
+ctrl <- trainControl(method="cv",
+                     number =10,
+                     savePredictions = TRUE)
+
+
+# train a standard random forest model
+set.seed(100)
+model <- caret::train(predictors,
+                      response,
+                      method="ranger",
+                      metric="Accuracy",
+                      trControl=ctrl,
+                      importance=TRUE,
+                      ntree=77)
+```
+**Note:** If you run out of RAM you can reduce your data with caret::createDataPartition()
+{: .notice--info}
+
 ## Assignment
 Write everything in a Rmd file, knitr it and upload the html file to Ilias. 
 
