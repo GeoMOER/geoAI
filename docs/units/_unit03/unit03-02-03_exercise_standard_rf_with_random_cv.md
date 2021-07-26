@@ -4,7 +4,7 @@ title: EX | A randomly good model
 header:
   image: /assets/images/unit03/dice_blue_2.jpg
   image_description: "Cutout Autumn impressions"
-  caption: "Bild: [flickr](https://www.flickr.com/photos/192004829@N02/51145500105/) / CC BY-NC 2.0"
+  caption: "Image: The Focal Project [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/192004829@N02/51145500105/)"
 
 ---
 Creation of a Random Forest Model with random cross-validation.
