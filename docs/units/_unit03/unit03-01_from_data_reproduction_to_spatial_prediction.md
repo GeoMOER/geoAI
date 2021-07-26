@@ -1,5 +1,5 @@
 ---
-title: 03-01 From data reproduction to spatial prediction
+title: LM | From data reproduction to spatial prediction
 toc: true
 header:
   image: /assets/images/03-splash.jpg

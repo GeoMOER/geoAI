@@ -1,5 +1,5 @@
 ---
-title: "Exercise: A randomly good model"
+title: EX | A randomly good model
 
 header:
   image: /assets/images/unit03/dice_blue_2.jpg

@@ -1,5 +1,5 @@
 ---
-title: 03-02 Randomly Good
+title: LM | Randomly Good
 toc: true
 
 header:

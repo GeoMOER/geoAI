@@ -1,5 +1,5 @@
 ---
-title: "Exercise: Import and prepare your data"
+title: EX | Import and prepare your data
 
 header:
   image: /assets/images/unit03/sentinel_summer.png
