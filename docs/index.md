@@ -66,7 +66,7 @@ The course covers 10 sessions, with the exception of session 10 on a weekly basi
 | 04-1 |    Spatially good | Resilient spatial predictions using appropriate selection and validation strategies. |
 | 04-2 |    Deeply good | Deep-learning and spatial patterns. |
 |**05**| **Final team project: spatial prediction** ||
-| 05-1 | Research questions | From curiosity to reasearch question and project planning. |
+| 05-1 | Research questions | From curiosity to research question and project planning. |
 | 05-2 | Research response | From project planning to implementation, research documentation and presentation. |
 | 05-3 | Research presentation | Presentation of a web/screencast on the project work.|
 |**06**| **Wrap-up**||
