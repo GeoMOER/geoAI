@@ -15,12 +15,20 @@ Predicting spatial features with machine learning and random validation.
 
 ## What?
 
-Spatial prediction of tree species and forest successional stages.
+We will try to predict tree species and their successional stages for a forest in Rhineland-Palatinate with machine learning (random forest), Sentinel-2, LiDAR and forest inverntory data. 
+
+
 
 ## Why?
 
+Forests are the largest terrestrial Ecosystem in the world and provide a lot of ecosystem services to human wellbeing. Due to drought, parasites (bark beetle), and climate change the forests in europe are exposed to extrem stress. 
+Information about the tree species and the successional stages are quite valuable as the forest composition can be used as an coarse proxy for the habitat of certain species.
+
+
 ![image](../assets/images/unit01/Ecosystem_services_Holzwarth_et_al_2020.jpg)
 Image: *Ecosystem Services of forests. Holzwarth et al. 2020 [CC BY 4.0] via [mdpi.com](https://www.mdpi.com/2072-4292/12/21/3570)*
+
+
 
 
 ## Random Forest with random cross-validation - the Basics

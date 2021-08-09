@@ -1,5 +1,5 @@
 ---
-title: LM | Deeply Good
+title: EX | Unet image segmentation
 toc: true
 header:
   image: /assets/images/unit04/treppe.jpg
@@ -7,13 +7,8 @@ header:
   caption: "Image: ```*snowwhite*``` [CC BY-NC-SA 2.0] [via flickr.com](https://www.flickr.com/photos/101269238@N08/50408950422/)"
 ---
 
-
 Deep learning and spatial patterns
 
 <!--more-->
 
-## unet
-
-[5 Minute Teaser Presentation of the U-net: Convolutional Networks for Biomedical Image Segmentation (5:03)](https://www.youtube.com/watch?v=81AvQQnpG4Q){:target="_blank"} 
-## 
-
+## Detection of 

@@ -13,6 +13,50 @@ Creation of a Random Forest Model with random cross-validation.
 
 Extract the values of Sentinel-2 band indices and lidar indices for your training polygons.
 
+```r
+# input
+library(terra)
+library(sf)
+
+
+
+train = sf::read_sf("C:/Users/Lisa Bald/Uni_Marburg/KI_Kampus/Exercise/Unit03/train.gpkg")
+train = train[train$proz > 80,]
+train = subset(train, select = c("FAT__ID", "BAGRu"))
+sen = terra::rast("C:/Users/Lisa Bald/Uni_Marburg/KI_Kampus/Exercise/Unit03/summer.grd")
+rlp_forest_buffer = train
+
+
+# extract all polygons from raster stack
+#i = 340
+result = lapply(seq(nrow(rlp_forest_buffer)), function(i){
+  print(i)
+  cur = rlp_forest_buffer[i,]
+  ext <- ext(cur)
+  
+    # if bigger than 10 m:
+    sen = crop(sen, ext)
+
+    df = raster::extract(sen, vect(cur), df = TRUE)
+    df$FAT__ID = cur$FAT__ID
+    print("Extracted")
+    return(df)
+  }
+)
+
+#p = data.frame(FAT__ID = rlp_forest_buffer$FAT__ID)#, 
+#               status = do.call(c, protocoll))
+write.csv(p, "data/RLP_extration_protocoll.csv", quote = FALSE, row.names = FALSE)
+
+
+# formating of extraction
+
+res = result[sapply(result, is.data.frame)]
+res = do.call(rbind, res)
+saveRDS(res, "C:/Users/Lisa Bald/Uni_Marburg/KI_Kampus/Exercise/Unit03/RLP_extract.RDS")
+
+
+```
 
 ## Random forest
 create your own random forest model to predict the tree species in Rhineland-Palatinate
