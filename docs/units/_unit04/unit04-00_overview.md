@@ -2,9 +2,9 @@
 title: Overview
 toc: true
 header:
-  image: /assets/images/04-splash.jpg
-  image_description: "Unübersichtlich beschriebene Universitätstafel"
-  caption: "Foto: Wikimedia Commons / CC0"
+  image: /assets/images/unit04/error2.jpg
+  image_description: Writing on a wall in old factory
+  caption: "Image: strange little woman on stream [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/strangelittlewoman-onstream/8680774480/in/photostream/)"
 ---
 
 Spatial predictions and robust error estimation
@@ -12,20 +12,19 @@ Spatial predictions and robust error estimation
 
 ## Recap
 
-In the last unit we discussed the importance of a spatial variable selection for a spatial prediction. Furthermore you built your first random forest model with a random cross-validation. If you do remember your results (if not have a look at them now) you will have noticed that the Error estimate is quite low even if we have an inaccurate prediction. 
-* importance of variable selection
-* random Forest Modell mit random cross-validation
-
-
+In the previous exercise, you already got a first impression of the different datasets used and dealt with them in R. You also created a first simple random forest model for the prediction of tree species. For this you relied on classical methods of machine learning like n-fold cross-validation. We also discussed the importance of spatial variable selection for spatial prediction.
 ## This Session
 
-To fix this problem, we will create a prediction that takes into account the spatiality of the data. Today we will try to create a "proper" spatial prediction.  To do this, the model created in the last unit will be used as follows. 
-We will then delve a little deeper into the field of spatial prediction, using a deep learning convolutional neural network to recognize spatial structures.
-
+In this unit, we will adapt the random forest model created in the last unit to take more account to the spatiality of the data. For this purpose, we will perform a spatial variable selection and a spatial cross-validation.
+We will then delve a little deeper into the field of spatial prediction and use a Deep Learning convolutional neural network to detect spatial structures.
 
 ## Learning Objectives
 
 At the end of this unit you should be able to
 
-* adapt your random forest model from the last unit to a 
+* understand the concept of a forward-feature-selection (FFS)
+* understand the concept of a Leave-Location-Out (LLO) cross-validation
+* adapt your modeling workflow to perform FFS and LLO cross-validation
+* understand the basic concept of a U-net deep neural network
+* to get your first U-net up and running and to recognize some simple spatial structures with it
 

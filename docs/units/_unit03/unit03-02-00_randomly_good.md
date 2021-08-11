@@ -26,7 +26,7 @@ Information about the tree species and the successional stages are quite valuabl
 
 
 ![image](../assets/images/unit01/Ecosystem_services_Holzwarth_et_al_2020.jpg)
-Image: *Ecosystem Services of forests. Holzwarth et al. 2020 [CC BY 4.0] via [mdpi.com](https://www.mdpi.com/2072-4292/12/21/3570)*
+*Image: Ecosystem Services of forests. Holzwarth et al. 2020 [CC BY 4.0] via [mdpi.com](https://www.mdpi.com/2072-4292/12/21/3570)*
 
 
 
