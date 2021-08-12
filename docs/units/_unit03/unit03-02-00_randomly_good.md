@@ -33,6 +33,13 @@ Information about the tree species and the successional stages are quite valuabl
 
 ## Random Forest with random cross-validation - the Basics
 
+Machine Learning:
+
+![image](../assets/images/unit03/machine_learning.jpg)
+
+*Image: Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
+
+
 To get an overview about the random forest algorithm, you can watch the videos below or do some internet research on your own. There are some great tutorials out there.
 
 1. [Random Forests Part 1 - Building, Using and Evaluating (9:53)](https://www.youtube.com/watch?v=J4Wdy0Wc_xQ){:target="_blank"}  
