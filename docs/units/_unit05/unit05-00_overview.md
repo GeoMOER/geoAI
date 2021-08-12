@@ -1,9 +1,9 @@
 ---
 title: Overview
 header:
-  image: /assets/images/03-splash.jpg
-  image_description: "Cutout from  Measured carbon dioxide concentrations in Vancouver"
-  caption: "Bild: [flickr](https://flic.kr/p/RNxn74) / CC-BY-2.0"
+  image: /assets/images/unit05/start.jpg
+  image_description: "Cutout Start line"
+  caption: "Image: We Like Sharing [CC BY 2.0] [flickr.com](https://www.flickr.com/photos/welikesharing/51108580972/in/photostream/)"
 ---
 
 Final team project: spatial prediction

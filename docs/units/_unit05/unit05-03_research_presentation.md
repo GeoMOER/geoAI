@@ -1,9 +1,8 @@
 ---
-  title: Research Presentation
-toc: true
+title: Research Presentation
 header:
-  image: /assets/images/02-splash.jpg
-  image_description: "Blick ins Lahntal mit Grünlandwirtschaft, Baustelle für Stromtrassen und Regenbogen."
-  caption: "Foto: T. Nauss / CC0"
+  image: /assets/images/unit05/finish.jpg
+  image_description: "Cutout finish line"
+  caption: "Image: We Like Sharing [CC BY 2.0] [flickr.com](https://www.flickr.com/photos/welikesharing/51109052578/in/photostream/)"
 ---
 
