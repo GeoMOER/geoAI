@@ -6,6 +6,14 @@ header:
   caption: "Image: NASA's Marshall Space Flight Center [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
 ---
 
-
-test test test
+A brief introduction to remote sensing using optical sensors as an example.
 <!--more-->
+
+## Physical fundamentals
+### Passive and active sensors
+
+###  Electromagnetic radiation
+
+### Reflective properties
+
+## Sensor properties
