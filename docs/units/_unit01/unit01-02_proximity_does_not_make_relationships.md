@@ -1,5 +1,5 @@
 ---
-title: Proximity does not make relationships
+title: LM | Proximity does not make relationships
 toc: true
 header:
   image: /assets/images/01-splash.jpg

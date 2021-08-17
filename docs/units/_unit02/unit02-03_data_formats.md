@@ -1,5 +1,5 @@
 ---
-title: Data Formats
+title: LM | Data Formats
 toc: true
 header:
   image: /assets/images/02-splash.jpg

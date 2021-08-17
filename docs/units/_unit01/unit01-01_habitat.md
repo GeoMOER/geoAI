@@ -1,5 +1,5 @@
 ---
-title: Habitat
+title: LM | Habitat
 toc: true
 header:
   image: /assets/images/01-splash.jpg
