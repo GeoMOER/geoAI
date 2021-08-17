@@ -7,6 +7,8 @@ header:
   caption: "Map: [**Dr. John Snow**](https://de.wikipedia.org/wiki/John_Snow_(Mediziner)) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
 ---
 
+What is a habitat?
+
 ## Spatial Composition of Landscape
 
 
