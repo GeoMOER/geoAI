@@ -2,9 +2,10 @@
 title: Overview
 toc: true
 header:
-  image: /assets/images/03-splash.jpg
-  image_description: "Cutout from  Measured carbon dioxide concentrations in Vancouver"
-  caption: "Bild: [flickr](https://flic.kr/p/RNxn74) / CC-BY-2.0"
+  image: /assets/images/unit03/forest.jpg
+  image_description: "Cutout Autumn impressions"
+  caption: "Image: Ranger56112 [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/ranger56112/21714329483/)"
+ 
 ---
 
 Randomly correct is not predicted
@@ -17,10 +18,7 @@ Randomly correct is not predicted
 
 ## This session
 
-In dieser Unit werden wir die Bedeutung der 
-
-* A suitable variable selection for spatial data,
-* create a basic random forest model with random cross-validation
+In this unit we will explore the spatial prediction of tree species. We will first get familiar with random forest models and a simple cross-validation. We will use our newly acquired knowledge to predict tree species for a forest area in Rhineland-Palatinate. Finally, we will evaluate whether the results obtained with this method are satisfactory and discuss possibilities for improvement.
 
 ## Learning Objectives
 
