@@ -50,11 +50,15 @@ Wellenlängen
 • Characteristische Reflexionskurven
 
 ![image](../assets/images/unit02/reflexionsspektrum.jpg)
-
+*Image: Hanna Meyer und Thomas Nauss [CC BY-NC 4.0] via [uni-marburg.de](https://ilias.uni-marburg.de/ilias.php?ref_id=1652369&obj_id=195392&cmd=layout&cmdClass=illmpresentationgui&cmdNode=g5&baseClass=ilLMPresentationGUI)*
 
 ## Sensor properties
 
 Spektrale Auflösung
+
+![image](../assets/images/unit02/satellite_spectrum.jpg)
+*Image: Spectral resolution of currently available optical satellite sensors. Hirschmugl, M.; Sobe, C.; Khawaja, C.; Janssen, R.; Traverso, L. Pan-European Mapping of Underutilized Land for Bioenergy Production. Land 2021, 10, 102. [CC BY 4.0] via [mdpi.com](https://www.mdpi.com/2073-445X/10/2/102#)*
+
 • Räumliche Auflösung
 • Zeitliche Auflösung
 
