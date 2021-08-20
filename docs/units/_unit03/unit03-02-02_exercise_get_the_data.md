@@ -4,30 +4,25 @@ title: EX | Import and prepare your data
 header:
   image: /assets/images/unit03/sentinel_summer.png
   image_description: "Sentinel-2 summer 2019"
-  caption: "Bild: [ESA](https://scihub.copernicus.eu/dhus/#/home)"
+  caption: "Image: [© ESA - produced from ESA remote sensing data](https://scihub.copernicus.eu/dhus/#/home)"
  
 --- 
 
-In this exersice you prepare the data that is neccessary to predict tree species groups for a forest in Rhineland-Palatinate with Random Forest.
 
 
-## 1. Sentinel-2 data
 
-* Download a winter and a summer Sentinel-2 scene from here,
-* Load all bands into R and plot an RGB image of one scene,
-* Calculate a bunch of vegetation indices on both scenes (Have a look at the RStoolbox for this),	
+
+In this first exersice we prepare the data that is neccessary to predict tree species groups for a forest in Rhineland-Palatinate with a Random Forest model. A selection of satellite-, lidar-, and polygon data will be used.
+
+
+
+We use [Sentinel-2](https://sentinel.esa.int/web/sentinel/missions/sentinel-2) satellite data to create spectral indices as predictor variables. You will find two Sentinel-2 scenes here. One was recorded on the 27.02.2019 (winter.tif) and one on the 27.06.2019 (summer.tif). Load both Scenes into RStudio and plot an RGB image of one of them (Have a look at [this page]( https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi/resolutions/spatial) for information on the wavelength of each band). 
+You can mask all non forest areas from the images, as we are only interested in the forest. Calculate a bunch of vegetation indices for both scenes. For this purpose you can have a look at the [indexdatabase]( https://www.indexdatabase.de/) which gives an overview over the existing vegetation indices or the [RStoolbox]( https://cran.r-project.org/web/packages/RStoolbox/index.html), a R package with a great function for this purpose.
 	
-## 2. LiDAR
 
-* calculate lidar indices
-* ...
-
-
-## 3. Forest inverntory data
+![image](../assets/images/unit03/lidar.png)
+*Image: Lidar data. Jean-Romain Roussel, Tristan R.H. Goodbody, Piotr Tompalski [CC BY-NC-SA 2.0] via [jean-romain.github.io](https://jean-romain.github.io/lidRbook/)*
 
 
-* load the Polygons containing the forest inventory data into R,
-* filter them to a tree species purity of at least 80%,
-
-
+From the same folder from which you have already downloaded the other data you can also download a raster stack with 18 indices based on lidar data. A detailed description of the indices and their calculation method can be found in the [wiki of the Remote Sensing Database](https://github.com/environmentalinformatics-marburg/rsdb/wiki/Point-cloud-indices). Load this into your RStudio, too.
 
