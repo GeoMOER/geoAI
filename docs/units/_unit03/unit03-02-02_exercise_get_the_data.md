@@ -26,3 +26,19 @@ You can mask all non forest areas from the images, as we are only interested in 
 
 From the same folder from which you have already downloaded the other data you can also download a raster stack with 18 indices based on lidar data. A detailed description of the indices and their calculation method can be found in the [wiki of the Remote Sensing Database](https://github.com/environmentalinformatics-marburg/rsdb/wiki/Point-cloud-indices). Load this into your RStudio, too.
 
+Last, we will use forest inventory polygon data as training and validation data. Load the data into your RStudio and plot it. Familiarize yourself with its structure. Consider how many tree species groups you are able or wish to predict with the data. Feel free to reduce it by unnecessary columns.
+
+{: .notice--info}
+Note: the dataset has been created in german. The most important column is the one with the tree species groups and is named "BAGRu". The tree species are abbreviated with their German names (see table). 
+
+|german | english |
+|-------|---------|
+|Ei|oak|
+|Bu|beech|
+|Dou|douglas fir|
+|Lä|larch|
+|Ki|pine|
+|Fi|spruce|
+|Ta|fir|
+|Lbk|short-lived deciduous trees|
+|Lbl| long-lived deciduous trees|
