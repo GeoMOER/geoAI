@@ -30,13 +30,14 @@ Information about the tree species and the successional stages are quite valuabl
 
 
 
-## Random Forest with random cross-validation - the Basics
+## Random forest with random cross-validation - the basics
 
-Machine Learning:
 
-![image](../assets/images/unit03/machine_learning.jpg)
-
+<p align="center">
+  <img src="../assets/images/unit03/machine_learning.jpg" alt="drawing">
+</p>
 *Image: Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
+
 
 
 Video here: 
