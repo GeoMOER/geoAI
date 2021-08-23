@@ -2,9 +2,9 @@
 title: EX | Spatial Prediction
 toc: true
 header:
-  image: /assets/images/04-splash.jpg
-  image_description: "Unübersichtlich beschriebene Universitätstafel"
-  caption: "Foto: Wikimedia Commons / CC0"
+  image: /assets/images/unit04/header_ffs.png
+  image_description: "Excerpt of predicted tree species groups in Rhineland-Palatinate"
+  caption: "Image: © GeoBasis-DE / LVermGeoRP 2018; © OpenStreetMap-contributors; © Hansen/UMD/Google/USGS/NASA; © ESA - produced from ESA remote sensing data"
 ---
 
 ## Räumliche Vorhersage, diesmal richtig. 

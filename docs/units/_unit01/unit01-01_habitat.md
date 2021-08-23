@@ -9,6 +9,7 @@ header:
 
 What is a habitat?
 
+<!--more-->
 ## Spatial Composition of Landscape
 
 
