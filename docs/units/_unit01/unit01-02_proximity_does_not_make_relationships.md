@@ -21,6 +21,6 @@ This is an example of simple Euclidean distances vs. complex spped-based distanc
 
 ## Video
 
-## Powerpoint slides
+## Powerpoint slides as PDF
 
 ## Quiz
