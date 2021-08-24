@@ -13,6 +13,14 @@ header:
 
 ## Interpolation is no prediction
 
-## Kriging is not the answer (examples) (potentially as spotlight)
+## Kriging is not the answer (examples) (potential spotlight)
+This is an example of simple Euclidean distances vs. complex spped-based distances. 
+
+![image](../assets/images/unit01/Hengl_Fig_2_clipped.png)
+*Image: Distances from a point derived using different algorithms. Tomislav Hengl, Madlene Nussbaum, Marvin N. Wright, Gerard B.M. Heuvelink, Benedikt Graeler [CC BY 4.0] via [PeerJ Life & Environment](https://doi.org/10.7717/peerj.5518/fig-2)*
+
+## Video
+
+## Powerpoint slides
 
 ## Quiz
