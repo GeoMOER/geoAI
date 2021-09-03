@@ -18,7 +18,7 @@ The appropriate collection of training data is essential for all monitored class
 * if your variables are highly correlated (use this tutorial to check it) try to eliminate the ones that are very similar.
 
 
-
+[![FFS](https://ars.els-cdn.com/content/image/1-s2.0-S0304380019303230-ga1_lrg.jpg)](https://ars.els-cdn.com/content/image/1-s2.0-S0304380019303230-ga1_lrg.jpg)
 
 
 https://ilias.uni-marburg.de/data/UNIMR/lm_data/lm_2285471/unit05/unit04-07_spatial_trainingdata.html
