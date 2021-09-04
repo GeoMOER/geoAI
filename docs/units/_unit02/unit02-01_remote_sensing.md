@@ -14,14 +14,37 @@ A brief introduction to remote sensing using optical sensors as an example.
 Text text text
 
 Still need to include:
-* Planck law
-* Wien law
-* Winkelabhaengigkeit
-* Reflexion, Transmission, Absorption
-* Scanner-Technik am Beispiel Sentinel, Pixelgroesse im Nadir und weiter am Rand
+* Scan angle dependence
+* Reflection, transmission, absorption
+* Scanner technique using Sentinel as an example, pixel size nadir vs. edges
 
 
 ## Physical fundamentals
+
+### Laws
+
+#### Planck's law (Plancksches Strahlungsgesetz)
+Every physical body spontaneously and continuously emits electromagnetic radiation. The spectral radiance of a given body describes the spectral emissive power for particular radiation frequencies, based on area and angle. The formula for Planck's law is given as:
+<p align="center">
+  <img src="../assets/images/unit02/Planck_formula_wavelength.png">
+</p>
+
+This shows how radiated energy emitted at shorter wavelengths (&lambda;) increases more rapidly with temperature (&Tau;) than energy emitted at longer wavelengths (&lambda;). This formula can also be rewritten in terms of frequency (&upsilon;) and other variables. Planck's radiation law shows how the radiation intensity is distributed across a single wavelength. It reveals that as temperature increases, so too does the total radiated energy of a body.
+
+<p align="center">
+  <img src="../assets/images/unit02/Plancks_law.png">
+</p>
+*Image: Visualization of Plank's law and Wien's displacement law. 4C [CC BY-SA 3.0] via [wikimedia.org](https://en.wikipedia.org/wiki/File:Wiens_law.svg)*
+
+#### Wien's displacement law (Wiensche Verschiebungsgesetz)
+Another fundamental law of black-body radiation, Wien's displacement law describes where the maximum intensity of a wavelength lies. This maximum intensity is inveresly proportional to the temperature of the emitting body. This inverse relationship between wavelength and temperature means that as temperature increase, the wavelength of the thermal radiation becomes smaller.
+
+<p align="center">
+  <img src="../assets/images/unit02/Wien_displacement_law.png">
+</p>
+
+where (&lambda;) is the wavelength of the maximum intensity and (&Tau;) is the absolute temperature (in Kelvin) of the emitting body. This law describes why the temperature (&Tau;) is responsible for the shifted peaks in the above graphic.
+
 ### Sensor types
 Taken from BSc [remote sensing](https://geomoer.github.io/moer-bsc-project-seminar-remote-sensing/unit04/unit04-02_sensor_types.html)
 
