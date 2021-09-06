@@ -11,7 +11,11 @@ A brief introduction to remote sensing using optical sensors as an example.
 <!--more-->
 
 ## What is remote sensing?
-Text text text
+<p align="center">
+  <img src="../assets/images/unit02/remote_sensing.png">
+</p>
+*Image: "Remote sensing is the acquiring of data about an object without touching it" (Jensen 2007). [public domain] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Honor%C3%A9_Daumier,_Nadar_in_a_balloon_Nadar,_elevating_photography_to_the_height_of_Art,_(1869),_lithograph.jpg)*
+
 
 Still need to include:
 * Scan angle dependence

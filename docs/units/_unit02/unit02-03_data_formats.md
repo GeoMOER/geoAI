@@ -21,7 +21,9 @@ Reality is too complex to be fully represented by data. Models are a basis for r
 * [envimaR](https://github.com/envima/envimaR) for setting up project and development environments
 
 If `raster` and `terra` are both for working with rasterized (gridded) spatial data, then why are there two packages? And which one should you choose to work with?
+{: .notice--info}
 
 The short answer is: both (at the moment). A longer answer is that the newer `terra` package can do more, is easier to use and is faster than the older `raster` package because the former was designed to replace the latter. This is described in greater detail in this [r-bloggers post](https://www.r-bloggers.com/2021/05/a-comparison-of-terra-and-raster-packages/).
+{: .notice--info}
 
 ## Quiz about RS and spatial data
