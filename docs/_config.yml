@@ -156,16 +156,7 @@ defaults:
       sidebar:
         nav: "course_unit"
 
-        # spotlight 01
-  - scope:
-      path: ""
-      type: spotlight01
-    values:
-      category: "Spotlight: Jekyll & GitHubPages"
-      tags: "Spotlight 1"
-      layout: single
-      sidebar:
-        nav: "course_unit"
+       
   # pages
   - scope:
       path: "_pages"
