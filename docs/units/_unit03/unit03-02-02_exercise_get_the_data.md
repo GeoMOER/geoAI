@@ -1,10 +1,10 @@
 ---
 title: EX | Import and prepare your data
-
+toc: true
 header:
-  image: /assets/images/unit03/sentinel_summer.png
-  image_description: "Sentinel-2 summer 2019"
-  caption: "Image: [© ESA - produced from ESA remote sensing data](https://scihub.copernicus.eu/dhus/#/home)"
+  image: /assets/images/unit03/forest.jpg
+  image_description: "Cutout Autumn impressions"
+  caption: "Image: Ranger56112 [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/ranger56112/21714329483/)"
  
 --- 
 

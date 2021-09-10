@@ -2,9 +2,9 @@
 title: EX | Unet image segmentation
 toc: true
 header:
-  image: /assets/images/unit04/treppe.jpg
-  image_description: "Escalator in subway station"
-  caption: "Image: ```*snowwhite*``` [CC BY-NC-SA 2.0] [via flickr.com](https://www.flickr.com/photos/101269238@N08/50408950422/)"
+  image: /assets/images/unit04/header_ffs.png
+  image_description: "Excerpt of predicted tree species groups in Rhineland-Palatinate"
+  caption: "Image: © GeoBasis-DE / LVermGeoRP 2018; © OpenStreetMap-contributors; © Hansen/UMD/Google/USGS/NASA; © ESA - produced from ESA remote sensing data"
 ---
 
 Deep learning and spatial patterns

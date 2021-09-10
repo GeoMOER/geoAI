@@ -2,10 +2,10 @@
 title: EX | A randomly good model
 toc: true
 header:
-  image: /assets/images/unit03/dice_blue_2.jpg
+  image: /assets/images/unit03/forest.jpg
   image_description: "Cutout Autumn impressions"
-  caption: "Image: The Focal Project [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/192004829@N02/51145500105/)"
-
+  caption: "Image: Ranger56112 [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/ranger56112/21714329483/)"
+ 
 ---
 Creation of a Random Forest Model with random cross-validation.
 
