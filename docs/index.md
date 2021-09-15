@@ -6,7 +6,7 @@ header:
   overlay_color: "#000"
   overlay_filter: 0.6
   overlay_image: "/assets/images/title.jpg"
-  caption: 'Photo: [**Environmental Informatics Marburg**](https://www.flickr.com/environmentalinformatics-marburg/)'
+  caption: 'Image: Herr Olsen [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/herrolsen/26966727587/)'
   cta_label: go to course units
   cta_url: "/units.html"
 excerpt: Understand spatial problems, apply remote sensing, and use AI to resiliently predict spatial patterns.

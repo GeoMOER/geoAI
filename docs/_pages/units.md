@@ -3,7 +3,7 @@ title: Course Units
 id: Units
 header:
   image: "/assets/images/00-unit-splash.jpg"
-  caption: 'Photo: [**Environmental Informatics Marburg**](https://www.flickr.com/environmentalinformatics-marburg/)'
+  caption: 'Image: Herr Olsen [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/herrolsen/26966727587/)'
 
 permalink: /units.html
 sidebar:
