@@ -105,6 +105,16 @@ defaults:
       layout: single
       sidebar:
         nav: "course_unit"
+ # unit01
+  - scope:
+      path: ""
+      type: unit00
+    values:
+      category: "How to GeoAI"
+      tags: "Unit 00"
+      layout: single
+      sidebar:
+        nav: "course_unit"
   # unit01
   - scope:
       path: ""
