@@ -14,11 +14,6 @@ In general, it involves the perception of spatial patterns and interactions in o
 This unit summarizes the basic abstraction and communication concepts of GI based space against the background of application-oriented scientific questions.
 
 
-## Geo-science
-
-The relationships of the real world are usually so complex that they can only be understood or analyzed in a generalized form. As early as 1927, the physicist Bridgman notes: "I believe that the model is a useful and indeed unescapable tool of thought, in that it enables us to think about the unfamiliar in terms of the familiar" [Bridgman 1927](https://www.jstor.org/stable/2014223?seq=1#metadata_info_tab_contents){:target="_blank"}. As a result the perception and interpretation of the "real world" as well as the development of appropriate strategies for the practical handling of this world, takes place with the aid of abstraction and communication (= modeling).
-
-
 ## Concepts of spatial representation
 
 For doing so  geographic or spatial representations are the basis for a scientific interpretation of spatiotemporal aspects of the real world. In science, it is customary for this to be considered as valid rules (axioms). For example, Waldo Tobler has formulated the so-called first geographical law: "Everything is related to everything else, but near things are more related than distant things" [Tobler 1970](https://www.jstor.org/stable/143141){:target="_blank"}. By contrast, in his action-centered approach, Benno Werlen points out that not only are real neighborhood relationships of objects or feature expressions permitting space constructs, but that spaces can also be defined by e.g. Acting people who do not necessarily act in spatial proximity can be socially constructed (see, for example, [Werlen 1993](https://www.erdkunde.uni-bonn.de/archive/1993/gibt-es-eine-geographie-ohne-raum-zum-verhaeltnis-von-traditioneller-geographie-und-zeitgenoessischen-gesellschaften/at_download/attachment){:target="_blank"}. 
