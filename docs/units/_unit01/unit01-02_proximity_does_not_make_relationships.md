@@ -8,33 +8,25 @@ header:
 ---
 
 ## The first law of geography in heterogeneous spaces.
-"Everything is related to everything else, but near things are more related than
-distant things" (Tobler, 1970) also known as Tobler's first law (TFL). With this
-sentence, Waldo R. Tobler made geographic history, although he was primarily
-concerned with reducing the complexity of his population simulation model in
-order for it to be calculated on the IT infrastructure of the 1970s. However
-world and GI-related questions are much more complicated in space and time and
-the usefulness of these approaches in spatial sciences has to be
-dicsussed.[Goodchild
-2004](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8306.2004.09402008.x)
+We come back to the first Tobler's Law (TFL) which in a way made geographic history with the proximity concept, although this simplification was postulated primarily for reasons of the performance weakness of the 1970s computers.  However, as can be deduced from everyday observation, the relationship of things (geoobjects) in space is usually more complex than just a function of distance. Therefore, the usefulness of TFL has been intensively discussed in the spatial sciences [see Goodchild 2004](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8306.2004.09402008.x).
 
-This raises some central questions: How can spatial concepts be adequately mapped? When are neighbourly relations regular and continuous, when are they irregular or discrete, and when do they have no meaning at all? 
-It is easier to answer these questions with a little background knowledge about the spatial representation of real world features and processes.
+This raises some central questions: 
 
-## Spatial data representation
+When are neighbourhood relations regular, when are they irregular. When are they continuous and when are they discrete and finally there is also space where neighbourhoods have no meaning at all? 
 
-First of all, however, it can be considered a fundamental self-image of a scientific discipline that thinks quantitatively to create a transparent, i.e. provable and comprehensible, basis for spatial information. Since, not only for conceptual but also for practical reasons, data are always incomplete (and therefore so is knowledge), improving these incomplete data is an important and often fundamental step towards knowledge and information.
+With a little background knowledge about the spatial representation of real world features and processes, these questions can be answered more easily.
 
-As we have just learned, the roots of spatial analysis reach far back into the past. The willingness to use statistical and other quantitative methods to analyse spatial patterns and processes was particularly pronounced in the spatial sciences, which include the description and explanation of spatial patterns and processes as a central scientific subject (e.g. landscape ecology).
+## Distance and data representation
 
-Let us have a glimpse on the repeately mentioned distance relationships 
+It is the fundamental self-image of a quantitative science to use a transparent, provable and comprehensible representation of spatial information. Since data are always incomplete not only for conceptual but also for practical reasons (and thus also the derived knowledge), the purposeful selection and improvement of incomplete data is an important and fundamental step for scientific work.
 
-## Spatial distance
+The analysis of spatio-temporal processes, as we have seen in the cholera example, reaches far back into the past. The use of quantitative methods, especially statistical methods, is of considerable importance for describing and explaining spatial patterns (e.g. landscape ecology). The central concept on which these methods are based is that of proximity or location to each other.
 
-In general spatial relations are described in terms of spatial boundaries and distance. In spatial analysis or prediction, however, it is of central importance to estimate or measure the spatial **influence** between geographical objects. This can be done in a process-oriented functional way, for example the overlying part of a stream flows into the underlying one, or a the data-driven approach, this is usually a function of *neighbourhood* or *distance*.  
+Let's take a look at the proximity that is mentioned all the time. What exactly is this supposed to be? How can proximity/neighbourliness be expressed in such a way that the space becomes meaningful?
 
-The general and serious problem is that spatial influence is very complex and in fact can never be measured. Therefore, there are countless ways to estimate it. 
 
+In general, spatial relationships are described in terms of neighbourhoods (positional) and distances (metric). In spatial analysis or prediction, however, it is important to be able to name the spatial **influence**, i.e. the evaluation or weighting of this relationship, qulitatively or quantitatively. Tobler has done this for an objective with his statement near is more important than far.
+But what about in other cases? The challenge is that spatial influence can only be measured directly in the exception. Therefore, there are many ways to estimate it. 
 
 ### Neighbourhood
 
@@ -47,7 +39,8 @@ In analyses of proximity or neighbourhood, it is often a matter of areas of infl
 
 In the following, some methods for calculating distances between spatial objects will be discussed. Because of the different way of discretising space, a distinction must be made -as already familiar- between vector and raster data models.
 
-In the beginning it is often useful to work without spatially restrictive conditions in a first analysis, e.g. when this information is missing. The term "proximity"  refers to a certain imprecision. Qualitative terms that can be used for this are: "near", "far" or "in the neighbourhood of". For representaion and data driven analysis these terms must be objectified and operationalised. This measure must therefore be based on a distance concept, e.g. Euclidean distance or travel times. In a second interpretative step, it must then be decided which units define this type of proximity. In terms of the objective of a question, there are only suitable and less suitable measures, but not right or wrong ones. Therefore, it is of central importance to define a meaningful neighbourhood relationship for the objects under investigation.
+
+In the beginning it is often useful to work without spatially restrictive conditions in a first analysis, e.g. when this information is missing. The term "proximity"  refers to a certain imprecision. Qualitative terms that can be used for this are: "near", "far" or "in the neighbourhood of". For representaion and data driven analysis these terms must be objectified and operationalised. This measure must therefore be based on a distance concept, e.g. Euclidean distance or travel times. In a second interpretative step, it must then be decided which units define this type of proximity. In terms of the objective of a question, there are only suitable and less suitable measures, but not right or wrong ones. Therefore, it is of importance to define a meaningful neighbourhood relationship for the objects under investigation.
 
 
 ### Voronoi polygons - dividing space geometrically
@@ -57,6 +50,8 @@ Thiessen or Voronoi polygons are an elementary method for geometrically determin
 {% include gallery id="panel1" caption= "(left) Irregularly distributed points in space (e.g. park benches) , (right) corresponding Voronoi  polygons to the points on the left (GITTA 2005)" layout = "half" %}
 
 Since Voronoi  polygons correspond to an organisational principle frequently observed in nature (e.g. plant cells) and in the spatial sciences (e.g. central places according to Christaller), the possible applications are manifold. The assumption must be made that nothing else is known about the space between the sampled locations and that the boundary line between two samples. The Voronoi  polygons can also be used to delineate catchment areas of shops or service facilities or wells like in the cholera example. Please note that within a polygon, one of the spatial features is isomorphic, i.e. the spatial features are identical. But what if we know more about the spatial relationships of the features?
+
+Let's have a look at some crucial concepts.
 
 ### Spatial interpolation of data
 
@@ -78,10 +73,7 @@ In the example the positions of the meteorological measuring stations are fixed 
 * **Spatial distribution of measurements:** The spatial distribution is of great importance. It can be completely random, regular or clustered. 
 * **Size (= number of measurements):** The size of a sample, depends on the phenomenon and the areal area. In some cases, the choice of sample size is subject to practical limitations.
 
-Even more complex. representativeness, homogeneity, spatial distribution and size are interrelated. For example, a size of 5 measuring stations for estimating precipitation for the whole of Switzerland is hardly meaningful and therefore not representative. Equally unrepresentative would be the selection of all measuring stations in German-speaking Switzerland for the estimate of precipitation for the whole of Switzerland. Here, the size alone might be sufficient, but not the spatial distribution. If you now select all stations below 750 m asl, the sample could be correct in terms of both size and spatial distribution, but the phenomenon is not homogeneously represented in the sample. A subsequent estimate would be clearly distorted, especially in areas above 750 mNN.
-
-Imagine that you could measure the precipitation along a measuring path at any position. So you would have a spatially continuous measurement. Neighbouring precipitation values will either be identical or vary slightly, depending on the scale of the "neighbourhood" chosen. In practice, virtually every natural spatially-continuous phenomenon is governed by stochastic fluctuations and can therefore only be described mathematically in approximate terms.
-
+Even more complex. representativeness, homogeneity, spatial distribution and size are interrelated. For example, a size of 5 measuring stations for estimating precipitation for the whole of Switzerland is hardly meaningful and therefore not representative. Equally unrepresentative would be the selection of all measuring stations in German-speaking Switzerland for the estimate of precipitation for the whole of Switzerland. Here, the size alone might be sufficient, but not the spatial distribution. If you now select all stations below 750 m asl, the sample could be correct in terms of both size and spatial distribution, but the phenomenon is not homogeneously represented in the sample. A subsequent estimate would be clearly distorted, especially in areas above 750 mNN. In practice, virtually every natural spatially-continuous phenomenon is governed by stochastic fluctuations and can therefore only be described mathematically in approximate terms.
 
 
 
@@ -91,6 +83,8 @@ Imagine that you could measure the precipitation along a measuring path at any p
 {% include pdf pdf="03-02_randomly_good.pdf" %}
 
 ## Further Readings
- 
+ https://journals.open.tudelft.nl/abe/article/view/5194/4710
 
-## Quiz
+
+## Exercise
+Please choose one of the articles listed above. Your assignment is to summarize the essence of the article.
