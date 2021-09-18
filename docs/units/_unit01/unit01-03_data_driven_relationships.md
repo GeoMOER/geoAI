@@ -2,9 +2,9 @@
 title: Machine Learning versus spatial statistics 
 toc: true
 header:
-  image: /assets/images/unit01/habitat_clipped.jpg
-  image_description: "Wetland habitat in Decatur, Georgia, USA"
-  caption: "Image: Thomas Cizauskas [CC BY-NC-ND 2.0] via [flickr.com](https://www.flickr.com/photos/cizauskas/51243943456/)" 
+  image: /assets/images/01-splash.jpg
+  image_description: "John Snows "
+  caption: "Map: [**Dr. John Snow**](https://de.wikipedia.org/wiki/John_Snow_(Mediziner)) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
 ---
 Now that we have learned the basic concepts of distance neighbourhood and filling spatial gaps, let's take a look at the interpolation or prediction of searched values in space. 
 
@@ -13,8 +13,60 @@ For many decades, deterministic interpolation techniques (inverse distance weigh
 Machine learning algorithms like random forest have become very popular for spatial environmental prediction. The reason is that they are able to take into account non-linear and complex relationships, thus compensating for certain disadvantages of the usual regression methods.
 
 
-=======
-## Kriging is not the answer (examples) (potential spotlight) 
+
+## Filling the gaps 
+## Geostatical modeling 
+## Proximity Concepts
+
+### Voronoi polygons - dividing space geometrically
+
+[Voronoi polygons](https://en.wikipedia.org/wiki/Voronoi_diagram){:target="_blank"} (aka Thiessen polygons) are an elementary method for geometrically determining *proximity* or *neighborhoods*. Voronoi polygons (see figure below right) can be used when regions are sought that are closest to a point from a set of irregularly distributed points. In two dimensions, a Voronoi polygon encompasses an area around a point, in which every spatial point is closer to this point than to any other point. Such constructs can also be formed in higher dimensions, giving rise to **Voronoi polygons**.
+
+{% include media url="assets/images/unit01/suisse1.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit01/suisse1.html){:target="_blank"} 
+<figure>
+  <figcaption>The red dots are rain gauges in Switzerland as an typical example for irregularly distributed points in space. The overlaying colored polygons are the corresponding Voronoi segements determing the corresponding geometrical closest areas (gisma 2021)" </figcaption>
+</figure>
+
+
+Since Voronoi polygons correspond to an organizational principle frequently observed in nature (e.g. plant cells) and in the spatial sciences (e.g. [central places](https://en.wikipedia.org/wiki/Central_place_theory){:target="_blank"}, according to Christaller), the possible applications are manifold. The assumption must be made that nothing else is known about the space between the sampled locations and that the boundary line between two samples.
+
+Voronoi polygons can also be used to delineate catchment areas of shops, service facilities or wells, like in the example of the Soho cholera outbreak. Please note that within a polygon, one of the spatial features is isomorphic, i.e. the spatial features are identical. 
+
+But what if we know more about the spatial relationships of the features? Let's have a look at some crucial concepts.
+
+### Spatial interpolation of data
+
+The *spatial interpolation* of data points provides us with a modeled quasi-continuous estimation of features under the corresponding assumptions. What are spatial interpolations? This means calculating unknown values based on neighboring values that are known. Most of these techniques are among the more complex methods of spatial analysis, so we will deliberately limit ourselves here to a basic overview of the methods. Some of the best known and very common interpolation methods found in spatial sciences are *nearest neighbour* *inverse distance*, *spline interpolations*, *kriging*, and *regression methods* . 
+
+### Continous filling the gaps by interpolation
+
+To get started, take a look at the following figure, which shows you in additon to the overlayed voronoi tesselation six different approches of interpolation methods to derive the spatial precipitation distribution in Switzerland. 
+
+{% include media2 url="assets/images/unit01/suisse6.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit01/suisse6.html){:target="_blank"} 
+<figure>
+  <figcaption>The blue dots are rain gauges in Switzerland as an typical example for irregularly distributed points in space. The size of the dots is corresponding to the precipitatin ammount in mm. The overlaying colored polygons are the Voronoi segements determing the corresponding geometrical closest areas (gisma 2021)" 
+top left: Nearest neighbour interpolation based on 3-5 nearest neighbours, top right: Inverse Distance weighting (IDW) interpolation method
+middle left: AutoKriging with no additional parameter, middle right: Thin plate sline regression interpolation method
+bottom left: Triangular irregular net (TIN) surface interpolation, bottom right: additive model (GAM) interpolation 
+  </figcaption>
+</figure>
+
+
+In the example of precipitation in Switzerland, the positions of the meteorological measuring stations are fixed and cannot be freely chosen. 
+But if you decide for an appropriate interpolation method you need to pay attention on the following properties of the samples (distribution and properties of the measuring points):
+
+* **Representativeness of measuring points:** The sample should represent the phenomenon being analyzed in all of its manifestations.
+* **Homogeneity of measuring points:** The spatial interdependence of the data is a very important basic requirement for further meaningful analysis. 
+* **Spatial distribution of measuring points:** The spatial distribution is of great importance. It can be completely random, regular or clustered. 
+* **Number of measuring points):** The number of measurements points depends on the phenomenon and the areal area. In most cases, the choice of sample size is subject to practical limitations.
+
+Even more complex. representativeness, homogeneity, spatial distribution and size are interrelated. For example, a size of 5 measuring stations for estimating precipitation for the whole of Switzerland is hardly meaningful and therefore not representative. Equally unrepresentative would be the selection of all measuring stations in German-speaking Switzerland for the estimate of precipitation for the whole of Switzerland. Here, the number alone might be sufficient, but not the spatial distribution. If you now select all stations below 750 m asl, the sample could be correct in terms of both size and spatial distribution, but the phenomenon is not homogeneously represented in the sample. A subsequent estimate would be clearly distorted, especially in areas above 750 mNN. In practice, virtually every natural spatially-continuous phenomenon is governed by stochastic fluctuations and can therefore only be described mathematically in approximate terms.
+
+
+### Machine learning  
+
 This is an example of simple Euclidean distances vs. complex speed-based distances.
 ![image](../assets/images/unit01/Hengl_Fig_2_clipped.png) *Image: Distances from a point derived using different algorithms. Tomislav Hengl, Madlene Nussbaum, Marvin N. Wright, Gerard B.M. Heuvelink, Benedikt Graeler [CC BY 4.0] via [PeerJ Life & Environment](https://doi.org/10.7717/peerj.5518/fig-2)*
 
