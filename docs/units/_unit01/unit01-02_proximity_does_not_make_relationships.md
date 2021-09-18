@@ -53,7 +53,7 @@ Irregular polygons or points generate much more complex neighbourhood structures
 <html>
 <head><title>Shiny App Iframe</title></head>
 <body>
-<iframe id="example1" src="https://gisma.shinyapps.io/shiny/" style="border: none; width: 100%; height: 850px" frameborder="0"></iframe>
+<iframe id="example1" src="https://gisma.shinyapps.io/proximity/" style="border: none; width: 100%; height: 850px" frameborder="0"></iframe>
 </body>
 </html>
 
