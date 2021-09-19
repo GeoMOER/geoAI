@@ -67,8 +67,63 @@ Even more complex. representativeness, homogeneity, spatial distribution and siz
 
 ### Machine learning  
 
-This is an example of simple Euclidean distances vs. complex speed-based distances.
-![image](../assets/images/unit01/Hengl_Fig_2_clipped.png) *Image: Distances from a point derived using different algorithms. Tomislav Hengl, Madlene Nussbaum, Marvin N. Wright, Gerard B.M. Heuvelink, Benedikt Graeler [CC BY 4.0] via [PeerJ Life & Environment](https://doi.org/10.7717/peerj.5518/fig-2)*
+Machine learning methods such as Random Forest can also produce spatial and temporal predictions (i.e. produce maps from point observations). 
+In particular, taking spatial autocorrelation into account can improve predictions or interpolations by adding geographic distances and can map much more complex relationships and dependencies.
+In the simplest case, the results are comparable to the well-known model-based geostatistics. The advantage of ML methods over model-based geostatistics, however, is that they make fewer assumptions, can take non-linearities into account and are easier to automate.
+
+{% include media url="assets/images/unit01/ML_interpol.png"%}
+
+<figure>
+  <figcaption> The original dataset (top left) is a terrain model reduced to 8 metres with 48384 single pixels. 
+For interpolation, 1448 points were randomly drawn and interpolated with conventional kriging (top right), support vector machines (SVM) (middle left), neural networks (middle right), and two variants of random forest (bottom row). In all methods, only the distance of the drawn points is used as a dependency.s   
+  </figcaption>
+</figure>
+
+All interpolations have been applied "by default". Possible tuning can lead to significant changes in all of them.
+The error measures are correlated to the visual results:   Kriging and the neural network show the best performance. Followed by the Random Forest models and the Support Vector Machine.
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> model </th>
+   <th style="text-align:left;"> total_error </th>
+   <th style="text-align:left;"> mean_error </th>
+   <th style="text-align:left;"> sd_error </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Kriging </td>
+   <td style="text-align:left;"> 15797773.0 </td>
+   <td style="text-align:left;"> 54.2 </td>
+   <td style="text-align:left;"> 67.9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neural Network </td>
+   <td style="text-align:left;"> 19772241.0 </td>
+   <td style="text-align:left;"> 67.8 </td>
+   <td style="text-align:left;"> 80.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Random Forest </td>
+   <td style="text-align:left;"> 20540628.1 </td>
+   <td style="text-align:left;"> 70.4 </td>
+   <td style="text-align:left;"> 82.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Normalized Random Forest </td>
+   <td style="text-align:left;"> 20597969.8 </td>
+   <td style="text-align:left;"> 70.6 </td>
+   <td style="text-align:left;"> 82.7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Support Vector Machine </td>
+   <td style="text-align:left;"> 21152987.7 </td>
+   <td style="text-align:left;"> 72.5 </td>
+   <td style="text-align:left;"> 68.3 </td>
+  </tr>
+</tbody>
+</table>
 
 ## Video
 Placeholder, for now:

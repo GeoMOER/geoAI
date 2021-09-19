@@ -50,13 +50,8 @@ Please note that *rook* is the neighbourhood of 4 and *queen* is the neighbourho
 Please also note that the K-nearest neighbours in a regular grid result in a spiral cicular structure.
 Irregular polygons or points generate much more complex neighbourhood structures, especially if they are additionally weighted with the help of further spatial influencing variables.
 
-<html>
-<head><title>Shiny App Iframe</title></head>
-<body>
-<iframe id="example1" src="https://gisma.shinyapps.io/proximity/" style="border: none; width: 100%; height: 850px" frameborder="0"></iframe>
-</body>
-</html>
 
+<iframe width="600" height="1080" src="https://gisma.shinyapps.io/proximity/" frameborder="0"> </iframe>
 
 ## Video 
 Placeholder, for now:
