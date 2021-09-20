@@ -150,7 +150,7 @@ defaults:
       path: ""
       type: unit04
     values:
-      category: "04 Spatial predictions and robust error estimation"
+      category: "04 Deep Learning "
       tags: "Unit 04"
       layout: single
       sidebar:
