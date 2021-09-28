@@ -10,7 +10,7 @@ header:
 Spatial prediction, right this time!
 
 
-We will once again predict orchard meadows in Hesse. You can use the same prepared and balanced dataset as in the last exercise. Use a Leave-location-Out cross-validation as spatial cross-validation. For this purpose, the pixels of all polygons are separated into folds, with the function CreateSpacetimeFolds, using their ID. The folds are then passed to the trainControl function as an index.
+We will once again predict orchard meadows in Hesse. You can use the same prepared and balanced dataset as in the last exercise. 
 
 
 ```r
@@ -31,6 +31,8 @@ response = as.factor(response$class)
 spacevar = "OBJ_ID"
 ```
 ## Leave-Location-out Cross-Validation
+
+Use a Leave-location-Out cross-validation as spatial cross-validation. For this purpose, the pixels of all polygons are separated into folds, with the function CreateSpacetimeFolds, using their ID. The folds are then passed to the trainControl function as an index.
 
 
 ```r
