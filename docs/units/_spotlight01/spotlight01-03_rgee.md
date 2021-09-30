@@ -1,5 +1,6 @@
 ---
 title: How to get Google Earth Engine data in R
+toc: true
 header:
   image: /assets/images/spotlight01/jekyll.png
   image_description: "Blick ins Lahntal mit Grünlandwirtschaft, Baustelle für Stromtrassen und Regenbogen."
