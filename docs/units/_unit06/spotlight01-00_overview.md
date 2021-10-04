@@ -1,6 +1,6 @@
 ---
 title: Jekyll and GitHub pages
-public: false
+published: false
 toc: true
 header:
   image: /assets/images/spotlight01/jekyll_github_pages.png

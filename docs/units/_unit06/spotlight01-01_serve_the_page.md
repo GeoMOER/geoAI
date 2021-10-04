@@ -1,7 +1,7 @@
 ---
 title: Serve the page
+published: false
 toc: true
-public: false
 header:
   image: /assets/images/spotlight01/jekyll.png
   image_description: ""
@@ -53,3 +53,5 @@ If you received no errors you can open the page in a browser following the Serve
 	* Select the master branch as source and /docs as folder
 * The url for your GitHub page can also be found there.
 * Note that pushed changed will take a while to be processed by GitHub and will not instantly be availaby globally (this might take 1-5 minutes).
+
+
