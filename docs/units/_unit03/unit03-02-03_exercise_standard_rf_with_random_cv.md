@@ -11,7 +11,7 @@ Creation of a Random Forest Model with random cross-validation.
 
 ## Read the data
 
-In the first step you need your previously prepared Sentinel-2 data and the orchard meadow polygons. Combine all of your raster layers into one raster stack and ensure that each layername is unique. Also take care that each polygon has a unique ID.
+In the first step you need your previously prepared predictor variables (DOP and Indices) and the orchard meadow polygons. Combine all of your raster layers into one raster stack and ensure that each layername is unique. 
 
 ```r
 
@@ -21,14 +21,15 @@ In the first step you need your previously prepared Sentinel-2 data and the orch
 rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
 # Polygons:
 pol = sf::read_sf(file.path(envrmt$hlnug, "streuobst.gpkg"))
-pol = sf::st_transform(pol, crs(rasterStack))
 
-pol$OBJ_ID = 1:nrow(pol)
-pol = na.omit(pol)
- 
- 
+
 ``` 
- 
+Also check if your predictors and response have the same projection. Take care that each polygon has a unique ID if there is none in the provided data, add one.
+
+```r
+pol = sf::st_transform(pol, crs(rasterStack))
+pol$OBJ_ID = 1:nrow(pol)
+```
  
 ## Extract the data 
 
@@ -69,7 +70,7 @@ saveRDS(extr_merge, file.path(envrmt$model_training_data, "extraction.RDS"))
 
 ## The balancing
 
-To balance your data we will use the dataframe with the extracted values for each pixel. The first step ist to divide the polygons into a training and a test group. Here we will use 80% of the Polygons for Training and 20% for testing. Thereafter we will compare the number of training pixel per class. If the number is not identical, which is most likely, we will sample the same amount of pixel for each class.
+To balance your data we will use the dataframe with the extracted values for each pixel. The first step ist to divide the polygons into a training and a test group. Here we will use 80% of the Polygons for Training and 20% for testing. 
 
 ```r
 
@@ -82,6 +83,11 @@ extr = readRDS(file.path(envrmt$model_training_data, "extraction.RDS"))
 train_ids = sample(unique(extr$OBJ_ID), length(unique(extr$OBJ_ID))*0.8)
 # Filter the extracted Dataframe
 extr_train = extr%>%filter(OBJ_ID %in% train_ids)
+
+```
+Thereafter we will compare the number of training pixel per class. If the number is not identical, which is most likely, we will sample the same amount of pixel for each class.
+
+```r
 
 # Number Pixels per class
 nrow(filter(extr_train, class == "other"))
@@ -117,7 +123,11 @@ predictors = extr[,2:39]
 response = extr[,"class"]
 response <- as.factor(response$class)
 
+```
+Define your response and predictors, the response is just one column containing your class label, while the predictors are all the columns containing the information extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
 
+
+```r
 # 2 - set control settings to random cross-validation ####
 #--------------------------------------------------------#
 
@@ -127,6 +137,9 @@ ctrl <- trainControl(method="cv",
 
 
 
+```
+
+```r
 # 3 - train a standard random forest model ####
 #---------------------------------------------#
 
@@ -144,4 +157,3 @@ saveRDS(model, "model.RDS")
 ```
 
 Now that you have a fully developed Random Forest Model, you can predict the tree species for the whole study area. Look at the Accuracy and Kappa values as well as the Variable Importance. Are there any things that stand out to you?
-{: .notice--primary}

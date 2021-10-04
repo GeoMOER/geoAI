@@ -34,11 +34,17 @@ To accomplish this task, we will use a random forest machine learning approach. 
 </p>
 *Image: Machine Learning. Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
 
-In the following video, we will go into detail about the functionality of the random forest algorithm and the cross-validation validation strategy.
 
-Video here: 
+To get an overview about the large field called "machine learning", you can watch the videos below or do some internet research on your own. There are some great tutorials out there.
 
-{% include pdf pdf="03-02_randomly_good.pdf" %}
+1. [A Gentle Introduction to Machine Learning (12:44)](https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF){:target="_blank"}  
+2. [Decision Trees (17:21)](https://www.youtube.com/watch?v=7VeUPuFGJHk){:target="_blank"}  
+3. [Decision Trees Part 2 - Feature Selection and Missing Data (5:15)](https://www.youtube.com/watch?v=wpNl-JwwplA){:target="_blank"}  
+4. [Random Forests Part 1 - Building, Using and Evaluating (9:53)](https://www.youtube.com/watch?v=J4Wdy0Wc_xQ){:target="_blank"}  
+5. [Random Forests Part 2 - Missing data and clustering (11:52)](https://www.youtube.com/watch?v=sQ870aTKqiM){:target="_blank"}  
+6. [Random Forests in R (15:09)](https://www.youtube.com/watch?v=6EXPYzbfLCE){:target="_blank"}  
+7. [Machine Learning Fundamentals - Cross Validation (6:04)](https://www.youtube.com/watch?v=fSytzGwwBVw){:target="_blank"}  
+
 
 
 

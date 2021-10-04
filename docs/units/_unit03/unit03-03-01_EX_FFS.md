@@ -23,6 +23,9 @@ library(doParallel)
 library(CAST)
 library(randomForest)
 
+```
+You can read your extracted data in the same manner as before. But now we also need to define the column that contains information about which row belongs to which polygon (Polygon ID).
+```r
 predResp = readRDS(file.path(envrmt$model_training_data, "extraction.RDS")) 
 predictors = extr[,2:39]
 response = extr[,"class"]
@@ -32,7 +35,7 @@ spacevar = "OBJ_ID"
 ```
 ## Leave-Location-out Cross-Validation
 
-Use a Leave-location-Out cross-validation as spatial cross-validation. For this purpose, the pixels of all polygons are separated into folds, with the function CreateSpacetimeFolds, using their ID. The folds are then passed to the trainControl function as an index.
+Use a Leave-location-Out cross-validation as spatial cross-validation. For this purpose, the pixels of all polygons are separated into folds, with the function CreateSpacetimeFolds, using their ID.
 
 
 ```r
@@ -42,8 +45,13 @@ Use a Leave-location-Out cross-validation as spatial cross-validation. For this 
 
 
 # leave location out cross-validation
-indices <- CreateSpacetimeFolds(extr, spacevar = "FAT__ID", k=10, class = "class")
+indices <- CreateSpacetimeFolds(extr, spacevar, k=10, class = "class")
 
+```
+
+The folds are then passed to the trainControl function as an index.
+
+```r
 
 set.seed(10)
 ctrl <- trainControl(method="cv",index = indices$index,
@@ -89,4 +97,3 @@ saveRDS(ffsmodel, "ffsmodel.RDS")
 ```
 
 Now predict the tree species again and compare the results as well as the selected variables to the results you achieved with the traditional random forest model. What are differences, similarities and peculiarities? 
-{: .notice--primary}

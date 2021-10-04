@@ -26,10 +26,6 @@ At the end of this unit you should be able to
 
 
 * prepare your data for machine learning,
-* understand the basic concept of random forest,
 * train a random forest model with random cross-validation, 
-* Determine the suitability of random cross-validation as a validation strategy for spatial data
-
-* understand the concept of a forward-feature-selection (FFS)
-* understand the concept of a Leave-Location-Out (LLO) cross-validation
+* understand the concept of a forward-feature-selection (FFS) and Leave-Location-Out (LLO) cross-validation
 * adapt your modeling workflow to perform FFS and LLO cross-validation
