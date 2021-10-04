@@ -1,5 +1,7 @@
 ---
 title: Serve the page
+toc: true
+public: false
 header:
   image: /assets/images/spotlight01/jekyll.png
   image_description: ""
