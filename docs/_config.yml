@@ -86,7 +86,7 @@ collections:
   unit05:
     output: true
     permalink: /:collection/:title.html
-  spotlight01:
+  unit06:
     output: true
     permalink: /:collection/:title.html
   worksheets:
@@ -165,10 +165,10 @@ defaults:
       layout: single
       sidebar:
         nav: "course_unit"
-  # spotlight01
+  # unit06
   - scope:
       path: ""
-      type: spotlight01
+      type: unit06
     values:
       category: "Spotlights"
       tags: "Spotlights"
