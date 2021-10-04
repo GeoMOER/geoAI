@@ -11,6 +11,7 @@ header:
 Predicting spatial features with machine learning and random validation. 
 
 <!--more-->
+
 ## What are we up to?
 
 We will try to predict tree species and their successional stages for a forest in Rhineland-Palatinate with machine learning (random forest), Sentinel-2, LiDAR and forest inventory data.

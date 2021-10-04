@@ -138,7 +138,7 @@ ctrl <- trainControl(method="cv",
 
 
 ```
-
+Train a simple random forest model using the caret package. Instead of using the caret mathod "rf" you could also use the [ranger](https://cran.r-project.org/web/packages/ranger/index.html) package, which has a better performance, also feel free to do some model tuning.
 ```r
 # 3 - train a standard random forest model ####
 #---------------------------------------------#
@@ -157,3 +157,37 @@ saveRDS(model, "model.RDS")
 ```
 
 Now that you have a fully developed Random Forest Model, you can predict the tree species for the whole study area. Look at the Accuracy and Kappa values as well as the Variable Importance. Are there any things that stand out to you?
+
+
+## Prediction
+Since you probably want to admire your results now, it is worth bringing your model into the area by making a prediction on your Predictor raster stack with your finished model.
+
+```r
+model <- readRDS(file.path(envrmt$models, "model.RDS"))
+rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
+   
+prediction <- terra::predict(rasterStack, model, na.rm = TRUE)
+   
+terra::writeRaster(prediction, file.path(envrmt$prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
+saveRDS(prediction, file.path(envrmt$prediction, paste0(species, "_pred.RDS")))
+```
+
+## Validation
+
+
+Finally, we need one more very important thing: a validation with independent data that has not been included in the model training. For this we use the 20% of the polygons that we left out at the beginning.  Simply do the same extraction again as you did at the beginning for the training. Then a prediction is made for all pixels, and the predicted values are compared to the observed values in a matrix.
+
+```r
+model = readRDS(file.path(envrmt$models, paste0(model, "_ffs.RDS")))
+predicted = stats::predict(object = mod, newdata = extr_val)
+  
+  
+val_df = data.frame(ID = pull(extr_sub, idCol),
+                      Observed = pull(extr_val, "class"), 
+                      Predicted = predicted)
+  
+val_cm = confusionMatrix(table(val_df[,2:3]))
+  
+# output
+saveRDS(val_cm, file.path(envrmt$validation, "confusionmatrix.RDS"))
+```
