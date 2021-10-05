@@ -136,7 +136,3 @@ Get the Most Out of AI, Machine Learning, and Deep Learning [Part 1](https://www
 [Why You Should NOT Learn Machine Learning!](https://youtu.be/reY50t2hbuM){:target="_blank"} (6:17)
 
 [GeoAI: Machine Learning meets ArcGIS](https://youtu.be/aKq50YM8a8w){:target="_blank"} (8:50)
-
-
-## Assignment
-Set up Docker environment (more to follow soon)
