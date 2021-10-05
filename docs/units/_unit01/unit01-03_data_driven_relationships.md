@@ -3,8 +3,8 @@ title: LM | Machine Learning versus spatial statistics
 toc: true
 header:
   image: /assets/images/01-splash.jpg
-  image_description: "John Snows "
-  caption: "Map: [**Dr. John Snow**](https://de.wikipedia.org/wiki/John_Snow_(Mediziner)) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
+  image_description: "Dr. John Snow's map"
+  caption: "Map: [**Dr. John Snow**](https://en.wikipedia.org/wiki/John_Snow) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
 ---
 
 Now that we have learned the basic concepts of distance, neighborhood and filling spatial gaps, let's take a look at interpolating or predicting values in space.
