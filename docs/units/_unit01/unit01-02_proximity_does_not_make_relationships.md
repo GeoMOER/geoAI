@@ -55,9 +55,13 @@ Placeholder, for now:
 ## Further Reading
 Ana Petrovic - [Multiscale spatial contexts and neighbourhood effects](https://journals.open.tudelft.nl/abe/article/view/5194/4710)
 
+Diaz, S., Pascual, U., Stenseke, M. et al. (2018) Assessing nature's contributions to people. Science Vol. 359, Issue 6373, 270-272. [https://doi.org/10.1126/science.aap8826](https://doi.org/10.1126/science.aap8826)
+
+Manning, P., van der Plas, F., Soliveres, S. et al. (2018) Redefining ecosystem multifunctionality. Nat Ecol Evol 2, 427-436. [https://doi.org/10.1038/s41559-017-0461-7](https://doi.org/10.1038/s41559-017-0461-7)
+
 Tobler, W. (2004) On the First Law of Geography: A Reply, Annals of the Association of American Geographers, 94:2, 304-310: [https://doi.org/10.1111/j.1467-8306.2004.09402009.x](https://doi.org/10.1111/j.1467-8306.2004.09402009.x)
 
-**Paper 2**
+**4th Paper?**
 
 ## Assignment
-Please choose one of the articles from the further reading section. Your assignment is to summarize the essence of the article in approximately one half page (5-8 sentences).
+Choose one of the articles from the further reading section. Your assignment is to summarize the essence of the article in approximately one half page (5-8 sentences). Please upload your synopsis of the article to the course website.

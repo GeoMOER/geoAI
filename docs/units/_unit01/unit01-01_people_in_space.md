@@ -46,13 +46,5 @@ Placeholder, for now:
 {% include pdf pdf="03-02_randomly_good.pdf" %}
 
 
-## Further reading
-Diaz, S., Pascual, U., Stenseke, M. et al. (2018) Assessing nature's contributions to people. Science Vol. 359, Issue 6373, 270-272. [https://doi.org/10.1126/science.aap8826](https://doi.org/10.1126/science.aap8826)
-
-Manning, P., van der Plas, F., Soliveres, S. et al. (2018) Redefining ecosystem multifunctionality. Nat Ecol Evol 2, 427-436. [https://doi.org/10.1038/s41559-017-0461-7](https://doi.org/10.1038/s41559-017-0461-7)
-
+## Additional resources
 Peter Lindbrook's [cholera](https://github.com/lindbrook/cholera) package offers an R-based reanalysis of the Soho cholera outbreak and brings to bear a number of technical, scientific and GI-related concepts that will be applicable throughout the course.
-
-
-## Assignment
-Please choose one of the articles from the further reading section. Your assignment is to summarize the essence of the article in approximately one half page (5-8 sentences).
