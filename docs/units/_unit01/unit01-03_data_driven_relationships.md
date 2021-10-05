@@ -1,11 +1,12 @@
 --- 
-title: Machine Learning versus spatial statistics 
+title: LM | Machine Learning versus spatial statistics 
 toc: true
 header:
   image: /assets/images/01-splash.jpg
   image_description: "John Snows "
   caption: "Map: [**Dr. John Snow**](https://de.wikipedia.org/wiki/John_Snow_(Mediziner)) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
 ---
+
 Now that we have learned the basic concepts of distance, neighborhood and filling spatial gaps, let's take a look at interpolating or predicting values in space.
 
 For many decades, deterministic interpolation techniques (inverse distance weighting, nearest neighbor, kriging) have been the most popular spatial interpolation techniques. External drift kriging and regression kriging, in particular, are fundamental techniques that use spatial autocorrelation and covariate information, i.e. sophisticated regression statistics.

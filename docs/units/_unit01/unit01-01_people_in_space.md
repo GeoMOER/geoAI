@@ -1,5 +1,5 @@
 ---
-title: People in space
+title: LM | People in space
 toc: true
 header:
   image: /assets/images/01-splash.jpg
