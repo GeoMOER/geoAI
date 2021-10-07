@@ -1,6 +1,6 @@
 ---
 title: How to get Google Earth Engine data in R
-published: false
+published: true
 toc: true
 header:
   image: /assets/images/spotlight01/jekyll.png

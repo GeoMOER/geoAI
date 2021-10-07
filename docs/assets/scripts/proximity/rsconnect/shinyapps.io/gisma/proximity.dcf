@@ -1,0 +1,11 @@
+name: proximity
+title:
+username:
+account: gisma
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4683089
+bundleId: 5047486
+url: https://gisma.shinyapps.io/proximity/
+when: 1632009841.79103
+lastSyncTime: 1632009841.79105

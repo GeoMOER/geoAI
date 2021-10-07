@@ -14,14 +14,13 @@ For many decades, deterministic interpolation techniques (inverse distance weigh
 Machine learning algorithms like random forest have become very popular for spatial environmental prediction. The reason is that they are able to take into account non-linear and complex relationships, and thus compensate for certain disadvantages that are present in the usual regression methods.
 
 
-## Filling the gaps 
-## Geostatical modeling 
+
 ## Proximity Concepts
 
 ### Voronoi polygons -- dividing space geometrically
 [Voronoi polygons](https://en.wikipedia.org/wiki/Voronoi_diagram){:target="_blank"} (aka Thiessen polygons) are an elementary method for geometrically determining *proximity* or *neighborhoods*. Voronoi polygons (see figure below) divide an area into regions that are closest to a given point that belongs to a set of irregularly distributed points. In two dimensions, a Voronoi polygon encompasses an area around a point, such that every spatial point in the polygon is closer to this point than to any other point in the set. Such constructs can also be formed in higher dimensions, giving rise to **Voronoi polyhedra**.
 
-{% include media url="assets/images/unit01/suisse1.html" %}
+{% include media1 url="assets/images/unit01/suisse1.html" %}
 [Full-screen version of the map]({{ site.baseurl }}/assets/images/unit01/suisse1.html){:target="_blank"} 
 <figure>
   <figcaption>The blue dots are a typical example of irregularly distributed points in space -- in this case, rain gauges in Switzerland. The overlaid polygons are the corresponding Voronoi segments that define the corresponding closest geometrical areas (gisma 2021)" </figcaption>
