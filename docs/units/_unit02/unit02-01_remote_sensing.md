@@ -4,7 +4,7 @@ toc: true
 header:
   image: /assets/images/unit02/31031723265_0890cd9547_o.jpg
   image_description: "Cloudscape Over the Philippine Sea"
-  caption: "Image: NASA's Marshall Space Flight Center [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
+  caption: "Image: [NASA's Marshall Space Flight Center](https://www.nasa.gov/centers/marshall/home/index.html) [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
 ---
 
 A brief introduction to remote sensing using optical sensors as an example.
@@ -122,6 +122,16 @@ The following table contains information about satellite data that is often used
 |   | Landsat 8                     | 2013  | 30m                | ~2 weeks            |
 |   | Sentinel-2                    | 2015  | 10-20m             | ~1 week             |
 |   | MODIS Terra/Aqua              | 1999  | 250-1000m          | 4x / day            |
+
+## Video
+Placeholder, for now:
+
+{% include pdf pdf="GeoAI-02-01_What_is_Remote_Sensing.pdf" %}
+
+
+## Unit 2 slides
+
+{% include pdf pdf="GeoAI-Unit02.pdf" %}
 
 
 ## Further reading / additional resources

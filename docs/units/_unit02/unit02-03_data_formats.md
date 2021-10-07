@@ -2,9 +2,9 @@
 title: LM | Data Formats
 toc: true
 header:
-  image: /assets/images/02-splash.jpg
-  image_description: "Blick ins Lahntal mit Grünlandwirtschaft, Baustelle für Stromtrassen und Regenbogen."
-  caption: "Foto: T. Nauss / CC0"
+  image: /assets/images/unit02/31031723265_0890cd9547_o.jpg
+  image_description: "Cloudscape Over the Philippine Sea"
+  caption: "Image: [NASA's Marshall Space Flight Center](https://www.nasa.gov/centers/marshall/home/index.html) [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
 ---
 
 Features and differences of spatial data collected in the field or acquired by remote sensing systems.
@@ -26,4 +26,12 @@ If `raster` and `terra` are both for working with rasterized (gridded) spatial d
 The short answer is: both (at the moment). A longer answer is that the newer `terra` package can do more, is easier to use and is faster than the older `raster` package because the former was designed to replace the latter. This is described in greater detail in this [r-bloggers post](https://www.r-bloggers.com/2021/05/a-comparison-of-terra-and-raster-packages/).
 {: .notice--info}
 
-## Quiz about RS and spatial data
+## Video
+Placeholder, for now:
+
+{% include pdf pdf="GeoAI-02-01_What_is_Remote_Sensing.pdf" %}
+
+
+## Unit 2 slides
+
+{% include pdf pdf="GeoAI-Unit02.pdf" %}
