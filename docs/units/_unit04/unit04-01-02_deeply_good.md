@@ -21,13 +21,13 @@ If this is your first encounter with deep learning, here follows a brief introdu
 Deep learning algorithms as well as random forest models belong to the machine learning tools. They are a special form of neural networks.
 They are used especially frequently in image recognition.
 
-Video here: 
+## Video
+Placeholder, for now:
 
-{% include pdf pdf="03-02_randomly_good.pdf" %}
+{% include pdf pdf="GeoAI-04-01_DL.pdf" %}
 
 
 ## U-Net
-
 In the following exercise we will use a U-Net convolutional neural network to recognize spatial structures. Originally, U-Net was developed to segment biomedical images. U-Net performs a semantic segmentation where each pixel is assigned to a class. For a short introduction have a look at the U-Net teaser:
 [5 Minute Teaser Presentation of the U-net: Convolutional Networks for Biomedical Image Segmentation (5:03)](https://www.youtube.com/watch?v=81AvQQnpG4Q){:target="_blank"} 
 
@@ -39,3 +39,7 @@ This and further information can be found in the paper on the unet algroithm: [R
 ![image](../assets/images/unit04/Example_architecture_of_U-Net.png)
 *Image: Example architecture of U-Net for producing k 256-by-256 image masks for a 256-by-256 RGB image. Mehrdad Yazdani [CC BY-SA 4.0] via [wikipedia.org](https://en.wikipedia.org/wiki/U-Net#/media/File:Example_architecture_of_U-Net_for_producing_k_256-by-256_image_masks_for_a_256-by-256_RGB_image.png)*
 
+
+## Unit 4 slides
+
+{% include pdf pdf="GeoAI-Unit04.pdf" %}
