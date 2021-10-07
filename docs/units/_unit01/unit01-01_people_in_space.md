@@ -37,13 +37,12 @@ And even more, all these aspects are influenced by the people who act, who conti
 ## Video
 Placeholder, for now:
 
-{% include pdf pdf="03-02_randomly_good.pdf" %}
+{% include pdf pdf="GeoAI-01-01_Intro.pdf" %}
 
 
-## Powerpoint slides as PDF
-Placeholder, for now:
+## Unit 1 slides
 
-{% include pdf pdf="03-02_randomly_good.pdf" %}
+{% include pdf pdf="GeoAI-Unit01.pdf" %}
 
 
 ## Additional resources

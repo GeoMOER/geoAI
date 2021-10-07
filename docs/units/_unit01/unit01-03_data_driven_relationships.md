@@ -123,11 +123,13 @@ The error measures are correlated to the visual results: Kriging and the neural 
 
 ## Video
 Placeholder, for now:
-{% include pdf pdf="03-02_randomly_good.pdf" %}
 
-## Powerpoint slides as PDF
-Placeholder, for now:
-{% include pdf pdf="03-02_randomly_good.pdf" %}
+{% include pdf pdf="GeoAI-01-01_Intro.pdf" %}
+
+
+## Unit 1 slides
+
+{% include pdf pdf="GeoAI-Unit01.pdf" %}
 
 
 ## Additional references

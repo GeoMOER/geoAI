@@ -43,13 +43,15 @@ Irregular polygons or points generate much more complex neighborhood structures,
 
 <iframe width="600" height="1080" src="https://gisma.shinyapps.io/proximity/" frameborder="0"> </iframe>
 
-## Video 
+## Video
 Placeholder, for now:
-{% include pdf pdf="03-02_randomly_good.pdf" %}
 
-## Powerpoint slides as PDF 
-Placeholder, for now:
-{% include pdf pdf="03-02_randomly_good.pdf" %}
+{% include pdf pdf="GeoAI-01-01_Intro.pdf" %}
+
+
+## Unit 1 slides
+
+{% include pdf pdf="GeoAI-Unit01.pdf" %}
 
 
 ## Further Reading
