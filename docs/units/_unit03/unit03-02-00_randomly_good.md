@@ -25,17 +25,27 @@ Information about tree species can be very valuable, since all the factors menti
 *Image: Streuobstwiese im Frühling. ulrichstill [CC BY-SA 2.0 DE] via [wikipedia.org](https://de.wikipedia.org/wiki/Streuobstwiese#/media/Datei:Tuebingen_Streuobstwiese.jpg)*
 
 
-
-
 ## Random forest with random cross-validation - The basics
-
 To accomplish this task, we will use a random forest machine learning approach. As with all other machine learning methods, the random forest model learns to recognize patterns and structures in the data on its own. It is a supervised learning method that requires already labeled data for training.
+
 <p align="center">
   <img src="../assets/images/unit03/machine_learning.jpg">
 </p>
 *Image: Machine Learning. Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
 
 
+## Video
+Placeholder, for now:
+
+{% include pdf pdf="GeoAI-03-01_Intro.pdf" %}
+
+
+## Unit 3 slides
+
+{% include pdf pdf="GeoAI-Unit03.pdf" %}
+
+
+## Additional resources
 To get an overview about the large field called "machine learning", you can watch the videos below or do some internet research on your own. There are some great tutorials out there.
 
 1. [A Gentle Introduction to Machine Learning (12:44)](https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF){:target="_blank"}  
