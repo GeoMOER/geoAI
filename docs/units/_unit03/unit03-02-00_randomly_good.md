@@ -22,11 +22,11 @@ Forests are the largest terrestrial Ecosystem in the world and provide a lot of 
 Information about tree species can be very valuable, since all the factors mentioned above can have different impacts depending on the tree species composition. In addition, this can also have an important influence on whether a forest is suitable as a habitat for a species.
 
 ![image](../assets/images/unit03/Tuebingen_Streuobstwiese.jpg)
-*Image: Streuobstwiese im Frühling. ulrichstill [CC BY-SA 2.0 DE] via [wikipedia.org](https://de.wikipedia.org/wiki/Streuobstwiese#/media/Datei:Tuebingen_Streuobstwiese.jpg)*
+*Image: Streuobstwiese in Western Europe. ulrichstill [CC BY-SA 2.0 DE] via [wikipedia.org](https://de.wikipedia.org/wiki/Streuobstwiese#/media/Datei:Tuebingen_Streuobstwiese.jpg)*
 
 
-## Random forest with random cross-validation - The basics
-To accomplish this task, we will use a random forest machine learning approach. As with all other machine learning methods, the random forest model learns to recognize patterns and structures in the data on its own. It is a supervised learning method that requires already labeled data for training.
+## Random forest with random cross-validation -- The basics
+To accomplish this task, we will use a random forest machine learning approach. As with all other machine learning methods, the random forest model learns to recognize patterns and structures in the data on its own. Before it can learn, however, it must be given training data, which makes it a supervised learning method. The training data must be labeled with different classification categories for the algorithm to classify areas of **Streuobstwiese** correctly.
 
 <p align="center">
   <img src="../assets/images/unit03/machine_learning.jpg">
@@ -46,7 +46,7 @@ Placeholder, for now:
 
 
 ## Additional resources
-To get an overview about the large field called "machine learning", you can watch the videos below or do some internet research on your own. There are some great tutorials out there.
+Here are several videos that introduce the broad field of machine learning, in general, as well as the specific algorithm that we will use in this course: random forest. In addition to these videos, we encourage you to conduct independent research, as there are some great tutorials on the Internet.
 
 1. [A Gentle Introduction to Machine Learning (12:44)](https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF){:target="_blank"}  
 2. [Decision Trees (17:21)](https://www.youtube.com/watch?v=7VeUPuFGJHk){:target="_blank"}  
