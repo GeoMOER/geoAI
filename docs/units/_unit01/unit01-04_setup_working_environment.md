@@ -18,10 +18,10 @@ We value freedom of choice as an important good. But given our long-term experie
 ## R project frameworks
 Setting up a working or project environment requires the definition of different folder paths and the loading of necessary R packages and additional functions. If, in addition, external APIs (application programming interface) are to be integrated stably and without great effort, the associated paths and environment variables must also be defined correctly. 
 
-There are several R-packages like e.g. [workflowR](https://jdblischak.github.io/workflowr/){:target="_blank"} or [usethis](https://usethis.r-lib.org/){:target="_blank"}  which provide a wide range of functions for such issues. For this entry into a structured organization of R-based development projects, we suggest a slimmed down version. 
+There are several R-packages like e.g. [tinyProject](https://github.com/FrancoisGuillem/tinyProject){:target="_blank"},  [workflowR](https://jdblischak.github.io/workflowr/){:target="_blank"} or [usethis](https://usethis.r-lib.org/){:target="_blank"}  which provide a wide range of functions for such issues. For this entry into a structured organization of R-based development projects, we suggest a slimmed down version. 
 
 ## Introduction of the envimaR helper package 
-It would now be convenient if these folders defined as lists were automatically created and read in. For the needs of the course we have written a small project management package called `envimaR` that takes over these tasks. It is located on `github` and can be installed as known.
+It would be convenient if the *mandantory* folders were automatically created and initialised. For the needs of the course we have written a small project management package called `envimaR` that takes over these tasks. It is located on `github` and can be installed as known.
 
 ```r
 devtools::install_github("envima/envimaR")
