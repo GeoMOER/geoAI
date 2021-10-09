@@ -66,7 +66,7 @@ Machine learning methods such as random forest can also produce spatial and temp
 These methods are particularly robust because they take spatial autocorrelation into account, which can improve predictions or interpolations by adding geographic distances. This ultimately leads to better maps with much more complex relationships and dependencies.
 In the simplest case, the results are comparable to the well-known model-based geostatistics. The advantage of ML methods over model-based geostatistics, however, is that they make fewer assumptions, can take non-linearities into account and are easier to automate.
 
-{% include media1 url="assets/images/unit01/ML_interpol.png"%}
+{% include media3 url="assets/images/unit01/ML_interpol.png"%}
 
 <figure>
   <figcaption> The original dataset (top left) is a terrain model reduced to 8 meters with 48384 single pixels. 
