@@ -41,38 +41,70 @@ The following illustration shows the steps of a supervised classification in mor
 This first exercise will prepare the data that is necessary to predict **Streuobstwiese** in Hesse with a random forest model. Please run the following R code and upload the output to the course website. Remember to use the folder structure that we set up in Unit 1!
 
 ## Get data
-The Hessian State Department of Land Management and Geoinformation ([Hessische Verwaltung fuer Bodenmanagement und Geoinformation; HVBG](https://hvbg.hessen.de/)) uses an image-based DSM to create what they call "TrueDOPs". The HVBG commissions flights for the entire state of Hesse every 2 years and makes the imagery available in 20cm and 40cm resolution with 4 channels: Red (R), Green (G), Blue (B) and Near-Infrared (NIR). More information about the HVBG's TrueDOPs is available [here](https://hvbg.hessen.de/geoinformation/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-atkis%C2%AE-dops-und-true) (German only). The 40-cm DOPs of our study area are available for download **[here]**.
+The Hessian State Department of Land Management and Geoinformation ([Hessische Verwaltung fuer Bodenmanagement und Geoinformation; HVBG](https://hvbg.hessen.de/)) uses an image-based DSM *to create what they call "TrueDOPs"*. The HVBG commissions flights for the entire state of Hesse every 2 years and makes the imagery available in 20cm and 40cm resolution with 4 channels: Red (R), Green (G), Blue (B) and Near-Infrared (NIR). More information about the *HVBG's TrueDOPs* is available [here](https://hvbg.hessen.de/geoinformation/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-atkis%C2%AE-dops-und-true) (German only). 
+
+The 40-cm DOPs of our study area are available for download **[here]**. Please note that the HVBG has provided these digital orthophotos free of charge for the purpose of education and that they may only be used in the context of this course.
 {: .notice--info}
 
 
 ### Creating vector layers in QGIS
-
-QGIS is an open source GIS.
+Next, we will use the open source GIS QGIS to create training areas for our **Streuobstwiese**.
 
 ## Import data in R
-Explanation of code block 1 here
-```r
-THIS IS DUMMY CODE
-# 1 - import the data ####
-#-----------------------#
+First, we start by sourcing our set up script that we created in Unit 1. Then, we import a digital orthophoto of Marburg. To do this, we use the `raster` package. We do not need to load the `raster` package with a call to `library(raster)` because our set up script already loaded it.
 
-rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
-# Polygons:
-pol = sf::read_sf(file.path(envrmt$hlnug, "streuobst.gpkg"))
+```r
+# 1 - source setup function & import the data ####
+#-----------------------#
+source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
+                                       alt_env_id = "COMPUTERNAME",
+                                       alt_env_value = "PCRZP",
+                                       alt_env_root_folder = "F:/BEN/edu"),
+                 "src/geoAI_setup.R"))
+
+# Read DOP
+rasterStack = raster::stack(file.path(envrmt$data, "marburg_dop.tif"))
 
 ```
-Show output of R code block 1 here
+Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
-Further explanation of code block 1, plus transition to code block 2 here
+R can also handle vector data as well. A different package, `sf`, is required to read vector data of many types. Here, we use the function `read_sf` to import the **Streuobstwiese** polygons into R. 
 
 ```r
-THIS IS DUMMY CODE
-# 2 - do something with data ####
+# Polygons, too:
+pol = sf::read_sf(file.path(envrmt$data, "streuobst.gpkg"))
+
+```
+In QGIS, we created the **Streuobstwiese** polygons and exported them as a [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) (.gpkg). The GeoPackage format has several advantages compared to previous formats for saving and exchanging geospatial data, including that it can support both raster and vector data and that it is saved in one file.
+
+All geospatial data has a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). When we created the training areas in QGIS, we assigned the polygons in the GeoPackage the same CRS as the DOP, because they are part of the same project. In R, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
+
+```r
+# 2 - check CRS and other info
 #-----------------------#
 
-rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
-# Polygons:
-pol = sf::read_sf(file.path(envrmt$hlnug, "streuobst.gpkg"))
+raster::crs(rasterStack)
+raster::crs(pol)
+```
+As we assigned the CRS of the polygons using the DOP, we know that both of these layers will return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use a logical query to test if they are the same.
+
+```r
+crs(rasterStack) == crs(pol)
+```
+If these layers have the same CRS, this command will return `TRUE`. Otherwise, R will return `FALSE`. This query can be useful for more complex geospatial data workflows.
+
+
+Now that we have the DOP imported into R, we want to see what it looks like. There are many options for visualizing geospatial data in R, whether it be raster or vector data, with options ranging from basic static plots to interactive plots.
+
+```r
+# 3 - visualize the data ####
+#-----------------------#
+
+# simple plot
+plot(rasterStack)
+
+# interactive plot
+mapview(rasterStack)
 
 ```
 Show output of R code block 2 here
@@ -80,13 +112,21 @@ Show output of R code block 2 here
 Further explanation of code block 2, plus transition to code block 3 here
 
 ```r
-THIS IS DUMMY CODE
-# 3 - save as RDS ####
+# 4 - calculate NDVI using the red (band 1) and NIR (band 4) bands ####
+# ndvi = (NIR - Red) / (NIR + Red)
 #-----------------------#
 
-rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
-# Polygons:
-pol = sf::read_sf(file.path(envrmt$hlnug, "streuobst.gpkg"))
+ndvi <- (rasterStack[[4]] - rasterStack[[1]]) / (rasterStack[[4]] + rasterStack[[1]])
 
 ```
 Show output of R code block 3 here
+
+```r
+# 5 - stack and save as RDS ####
+#-----------------------#
+marburg_stack <- stack(rasterStack, ndvi)
+
+saveRDS(rasterStack, "dop.rds")
+```
+## sen2R
+
