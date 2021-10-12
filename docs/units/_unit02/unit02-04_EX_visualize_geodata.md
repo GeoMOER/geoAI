@@ -64,7 +64,6 @@ source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
 
 # Read DOP
 rasterStack = raster::stack(file.path(envrmt$data, "marburg_dop.tif"))
-
 ```
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
@@ -73,16 +72,14 @@ R can also handle vector data as well. A different package, `sf`, is required to
 ```r
 # Polygons, too:
 pol = sf::read_sf(file.path(envrmt$data, "streuobst.gpkg"))
-
 ```
-In QGIS, we created the **Streuobstwiese** polygons and exported them as a [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) (.gpkg). The GeoPackage format has several advantages compared to previous formats for saving and exchanging geospatial data, including that it can support both raster and vector data and that it is saved in one file.
+In QGIS, we created the **Streuobstwiese** polygons and exported them as a [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) (.gpkg). The GeoPackage format has several advantages compared to previous formats for saving and exchanging geospatial data. For example, it supports both raster and vector data and it is saved in one file (unlike e.g. [shapefiles](https://en.wikipedia.org/wiki/Shapefile)).
 
-All geospatial data has a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). When we created the training areas in QGIS, we assigned the polygons in the GeoPackage the same CRS as the DOP, because they are part of the same project. In R, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
+Geospatial data always needs a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). When we created the training areas in QGIS, we assigned the polygons in the GeoPackage the same CRS as the DOP, because they are part of the same project. In R, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
 
 ```r
 # 2 - check CRS and other info
 #-----------------------#
-
 raster::crs(rasterStack)
 raster::crs(pol)
 ```
@@ -91,42 +88,75 @@ As we assigned the CRS of the polygons using the DOP, we know that both of these
 ```r
 crs(rasterStack) == crs(pol)
 ```
-If these layers have the same CRS, this command will return `TRUE`. Otherwise, R will return `FALSE`. This query can be useful for more complex geospatial data workflows.
+If these layers have the same CRS, this command will return `TRUE`. Otherwise, R will return `FALSE`. Queries like this can be useful for more complex geospatial data workflows, e.g. if two layers have the same CRS, then continue with the analysis, otherwise stop.
 
 
-Now that we have the DOP imported into R, we want to see what it looks like. There are many options for visualizing geospatial data in R, whether it be raster or vector data, with options ranging from basic static plots to interactive plots.
+Now that we have the DOP imported into R, we want to see what it looks like. There are many options for visualizing geospatial data in R, whether it be raster or vector data, with options ranging from basic static plots, e.g. `plotRGB` to interactive plots, e.g. `mapview`.
 
 ```r
 # 3 - visualize the data ####
 #-----------------------#
-
-# simple plot
-plot(rasterStack)
+# simple RGB plot
+raster::plotRGB(rasterStack)
 
 # interactive plot
+library(mapview)
 mapview(rasterStack)
-
 ```
-Show output of R code block 2 here
+Many packages and functions have been written to visualize geospatial data in R. In fact, there are too many to mention here. If you're interested, [Chapter 1.5](https://geocompr.robinlovelace.net/intro.html#the-history-of-r-spatial) of [Geocomputation with R](https://geocompr.robinlovelace.net/index.html) by Lovelace, Nowosad & Muenchow provides a concise history of the packages developed by the R spatial community. 
 
-Further explanation of code block 2, plus transition to code block 3 here
+Visualizing spatial data is fantastic and makes sense -- we want to make maps after all -- but conventional GIS software can do this with raster and vector data as well. One way in which R adds value as a GIS is in the statistical analyses that you can do with raster data. For example, we can use the different spectral bands of an image to calculate so-called indices. One of the most widely known indices created used remote sensing data is the [Normalized difference vegetation index (NDVI)](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index), which is useful for distinguishing live green vegetation, because of its properties in the near-infrared and red wavelengths. Due to these spectral properties, NDVI requires more than the three standard RGB channels and is calculated using the Near Infrared and Red channels of an image as follows:
+
+<p align="center">
+  <img src="../assets/images/unit02/NDVI.svg">
+</p>
+
+But there are several remote sensing indices that can be calculated from simple RGB imagery as well -- take a look [here](https://www.indexdatabase.de/db/i.php) for some ideas. 
 
 ```r
-# 4 - calculate NDVI using the red (band 1) and NIR (band 4) bands ####
-# ndvi = (NIR - Red) / (NIR + Red)
+# 4 - calculate RGB indices ####
 #-----------------------#
+red   <- rasterStack[[1]]
+green <- rasterStack[[2]]
+blue  <- rasterStack[[3]]
 
-ndvi <- (rasterStack[[4]] - rasterStack[[1]]) / (rasterStack[[4]] + rasterStack[[1]])
+## Normalized difference turbidity index (NDTI)
+NDTI <- (red - green) / (red + green)
+names(NDTI) <- "NDTI"
 
+## Visible Atmospherically Resistant Index (VARI)
+VARI <- (green - red) / (green + red - blue)
+names(VARI) <- "VARI"
+
+## Triangular greenness index (TGI)
+TGI <- -0.5*(190*(red - green)- 120*(red - blue))
+names(TGI) <- "TGI"
+
+rgbI <- raster::stack(NDTI, VARI, TGI)
+raster::plot(rgbI)
 ```
-Show output of R code block 3 here
+
+For those interested in typing less and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these and many more RGB indices in one simple function. The challenge is in getting the package to work -- good luck!
+
+```r
+# alternatively, use uavRst
+library(uavRst)
+rgbI <- rgb_indices(red = rasterStack[[1]], 
+                    green = rasterStack[[2]], 
+                    blue  = rasterStack[[3]], 
+                    rgbi = c("NDTI","VARI","TGI"))
+                  
+# visualize these results
+raster::plot(rgbI)
+```
+Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an R session).
 
 ```r
 # 5 - stack and save as RDS ####
 #-----------------------#
-marburg_stack <- stack(rasterStack, ndvi)
+marburg_stack <- stack(rasterStack, rgbI)
 
-saveRDS(rasterStack, "dop.rds")
+saveRDS(marburg_stack, "dop.rds")
 ```
 ## sen2R
 
