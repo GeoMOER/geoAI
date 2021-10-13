@@ -153,21 +153,10 @@ get_unet_128 <- function(input_shape = c(128, 128, 3),
 
 ```
 
-```r
-# settings
-img_size <- c(128,128)
+## Dice Coefficient
 
-model_shape <- c(128,128,3)
-
-batch_size <- 4
-
-epochs <- 10
-
-lr <- 0.01
-```
 
 ```r
-unet_model <- get_unet_128()
 
 
 # formula for dice coefficient
@@ -187,24 +176,30 @@ bce_dice_loss <- function(y_true, y_pred) {
     return(result)
  }
  
+```
+
+
+## Model training
+
+```r
+unet_model <- get_unet_128()
+
 unet_model %>% compile(
-   optimizer = optimizer_rmsprop(learning_rate = lr),
-   loss = bce_dice_loss,
-   metrics = custom_metric("dice_coef", dice_coef)
+  optimizer = optimizer_rmsprop(learning_rate = 0.01),
+  loss = bce_dice_loss,
+  metrics = custom_metric("dice_coef", dice_coef)
 ) 
 
 # fit/train the model
 unet_model %>% fit(
-   training_dataset,
-   validation_data =validation_dataset,
-   epochs = epochs,
-   verbose = 1
+  training_dataset,
+  validation_data =validation_dataset,
+  epochs = 10,
+  verbose = 1
 )
 
 
-# path = 
-# one version to save just for prediction
-# model %>% save_model_tf(filepath = path)
+unet_model %>% save_model_tf(filepath = path)
 
 ```
 

@@ -7,57 +7,148 @@ header:
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
-Deep learning and spatial patterns
+## Function to rebuild the image
 
-<!--more-->
+```r
+
+rebuild_img <-
+   function(pred_subsets,
+            out_path,
+            target_rst,
+            model_name) {
+      subset_pixels_x <- ncol(pred_subsets[1, , ,])
+      subset_pixels_y <- nrow(pred_subsets[1, , ,])
+      tiles_rows <- nrow(target_rst) / subset_pixels_y
+      tiles_cols <- ncol(target_rst) / subset_pixels_x
+      
+      # load target image to determine dimensions
+      target_stars <- st_as_stars(target_rst, proxy = F)
+      #prepare subfolder for output
+      result_folder <- paste0(out_path, model_name)
+      if (dir.exists(result_folder)) {
+         unlink(result_folder, recursive = T)
+      }
+      dir.create(path = result_folder)
+      
+      #for each tile, create a stars from corresponding predictions,
+      #assign dimensions using original/target image, and save as tif:
+      for (crow in 1:tiles_rows) {
+         for (ccol in 1:tiles_cols) {
+            i <- (crow - 1) * tiles_cols + (ccol - 1) + 1
+            
+            dimx <-
+               c(((ccol - 1) * subset_pixels_x + 1), (ccol * subset_pixels_x))
+            dimy <-
+               c(((crow - 1) * subset_pixels_y + 1), (crow * subset_pixels_y))
+            cstars <- st_as_stars(t(pred_subsets[i, , , 1]))
+            attr(cstars, "dimensions")[[2]]$delta = -1
+            #set dimensions using original raster
+            st_dimensions(cstars) <-
+               st_dimensions(target_stars[, dimx[1]:dimx[2], dimy[1]:dimy[2]])[1:2]
+            
+            write_stars(cstars, dsn = paste0(result_folder, "/_out_", i, ".tif"))
+         }
+      }
+      
+      starstiles <-
+         as.vector(list.files(result_folder, full.names = T), mode = "character")
+      sf::gdal_utils(
+         util = "buildvrt",
+         source = starstiles,
+         destination = paste0(result_folder, "/mosaic.vrt")
+      )
+      
+      sf::gdal_utils(
+         util = "warp",
+         source = paste0(result_folder, "/mosaic.vrt"),
+         destination = paste0(result_folder, "/mosaic.tif")
+      )
+   }
+
+```
+
+## Function to prepare prediciton data
+
+```r 
+
+prepare_ds_predict <-
+   function(files = NULL,
+            subsets_path = NULL,
+            model_input_shape = c(256, 256),
+            batch_size = batch_size,
+            predict = TRUE) {
+      if (predict) {
+         #make sure subsets are read in in correct order
+         #so that they can later be reassembled correctly
+         #needs files to be named accordingly (only number)
+         o <-
+            order(as.numeric(tools::file_path_sans_ext(basename(
+               list.files(subsets_path)
+            ))))
+         subset_list <-
+            list.files(subsets_path, full.names = T)[o]
+         
+         dataset <- tensor_slices_dataset(subset_list)
+         
+         dataset <-
+            dataset_map(dataset, function(.x)
+               tf$image$decode_png(tf$io$read_file(.x)))
+         
+         dataset <-
+            dataset_map(dataset, function(.x)
+               tf$image$convert_image_dtype(.x, dtype = tf$float32))
+         
+         # dataset <-
+         #    dataset_map(dataset, function(.x)
+         #       tf$image$resize(.x, size = shape(
+         #          model_input_shape[1], model_input_shape[2]
+         #       )))
+         
+         dataset <- dataset_batch(dataset, batch_size)
+         dataset <-  dataset_map(dataset, unname) 
+      } 
+   }
+
+```
+
+## Predicting
+
+```r 
+
+
+# load target raster
+target_rst <- raster(paste0("./data/hes_pred/", osize, ".tif"))
+
+# load model
+# just for predictions
+
+model <-
+   load_model_tf(model_path, compile = FALSE)
+
+# prepare data for prediction
+pred_data <-
+   prepare_ds_predict(
+      predict = TRUE,
+      subsets_path = targetdir,
+      model_input_shape = size,
+      batch_size = batch_size
+   )
+```
 
 
 
 ```r
-# load u-net
+# predict for each patch
+pred_subsets <- predict(object = model, x = pred_data)
 
-unet_model <-
-   load_model_tf(model_path, compile = FALSE)
+model_name <- tools::file_path_sans_ext(name_model)
 
-
-# also prepare testing data
-testing_dataset <-
-   prepare_ds(
-      testing,
-      train = FALSE,
-      predict = FALSE,
-      img_size = img_size,
-      batch_size = batch_size
-   )
-   
-
-
-# get sample of data from testing data
-t_sample <-
-   floor(runif(n = 5, min = 1, max = 12))  
-
-# simple comparision of mask, image and prediction
-for (i in t_sample) {
-   png_path <- testing
-   png_path <- png_path[i, ]
-   
-   img <- image_read(png_path[, 1])
-   mask <- image_read(png_path[, 2])
-   pred <-
-      image_read(as.raster(predict(object = unet_model, testing_dataset)[i, , , ]))
-   
-   out <- image_append(c(
-      image_annotate(mask,"Mask", size = 10, color = "black", boxcolor = "white"),
-      image_annotate(img,"Original Image", size = 10, color = "black", boxcolor = "white"),
-      image_annotate(pred,"Prediction", size = 10, color = "black", boxcolor = "white")
-   ))
-   
-   plot(out)
-   
-}
-
+# rebuild .tif from each patch
+rebuild_img(
+   pred_subsets = pred_subsets,
+   out_path = out_path ,
+   target_rst = target_rst,
+   model_name = name_model
+)
 
 ```
-
-**Summary:**
-{: .notice--info}

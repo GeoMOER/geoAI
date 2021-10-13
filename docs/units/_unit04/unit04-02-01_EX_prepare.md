@@ -43,12 +43,12 @@ testing <- files[sample_size==3,]
 rm(files, sample_size, training_sample, validation_sample)
 ```
 
-
-
-
 ## Data Augmentation
 
-A data augmentation is applied to the two datasets that are intended for training. For this we will use the function below. It prepares the images for the unet and performs a total of three different data augmentations: 
+Data augmentation is applied to the two datasets that are intended for training.
+Data augmentation is a technique that allows to increase the number of training data in small datasets by changing the existing data, e.g. by rotating the input images, thus creating additional artificial training data that can also prevent overfitting of deep learning models [(Shorten & Khoshgoftaar)]( https://journalofbigdata.springeropen.com/track/pdf/10.1186/s40537-019-0197-0.pdf).
+
+ Here we will use the function below to create some additional training data. It prepares the images for the unet and performs a total of three different data augmentations: 
 
 **Augmentation 1:**
 The image as well as the mask will be rotated to the left and to the right
@@ -60,6 +60,8 @@ The image and the mask are rotated up and down
 The image is rotated left and right and up and down. 
 
 A spectral augmentation is also performed on the image at each step, randomly changing saturation, brightness and contrast. 
+
+
 
 
 
