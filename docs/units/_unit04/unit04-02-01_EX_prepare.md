@@ -260,9 +260,9 @@ validation_dataset <-
 ```
 
 
-**Summary:**
+## Expected Output
 At the end of this exercise you should have three data sets. One based on 80% of the input data for training, one with 10% of the input data for the validation and one with the last 10% of the input data for testing the results. Furthermore data augmentation was applied to each tile. 
-{: .notice--info}
+
 
 
 

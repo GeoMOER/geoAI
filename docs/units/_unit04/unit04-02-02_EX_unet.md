@@ -1,5 +1,5 @@
 ---
-title: EX | U-Net image segmentation
+title: EX | Unet
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
@@ -13,7 +13,8 @@ Deep learning and spatial patterns
 
 ## U-net 
 
-Now we are ready to define a unet. Don´t get frightened of by the length of this code section. Even if it might look scary at first glance the structure of the individual layers is actually quite repetitive. You can use the sketch of a unet from the LM | Deeply Good 
+Now we are ready to define a unet. Don´t get frightened of by the length of this code section. Even if it might look scary at first glance the structure of the individual layers is actually quite repetitive.
+
 
 ```r
 
@@ -208,5 +209,5 @@ unet_model %>% fit(
 ```
 
 
-**Summary:**
-{: .notice--info}
+## Expected Output
+
