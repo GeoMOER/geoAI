@@ -1,5 +1,5 @@
 ---
-title: EX | Preparing data
+title: EX | Prepare your data
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
@@ -7,47 +7,63 @@ header:
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
-Deep learning and spatial patterns
+In this exercise we will split our image and mask files into a training, a validation and a test dataset. The training dataset will be artificially enhanced by data augmentation.
 
 <!--more-->
 
-
-
+## Breaking down the data set
+We will now split the data into three parts. To do this, we will again place the file paths to the images and their corresponding masks in a data.frame() and then use 80% of it for the training set, 10% to validate it, and 10% to test the results. 
 ```r
-library(tfdatasets)
-library(tensorflow)
-library(keras)
-library(magick)
-library(purrr)
 
-# path to the two data sets
-m_path <- "C:/Users/geoUniMarburg/Documents/detect-streuobstwiesen/data/split/input_test/test_m"
-s_path <- "C:/Users/geoUniMarburg/Documents/detect-streuobstwiesen/data/split/input_test/test_s"
 
-# create data frame with two columns and all listed files
 files <- data.frame(
-   img = list.files(s_path, full.names = TRUE, pattern = "*.png"),
-   mask = list.files(m_path, full.names = TRUE, pattern = "*.png")
+  img = list.files("02_modelling/aerial/split/", full.names = TRUE, pattern = "*.png"),
+  mask = list.files("02_modelling/masks/split/", full.names = TRUE, pattern = "*.png")
 )
 
 set.seed(7)
 
 # proportion of training/validation/testing data
-t_sample <- 0.8
-v_sample <- 0.9
+# set the amount of test sample to 80%. Another 10% is used for validation. The remaining 10% can be used later for 
+# an independent validation
+training_sample <- 0.8
+validation_sample <- 0.9
 
-# create samples
-s_size <- sample(rep(1:3, diff(floor(nrow(files) *c(0,t_sample,v_sample,1)))))
+# create sample size for the above defined training/testing propotions
+sample_size <- sample(rep(1:3, 
+                     diff(floor(nrow(files) *c(0,training_sample,validation_sample,1)))
+)
+)
 
-training <- files[s_size==1,]
-validation <- files[s_size==2,]
-testing <- files[s_size==3,]
+# divide the datafame to 
+training <- files[sample_size==1,]
+validation <- files[sample_size==2,]
+testing <- files[sample_size==3,]
 
-
+rm(files, sample_size, training_sample, validation_sample)
 ```
-```r
 
-# Datenvorbereitung 
+
+
+
+## Data Augmentation
+
+A data augmentation is applied to the two datasets that are intended for training. For this we will use the function below. It prepares the images for the unet and performs a total of three different data augmentations: 
+
+**Augmentation 1:**
+The image as well as the mask will be rotated to the left and to the right
+
+**Augmentation 2:**
+The image and the mask are rotated up and down
+
+**Augmentation 3:**
+The image is rotated left and right and up and down. 
+
+A spectral augmentation is also performed on the image at each step, randomly changing saturation, brightness and contrast. 
+
+
+
+```r
 
 
 prepare_ds <-
@@ -216,6 +232,11 @@ prepare_ds <-
       
    }
 ```
+
+
+## Prepare data for training
+
+
 ```r
 # prepare data for training
 training_dataset <-
@@ -239,7 +260,9 @@ validation_dataset <-
 ```
 
 
-
+**Summary:**
+At the end of this exercise you should have three data sets. One based on 80% of the input data for training, one with 10% of the input data for the validation and one with the last 10% of the input data for testing the results. Furthermore data augmentation was applied to each tile. 
+{: .notice--info}
 
 
 

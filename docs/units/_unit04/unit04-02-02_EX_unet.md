@@ -3,7 +3,7 @@ title: EX | U-Net image segmentation
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
-  image_description: "Excerpt of predicted tree species groups in Rhineland-Palatinate"
+  image_description: "Streuobstwiesen"
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
@@ -11,9 +11,15 @@ Deep learning and spatial patterns
 
 <!--more-->
 
+## U-net 
 
+Now we are ready to define a unet. Don´t get frightened of by the length of this code section. Even if it might look scary at first glance the structure of the individual layers is actually quite repetitive. You can use the sketch of a unet from the LM | Deeply Good 
 
 ```r
+
+# 1 - U-net ####
+#--------------#
+
 get_unet_128 <- function(input_shape = c(128, 128, 3),
                          num_classes = 1) {
    
@@ -200,3 +206,7 @@ unet_model %>% fit(
 # model %>% save_model_tf(filepath = path)
 
 ```
+
+
+**Summary:**
+{: .notice--info}
