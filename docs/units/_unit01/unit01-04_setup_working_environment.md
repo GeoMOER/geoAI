@@ -157,10 +157,15 @@ source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
 
 The script thus available provides as intended:
 
-- create/initialise the mandatory basic folder structure 
-- a list variable containing all pathes as shortcuts  
-- initialise all packages and settings for the project
+- create/initialize the mandatory basic folder structure 
+- a list variable containing all paths as shortcuts  
+- initialize all packages and settings for the project
 
 
 ## Assignment
-Set up the basic working environment as explained above. 
+Set up the basic working environment as explained above.
+
+You can download a copy of the setup script `geoAI_setup.R` from the course server [here](http://85.214.102.111/geo_data/src/).
+{: .notice--info}
+
+*Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`. That being said, the implementation is not seamless. The first time that you run the `geoAI_setup.R` script, you will likely receive many errors that need to be worked through.*

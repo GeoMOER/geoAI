@@ -136,7 +136,7 @@ rgbI <- raster::stack(NDTI, VARI, TGI)
 raster::plot(rgbI)
 ```
 
-For those interested in typing less and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these and many more RGB indices in one simple function. The challenge is in getting the package to work -- good luck!
+For those interested in doing less typing and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these three and many more RGB indices in one simple function. The challenge is in getting the package to work. If you're keen to challenge yourself -- good luck!
 
 ```r
 # alternatively, use uavRst
@@ -149,14 +149,14 @@ rgbI <- rgb_indices(red = rasterStack[[1]],
 # visualize these results
 raster::plot(rgbI)
 ```
-Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an R session).
+Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an R session). RDS is ideal for this purpose, because it allows us to save a single R object to a file and restore it.
 
 ```r
 # 5 - stack and save as RDS ####
 #-----------------------#
 marburg_stack <- stack(rasterStack, rgbI)
 
-saveRDS(marburg_stack, "dop.rds")
+saveRDS(marburg_stack, (file.path(envrmt$data_processed, "dop_indices.rds"))
 ```
-## sen2R
+## Bonus: sen2R
 
