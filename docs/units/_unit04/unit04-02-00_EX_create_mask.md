@@ -18,10 +18,11 @@ In this exercise we will create a raster mask from vectordata containing the out
 
 From the file shown in the figure above, containing the outlines of the buildings in the study area, we will first create a raster mask. To do this, we use the DOP of the study area as a reference raster, to ensure that the mask will have the same extent and the same resolution. The transformation of polygons into a raster file with the same properties as the DOP is done by the function rasterize of the raster package. Afterwards a reclassification of the values is performed, where all values that do not represent a building are 0 and all values that represent a building are 1. You can roughly see how the mask for the study area might look in the map below (layer mask).
 
+
 ```r
 # read data
-input_vector <- sf::read_sf("01_raw_data/vector/test_mar_build.gpkg")
-r <- raster::stack("01_raw_data/aerial/test_mar_dop.tif")
+input_vector <- sf::read_sf(file.path(envrmt$path_vector, "marburg_buildings.gpkg"))
+r <- raster::stack(file.path(envrmt$path_01_raw_data_aerial, "marburg_dop.tif"))
 
 # rasterize
 rasterized_vector <- rasterize(input_vector,r[[1]])
@@ -31,8 +32,9 @@ rasterized_vector[is.na(rasterized_vector[])] <- 0
 rasterized_vector[rasterized_vector > 1] <- 1
 
 #save
-raster::writeRaster(rasterized_vector,"./data/sow/sow_mask.tif",overwrite=T)
+raster::writeRaster(file.path(envrmt$path_masks, "marburg_mask.tif"),overwrite=T)
 ```
+
 
 
 ## Function to split the data
@@ -176,36 +178,35 @@ remove_files <- function(df) {
 Now we can apply our functions defined above to our data. Both the DOP and the mask are split into smaller .pngs using the subset_ds function. The output path for both functions is in a different folder, where the images should be stored.  
 
 ```r
-rasterized_vector <- stack("02_modelling/masks/test_mar_mask.tif")
+rasterized_vector <- stack(file.path(envrmt$path_masks, "marburg_mask.tif"))
 
 
 # subsets for the mask
 target_rst <- subset_ds(
   input_raster = rasterized_vector,
-  path = "02_modelling/masks/split/",
+  path = file.path(envrmt$path_masks_split),
   mask = TRUE,
   model_input_shape = c(128,128) # set the size of the output images
 )
 
 
 # subsets for the training data
-input_raster <- raster::stack("01_raw_data/aerial/test_mar_dop.tif")
+input_raster <- raster::stack(file.path(envrmt$path_01_raw_data_aerial, "marburg_dop.tif"))
 
 subset_ds(
   input_raster = input_raster,
-  path = "02_modelling/aerial/split/",
+  path = file.path(envrmt$path_aerial_split),
   mask = FALSE,
   model_input_shape = c(128,128)
 )
 ```
-
 All files from these two folders are sorted into a dataframe and then the files that do not contain houses in the image in the mask column get deleted.
 
 ```r
 list_dops <-
-  list.files(s_path, full.names = TRUE, pattern = "*.png")
+  list.files(file.path(envrmt$path_aerial_split), full.names = TRUE, pattern = "*.png")
 list_masks <-
-  list.files(m_path, full.names = TRUE, pattern = "*.png")
+  list.files(file.path(envrmt$path_masks_split), full.names = TRUE, pattern = "*.png")
 df = data.frame(list_dops, list_masks)
 
 remove_files(df)

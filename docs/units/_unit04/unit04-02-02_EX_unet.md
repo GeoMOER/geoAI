@@ -199,10 +199,9 @@ unet_model %>% fit(
 )
 
 
-unet_model %>% save_model_tf(filepath = path)
+unet_model %>% save_model_tf(file.path(envrmt$path_models, "unet_buildings.hdf5"))
 
 ```
-
 
 ## Expected Output
 

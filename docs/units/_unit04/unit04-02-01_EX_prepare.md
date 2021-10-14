@@ -17,8 +17,8 @@ We will now split the data into three parts. To do this, we will again place the
 
 
 files <- data.frame(
-  img = list.files("02_modelling/aerial/split/", full.names = TRUE, pattern = "*.png"),
-  mask = list.files("02_modelling/masks/split/", full.names = TRUE, pattern = "*.png")
+  img = list.files(file.path(envrmt$path_aerial_split), full.names = TRUE, pattern = "*.png"),
+  mask = list.files(file.path(envrmt$path_masks_split), full.names = TRUE, pattern = "*.png")
 )
 
 set.seed(7)
@@ -31,7 +31,7 @@ validation_sample <- 0.9
 
 # create sample size for the above defined training/testing propotions
 sample_size <- sample(rep(1:3, 
-                     diff(floor(nrow(files) *c(0,training_sample,validation_sample,1)))
+                          diff(floor(nrow(files) *c(0,training_sample,validation_sample,1)))
 )
 )
 

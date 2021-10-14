@@ -117,22 +117,22 @@ prepare_ds_predict <-
 
 
 # load target raster
-target_rst <- raster(paste0("./data/hes_pred/", osize, ".tif"))
+target_rst <- raster(file.path(envrmt$path_prediction, "marburg_buildings_pred.tif"))
 
 # load model
 # just for predictions
 
 model <-
-   load_model_tf(model_path, compile = FALSE)
+  load_model_tf(file.path(envrmt$path_models, "unet_buildings.hdf5"), compile = FALSE)
 
 # prepare data for prediction
 pred_data <-
-   prepare_ds_predict(
-      predict = TRUE,
-      subsets_path = targetdir,
-      model_input_shape = size,
-      batch_size = batch_size
-   )
+  prepare_ds_predict(
+    predict = TRUE,
+    subsets_path = file.path(envrmt$path_prediction),
+    model_input_shape = size,
+    batch_size = batch_size
+  )
 ```
 
 
@@ -145,10 +145,10 @@ model_name <- tools::file_path_sans_ext(name_model)
 
 # rebuild .tif from each patch
 rebuild_img(
-   pred_subsets = pred_subsets,
-   out_path = out_path ,
-   target_rst = target_rst,
-   model_name = name_model
+  pred_subsets = pred_subsets,
+  out_path = file.path(envrmt$path_prediction),
+  target_rst = target_rst,
+  model_name = name_model
 )
 
 ```
