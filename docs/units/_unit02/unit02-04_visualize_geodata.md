@@ -13,45 +13,17 @@ header:
 ## Background
 R is a very powerful software tool with many functions. In this course, we are interested in using R to analyze spatial data and create maps based on it.
 
-### Digital Orthophotos
-First, the DOPs. Digital [orthophotos](https://en.wikipedia.org/wiki/Orthophoto) are images taken from either satellites or aerial photography that have been corrected using a [digital surface model (DSM)](https://en.wikipedia.org/wiki/Digital_elevation_model#Terminology). The correction process, called [orthorectification](https://www.dlr.de/eoc/en/desktopdefault.aspx/tabid-6144/10056_read-20918/), is necessary for removing sensor, satellite/aircraft motion and terrain-related geometric distortions from raw imagery. This step is one of the main processing steps in evaluating remote sensing data, as it produces a true-to-scale photographic map.
-
-### Digitize training areas
-Training areas are the basis of supervised classification. Creating training areas allows us, the user, to tell the computer what we see in an image. It transfers the knowledge that we have about individual objects in an image to a digital level. Once we have enough training areas, we can feed them into a machine learning algorithms to classify the remaining pixels of an image. This process is called supervised classification.
-
-A supervised land-cover classification uses a limited set of labeled training data to derive a model, which predicts the respective land-cover in the entire dataset. Hence, the land-cover types are defined *a priori* and the model tries to predict these types based on the similiarity between the properties of the training data and the rest of the dataset.
-
-{% include figure image_path="/assets/images/spotlight01/supervised_classification.jpg" alt="Illustration of a supervised classification." %}
-
-Such classifications generally require at least five steps:
-1. Compiling a comprehensive input dataset containing one or more raster layers.
-1. Selecting training areas, i.e. subsets of input datasets for which the remote sensing expert knows the land-cover type. Knowledge about the land cover can be derived e.g. from own or third party *in situ* observations, management information or other remote sensing products (e.g. high-resolution aerial images).
-1. Training a model using the training areas. For validation purposes, the training areas are often further divided into one or more test and training samples to evaluate the performance of the model algorithm.
-1. Applying the trained model to the entire dataset, i.e. predicting the land-cover type based on the similarity of the data at each location to the class properties of the training dataset.
-
-Please note that all types of classifications require a thorough validation, which will be in the focus of upcoming course units.
-{: .notice--info} 
-
-The following illustration shows the steps of a supervised classification in more detail. The optional segmentation operations are mandatory for object-oriented classifications, which rely on the values of each individual raster cell in the input dataset in addition to considering the geometry of objects. To delineate individual objects, such as houses or tree crowns, remote sensing experts use segmentation algorithms, which consider the homogeneity of the pixel values within their spatial neighborhood. 
-
-{% include figure image_path="/assets/images/spotlight01/supervised_classification_concept.jpg" alt="Illustration of a supervised classification." %}
-
-
 ## Assignment
-This first exercise will prepare the data that is necessary to predict **Streuobstwiese** in Hesse with a random forest model. Please run the following R code and upload the output to the course website. Remember to use the folder structure that we set up in Unit 1!
+This first exercise will prepare the data that is necessary to predict **Streuobstwiese** in Hesse with a random forest model. Please run the following R code to create a stack of different rasters that we will use to train our random forest model. Remember to use the folder structure that we set up in Unit 1!
 
-## Get data
+### Get data
 The Hessian State Department of Land Management and Geoinformation ([Hessische Verwaltung fuer Bodenmanagement und Geoinformation; HVBG](https://hvbg.hessen.de/)) uses an image-based DSM *to create what they call "TrueDOPs"*. The HVBG commissions flights for the entire state of Hesse every 2 years and makes the imagery available in 20cm and 40cm resolution with 4 channels: Red (R), Green (G), Blue (B) and Near-Infrared (NIR). More information about the *HVBG's TrueDOPs* is available [here](https://hvbg.hessen.de/geoinformation/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-atkis%C2%AE-dops-und-true) (German only). 
 
-The 40-cm DOPs of our study area are available for download **[here]**. Please note that the HVBG has provided these digital orthophotos free of charge for the purpose of education and that they may only be used in the context of this course.
+The 40-cm DOP of our study area is available for download [here](http://85.214.102.111/geo_data/data/01_raw_data/aerial/). Please note that the HVBG has provided these digital orthophotos free of charge for the purpose of education and that they may only be used in the context of this course.
 {: .notice--info}
 
-
-### Creating vector layers in QGIS
-Next, we will use the open source GIS QGIS to create training areas for our **Streuobstwiese**.
-
-## Import data in R
-First, we start by sourcing our set up script that we created in Unit 1. Then, we import a digital orthophoto of Marburg. To do this, we use the `raster` package. We do not need to load the `raster` package with a call to `library(raster)` because our set up script already loaded it.
+### Import data in R
+First, we start by sourcing our `geoAI_setup.R` script that we created in Unit 1. Then, we import a digital orthophoto of Marburg. To do this, we use the `raster` package. We do not need to load the `raster` package with a call to `library(raster)` because our set up script already loaded it.
 
 ```r
 # 1 - source setup function & import the data ####
@@ -90,7 +62,7 @@ crs(rasterStack) == crs(pol)
 ```
 If these layers have the same CRS, this command will return `TRUE`. Otherwise, R will return `FALSE`. Queries like this can be useful for more complex geospatial data workflows, e.g. if two layers have the same CRS, then continue with the analysis, otherwise stop.
 
-
+### Visualize the data
 Now that we have the DOP imported into R, we want to see what it looks like. There are many options for visualizing geospatial data in R, whether it be raster or vector data, with options ranging from basic static plots, e.g. `plotRGB` to interactive plots, e.g. `mapview`.
 
 ```r
@@ -100,11 +72,11 @@ Now that we have the DOP imported into R, we want to see what it looks like. The
 raster::plotRGB(rasterStack)
 
 # interactive plot
-library(mapview)
 mapview(rasterStack)
 ```
 Many packages and functions have been written to visualize geospatial data in R. In fact, there are too many to mention here. If you're interested, [Chapter 1.5](https://geocompr.robinlovelace.net/intro.html#the-history-of-r-spatial) of [Geocomputation with R](https://geocompr.robinlovelace.net/index.html) by Lovelace, Nowosad & Muenchow provides a concise history of the packages developed by the R spatial community. 
 
+### Calculate RGB indices
 Visualizing spatial data is fantastic and makes sense -- we want to make maps after all -- but conventional GIS software can do this with raster and vector data as well. One way in which R adds value as a GIS is in the statistical analyses that you can do with raster data. For example, we can use the different spectral bands of an image to calculate so-called indices. One of the most widely known indices created used remote sensing data is the [Normalized difference vegetation index (NDVI)](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index), which is useful for distinguishing live green vegetation, because of its properties in the near-infrared and red wavelengths. Due to these spectral properties, NDVI requires more than the three standard RGB channels and is calculated using the Near Infrared and Red channels of an image as follows:
 
 <p align="center">
@@ -149,6 +121,8 @@ rgbI <- rgb_indices(red = rasterStack[[1]],
 # visualize these results
 raster::plot(rgbI)
 ```
+
+### Save for later
 Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an R session). RDS is ideal for this purpose, because it allows us to save a single R object to a file and restore it.
 
 ```r

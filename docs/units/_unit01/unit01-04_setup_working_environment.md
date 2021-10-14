@@ -168,9 +168,9 @@ Set up the basic working environment as explained above.
 You can download a copy of the setup script `geoAI_setup.R` from the course server [here](http://85.214.102.111/geo_data/src/).
 {: .notice--info}
 
-*Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.* 
+Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.
 
-*That being said, the implementation is not seamless. The first time that you run the `geoAI_setup.R` script, you will likely receive many errors that need to be worked through. For example, to access the Python `keras` package, you will likely have to do the following:*
+That being said, *the implementation is not seamless.* The first time that you run the `geoAI_setup.R` script, you will likely receive many errors that need to be worked through. For example, to access the Python `keras` package, you will likely have to do the following:
 
 ```r
 install.packages("keras")
@@ -178,4 +178,4 @@ library(keras)
 reticulate::install_miniconda()
 keras::install_keras()
 ```
-*Several errors are likely to pop up during this installation. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. When in doubt, ask Google! It is highly unlikely that you are the first person to ask the question -- StackOverflow is your friend!*
+Several errors are likely to pop up during this installation. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. When in doubt, ask Google! It is highly unlikely that you are the first person to ask the question -- [StackOverflow](https://stackoverflow.com/questions/tagged/r) is your friend!
