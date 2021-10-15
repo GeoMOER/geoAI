@@ -10,28 +10,27 @@ header:
 Features and differences of spatial data collected in the field or acquired by remote sensing systems.
 <!--more-->
 
-## Programming environment for dummies
+## Spatial data models
 Reality is too complex to be fully represented by data. Models are a basis for reducing complexity. A data model is created through the abstraction of individual objects (entities) and their properties (attributes). In this abstraction process, objects of the same type are bundled (e.g. rivers, roads, urban areas). The spatial data world (including GIS) has implemented two different data models for this purpose -- the raster model and the vector model. Both models can be used to represent continuous properties and discrete (geo-) objects in principle. In practice, however, continuous data is usually represented by the raster model and discrete data by the vector model.
 
-### R packages for spatial data
+## R packages for spatial data
 
-* [sf](https://r-spatial.github.io/sf/) for working with point & polygon data, also known as [simple features](https://r-spatial.github.io/sf/articles/sf1.html)
-* [raster](https://cran.r-project.org/web/packages/raster/index.html) and tutorials for using it for [satellite data analysis](https://rspatial.org/raster/rs/index.html)
-* [terra](https://cran.r-project.org/web/packages/terra/index.html) and tutorials for using it for [remote sensing](https://rspatial.org/terra/rs/index.html)
-* [envimaR](https://github.com/envima/envimaR) for setting up project and development environments
+This blog post -- [Conversions between different spatial classes in R](https://geocompr.github.io/post/2021/spatial-classes-conversion/) -- explains some of the recent developments in spatial data manipulation in R as well as how to convert between them. This post mentions many different packages -- `sp`, `sf`, `raster`, `terra` and `stars` -- but what is the difference and what do we use them for?
 
-If `raster` and `terra` are both for working with rasterized (gridded) spatial data, then why are there two packages? And which one should you choose to work with?
-{: .notice--info}
+### Vector data
+The package `sp` has been maintained since the early 2000s, but largely replaced by the functionality in `sf`. [sf](https://r-spatial.github.io/sf/), which is short for [simple features](https://r-spatial.github.io/sf/articles/sf1.html), is useful for working with point & polygon data in `R`.
 
-The short answer is: both (at the moment). A longer answer is that the newer `terra` package can do more, is easier to use and is faster than the older `raster` package because the former was designed to replace the latter. This is described in greater detail in this [r-bloggers post](https://www.r-bloggers.com/2021/05/a-comparison-of-terra-and-raster-packages/).
-{: .notice--info}
+### Raster data
+Much like the `sp` and `sf` combination for vector data, the packages for working with raster data have also evolved. For working with this data model, the older package `raster` is slowly being replaced by newer options. The package `terra` is still quite new. Despite being lauded as faster and easier to work with, it still cannot entirely replace `raster` because it does not support all of the same functionality. Another option, `stars` is designed to work with spatial data cubes -- data that combines both continuous spatial data and time. The package is maintained by the same author as the `sf` package. See the CRAN pages of [raster](https://cran.r-project.org/web/packages/raster/index.html),  [terra](https://cran.r-project.org/web/packages/terra/index.html) and [stars](https://cran.r-project.org/web/packages/stars/index.html) for more details.
 
-## Video
-Placeholder, for now:
+With multiple options for working with both types of spatial data models, which one should you choose to work with? And why are there multiple packages?
 
-{% include pdf pdf="GeoAI-02-01_What_is_Remote_Sensing.pdf" %}
-
+Put simply, the landscape is constantly changing. Developers must maintain their software by adding new functionality and adjusting when the software on which their packages depend changes. Combined with overall greater interest in working with spatial data in R and a growing community of developers, there are many reasons that it is difficult to stay up-to-date. In the case of the packages for raster data, the newer `terra` package was explicitly designed to replace `raster`. This is described in greater detail in this [r-bloggers post](https://www.r-bloggers.com/2021/05/a-comparison-of-terra-and-raster-packages/). In other cases, the packages serve different use cases, which is why they co-exist.
 
 ## Unit 2 slides
 
 {% include pdf pdf="GeoAI-Unit02.pdf" %}
+
+## Additional resources
+* Why R? Webinar: [Recent changes in R spatial and how to be ready for them](https://geocompr.github.io/post/2020/whyr_webinar004/) (April 2020)
+* Blog post ["Conversions between different spatial classes in R"](https://geocompr.github.io/post/2021/spatial-classes-conversion/) (June 2021)
