@@ -6,7 +6,7 @@ header:
   overlay_color: "#000"
   overlay_filter: 0.6
   overlay_image: "/assets/images/title.png"
-  caption: 'Image: Source?'
+  caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'
   cta_label: go to course units
   cta_url: "/units.html"
 excerpt: Understand spatial problems, apply remote sensing, and use AI to resiliently predict spatial patterns.
@@ -53,23 +53,12 @@ The course covers 10 sessions, with the exception of session 10 on a weekly basi
 
 | Unit | Topic | Learning Content |
 |-------------|-------|-------------|
-|**01**| **Big questions are spatial** ||
-| 01-1 | Habitat | The importance of spatial composition and configuration of landscapes exemplified by the IPBES Nature's Contributions to People framework.
-| 01-2 | Proximity does not make relationships | On the invalidity of the first law of geography in heterogeneous spaces. |
-|**02**| **Remote Sensing 101** ||
-| 02-1 | Remote Sensing | A brief introduction to remote sensing using optical sensors as an example. |
-| 02-2 | Data Formats | Features and differences of spatial data collected in the field or acquired by remote sensing systems. |
-|**03**| **Randomly correct is not predicted** ||
-| 03-1 | From data reproduction to spatial prediction. | Why latitude and longitude are (almost) never good predictive variables. |
-| 03-2 | Randomly good. | Predicting spatial features with machine learning and random validation. |
-|**04**| **Spatial predictions and robust error estimation** ||
-| 04-1 |    Spatially good | Resilient spatial predictions using appropriate selection and validation strategies. |
-| 04-2 |    Deeply good | Deep-learning and spatial patterns. |
-|**05**| **Final team project: spatial prediction** ||
-| 05-1 | Research questions | From curiosity to research question and project planning. |
-| 05-2 | Research response | From project planning to implementation, research documentation and presentation. |
-| 05-3 | Research presentation | Presentation of a web/screencast on the project work.|
-|**06**| **Wrap-up**||
+|**01**| **Big questions are spatial** |On the invalidity of the first law of geography in heterogeneous spaces.|
+|**02**| **Remote Sensing 101** |A brief introduction to remote sensing using optical sensors as an example.|
+|**03**| **Randomly correct is not predicted** |From data reproduction to spatial prediction.|
+|**04**| **Deep learning** |Deep-learning and spatial patterns.|
+|**05**| **Final team project: spatial prediction** |From curiosity to research question and project planning.|
+
 
 
 

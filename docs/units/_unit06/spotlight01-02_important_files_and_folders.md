@@ -1,5 +1,6 @@
 ---
 title: Important files and folders for your page
+published: false
 header:
   image: /assets/images/spotlight01/jekyll.png
   image_description: "Blick ins Lahntal mit Grünlandwirtschaft, Baustelle für Stromtrassen und Regenbogen."

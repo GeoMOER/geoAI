@@ -10,11 +10,11 @@ header:
 
 Predicting spatial features with machine learning and random validation. 
 
+We would like to determine areas in Hesse that contain orchard meadows. For this we will use a machine learning approach, together with DOPs (digital orthophoto) as well as orchard meadows field surveys of the Hessian State Agency for Nature Conservation, Environment and Geology.
+
 <!--more-->
 
-## What are we up to?
 
-We would like to determine areas in Hesse that contain orchard meadows. For this we will use a machine learning approach, together with DOPs (digital orthophoto) as well as orchard meadows field surveys of the Hessian State Agency for Nature Conservation, Environment and Geology.
 
 
 ## Why are we doing this?

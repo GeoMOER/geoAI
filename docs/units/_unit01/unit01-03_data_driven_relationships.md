@@ -120,16 +120,6 @@ The error measures are correlated to the visual results: Kriging and the neural 
 </tbody>
 </table>
 
-## Video
-Placeholder, for now:
-
-{% include pdf pdf="GeoAI-01-01_Intro.pdf" %}
-
-
-## Unit 1 slides
-
-{% include pdf pdf="GeoAI-Unit01.pdf" %}
-
 
 ## Additional references
 Get the Most Out of AI, Machine Learning, and Deep Learning [Part 1](https://www.youtube.com/watch?v=KiKjforteXs){:target="_blank"} (10:52) and [Part 2](https://www.youtube.com/watch?v=Ys33AhNDwC4){:target="_blank"} (13:18)

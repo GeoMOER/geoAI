@@ -1,9 +1,5 @@
 ---
 title: Overview
-header:
-  image: /assets/images/unit05/start.jpg
-  image_description: "Cutout Start line"
-  caption: "Image: We Like Sharing [CC BY 2.0] [flickr.com](https://www.flickr.com/photos/welikesharing/51108580972/in/photostream/)"
 ---
 
 Final team project: spatial prediction

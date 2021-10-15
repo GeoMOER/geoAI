@@ -1,5 +1,6 @@
 ---
 title: Digitizing training areas
+published: false
 toc: true
 header:
   image: /assets/images/spotlight01/field_outlines.png

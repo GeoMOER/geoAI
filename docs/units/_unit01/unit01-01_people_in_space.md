@@ -9,10 +9,10 @@ header:
 
 How can we depict a complex interaction between people and nature?
 
-<!--more-->
+
 
 First of all, we need a theoretical framework -- a concept that takes into account the diverse possibilities of nature and people in all of their forms and translates them comprehensibly into qualitative and quantitative data and process descriptions.
-
+<!--more-->
 ## Nature's Contributions to People
 As an evolution of the the economic and scientific conceptualization of the [Millennium Ecosystem Assessment](https://www.millenniumassessment.org/en/index.html){:target="_blank"} of such interrelationships, which focuses on economically assessable ecosystem services, the Nature's Contributions to People (NCP) approach offers the possibility to abstract the positive and negative contributions of nature, the diversity of organisms, ecosystems and the associated ecological and evolutionary processes to human's quality of life depending on the cultural, socio-economic, temporal or spatial context.
 

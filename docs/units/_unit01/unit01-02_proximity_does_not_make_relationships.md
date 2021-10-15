@@ -43,16 +43,6 @@ Irregular polygons or points generate much more complex neighborhood structures,
 
 <iframe width="600" height="1080" src="https://gisma.shinyapps.io/proximity/" frameborder="0"> </iframe>
 
-## Video
-Placeholder, for now:
-
-{% include pdf pdf="GeoAI-01-01_Intro.pdf" %}
-
-
-## Unit 1 slides
-
-{% include pdf pdf="GeoAI-Unit01.pdf" %}
-
 
 ## Further Reading
 Ana Petrovic - [Multiscale spatial contexts and neighbourhood effects](https://journals.open.tudelft.nl/abe/article/view/5194/4710)

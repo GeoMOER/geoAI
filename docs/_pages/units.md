@@ -3,7 +3,7 @@ title: Course Units
 id: Units
 header:
   image: "/assets/images/title.png"
-  caption: 'Image: Source?'
+  caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'
 
 permalink: /units.html
 sidebar:
