@@ -35,10 +35,8 @@ And even more, all these aspects are influenced by the people who act, who conti
 
 
 ## Video
-Placeholder, for now:
 
-{% include pdf pdf="GeoAI-01-01_Intro.pdf" %}
-
+{% include video id="Uj9gy2rDvn8" provider="youtube" %}
 
 ## Unit 1 slides
 

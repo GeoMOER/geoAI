@@ -24,3 +24,7 @@ At the end of this unit you should be able to
 
 * understand the basic concept of a U-net deep neural network
 * to get your first U-net up and running and to recognize some spatial structures with it
+
+
+
+{% include video id="3WcUTMWa9fU" provider="youtube" %}

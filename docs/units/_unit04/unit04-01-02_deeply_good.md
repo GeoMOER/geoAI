@@ -21,10 +21,7 @@ If this is your first encounter with deep learning, here follows a brief introdu
 Deep learning algorithms as well as random forest models belong to the machine learning tools. They are a special form of neural networks.
 They are used especially frequently in image recognition.
 
-## Video
-Placeholder, for now:
-
-{% include pdf pdf="GeoAI-04-01_DL.pdf" %}
+{% include video id="RbcHiAYPbC0" provider="youtube" %}
 
 
 ## U-Net

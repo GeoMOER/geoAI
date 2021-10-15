@@ -34,11 +34,8 @@ To accomplish this task, we will use a random forest machine learning approach. 
 *Image: Machine Learning. Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
 
 
-## Video
-Placeholder, for now:
 
-{% include pdf pdf="GeoAI-03-01_Intro.pdf" %}
-
+{% include video id="Yh9KGcxT_O4" provider="youtube" %}
 
 ## Unit 3 slides
 

@@ -17,6 +17,9 @@ A brief introduction to remote sensing using optical sensors as an example.
 *Image: "Remote sensing is the acquiring of data about an object without touching it" (Jensen 2007). [public domain] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Honor%C3%A9_Daumier,_Nadar_in_a_balloon_Nadar,_elevating_photography_to_the_height_of_Art,_(1869),_lithograph.jpg)*
 
 
+{% include video id="4GTANfMdyGc" provider="youtube" %}
+
+
 Still need to include:
 * Scan angle dependence
 * Reflection, transmission, absorption
@@ -50,6 +53,12 @@ Another fundamental law of black-body radiation, Wien's displacement law describ
 where (&lambda;) is the wavelength of the maximum intensity and (&Tau;) is the absolute temperature (in Kelvin) of the emitting body. This law describes why the temperature (&Tau;) is responsible for the shifted peaks in the above graphic.
 
 ### Sensor types
+
+
+{% include video id="i-4lh67TQuE" provider="youtube" %}
+
+
+
 Taken from BSc [remote sensing](https://geomoer.github.io/moer-bsc-project-seminar-remote-sensing/unit04/unit04-02_sensor_types.html)
 
 ![image](../assets/images/unit02/satellite_reflectance.png)
@@ -84,6 +93,8 @@ Natural sunlight (solar radiation) is
 
 
 ### Reflective properties
+
+{% include video id="TWnnrxmXeKQ" provider="youtube" %}
 
 Remote sensing is based on measuring the radiation that is reflected or emitted from bodies on Earth's surface. See [Introduction to Remote Sensing](https://seos-project.eu/remotesensing/remotesensing-c01-p06.html) from the SEOS Project for more details.
 
@@ -123,11 +134,9 @@ The following table contains information about satellite data that is often used
 |   | Sentinel-2                    | 2015  | 10-20m             | ~1 week             |
 |   | MODIS Terra/Aqua              | 1999  | 250-1000m          | 4x / day            |
 
-## Video
-Placeholder, for now:
 
-{% include pdf pdf="GeoAI-02-01_What_is_Remote_Sensing.pdf" %}
 
+{% include video id="fAtmoWrPBV8" provider="youtube" %}
 
 ## Unit 2 slides
 

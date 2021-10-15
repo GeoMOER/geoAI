@@ -1,5 +1,5 @@
 ---
-title: Space needs a scope
+title: Overview
 toc: true
 header:
   image: /assets/images/01-splash.jpg
@@ -36,3 +36,7 @@ At the end of this unit you should be able to
 * outline the major interaction of nature and people according to the NCP framework
 * recognize spatial relationships and classify important abstract concepts
 * understand when spatial proximity explains processes and interactions robustly, i.e. relationships
+
+
+
+{% include video id="AaacYoA3b-s" provider="youtube" %}

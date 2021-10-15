@@ -25,3 +25,7 @@ At the end of this unit you should be able to
 * understand how we take advantage of different wavelengths to measure different properties of the Earth's surface
 * explain the difference between vector and raster data and provide examples of when each type is appropriate to use
 * analyze aerial imagery in R
+
+
+
+{% include video id="TJ54vqTkOXM" provider="youtube" %}
