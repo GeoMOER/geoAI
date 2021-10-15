@@ -238,6 +238,7 @@ prepare_ds <-
 
 ## Prepare data for training
 
+We will now apply the function for preparing the datasets to the training and validation data. The parameter train is always set to FALSE except for the training data, since the data augmentation is only performed there. You can also already prepare the testing data, but it is not necessary at this point.
 
 ```r
 # prepare data for training
@@ -263,8 +264,7 @@ validation_dataset <-
 
 
 ## Expected Output
-At the end of this exercise you should have three data sets. One based on 80% of the input data for training, one with 10% of the input data for the validation and one with the last 10% of the input data for testing the results. Furthermore data augmentation was applied to each tile. 
-
+At the end of this exercise you should have three data sets. One based on 80% of the input data for training, one with 10% of the input data for the validation and one with the last 10% of the input data for testing the results. Furthermore, data augmentation was applied to the training data.
 
 
 

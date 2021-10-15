@@ -1,5 +1,5 @@
 ---
-title: EX | Predicting using U-Net
+title: EX | Predicting using Unet
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
@@ -67,7 +67,7 @@ rebuild_img <-
 
 ```
 
-## Function to prepare prediciton data
+## Function to prepare prediction data
 
 ```r 
 

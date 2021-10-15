@@ -11,20 +11,24 @@ header:
 ![image](../assets/images/unit04/workflow.png)
 *Image: 
 
-You can download the data that we will use for this unit [here](http://85.214.102.111/geo_data/)
+In this unit we want to predict houses in the south of marburg using a deep neural network, in this particular case unet. For this we use a DOP of Marburg as well as a vector file containing the outlines of the buildings for the extent of the DOP. Both files can be downloaded [here](http://85.214.102.111/geo_data/).
 
-## Create Mask 
+This entire example is based on the tutorial [Introduction to Deep Learning in R for the Analysis of UAV-based Remote Sensing Data]( https://av.tib.eu/media/49550) [CC BY 3.0 DE] by Christian Knoth. The scripts to this tutorial are available [here]( https://dachro.github.io/ogh_summer_school_2020/Tutorial_DL_UAV.html#introduction).
 
-Exercise for creating a mask from vector files, to a raster mask and then slice the mask and the original image into several tiles. the mask is a raster 
+## EX | Create Masks 
 
 
-## Prepare your data
+In this exercise we will create a raster mask from vectordata containing the outlines of all buildings in our study area in the south of Marburg (figure below). For this purpose, both the raster mask and the DOP of the study area will be split from large raster (.tif) files into many smaller image files (.png).
 
-data augmentation and preparation to go into the unet
 
-## U-net
+## EX | Prepare your data
 
-function containing the unet and train the model. 
+In this exercise we will split our image and mask files into a training, a validation and a test dataset. The training dataset will be artificially enhanced by data augmentation.
 
-## Prediction
+## EX | Unet
+
+
+## EX | Predicting using Unet
+
+## EX | How well does your model perform?
 
