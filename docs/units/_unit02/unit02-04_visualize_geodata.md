@@ -133,4 +133,30 @@ marburg_stack <- stack(rasterStack, rgbI)
 saveRDS(marburg_stack, (file.path(envrmt$data_processed, "dop_indices.rds"))
 ```
 ## Bonus: sen2R
+Working with high-resolution aerial imagery is certainly nice, but also has its downsides. It is expensive to generate or procure, it often only covers relatively small areas and it is not always readily available. Satellite data, on the other hand, is continuously available and made readily accessible. One example of such satellite data that is often used in environmental remote sensing is the [Sentinel-2 mission](https://sentinel.esa.int/web/sentinel/missions/sentinel-2) by the European Space Agency.
 
+The library `sen2r` allows you to download and preprocess Sentinel-2 images directly into `R`.
+
+To install `sen2r` you need to have `Rtools` installed.
+
+1. Go to [http://cran.r-project.org/bin/windows/Rtools/](http://cran.r-project.org/bin/windows/Rtools/) 
+1. Select the download link that corresponds to your version of `R`
+1. Open the .exe file and use the default settings
+1. **Make sure to check the box for the installer to edit your PATH**
+1. Run `library(devtools)` in `R`
+1. Run `find_rtools()` -- if `TRUE` the installation worked properly
+
+Then it is a matter of simply installing the package as we would with any other package.
+
+```r
+install.packages("sen2r")
+library(sen2r)
+```
+
+The easiest way to use `sen2r` is to open the GUI and use it in interactive mode. Do this by using the function of the same name.
+
+```r
+sen2r()
+```
+
+The [sen2r vignette](https://sen2r.ranghetti.info/) offers plenty of helpful information about how to use the GUI as well as to access the functionality of `sen2r` from within `R`.
