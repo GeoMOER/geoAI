@@ -103,35 +103,7 @@ Finally, some useful settings have to be made. So it makes sense to have the cur
 
 If you put everything together in one script it looks like this:
 
-
-```r
-### mpg course basic setup
-# install/check from github
-devtools::install_github("envima/envimaR")
-
-packagesToLoad = c("mapview", "raster", "sf")
-
-# Source setup script
-require(envimaR)
-rootDir = envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
-                                       alt_env_id = "COMPUTERNAME",
-                                       alt_env_value = "PCRZP",
-                                       alt_env_root_folder = "F:/BEN/edu")
-
-
-                    "run/",                # folder for runtime data storage
-
-# Now set automatically root direcory, folder structure and load libraries
-envrmt = envimaR::createEnvi(root_folder = rootDir,
-                             folders = projectDirList,
-                             path_prefix = "path_",
-                             libs = packagesToLoad,
-                             alt_env_id = "COMPUTERNAME",
-                             alt_env_value = "PCRZP",
-                             alt_env_root_folder = "F:/BEN/edu")
-## set raster temp path
-raster::rasterOptions(tmpdir = envrmt$path_tmp)
-```
+{% gist bed5f4431b6d39098a35472359bb9969 %}
 
 Please **check** the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all paths as character strings in a convenient  list structure
 
@@ -165,7 +137,7 @@ The script thus provides as intended:
 ## Assignment
 Set up the basic working environment as explained above.
 
-You can download a copy of the setup script `geoAI_setup.R` from the course server [here](http://85.214.102.111/geo_data/src/).
+
 {: .notice--info}
 
 Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.
