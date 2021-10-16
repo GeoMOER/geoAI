@@ -62,10 +62,6 @@ Provided I want to create a project with the mandantory folder structure defined
 # list of packages to load
 packagesToLoad = c("mapview", "raster", "rgdal", "sf", "keras","reticulate")
 
-# install keras & miniconda
-reticulate::install_miniconda()
-keras::install_keras())
-
 # Automatically set root direcory, folder structure and load libraries
 envrmt = envimaR::createEnvi(root_folder = rootDir,
                              folders = projectDirList,
@@ -110,7 +106,7 @@ If you put everything together in one script it looks like this:
 {% gist a2324e11b4342cbd4da29b0a819b58e6 moc-courses-setup.R%}
 [Get moc-courses-setup.R](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6/archive/4e57418e6c645ce09766f7aa6fe2cabb5c431349.zip)
 
-Please **check** the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all paths as character strings in a convenient  list structure
+Please *check* the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all paths as character strings in a convenient  list structure.
 
 ```r
 # traditionally
@@ -120,25 +116,28 @@ str(envrmt)
 require(listviewer)
 listviewer::jsonedit(envrmt)  
 ```
+The script thus provides as intended:
 
+- create/initialize the mandatory basic folder structure 
+- create a list variable containing all paths as shortcuts  
+- install and initialize all packages and settings for the project
+
+## Install Tensorflow and keras for DL purposes
 
 Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.
 
+```r
+# install keras & miniconda
+reticulate::install_miniconda()
+keras::install_keras()
+```
+
 That being said, *the implementation is not seamless.* The first time that you run the `moc-courses-setup.R` script, you will likely drink one ore more cups of coffe and receive many errors that need to be worked through. 
 
-Several errors are likely to pop up during this installation. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. 
 
-{: .notice--info}
+{: .notice--warning}
 
-When in doubt, ask Google! It is highly unlikely that you are the first person to ask the question -- [StackOverflow](https://stackoverflow.com/questions/tagged/r) is your friend!
-
-
-
-## Concluding remarks 
-
-{: .notice--info}
-
-It is **very** useful to save this script in the `src` folder (e.g. under `geoAI_setup.R`) and source it **before every** start of any analysis script connected with this project. You can do this easily as follows:
+It is **mandantory** to save this script in the `src` folder (e.g. under `geoAI_setup.R`) and source it **before every** start of any analysis script connected with this project. You can do this easily as follows:
 
 ```r
 source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
@@ -148,13 +147,33 @@ source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
                   "src/geoAI_setup.R"))
 ```
 
-The script thus provides as intended:
 
-- create/initialize the mandatory basic folder structure 
-- create a list variable containing all paths as shortcuts  
-- install and initialize all packages and settings for the project
 
-## Assignment
+{% capture Assignment 01-1 %}
 
-1. Set up the basic working environment as explained above.
-1. Run the following script. It is a test if the setup was successful. Run it step by step.
+Implement and check working environment setup
+
+1. Set up and check the basic working environment as explained above.
+1. Check if the installation of `tensorflow` and `keras` was successful. Copy the following script from the vignette "Getting Started with Keras" into the editor and execute it step by step. Compare the results with the vignette. 
+{% gist 79a7249aaced24fafd23149b4fb0a81f%}
+[Get keras-test.R](https://gist.github.com/envimar/79a7249aaced24fafd23149b4fb0a81f/archive/5fde2a75343ee741c45b29a2ca997f61ec0861e9.zip)
+
+{% endcapture %}
+
+<div class="notice--success">
+  <h4 class="no_toc">Aufgabenstellung 01-1:</h4>
+  {{ Assignment 01-1 | markdownify }}
+</div> 
+
+
+## Concluding remarks 
+
+Please note!
+Several errors are likely to pop up during this installation and setup process. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. 
+
+This procedure is typical and usually necessary. For complex tasks, external software libraries and tools often need to be landed and connected. Even if most software developers try to facilitate this eye, it is often associated with an interactive and step-by-step approach.
+
+
+When in doubt (`and before asking your instructor ;-)`), ask Google! Not because we are too comfortable to answer (we will answer you of course) but because as (data) scientists you have to learn to solve these problems. We have all learned this way as well and it is highly unlikely that you are the first person to ask the question -- Especially [StackOverflow](https://stackoverflow.com/questions/tagged/r) is your friend!
+{: .notice--info}
+
