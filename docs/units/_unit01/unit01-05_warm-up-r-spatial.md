@@ -10,21 +10,15 @@ header:
 <!--more-->
 
 
-
-{% capture Assignment-01-2 %}
-
-
+## Assignment Unit-1-2
+{% capture Assignment-1-2 %}
 
 {% endcapture %}
-
 <div class="notice--success">
-  <h4 class="no_toc">Assignment 01-2:</h4>
-  {{ Assignment-01-2 | markdownify }}
+  {{ Assignment-1-2 | markdownify }}
 </div> 
 
 
 ## Concluding remarks 
-
-
 {: .notice--info}
 

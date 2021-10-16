@@ -148,9 +148,8 @@ source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
 ```
 
 
-
-{% capture Assignment-01-1 %}
-
+{% capture Assignment-1-1 %}
+## Assignment Unit-1-1
 Implement and check working environment setup
 
 1. Set up and check the basic working environment as explained above.
@@ -161,14 +160,13 @@ Implement and check working environment setup
 
 
 {% endcapture %}
-
 <div class="notice--success">
-  <h4 class="no_toc">Assignment 01-11:</h4>
-  {{ Assignment-01-1 | markdownify }}
+  {{ Assignment-1-1 | markdownify }}
 </div> 
 
 
-## Concluding remarks 
+{% capture remarks %}
+### Concluding remarks 
 
 Please note!
 Several errors are likely to pop up during this installation and setup process. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. 
@@ -177,5 +175,9 @@ This procedure is typical and usually necessary. For complex tasks, external sof
 
 
 When in doubt (`and before asking your instructor ;-)`), ask Google! Not because we are too comfortable to answer (we will answer you of course) but because as (data) scientists you have to learn to solve these problems. We have all learned this way as well and it is highly unlikely that you are the first person to ask the question -- Especially [StackOverflow](https://stackoverflow.com/questions/tagged/r) is your friend!
-{: .notice--info}
+
+{% endcapture %}
+<div class="notice--info">
+  {{ remarks | markdownify }}
+</div> 
 
