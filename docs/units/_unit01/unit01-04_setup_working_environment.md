@@ -149,7 +149,7 @@ source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
 
 
 
-{% capture Assignment 01-1 %}
+{% capture Assignment-01-1 %}
 
 Implement and check working environment setup
 
@@ -157,12 +157,14 @@ Implement and check working environment setup
 1. Check if the installation of `tensorflow` and `keras` was successful. Copy the following script from the vignette "Getting Started with Keras" into the editor and execute it step by step. Compare the results with the vignette. 
 {% gist 79a7249aaced24fafd23149b4fb0a81f%}
 [Get keras-test.R](https://gist.github.com/envimar/79a7249aaced24fafd23149b4fb0a81f/archive/5fde2a75343ee741c45b29a2ca997f61ec0861e9.zip)
+1. Write upload a short error report if it fails and add what you have done so far to solve the problem. Please include also the output of `sessionInfo()`. If everything is fine just write this in the report.
+
 
 {% endcapture %}
 
 <div class="notice--success">
-  <h4 class="no_toc">Aufgabenstellung 01-1:</h4>
-  {{ Assignment 01-1 | markdownify }}
+  <h4 class="no_toc">Assignment 01-11:</h4>
+  {{ Assignment-01-1 | markdownify }}
 </div> 
 
 
