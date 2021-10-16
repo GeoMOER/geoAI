@@ -60,7 +60,11 @@ Provided I want to create a project with the mandantory folder structure defined
 
 ```r
 # list of packages to load
-packagesToLoad = c("mapview", "raster", "rgdal", "sf")
+packagesToLoad = c("mapview", "raster", "rgdal", "sf", "keras","reticulate")
+
+# install keras & miniconda
+reticulate::install_miniconda()
+keras::install_keras())
 
 # Automatically set root direcory, folder structure and load libraries
 envrmt = envimaR::createEnvi(root_folder = rootDir,
@@ -97,14 +101,15 @@ Loading required package: rlas
 Loading required package: uavRst
 ```
 
-# Wrap it up in a setup script
+## Wrap it up in a setup script
 
 Finally, some useful settings have to be made. So it makes sense to have the current github versions of the non CRAN packages available and for the `raster` package you should also set an option for temporary actions.
 
 If you put everything together in one script it looks like this:
 
-{% gist a2324e11b4342cbd4da29b0a819b58e6 %}
-[Download File](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6#file-moc-courses-setup-r)
+{% gist a2324e11b4342cbd4da29b0a819b58e6 moc-courses-setup.R%}
+[Get moc-courses-setup.R](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6/archive/4e57418e6c645ce09766f7aa6fe2cabb5c431349.zip)
+
 Please **check** the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all paths as character strings in a convenient  list structure
 
 ```r
@@ -116,7 +121,23 @@ require(listviewer)
 listviewer::jsonedit(envrmt)  
 ```
 
-## Concluding remarks and considerations
+
+Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.
+
+That being said, *the implementation is not seamless.* The first time that you run the `moc-courses-setup.R` script, you will likely drink one ore more cups of coffe and receive many errors that need to be worked through. 
+
+Several errors are likely to pop up during this installation. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. 
+
+{: .notice--info}
+
+When in doubt, ask Google! It is highly unlikely that you are the first person to ask the question -- [StackOverflow](https://stackoverflow.com/questions/tagged/r) is your friend!
+
+
+
+## Concluding remarks 
+
+{: .notice--info}
+
 It is **very** useful to save this script in the `src` folder (e.g. under `geoAI_setup.R`) and source it **before every** start of any analysis script connected with this project. You can do this easily as follows:
 
 ```r
@@ -130,24 +151,10 @@ source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
 The script thus provides as intended:
 
 - create/initialize the mandatory basic folder structure 
-- a list variable containing all paths as shortcuts  
-- initialize all packages and settings for the project
-
+- create a list variable containing all paths as shortcuts  
+- install and initialize all packages and settings for the project
 
 ## Assignment
-Set up the basic working environment as explained above.
 
-
-{: .notice--info}
-
-Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning. The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.
-
-That being said, *the implementation is not seamless.* The first time that you run the `geoAI_setup.R` script, you will likely receive many errors that need to be worked through. For example, to access the Python `keras` package, you will likely have to do the following:
-
-```r
-install.packages("keras")
-library(keras)
-reticulate::install_miniconda()
-keras::install_keras()
-```
-Several errors are likely to pop up during this installation. As you will learn through this entire process of patching together different pieces of software, some error warnings are more descriptive than others. When in doubt, ask Google! It is highly unlikely that you are the first person to ask the question -- [StackOverflow](https://stackoverflow.com/questions/tagged/r) is your friend!
+1. Set up the basic working environment as explained above.
+1. Run the following script. It is a test if the setup was successful. Run it step by step.
