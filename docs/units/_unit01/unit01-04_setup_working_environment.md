@@ -103,8 +103,8 @@ Finally, some useful settings have to be made. So it makes sense to have the cur
 
 If you put everything together in one script it looks like this:
 
-{% gist bed5f4431b6d39098a35472359bb9969 %}
-
+{% gist a2324e11b4342cbd4da29b0a819b58e6 %}
+[Download File](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6#file-moc-courses-setup-r)
 Please **check** the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all paths as character strings in a convenient  list structure
 
 ```r
