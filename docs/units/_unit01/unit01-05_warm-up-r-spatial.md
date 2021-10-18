@@ -6,14 +6,6 @@ header:
   image_description: "Dr. John Snow's map"
   caption: "Map: [**Dr. John Snow**](https://en.wikipedia.org/wiki/John_Snow) [Wellcome Library via wikimedia](https://w.wiki/QtV)"
 ---
----
-title: EX | In a nutshell - remote sensing with R  
-toc: true
-header:
-  image: /assets/images/unit02/31031723265_0890cd9547_o.jpg
-  image_description: "Cloudscape Over the Philippine Sea"
-  caption: "Image: [NASA's Marshall Space Flight Center](https://www.nasa.gov/centers/marshall/home/index.html) [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
----
 
 R is a very powerful software tool with many functions. In this course, we are interested in using R to analyze spatial data and create maps based on it.
 <!--more-->
