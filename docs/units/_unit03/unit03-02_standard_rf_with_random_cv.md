@@ -90,7 +90,7 @@ n_distinct(filter(extr_train, class == "SO"))
 ```
 
 ## Random Forest
-Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package]( https://topepo.github.io/caret/).
+Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
 # 1 - set up ####
@@ -134,7 +134,7 @@ model <- caret::train(predictors,
 saveRDS(model, "model.RDS")
 ```
 
-Now that you have a fully developed random forest model, you can predict the tree species for the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance. Are there any things that stand out to you?
+Congratulations, you have a fully developed random forest model! Now, you can predict the tree species for the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance. What stands out to you about the values?
 
 ## Prediction
 Since you probably want to admire your results now, it is worth bringing your model into the area by making a prediction on your predictor raster stack with your finished model.
