@@ -147,30 +147,17 @@ rgbI <- raster::stack(NDTI, VARI, TGI)
 raster::plot(rgbI)
 ```
 
-**Hint** For those interested in doing less typing and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these three and many more RGB indices in one simple function. The challenge is to get all the features of the package working, since it accesses the command line interfaces of SAGA, GRASS, and Orfeo toolbox. If you're keen to challenge yourself -- good luck!
-{: .notice--info}
+{% capture Hint %}
+**Hint:** For those interested in doing less typing and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these three and many more RGB indices in one simple function. The challenge is to get all the features of the package working, since it accesses the command line interfaces of SAGA, GRASS, and Orfeo toolbox. If you're keen to challenge yourself -- good luck!
 
-```r
-# alternatively, use uavRst
-# install it from gitHub 
-remotes::install_github("gisma/uavRst")
 
-# check if it runs
-require(uavRst)
-# we grab data from the package you may use the orchard data
-data(rgb)
-##- visualize the image
-raster::plotRGB(rgb)
+{% gist 65b54a38e078ec0e0e8ceca1c460c950 %}
+[Get snippet](https://gist.github.com/envimar/65b54a38e078ec0e0e8ceca1c460c950/archive/82dea04aa4bcdf97b347b1feb9edd4b9d5e34109.zip)
 
-##- calculate the indices
-rgbI<-rgb_indices(red   = rgb[[1]],
-                 green = rgb[[2]],
-                 blue  = rgb[[3]],
-                 rgbi = c("NDTI","VARI","TGI"))
-
-##- visualize the indices
-raster::plot(rgbI)
-```
+{% endcapture %}
+<div class="notice--info">
+  {{ Hint | markdownify }}
+</div> 
 
 ### Save the results for later usage
 Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an R session). RDS is ideal for this purpose, because it allows us to save a single R object to a file and restore it. Please note that `saveRDS`is highly efficient to save a **single** R-object only.
@@ -199,7 +186,7 @@ To install `sen2r` you need to have `Rtools` installed.
 1. Run `library(devtools)` in `R`
 1. Run `find_rtools()` -- if `TRUE` the installation worked properly
 {% endcapture %}
-<div class="notice--success">
+<div class="notice--info">
   {{ Installation-Help | markdownify }}
 </div> 
 
