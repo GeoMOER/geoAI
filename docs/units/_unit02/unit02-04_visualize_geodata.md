@@ -160,7 +160,7 @@ install.packages("sen2r")
 library(sen2r)
 ```
 ### The sen2r GUI
-The easiest way to use `sen2r` is to open the GUI and use it in interactive mode. Do this by using the function of the same name.
+First of all, the easiest way to use `sen2r` is to open the graphical user interface and use it in interactive mode. However, here you have to choose from a large number of setting options. The knowledge required for this is also necessary for the command line version presented below. You can automate both interfaces. We recommend the API but it is up to you.  Use the function with the same name.me.
 
 ```r
 sen2r:sen2r()
@@ -168,10 +168,10 @@ sen2r:sen2r()
 {% include figure image_path="/assets/images/unit01/sen2r.png" alt="sen2r GUI screenshot" caption="Sen2r GUI starting screen. You have to go through the options tab by tab. The selected configuration can be saved and also called as a script. Attention, an account at [Copernicus SciHub](https://scihub.copernicus.eu/dhus/#/home) is mandatory.." %}
 
 ### The sen2r API
-In the following script the following is executed:
-1. the working environment is set up (Attention: additional libraries etc. are also loaded here)
-2. `sent2r` is configured and called from the command line. 
-3. after the download the surface albedo is calculated as an example. 
+In the following script Sentinel data are used to calculate the surface albedo. For this the following steps are necessary:
+1. set up the working environment (Attention: additional biliotheques etc. will be loaded here)
+2. data download - for this `sent2r` is configured and executed to use the API
+3. after the download the surface albedo is calculated (exemplary) 
 
 {% gist 7b6eb9122522eb0797407ecf6cc5176b%}
 [Get sentinel_albedo.R](https://gist.github.com/envimar/7b6eb9122522eb0797407ecf6cc5176b/archive/87e28a974913acd62653fef49041a7fdc422cc4a.zip)
