@@ -90,7 +90,7 @@ n_distinct(filter(extr_train, class == "SO"))
 ```
 
 ## Random Forest
-Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package [`caret`]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package]( https://topepo.github.io/caret/).
+Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package]( https://topepo.github.io/caret/).
 
 ```r
 # 1 - set up ####
@@ -115,7 +115,8 @@ ctrl <- trainControl(method="cv",
                      number =10, #  number of folds
                      savePredictions = TRUE)
 ```
-Train a simple random forest model using the caret package. The caret package offers the method "rf". You could also explore other implementations of the random forest algorithm in `R`, for example the [ranger](https://cran.r-project.org/web/packages/ranger/index.html) package, which has a better performance. also feel free to do some model tuning.
+
+Train a simple random forest model using the `caret` package. The `train` function offers the method "rf". You could also explore other implementations of the random forest algorithm in `R`, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. Feel free to do some model tuning, as well.
 
 ```r
 # 3 - train a standard random forest model ####
