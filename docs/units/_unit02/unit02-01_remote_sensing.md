@@ -8,6 +8,7 @@ header:
 ---
 
 A brief introduction to remote sensing using optical sensors as an example.
+
 <!--more-->
 
 ## What is remote sensing?
@@ -19,19 +20,12 @@ A brief introduction to remote sensing using optical sensors as an example.
 
 {% include video id="4GTANfMdyGc" provider="youtube" %}
 
-
-Still need to include:
-* Scan angle dependence
-* Reflection, transmission, absorption
-* Scanner technique using Sentinel as an example, pixel size nadir vs. edges
-
-
 ## Physical fundamentals
 
 ### Laws
 
 #### Planck's law (Plancksches Strahlungsgesetz)
-Every physical body spontaneously and continuously emits electromagnetic radiation. The spectral radiance of a given body describes the spectral emissive power for particular radiation frequencies, based on area and angle. The formula for Planck's law is given as:
+Every physical body spontaneously and continuously emits electromagnetic radiation. The spectral radiance of a given body describes the spectral emissive power for particular radiation frequencies, based on area and angle. The formula for [Planck's law](https://en.wikipedia.org/wiki/Planck%27s_law) is given as:
 <p align="center">
   <img src="../assets/images/unit02/Planck_formula_wavelength.png">
 </p>
@@ -44,7 +38,7 @@ This shows how radiated energy emitted at shorter wavelengths (&lambda;) increas
 *Image: Visualization of Plank's law and Wien's displacement law. 4C [CC BY-SA 3.0] via [wikimedia.org](https://en.wikipedia.org/wiki/File:Wiens_law.svg)*
 
 #### Wien's displacement law (Wiensche Verschiebungsgesetz)
-Another fundamental law of black-body radiation, Wien's displacement law describes where the maximum intensity of a wavelength lies. This maximum intensity is inveresly proportional to the temperature of the emitting body. This inverse relationship between wavelength and temperature means that as temperature increase, the wavelength of the thermal radiation becomes smaller.
+Another fundamental law of black-body radiation, [Wien's displacement law](https://en.wikipedia.org/wiki/Wien%27s_displacement_law) describes where the maximum intensity of a wavelength lies. This maximum intensity is inversely proportional to the temperature of the emitting body. This inverse relationship between wavelength and temperature means that as temperature increase, the wavelength of the thermal radiation becomes smaller.
 
 <p align="center">
   <img src="../assets/images/unit02/Wien_displacement_law.png">
@@ -57,18 +51,14 @@ where (&lambda;) is the wavelength of the maximum intensity and (&Tau;) is the a
 
 {% include video id="i-4lh67TQuE" provider="youtube" %}
 
-
-
-Taken from BSc [remote sensing](https://geomoer.github.io/moer-bsc-project-seminar-remote-sensing/unit04/unit04-02_sensor_types.html)
+### Passive Sensors
+The most common remote sensing imagery comes from passive multispectral sensors. These sensors pick up the natural light from the sun and its reflectance from the Earth's surface. The images are similar to an ordinary photograph with a digital camera and consist of different channels for particular wavelengths. Most multispectral platforms have at least three spectral channels (red, green, blue aka RGB) and a maximum of twelve spectral channels. Hyperspectral sensors take this to the next level and consist of over 100 channels for different wavelengths.
 
 ![image](../assets/images/unit02/satellite_reflectance.png)
 *Image: Satellite reflectance. Hanna Meyer and Thomas Nauss [CC BY-NC 4.0] via [uni-marburg.de](https://ilias.uni-marburg.de/ilias.php?ref_id=1652369&obj_id=195392&cmd=layout&cmdClass=illmpresentationgui&cmdNode=g5&baseClass=ilLMPresentationGUI)*
 
-### Passive Sensors
-The most common remote sensing imagery comes from passive multispectral sensors. These sensors pick up the natural light from the sun and its reflectance from the Earth's surface. The images are similar to an ordinary photograph with a digital camera and consist of different channels for particular wavelengths. Most multispectral platforms have at least three spectral channels (red, green, blue aka RGB) and a maximum of twelve spectral channels. Hyperspectral sensors take this to the next level and consist of over 100 channels for different wavelengths.
-
 ### Active Sensors
-Active sensors emit their radiation by themselves. This makes them less dependent on environmental conditions, such as the angle of the sun. The long wavelengths of a radar sensor, for example, can penetrate through clouds, which makes the imagery more consistent. In later units we will see how LiDAR data works and what information can be retrieved from it.
+Active sensors emit their radiation by themselves. This makes them less dependent on environmental conditions, such as the angle of the sun. Some sensors, such as radar, have long wavelengths that can penetrate through clouds, which means no interruptions in the data collection and makes the imagery more consistent. LiDAR is another such type of sensor that emits and measures light (just like radar uses radio waves) to collect measurements. As light has a much shorter wavelength than radio, LiDAR is adept at detecting small objects and is growing in popularity among the remote sensing community.
 
 
 |   | Passive sensors                             |   | Active sensors                                          |   |

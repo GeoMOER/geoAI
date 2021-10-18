@@ -38,7 +38,7 @@ The following illustration shows the steps of a supervised classification in mor
 
 
 ## Assignment
-This exercise will prepare the polygon data that is necessary to predict **Streuobstwiese** in Hesse. Please follow along with the example of creating a vector layer of buildings in QGIS. Then, complete the same steps for the **Streuobstwiese**. Remember to save your data in the appropriate folder from the setup in Unit 1!
+This exercise will prepare the polygon data that is necessary to predict **Streuobstwiese** (engl. orchard meadows) in Hesse. Please follow along with the example of creating a vector layer of buildings in QGIS. Then, complete the same steps for the **Streuobstwiese**. Remember to save your data in the appropriate folder from the setup in Unit 1!
 
 ### Creating vector layers in QGIS
 We will use the open source GIS QGIS to create training areas. In this course, we will use the current long-term release (as of October 2021), QGIS 3.16.11 Hannover. You can download QGIS either as a [standalone version](https://qgis.org/en/site/forusers/download.html) or using OSGeo4w.
