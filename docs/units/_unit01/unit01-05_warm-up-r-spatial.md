@@ -216,7 +216,7 @@ In the following script Sentinel data are used to calculate the surface albedo. 
 The [sen2r vignette](https://sen2r.ranghetti.info/) offers plenty of helpful information about how to use the GUI as well as to access the functionality of `sen2r` from within `R`.
 
 
-## Exercises
+## Assignment Unit-1-2
 
 Now that some basics have been explained, it's time to practice on your own. The following tasks serve as an orientation framework within which you can practice in a targeted manner. There are technical, content-related and conceptual problems to be mastered. Let's go.
 
@@ -229,11 +229,25 @@ This means:
 1. Understand the operation
 
 It is a good habit to document the knowledge gained and open questions as well as problems. For this purpose, a Rmarkdown documentation is particularly useful. Excellent is the package blogdown suitable for this. The key is practice. not just getting sample source code to run, but changing it and understanding what it does. 
-{: .notice--success}
+{: .notice--info}
 
 Please do the following exercises using either the orchard or the sentinel dataset. 
 
 
+{% capture Assignment-1-2 %}
+1. Read and operate the following chapters: 
+* [Geographic data in R](https://geocompr.robinlovelace.net/spatial-class.html)
+* [Spatial data operations](https://geocompr.robinlovelace.net/spatial-operations.html#spatial-operations)
+* [Spatial Operations](https://geocompr.robinlovelace.net/spatial-operations.html#spatial-operations)
+2. Please visit Robert Hijmans Page about [unsupervised classification](https://rspatial.org/raster/rs/4-unsupclassification.html#unsupervised-classification). Follow his guidline but use:
+* the sentinel data from above 
+* the orchard data from above
+Put your results and your code (remeber to use the course setup!) in a Rmarkdownfile and knitr it to a pdf
+
+{% endcapture %}
+<div class="notice--success">
+  {{ Assignment-1-2 | markdownify }}
+</div> 
 
 
 
