@@ -132,10 +132,12 @@ marburg_stack <- stack(rasterStack, rgbI)
 
 saveRDS(marburg_stack, (file.path(envrmt$data_processed, "dop_indices.rds"))
 ```
-## Bonus: sen2R
+## Now doing the same with Sentinel data
 Working with high-resolution aerial imagery is certainly nice, but also has its downsides. It is expensive to generate or procure, it often only covers relatively small areas and it is not always readily available. Satellite data, on the other hand, is continuously available and made readily accessible. One example of such satellite data that is often used in environmental remote sensing is the [Sentinel-2 mission](https://sentinel.esa.int/web/sentinel/missions/sentinel-2) by the European Space Agency.
 
-The library `sen2r` allows you to download and preprocess Sentinel-2 images directly into `R`.
+The package `sen2r` allows you to download and preprocess Sentinel-2 images directly into `R`.
+
+{% capture Installation-Help %}
 
 To install `sen2r` you need to have `Rtools` installed.
 
@@ -145,6 +147,10 @@ To install `sen2r` you need to have `Rtools` installed.
 1. **Make sure to check the box for the installer to edit your PATH**
 1. Run `library(devtools)` in `R`
 1. Run `find_rtools()` -- if `TRUE` the installation worked properly
+{% endcapture %}
+<div class="notice--success">
+  {{ Installation-Help | markdownify }}
+</div> 
 
 Then it is a matter of simply installing the package as we would with any other package.
 
@@ -156,7 +162,95 @@ library(sen2r)
 The easiest way to use `sen2r` is to open the GUI and use it in interactive mode. Do this by using the function of the same name.
 
 ```r
-sen2r()
+sen2r:sen2r()
+```
+However if you have a look at the interface you will notice that on the one hand you have a GUI  but on the other hand it is highly complex...
+So let's do it with a script following the guideline.
+
+
+```r
+#------------------------------------------------------------------------------
+# Type: script
+# Name: sentinel_albedo.R
+# Author: Chris Reudenbach, creuden@gmail.com
+# Description:  retrieves sentinel data 
+#               and exemplary defines AOI and calculates albedo
+# Dependencies: geoAI.R  
+# Output: original sentinel tile 
+#         AOI window of this tile (research_area)
+#         top of atmosphere albedo AOI
+#         surface albedo AOI
+# Copyright: Chris Reudenbach 2021, GPL (>= 3)
+# git clone https://github.com/gisma-courses/courses-scripts/get-sentinel.git
+#------------------------------------------------------------------------------
+
+# 0 - specific setup
+#-----------------------------
+library(envimaR)
+appendpackagesToLoad = c("rprojroot","sen2R","terra")
+
+# add define project specific subfolders
+appendProjectDirList = c("data/sentinel/",
+                         "data/vector_data/",
+                         "data/sentinel/S2/",
+                         "data/sentinel/SAFE/",
+                         "data/sentinel/research_area/")
+
+source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
+                                          alt_env_id = "COMPUTERNAME",
+                                          alt_env_value = "PCRZP",
+                                          alt_env_root_folder = "F:/BEN/edu"),
+                 "src/geoAI_setup.R"))
+
+# 2 - define variables
+#---------------------
+# define area by an existing vector data set using sf
+myextent  = sf::st_read(file.path(envrmt$path_data,"/vector_data/trainingSites.shp"))
+
+# setup sentinel retrieval object
+out_paths_1 <- sen2r::sen2r(
+  gui = FALSE,
+  step_atmcorr = "l2a",
+  online = FALSE,
+  extent = myextent,
+  extent_name = "MOF",
+  timewindow = c(as.Date("2021-06-12"), as.Date("2021-06-14")),
+  list_prods = c("BOA","SCL"),
+  list_indices = c("NDVI","MSAVI2"),
+  list_rgb = c("RGB432B"),
+  mask_type = "cloud_and_shadow",
+  max_mask = 10,
+  path_l2a = envrmt$path_SAFE, # folder to store downloaded SAFE
+  server = "scihub",
+  preprocess = TRUE,
+  parallel = TRUE,
+  sen2cor_use_dem = TRUE,
+  max_cloud_safe = 10,
+  overwrite = TRUE,
+  path_out =  envrmt$path_research_area # folder to store downloaded research arec cutoff
+)
+
+# subsetting the filename(s) of the interesting file(s)
+fn_noext=xfun::sans_ext(basename(list.files(paste0(envrmt$path_research_area,"/BOA/"),pattern = "S2B2A")))
+fn = basename(list.files(paste0(envrmt$path_research_area,"/BOA/"),pattern = "S2B2A"))
+
+# creating a raster stack
+stack=raster::stack(paste0(envrmt$path_research_area,"/BOA/",fn))
+
+# now  simply calculate the surface albedo following an approch provided
+# an adapted regression function of the package 'agriwater'
+
+b2 <- stack[[2]]/10000
+b3 <- stack[[3]]/10000
+b4 <- stack[[4]]/10000
+b8 <- stack[[8]]/10000
+
+alb_top = b2 * 0.32 + b3 * 0.26 + b4 * 0.25 + b8 * 0.17
+alb_surface = 0.6054 * alb_top + 0.0797
+
+plot(alb_top)
+plot(alb_surface)
+
 ```
 
 The [sen2r vignette](https://sen2r.ranghetti.info/) offers plenty of helpful information about how to use the GUI as well as to access the functionality of `sen2r` from within `R`.
