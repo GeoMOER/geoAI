@@ -164,3 +164,22 @@ train_areas <- rbind(forest, fields, meadows, settlement)
 saveRDS(train_areas, paste0(envrmt$path_sentinel,"train_areas.rds"))
 
 ``` 
+
+## Classification 
+There are numerous methods to classify data in feature space. In principle, dise can be unsupervised or supervised.  In the case of unsupervised methods, the number of classes is usually specified and statistical methods are used to search for the best possible aggregation within the number of these classes in the feature space. The best known is the `K-means` clustering which could be called one of the simplest unsupervised machine learning algorithms.
+In our example applied for 4 classes and for simplicity executed with `RStoolbox` it looks like this:
+
+```r
+## kmeans via RStoolbox
+prediction_kmeans = unsuperClass(stack, nSamples = 25000, nClasses = 4, nStarts = 25,
+                                 nIter = 250, norm = TRUE, clusterMap = TRUE,
+                                 algorithm = "MacQueen")
+mapview(prediction_kmeans$map, col = c('darkgreen', 'burlywood', 'green', 'orange'))
+
+```
+{% include media1 url="assets/images/unit02/kmeans.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/kmeans.html){:target="_blank"} 
+<figure>
+  <figcaption>Sentinel K-means clustering based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare without doing anything we get an visually pretty good classification </figcaption>
+</figure>
+
