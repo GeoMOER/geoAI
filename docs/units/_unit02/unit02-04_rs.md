@@ -36,7 +36,7 @@ This exercise introduces the classification of satellite and aerial survey data 
 
 For this tutorial we use the Sentinel 2 images from the previous exercise. You may also use the digitized classes from the exercise before. However, the method can be used with virtually any data from earth observation satellites and aerial surveys. 
 
-## Step 1 - Setup the script
+## Step 1 - Start with setting up the script
 You can either use the saved data from the last unit or download and edit a new section for practice. In principle, however, the working environment is loaded first.
 ```r
 #------------------------------------------------------------------------------
@@ -106,36 +106,43 @@ So please check if all libraries are available.
  "mapedit","dplyr","mapview","tidyverse","rpart","rpart.plot",
  "rasterVis","caret","forcats","RStoolbox","randomForest", "e1071")
 ```
-## Step 3 - Capture training data
-The next step is optional but offers the possibility to quickly and effectively digitslize some training areas without leaving the RStudio world. For larger tasks, it is essential to refer to the high comfort of the QGIS working environment. For this exercise we use `mapedit` a small but nice package that allows onscreen digitizing in Rstudio or in a browser.  In combination with mapview it is really comfortable for fastforward digitizing. Especially helpfull is the comfortable way to produce [true or false color composites](https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/composites/).
+## Step 3 - Capture training data 
+The next step is optional but offers the possibility to quickly and effectively digitize some training areas without leaving the RStudio world. For larger tasks, it is essential to refer to the high comfort of the QGIS working environment as decribed in (see also [EX	Digitizing training areas](unit02-03_digitize_training_areas.html)). For this exercise we use `mapedit` a small but nice package that allows onscreen digitizing in Rstudio or in a browser.  In combination with mapview it is really comfortable for fastforward digitizing. Especially helpfull is the comfortable way to produce true or false [color composites](https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/composites/). 
+
 ### Color Composites for better training results
+
+Just to remember with the following command you will create a Sentinel true color composite. If you combine them with a `+` you will receive on object with both layers.
+
 ```r
 # sentinel truecolor composite 
-`mapview::viewRGB(stack, r = 4, g = 3, b = 2)
+mapview::viewRGB(stack, r = 4, g = 3, b = 2) + mapview::viewRGB(stack, r = 8, g = 4, b = 3)
 ```
 
-{% include media1 url="assets/images/unit02/tcc.html" %}
-[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/tcc.html){:target="_blank"} 
+{% include media1 url="assets/images/unit02/cc.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/cc.html){:target="_blank"} 
 <figure>
-  <figcaption>Sentinel 2 True Color Composite RGB (4, 3, 2),  Date: 2021-06-13 Region Marburg Open Forest. True color composites assign the visible spectral channels red (B04), green (B03), and blue (B02) to the corresponding red, green, and blue color channels, respectively, resulting in a quasi-naturally "colored" image of the surface as it would be seen by a human sitting on the satellite. </figcaption>
-</figure>
-
-```r
-# sentinel false color composite 
-mapview::viewRGB(stack, r = 8, g = 4, b = 3)
-```
-
-{% include media1 url="assets/images/unit02/fcc.html" %}
-[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/fcc.html){:target="_blank"} 
-<figure>
-  <figcaption>Sentinel 2 False Color Composite RGB (8,4,3),  Date: 2021-06-13 Region Marburg Open Forest, False color images are often produced with the spectral channels near infrared, red and green.  It is excellent for estimating vegetation because plants reflect near infrared and green light while absorbing red light (Red Egde Effect). Denser plant cover is darker red. Cities and open ground are gray or light brown, and water appears blue or black. </figcaption>
+  <figcaption>Sentinel 2 True Color Composite RGB (4, 3, 2),  Date: 2021-06-13 Region Marburg Open Forest.
+  Use the layer control to toggle the layers.
+  True color composites assign the visible spectral channels red (B04), green (B03), and blue (B02) to the corresponding red, green, and blue color channels, respectively, resulting in a quasi-naturally "colored" image of the surface as it would be seen by a human sitting on the satellite.
+  False color images are often produced with the spectral channels near infrared, red and green.  It is excellent for estimating vegetation because plants reflect near infrared and green light while absorbing red light (Red Egde Effect). Denser plant cover is darker red. Cities and open ground are gray or light brown, and water appears blue or black. 
+  </figcaption>
 </figure>
 
 
 ### Digitize fast forward training data
 
 We specify that we want to classify four types of land cover: forest, fields, meadows and settlements.
-Each class is digitized and typed in a single way
+Each class is digitized and typed in a single way. 
+
+```r
+fields <- mapview::viewRGB(stack, r = 8, g = 4, b = 3) %>% mapedit::editMap()
+```
+{% include figure image_path="/assets/images/unit01/fields.png" alt="The mapedit GUI. After digitizing click on DONE." %}
+
+Then carry out the next step. This will assign the attributes *class* and *id*.
+```r
+fields <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "fields", id = 2)
+```
 
 We call the image composite that makes sense for us (False Color) with the following command. The digitization with mapedit is mostly self-explanatory and GUI-supported and is finished with 'Done'.
 
