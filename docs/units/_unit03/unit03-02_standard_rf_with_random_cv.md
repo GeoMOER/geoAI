@@ -10,33 +10,35 @@ header:
 Create a random forest model with random cross-validation.
 
 ## Read the data
-In the first step you need your previously prepared predictor variables (DOP and indices) and the **Streuobstwiese** polygons. Combine all of your raster layers into one raster stack and ensure that each layer name is unique. 
+In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the **Streuobstwiese** polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
 
 ```r
-# rasterStack containing the bands red, green, blue and nir
+# load rasterStack containing red, green, blue and NIR bands
 rasterStack = raster::stack(file.path(envrmt$path_raw_data_aerial, "marburg_dop_rgbi.tif"))
-# also load the indices you calculated in the last exercise:
+
+# load the indices you calculated in the last exercise
 indices = raster::stack(file.path(envrmt$path_unit03_aerial, "dop_indices.tif"))
 
-# add all to one raster stack:
+# stack them all into one raster
 rasterStack = raster::stack(rasterStack, indices)
 
-
-
+# check that all names are unique
+names(rasterStack)
 ``` 
-Also check if your raster and polygons have the same projection. Also make sure that each polygon has a unique ID. If the data does not include an ID number, add one.
+
+At this point, it is also a good idea to check that the raster and polygons have the same Coordinate Reference System (CRS). A [CRS](https://en.wikipedia.org/wiki/Spatial_reference_system) is a set of parameters that determine how to display geographic coordinates (i.e. tell your computer how to represent the Earth and your data on your screen). Also, we need to make sure that each polygon has a unique ID. If the data does not include an ID number, add one.
 
 ```r
-# now the vector data: load the file with the sf package  and check if the crs is matching with the raster stack
+# now the vector data: use the sf package to load the file and check if the crs matches with the raster stack
 pol = sf::read_sf(file.path(file.path(envrmt$path_raw_data_vector, "marburg_buildings_selfmade.gpkg")))
 pol = sf::st_transform(pol, crs(rasterStack))
-# also if you haven´t done it already, add IDs to your polygons
-pol$OBJ_ID = 1:nrow(pol)
 
+# add IDs to your polygons, if they don't have them
+pol$OBJ_ID = 1:nrow(pol)
 ```
  
 ## Extract the data 
-For each pixel in a training polygon we now want to extract each value in the predictor raster stack. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the **Streuobstwiese**. The data gets formatted to a dataframe that we can merge with the original polygons. In this way we get back the class information of the polygons.
+Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the **Streuobstwiese**. The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
 
 ```r
 # to extract the data use raster::extract or the much faster package exactextractr
@@ -44,13 +46,12 @@ extr = exact_extract(rasterStack, pol, include_cols = c( "class",  "OBJ_ID"))
 extr = extr[sapply(extr, is.data.frame)]
 extr = do.call(rbind, extr)
 
-
 saveRDS(extr, file.path(envrmt$path_model_training_data, "extraction.RDS"))
-
 ```
 
 ## Balancing
-To balance the data, we will use the dataframe with the extracted values for each pixel. *This is important because...* At first we will check how many pixel of each class are in our dataframe. We will then downsample the larger class. Therefore we will randomly sample the same amount of rows from the larger class that is available in the smaller class. 
+In some cases, you may want to use machine learning algorithms on data that is imbalanced. Imbalanced data occurs when the number of training polygons for one class is significantly larger (or smaller) than that of the other classes in the dataset. If we used imbalanced data, we may create a model that cannot properly predict for unknown data, because one class is either over- or underrepresented in the training data.
+To counteract this, we will balance the data. To do so, we will use the dataframe with the extracted values for each pixel. First, we need to check how many pixel of each class are in our dataframe. Then, we downsample the larger class. This entails that we take a random sample of rows from the larger class that is equal to the number of rows in the smaller class. 
 
 ```r
 extr = readRDS(file.path(envrmt$path_model_training_data, "extraction.RDS"))
@@ -68,78 +69,87 @@ other = other[sample(nrow(buildings)), ]
 
 # combine the two dataframes
 extr = rbind(other, buildings)
-
 ```
-Then we will split the data into one dataframe for the model training, containing 80% of the data and one for testing containing 20% of the data. We will use the function createDataPartition from the caret package for this task. This function is very useful as it tries to maintain the ratio of each class in the datasets.
+
+Then, we split the data into two sets: one for model training and the other for testing. We will use 80% of the data for training and 20% of the data for testing. We will use the function `createDataPartition` from the `caret` package for this task. This function is very useful, as it tries to maintain the ratio of each class in the datasets.
+
 ```r
 trainIndex = caret::createDataPartition(extr$class, p = 0.8, list = FALSE)
 training = extr[ trainIndex,]
 testing = extr[ -trainIndex,]
-
 
 saveRDS(training, file.path(envrmt$path_model_training_data, "extr_train.RDS"))
 saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 ```
 
 ## Random Forest
-Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
+Now we can finally start our first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
-
 training = na.omit(training)
 training$class <- as.factor(training$class)
+
 # random forest
 predictors = training[,3:10]
 response = training[,"class"]
-
 ```
 
-Define your response and predictors, the response is just one column containing your class label, while the predictors are all the columns containing the information extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
-Train a simple random forest model using the `caret` package. The `train` function offers the method "rf". You could also explore other implementations of the random forest algorithm in `R`, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. Feel free to do some model tuning, as well.
+The first step here is to define your response and predictors. The response is just one column containing your class label, because we want to classify the rest of the image. The predictors are all of the columns with the information that we extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
+
+Now, use the `caret` package to train a simple random forest model. Here, we use the method "rf" in the `train` function to do so. There are many other implementations of the random forest algorithm in `R` that you can explore, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. 
+
+We also use the `expand.grid` function to do some [model tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization), as well. This is complicated, but put simply it returns a model with the parameters optimized for the best accuracy.
 
 ```r
-
-cl <- makeCluster(4)
+# create parallel cluster to increase computing speed
+n_cores <- detectCores() - 1 
+cl <- makeCluster(n_cores)
 registerDoParallel(cl)
 
+# create grid for tuning features
 tgrid <- expand.grid(
   mtry = 2:4,
   splitrule = "gini",
   min.node.size = c(10, 20)
 )
 
+# control the parameters of the train function
 ctrl <- trainControl(method="cv",
-                     number =10, #  number of folds
+                     number = 10, #  number of folds
                      savePredictions = TRUE,
                      allowParallel = TRUE)
 
+# train the model
 model <- train(predictors,
                response,
                method = "ranger",
-               trControl =ctrl,
+               trControl = ctrl,
                tuneGrid = tgrid,
                num.trees = 100,
                importance = TRUE)
 
-
-
+# stop parallel cluster
 stopCluster(cl)
 
-
+# save the model
 saveRDS(model, "model.RDS")
 ```
 
-Congratulations, you have a fully developed random forest model! Now, you can predict the tree species for the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance. What stands out to you about the values?
+Congratulations, you have a fully developed random forest model! Now, you can predict the classifications for the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance. What stands out to you about the values?
 
 ## Prediction
 Since you probably want to admire your results now, it is worth bringing your model into the area by making a prediction on your predictor raster stack with your finished model.
 
 ```r
 model <- readRDS(file.path(envrmt$models, "model.RDS"))
-   
+
+# use model to make a spatial prediction (SpatRaster)
 prediction <- terra::predict(rasterStack, model, na.rm = TRUE)
-   
+
+# save prediction raster
 terra::writeRaster(prediction, file.path(envrmt$prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
+
+# save SpatRaster as RDS
 saveRDS(prediction, file.path(envrmt$prediction, paste0(species, "_pred.RDS")))
 ```
 
