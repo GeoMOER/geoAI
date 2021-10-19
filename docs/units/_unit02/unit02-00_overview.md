@@ -7,7 +7,7 @@ header:
   caption: "Image: [NASA's Marshall Space Flight Center](https://www.nasa.gov/centers/marshall/home/index.html) [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
 ---
 
-Remote Sensing 101
+Remote sensing is central to every discipline that deals with space. In the geosciences, it is the only measurement technique that offers complete coverage of large spatial scales. Using satellite, aircraft and drone imagery to detect changes to Earth's surface is an essential component of environmental informatics. Remote sensing is often paired with biophysical, geophysical or human-induced processes to develop predictive models. Here, image analysis methods that extract information to identify the underlying processes are critical. The flood of imagery and remote sensing data available needs to be accessible for both scientific knowledge gain and societal future challenges.
 
 <!--more-->
 
@@ -15,7 +15,7 @@ Remote Sensing 101
 In the last session, you learned about human-environmental interactions through the NCP framework. You also saw great examples of geographical analysis in human history and saw that interpolation is not the same thing as prediction. With that background on why spatial composition matters, we now move on to observing and measuring environmental variables in space.
 
 ## This session
-In this unit, you will learn the basics of optical remote sensing and different types of sensors. In addition, we will introduce a variety of different data formats for working with geodata that will be useful for the final project of this course. The knowledge about the theories and properties of senors that you learn in the first section will support the knowledge that you gain about remote sensing data in the second section.
+We call this unit Remote Sensing 101 because you will learn the basics of optical remote sensing and different types of sensors. In addition, we will introduce a variety of different data formats for working with geodata that will be useful for the final project of this course. The knowledge about the physical laws and properties of sensors that you learn in the first section will support the knowledge that you gain about remote sensing data in the second section.
 
 ## Learning Objectives
 
