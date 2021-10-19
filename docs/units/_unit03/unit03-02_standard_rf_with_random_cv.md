@@ -95,30 +95,23 @@ response = training[,"class"]
 ```
 
 Define your response and predictors, the response is just one column containing your class label, while the predictors are all the columns containing the information extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
-
-```r
-# set control settings to random cross-validation
-
-ctrl <- trainControl(method="cv",
-                     number =10, #  number of folds
-                     savePredictions = TRUE)
-					 
-tgrid <- expand.grid(mtry = 2:4,
-				splitrule = "gini",
-				min.node.size = c(10, 20)
-)					 
-					 
-```
-
 Train a simple random forest model using the `caret` package. The `train` function offers the method "rf". You could also explore other implementations of the random forest algorithm in `R`, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. Feel free to do some model tuning, as well.
 
 ```r
-# train a standard random forest model 
-
-set.seed(100)
 
 cl <- makeCluster(4)
 registerDoParallel(cl)
+
+tgrid <- expand.grid(
+  mtry = 2:4,
+  splitrule = "gini",
+  min.node.size = c(10, 20)
+)
+
+ctrl <- trainControl(method="cv",
+                     number =10, #  number of folds
+                     savePredictions = TRUE,
+                     allowParallel = TRUE)
 
 model <- train(predictors,
                response,
@@ -131,6 +124,7 @@ model <- train(predictors,
 
 
 stopCluster(cl)
+
 
 saveRDS(model, "model.RDS")
 ```

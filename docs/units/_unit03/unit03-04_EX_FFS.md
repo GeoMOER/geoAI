@@ -13,25 +13,17 @@ Spatial prediction, right this time!
 We will once again predict orchard meadows in Hesse. You can use the same prepared and balanced dataset as in the last exercise. 
 
 
-```r
-# 1 - set up ####
-#---------------#
-
-library(caret)
-library(foreach)
-library(doParallel)
-library(CAST)
-library(randomForest)
-
-```
 You can read your extracted data in the same manner as before. But now we also need to define the column that contains information about which row belongs to which polygon (Polygon ID).
 ```r
-predResp = readRDS(file.path(envrmt$model_training_data, "extraction.RDS")) 
-predictors = extr[,2:39]
-response = extr[,"class"]
-response = as.factor(response$class)
+training =  readRDS(file.path(envrmt$path_model_training_data, "extr_train.RDS")) 
 
-spacevar = "OBJ_ID"
+
+training = na.omit(training)
+training$class <- as.factor(training$class)
+# random forest
+predictors = training[,3:10]
+response = training[,"class"]
+
 ```
 ## Leave-Location-out Cross-Validation
 
@@ -39,13 +31,11 @@ Use a Leave-location-Out cross-validation as spatial cross-validation. For this 
 
 
 ```r
-
-# 2 - leave-location-out (LLO) cross-validation ####
-#--------------------------------------------------#
-
-
 # leave location out cross-validation
-indices <- CreateSpacetimeFolds(extr, spacevar, k=10, class = "class")
+indices <- CreateSpacetimeFolds(training, 
+                                spacevar = "OBJ_ID", 
+                                k=10, 
+                                class = "class")
 
 ```
 
@@ -54,13 +44,15 @@ The folds are then passed to the trainControl function as an index.
 ```r
 
 set.seed(10)
-ctrl <- trainControl(method="cv",index = indices$index,
-                     savePredictions=TRUE )
+ctrl <- trainControl(method="cv",
+                     index = indices$index,
+                     savePredictions=TRUE,
+                     allowParallel = TRUE)
 
 
 ```
 
-## Forwad-Feature-Selection
+## Forward-Feature-Selection
 
 Instead of using the train function of the caret package, now we use the ffs function from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables have to be trained with each other. 
 
@@ -69,15 +61,15 @@ Instead of using the train function of the caret package, now we use the ffs fun
 #----------------------------------------#
 
 # no model tuning
-tgrid <- expand.grid(.mtry = 2,
-                     .splitrule = "gini",
-                     .min.node.size = 1)
+tgrid <- expand.grid(mtry = 2,
+                     splitrule = "gini",
+                     min.node.size = 1)
 
 
 
 
 #run ffs model with Leave-Location-out CV
-#set.seed(10)
+
 
 ffsmodel <- ffs(predictors,
                 response$BAGRu, 
@@ -91,7 +83,7 @@ ffsmodel <- ffs(predictors,
 
 
 ffsmodel
-saveRDS(ffsmodel, "ffsmodel.RDS")
+saveRDS(file.path(envrmt$path_unit03_models), "ffsmodel.RDS")
 
 
 ```
