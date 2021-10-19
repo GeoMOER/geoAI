@@ -89,7 +89,7 @@ stack=raster::stack(paste0(envrmt$path_research_area,"/BOA/",fn))
 
 
 ```
-### Step 2 - Using helper functions and packages
+## Step 2 - Using helper functions and packages
 
 In general, we could program almost everything ourselves using the basic raster/terra and sp/sf packages. However, the effort is enormous. Especially R lives from the community and over 20 K tested packages. In addition, there are countless blogs and code snippets provided by users and developers. Here it is definitely the art to find the "right" or more suitable material and make it usable. For the given task we now use a variety of packages and some functions.
 
