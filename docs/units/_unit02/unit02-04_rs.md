@@ -27,11 +27,11 @@ This exercise introduces the classification of satellite and aerial survey data 
 1. Preparing the work environment and loading the data
 2. Use of a variety of new packages and signature helper functions
 1. Quick & dirty digtalization of training areas 
-3. unsupervised classification with kmeans (via RStoolbox)
-4. supervised classification with:
+3. unsupervised/supervised classification 
+  * kmeans (via RStoolbox)
   * recursive partitioning and regression trees (via rpart)
   * random forest (via caret) 
-  * superclust (automated random forest via RStoolbox)
+  
 
 
 For this tutorial we use the Sentinel 2 images from the previous exercise. You may also use the digitized classes from the exercise before. However, the method can be used with virtually any data from earth observation satellites and aerial surveys. 
@@ -167,10 +167,10 @@ saveRDS(train_areas, paste0(envrmt$path_sentinel,"train_areas.rds"))
 
 ``` 
 
-## Classification 
+## Step 4 - Classification 
 There are numerous methods to classify data in feature space. In principle, these can be *unsupervised* or *supervised*.  In the case of unsupervised methods, the number of classes is usually specified and statistical methods are used to search for the best possible aggregation within the number of these classes in the feature space. 
 
-#### Manipulationg the training data 
+#### Manipulating the training data 
 First of all we have to prepare the digitized data. That means we have to arragne it for several algorithms we want to use.
 
 ```r
