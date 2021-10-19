@@ -55,3 +55,5 @@ Tobler, W. (2004) On the First Law of Geography: A Reply, Annals of the Associat
 
 ## Assignment
 Choose one of the articles from the further reading section. Your assignment is to summarize the essence of the article in approximately one half page (5-8 sentences). Please upload your synopsis of the article to the course website.
+
+<div class="tenor-gif-embed" data-postid="21779286" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/adam-savage-mythbusters-science-write-it-down-gif-21779286">Adam Savage Mythbusters GIF</a>from <a href="https://tenor.com/search/adam+savage-gifs">Adam Savage GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>

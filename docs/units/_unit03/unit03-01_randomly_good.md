@@ -28,23 +28,30 @@ Until now, these legally protected areas were recorded in the Hessian Habitat an
 
 
 ## Random forest -- The basics
-To accomplish this task, we will use a random forest machine learning approach. As with all other machine learning methods, the random forest model learns to recognize patterns and structures in the data on its own. Before it can learn, however, it must be given training data, which makes it a supervised learning method. The training data must be labeled with different classification categories for the algorithm to classify areas of **Streuobstwiese** correctly.
+To accomplish this task, we will use a [random forest](https://en.wikipedia.org/wiki/Random_forest) machine learning approach. Random forests can be used for both regression or classification tasks, the latter of which is particularly relevant in environmental remote sensing. As with all other machine learning methods, the random forest model learns to recognize patterns and structures in the data on its own.
+
+<p align="center">
+  <img src = "../assets/images/unit03/Random_forest_diagram_complete.png">
+</p>
+*Image: Simplification of how random forest classifies data during training. Venkata Jagannath [CC BY-SA 4.0] via [wikipedia.org](https://commons.wikimedia.org/wiki/File:Random_forest_diagram_complete.png)*
+
+The random forest algorithm learns about the data by building many decision trees -- hence, the name "forest". For classification tasks, as in the above diagram, the algorithm takes an instance from the training dataset and each tree (again, there are many) classifies that instance into a class. Ultimately, the instance is assigned to the class that is the outcome of the most trees. Of course, this is an oversimplified description of how random forest works. If you are interested in theory and math behind how the algorithm truly works, please see the paper by Breiman (linked below).
+
+Since the random forest algorithm requires training data, it is a supervised learning method. This means that we, as users, must tell the algorithm what it is supposed to predict. In our case, in order for the algorithm to classify areas of **Streuobstwiese** correctly, the training data must include and be labeled with different categories or land cover classifications (i.e., field, building, forest, water).
 
 <p align="center">
   <img src="../assets/images/unit03/machine_learning.jpg">
 </p>
 *Image: Machine Learning. Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
 
-
-
 {% include video id="Yh9KGcxT_O4" provider="youtube" %}
 
 ## Unit 3 slides
-
 {% include pdf pdf="GeoAI-Unit03.pdf" %}
 
-
 ## Additional resources
+Breiman, Leo (2001). "Random Forests". Machine Learning. 45 (1): 5-32. [https://doi.org/10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324).
+
 ### Machine learning
 Here are several videos that introduce the broad field of machine learning, in general, as well as the specific algorithm that we will use in this course: random forest. In addition to these videos, we encourage you to conduct independent research, as there are some great tutorials on the Internet.
 
@@ -59,11 +66,11 @@ Here are several videos that introduce the broad field of machine learning, in g
 ### Literature about **Streuobstwiese**
 Fink, Peter; Heinze, Stefanie; Raths, Ulrike; Riecken, Uwe; Ssymank, Axel. [Naturschutz und Biologische Vielfalt Heft 156: Rote Liste der gefaehrdeten Biotoptypen Deutschlands](https://bfn.buchweltshop.de/nabiv-heft-156-rote-liste-der-gefahrdeten-biotoptypen-deutschlands.html). Bundesamt fuer Naturschutz (2017). [German]
 
-Herzog, Felix. Streuobst: a traditional agroforestry system as a model for agroforestry development in temperate Europe. Agroforestry Systems 42, 61-80 (1998). [https://doi.org/10.1023/A:1006152127824](https://doi.org/10.1023/A:1006152127824)
+Herzog, Felix. Streuobst: a traditional agroforestry system as a model for agroforestry development in temperate Europe. Agroforestry Systems 42, 61-80 (1998). [https://doi.org/10.1023/A:1006152127824](https://doi.org/10.1023/A:1006152127824).
 
 Herzog, Felix; Oetmann, Anja. [Communities of Interest and Agro-Ecosystem Restoration: Streuobst in Europe in Interactions Between Agroecosystems and Rural Communities](https://www.taylorfrancis.com/chapters/edit/10.1201/9781420041385-11/communities-interest-agro-ecosystem-restoration-streuobst-europe-felix-herzog-anja-oetmann), edited by Flora, Cornelia. Boca Raton: CRC Press (2001). 
 
-Hessian Habitat and Biotope Mapping ([Hessische Lebensraum- und Biotopkartierung; HLBK](https://www.hlnug.de/themen/naturschutz/lebensraeume-und-biotopkartierungen/biotopkartierungen/hessische-lebensraum-und-biotopkartierung-hlbk-ab-2014)) [German]
+Hessian Habitat and Biotope Mapping ([Hessische Lebensraum- und Biotopkartierung; HLBK](https://www.hlnug.de/themen/naturschutz/lebensraeume-und-biotopkartierungen/biotopkartierungen/hessische-lebensraum-und-biotopkartierung-hlbk-ab-2014)). [German]
 
 Silbereisen, Robert; Herzberger, Erwin. [Obstbaeume in der Landschaft](https://www.amazon.de/Obstb%C3%A4ume-Landschaft-Rupprecht-Lucke/dp/3800155389), edited by Lucke, Rupprecht. Stuttgart: Ulmer (1992). [German]
 
