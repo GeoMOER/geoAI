@@ -1,5 +1,5 @@
 ---
-title: EX | Remote Sensing - hands on 
+title: EX | Remote Sensing - classification hands on 
 toc: true
 header:
   image: /assets/images/unit02/31031723265_0890cd9547_o.jpg
@@ -96,8 +96,10 @@ In general, we could program almost everything ourselves using the basic raster/
 For didactical and understanding reasons we will use (somehow arbitrary) some helper functions from Sydney Goldsteins [Blog](https://urbanspatial.github.io/classifying_satellite_imagery_in_R/) that deals with classifying of satellite images. 
 
 Please note that there are a lot of blogs and help outside([rspatial - supervised   classification](https://rspatial.org/raster/rs/5-supclassification.html), [RPubs Tutorial](https://rpubs.com/ials2un/rf_landcover), [Blog](https://urbanspatial.github.io/classifying_satellite_imagery_in_R/) that deals with classifying of satellite images. 
-[supervised classification](https://www.r-exercises.com/2018/03/07/advanced-techniques-with-raster-data-part-2-supervised-classification/)
-). Nothing of them is  intended to be a scientific or content reference. However it is rather an example of how from such sources (all more or less technically similar) described how something is done, a specific set of tools emerges. This is a god starting point and after a lot of research and critical examination it emerge somehow  to the current state of the art of the community.
+[supervised classification](https://www.r-exercises.com/2018/03/07/advanced-techniques-with-raster-data-part-2-supervised-classification/) [pixel based supervised classification](https://valentinitnelav.github.io/satellite-image-classification-r/)).
+None of them is  intended to be a scientific or content reference. It is like the last blog author Valentin Stefan mentioned *"[...]Treat this content as a blog post and nothing more. It does not have the pretention to be an exhaustive exercise nor a replacement for your critical thinking.[...]"* 
+
+However it is rather an example of how from such sources (all more or less technically similar) described how something is done, a specific set of tools emerges. This is a god starting point and after a lot of research and critical examination it emerge somehow  to the current state of the art of the community.
 So please check if all libraries are available.
 ```r
  c("rprojroot","sen2R","terra","patchwork","ggplot2",
@@ -204,7 +206,7 @@ mapview(prediction_kmeans$map, col = c('darkgreen', 'burlywood', 'green', 'orang
 {% include media1 url="assets/images/unit02/kmeans.html" %}
 [Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/kmeans.html){:target="_blank"} 
 <figure>
-  <figcaption>Sentinel K-means clustering based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare without doing anything we get an visually pretty good classification </figcaption>
+  <figcaption>K-means clustering based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare without doing anything we get an visually pretty good classification </figcaption>
 </figure>
 
 ### Recursive Partitioning and Regression Trees
@@ -212,8 +214,7 @@ Our first supervised algorithm belongs to the family of non-linear classificatio
 
 ```r
 # defining the model 
-cart <- rpart(as.factor(DF2$class)~., data=DF2[,2:12], method = 'class')
-# the tree
+cart <- rpart(as.factor(DF2$class)~., data=DF2[,2:12], method = 'class')# the tree
 rpart.plot(cart, box.palette = 0, main = "Classification Tree")
 ```
 {% include figure image_path="/assets/images/unit02/cart_tree.png" alt="CART tree as derived from the upper model. You can see each split and the probabilities." %}
@@ -228,5 +229,81 @@ mapview(prediction_cart,col.regions = c('darkgreen', 'burlywood', 'green', 'oran
 {% include media1 url="assets/images/unit02/cart.html" %}
 [Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/cart.html){:target="_blank"} 
 <figure>
-  <figcaption>Sentinel CART classification based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare this is obviusly more sophisticated than running a K-means clustering it is heavily depending on the training data </figcaption>
+  <figcaption>CART classification based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare this is obviusly more sophisticated than running a K-means clustering it is heavily depending on the training data </figcaption>
 </figure>
+
+### Random forest decision trees
+Random Forest is a classification and regression method consisting of arbitrary uncorrelated decision trees. The decision trees are generated iteratively during a training (learning) process. For a classification, each (decision) tree in this forest of decision trees is allowed to represent one decision. The class (in our case e.g. fields) with the most individual trees decides the final classification. It is one of the most used methods of machine learning because it is robust, versatile and in the top group of ML methods in terms of efficiency.
+
+```r
+## random forest via caret
+set.seed(123)
+# split data into train and test data and take only a fraction of them
+trainDat =  DF2[createDataPartition(DF2$id,list = FALSE,p = 0.25),]
+# define a training control object for caret with crossvalidation 10 repeats
+ctrlh = trainControl(method = "cv", 
+                     number = 10, 
+                     savePredictions = TRUE)
+# train random forest via caret model 
+cv_model = train(trainDat[,2:12],
+                 trainDat[,13],
+                 method = "rf",
+                 metric = "Kappa",
+                 trControl = ctrlh,
+                 importance = TRUE)
+
+
+prediction_rf  = predict(stack ,cv_model, progress = "text")
+mapview(prediction_rf,col.regions = c('darkgreen', 'burlywood', 'green', 'orange'))
+
+```
+
+{% include media1 url="assets/images/unit02/rf.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/rf.html){:target="_blank"} 
+<figure>
+  <figcaption> Random Forest classification based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare this out of the box rf classification is bette than CART However it is still  pretty poor. So also heavily depending on the training data and hence tuning</figcaption>
+</figure>
+
+### CART with a priory knowledge
+
+We recall the CART model but this time we use an estimate of how muchproportion of each class we are expecting. this knowledge is know as a-priory knowledge. Let's see if we can improve the results. 
+```r
+# defining the model 
+cart <- rpart(as.factor(DF2$class)~., data=DF2[,2:12], method = 'class',
+              parms = list(prior = c(0.65,0.25,0.05,0.05)))# the tree
+rpart.plot(cart, box.palette = 0, main = "Classification Tree")
+```
+{% include media1 url="assets/images/unit02/cart_priory.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/cart_priory.html){:target="_blank"} 
+<figure>
+  <figcaption>CART classification based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see helping out with some a-priory estimation yields in better results </figcaption>
+</figure>
+
+
+What we see is tehre is a lot to learn how to deal with the sampling of trainingdata and tuning of the models.
+
+## Assignment Unit-2-2
+
+Now that some basics have been explained, it's time to practice again on your own. The following tasks serve as an orientation framework within which you can practice in a targeted manner.
+
+{% capture Assignment-1-2 %}
+1. Please apply the upper techniques  on either  (1) downloading  a NEW sentinel dataset for the training data as derived by the course server or (2) apply t directly on the airborne imagery dataset.
+1. Read and operate the following [section](https://rspatial.org/raster/rs/5-supclassification.html). Please apply the evaluation and tuning part on the above CART model. What is your finding with respect to model quality and improvement?
+1. Please read  [Review of classifcatin approaches](https://isgindia.org/wp-content/uploads/2017/04/016.pdf)
+
+
+{% endcapture %}
+<div class="notice--success">
+  {{ Assignment-1-2 | markdownify }}
+</div> 
+
+
+
+## Where can I find more information?
+For more information, you can look at the following resources: 
+
+* [Straightforward overview RS and classification](https://gisgeography.com/image-classification-techniques-remote-sensing/)
+
+* [Typical workflow](https://www.mdpi.com/2072-4292/9/10/1048)
+
+
