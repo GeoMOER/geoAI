@@ -137,14 +137,14 @@ Each class is digitized and typed in a single way.
 ```r
 fields <- mapview::viewRGB(stack, r = 8, g = 4, b = 3) %>% mapedit::editMap()
 ```
-{% include figure image_path="/assets/images/unit01/fields.png" alt="The mapedit GUI. After digitizing click on DONE." %}
+{% include figure image_path="/assets/images/unit01/fields.png" alt="The mapedit GUI. The digitization with mapedit is mostly self-explanatory and GUI-supported. After digitizing click on DONE." %}
 
 Then carry out the next step. This will assign the attributes *class* and *id*.
 ```r
 fields <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "fields", id = 2)
 ```
 
-We call the image composite that makes sense for us (False Color) with the following command. The digitization with mapedit is mostly self-explanatory and GUI-supported and is finished with 'Done'.
+This is the full script for digitizing the training data.
 
 ```r
 # note we can combine each of the Sentinel channels to derive a true or false color composite
