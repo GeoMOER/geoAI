@@ -109,7 +109,7 @@ The next step is optional but offers the possibility to quickly and effectively 
 ### Color Composites for better training results
 ```r
 # sentinel truecolor composite 
-savemapview::viewRGB(stack, r = 4, g = 3, b = 2)
+`mapview::viewRGB(stack, r = 4, g = 3, b = 2)
 ```
 
 {% include media1 url="assets/images/unit02/tcc.html" %}
@@ -166,7 +166,31 @@ saveRDS(train_areas, paste0(envrmt$path_sentinel,"train_areas.rds"))
 ``` 
 
 ## Classification 
-There are numerous methods to classify data in feature space. In principle, dise can be unsupervised or supervised.  In the case of unsupervised methods, the number of classes is usually specified and statistical methods are used to search for the best possible aggregation within the number of these classes in the feature space. The best known is the `K-means` clustering which could be called one of the simplest unsupervised machine learning algorithms.
+There are numerous methods to classify data in feature space. In principle, these can be *unsupervised* or *supervised*.  In the case of unsupervised methods, the number of classes is usually specified and statistical methods are used to search for the best possible aggregation within the number of these classes in the feature space. 
+
+#### Manipulationg the training data 
+First of all we have to prepare the digitized data. That means we have to arragne it for several algorithms we want to use.
+
+```r
+# first of all we have to project the data into correct crs
+tp = sf::st_transform(train_areas,crs = sf::st_crs(stack))
+## - next step  extracting of the values from all bands of the raster stack 
+# we force to return  the values as an data frame
+# extract the raster way very slow
+DF <- raster::extract(stack, tp, df=TRUE) 
+# for simplicity  we rename the layers
+names(DF) = c("id","band1","band2","band3","band4","band5","band6","band7","band8","band9","band10","band11")
+# no we add the "class" category which is needed later on for the training
+# it was dropped during extraction
+DF_sf =st_as_sf(inner_join(DF,tp))
+# finally we produce a simple data frame without geometry
+DF2 = DF_sf
+st_geometry(DF2)=NULL
+```
+
+
+### K-Means clustering out of the box
+The best known is the `K-means` clustering which could be called one of the simplest unsupervised machine learning algorithms.
 In our example applied for 4 classes and for simplicity executed with `RStoolbox` it looks like this:
 
 ```r
@@ -183,3 +207,26 @@ mapview(prediction_kmeans$map, col = c('darkgreen', 'burlywood', 'green', 'orang
   <figcaption>Sentinel K-means clustering based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare without doing anything we get an visually pretty good classification </figcaption>
 </figure>
 
+### Recursive Partitioning and Regression Trees
+Our first supervised algorithm belongs to the family of non-linear classification algorithms which is based on decision trees.Classification and Regression Trees (CART) split attributes (our training data) based on values that minimize a loss function, such as sum of squared errors. They are fast and pretty efficient.
+
+```r
+# defining the model 
+cart <- rpart(as.factor(DF2$class)~., data=DF2[,2:12], method = 'class')
+# the tree
+rpart.plot(cart, box.palette = 0, main = "Classification Tree")
+```
+{% include figure image_path="/assets/images/unit02/cart_tree.png" alt="CART tree as derived from the upper model. You can see each split and the probabilities." %}
+
+After calcculationg the model and checking the tree  we succed with the prediction. That means the model is applied to the original data stack and according to the tree splits the pixels are classified.
+
+```r
+prediction_cart <- raster::predict(stack, cart, type='class', progress = 'text')  
+mapview(prediction_cart,col.regions = c('darkgreen', 'burlywood', 'green', 'orange'))
+```
+
+{% include media1 url="assets/images/unit02/cart.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit02/cart.html){:target="_blank"} 
+<figure>
+  <figcaption>Sentinel CART classification based on Sentinel2 channels 1-11, Date: 2021-06-13 Region Marburg Open Forest, As you can see and interactively compare this is obviusly more sophisticated than running a K-means clustering it is heavily depending on the training data </figcaption>
+</figure>
