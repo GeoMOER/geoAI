@@ -7,7 +7,7 @@ header:
   caption: "Image: [NASA's Marshall Space Flight Center](https://www.nasa.gov/centers/marshall/home/index.html) [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
 ---
 
-Remote sensing is central to every discipline that deals with space. In the geosciences, it is the only measurement technique that offers complete coverage of large spatial scales. Using satellite, aircraft and drone imagery to detect changes to Earth's surface is an essential component of environmental informatics. Remote sensing is often paired with biophysical, geophysical or human-induced processes to develop predictive models. Here, image analysis methods that extract information to identify the underlying processes are critical. The flood of imagery and remote sensing data available needs to be accessible for both scientific knowledge gain and societal future challenges.
+Remote sensing is central to every discipline that deals with space. An essential component of environmental informatics is using satellite, aircraft and drone imagery to detect changes to Earth's surface. Biophysical, geophysical or human-induced processes are often paired with remote sensing to develop predictive models. Here, extracting information from images to identify the underlying processes are critical for both scientific knowledge and future challenges facing society.
 
 <!--more-->
 
