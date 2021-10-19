@@ -85,43 +85,52 @@ saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
-# 1 - set up ####
-#---------------#
 
-library(caret)
-library(terra)
-library(sf)
+training = na.omit(training)
+training$class <- as.factor(training$class)
+# random forest
+predictors = training[,3:10]
+response = training[,"class"]
 
-predictors = extr[,2:39]
-response = extr[,"class"]
-response <- as.factor(response$class)
 ```
 
 Define your response and predictors, the response is just one column containing your class label, while the predictors are all the columns containing the information extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
 
 ```r
-# 2 - set control settings to random cross-validation ####
-#--------------------------------------------------------#
+# set control settings to random cross-validation
 
 ctrl <- trainControl(method="cv",
                      number =10, #  number of folds
                      savePredictions = TRUE)
+					 
+tgrid <- expand.grid(mtry = 2:4,
+				splitrule = "gini",
+				min.node.size = c(10, 20)
+)					 
+					 
 ```
 
 Train a simple random forest model using the `caret` package. The `train` function offers the method "rf". You could also explore other implementations of the random forest algorithm in `R`, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. Feel free to do some model tuning, as well.
 
 ```r
-# 3 - train a standard random forest model ####
-#---------------------------------------------#
+# train a standard random forest model 
 
 set.seed(100)
-model <- caret::train(predictors,
-                      response,
-                      method="rf",
-                      metric="Kappa",
-                      trControl=ctrl,
-                      importance = TRUE,
-                      ntree=77)
+
+cl <- makeCluster(4)
+registerDoParallel(cl)
+
+model <- train(predictors,
+               response,
+               method = "ranger",
+               trControl =ctrl,
+               tuneGrid = tgrid,
+               num.trees = 100,
+               importance = TRUE)
+
+
+
+stopCluster(cl)
 
 saveRDS(model, "model.RDS")
 ```
@@ -133,7 +142,6 @@ Since you probably want to admire your results now, it is worth bringing your mo
 
 ```r
 model <- readRDS(file.path(envrmt$models, "model.RDS"))
-rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
    
 prediction <- terra::predict(rasterStack, model, na.rm = TRUE)
    
