@@ -13,123 +13,124 @@ Create a random forest model with random cross-validation.
 In the first step you need your previously prepared predictor variables (DOP and indices) and the **Streuobstwiese** polygons. Combine all of your raster layers into one raster stack and ensure that each layer name is unique. 
 
 ```r
-# 1 - read your data ####
-#-----------------------#
+# rasterStack containing the bands red, green, blue and nir
+rasterStack = raster::stack(file.path(envrmt$path_raw_data_aerial, "marburg_dop_rgbi.tif"))
+# also load the indices you calculated in the last exercise:
+indices = raster::stack(file.path(envrmt$path_unit03_aerial, "dop_indices.tif"))
 
-rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
-# Polygons:
-pol = sf::read_sf(file.path(envrmt$hlnug, "streuobst.gpkg"))
+# add all to one raster stack:
+rasterStack = raster::stack(rasterStack, indices)
+
+
+
 ``` 
-Also check if your predictors and response have the same projection. Also make sure that each polygon has a unique ID. If the data does not include an ID number, add one.
+Also check if your raster and polygons have the same projection. Also make sure that each polygon has a unique ID. If the data does not include an ID number, add one.
 
 ```r
+# now the vector data: load the file with the sf package  and check if the crs is matching with the raster stack
+pol = sf::read_sf(file.path(file.path(envrmt$path_raw_data_vector, "marburg_buildings_selfmade.gpkg")))
 pol = sf::st_transform(pol, crs(rasterStack))
+# also if you haven´t done it already, add IDs to your polygons
 pol$OBJ_ID = 1:nrow(pol)
+
 ```
  
 ## Extract the data 
 For each pixel in a training polygon we now want to extract each value in the predictor raster stack. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the **Streuobstwiese**. The data gets formatted to a dataframe that we can merge with the original polygons. In this way we get back the class information of the polygons.
 
 ```r
-# 2 - extract polygons from raster stack ####
-#-----------------------#
+# to extract the data use raster::extract or the much faster package exactextractr
+extr = exact_extract(rasterStack, pol, include_cols = c( "class",  "OBJ_ID"))
+extr = extr[sapply(extr, is.data.frame)]
+extr = do.call(rbind, extr)
 
-result = lapply(seq(nrow(pol)), function(i){
-	cur = pol[i,]
-    ext <- raster::extent(cur)
-    
-      all = raster::crop(rasterStack, ext)
-      
-      df = raster::extract(all, cur, df = TRUE)
-      df = df %>% dplyr::mutate(cur %>% select(OBJ_ID)
-      df$ID <- NULL
-      
-      print(paste("Extracted Polygon", i, "of", nrow(pol)))
-      return(df)
-  }) # end lapply
-  
-  
-# format the extraction
-res = result[sapply(result, is.data.frame)]
-res = do.call(rbind, res)
-return(res)
 
-extr_merge = merge(res,pol, by = "OBJ_ID")
-saveRDS(extr_merge, file.path(envrmt$model_training_data, "extraction.RDS"))
+saveRDS(extr, file.path(envrmt$path_model_training_data, "extraction.RDS"))
+
 ```
 
 ## Balancing
-To balance the data, we will use the dataframe with the extracted values for each pixel. *This is important because...* The first step is to divide the polygons into a training and a test group. Here, we will use 80% of the polygons for training and the remaining 20% of the polygons for testing. 
+To balance the data, we will use the dataframe with the extracted values for each pixel. *This is important because...* At first we will check how many pixel of each class are in our dataframe. We will then downsample the larger class. Therefore we will randomly sample the same amount of rows from the larger class that is available in the smaller class. 
 
 ```r
-# 3 - balancing ####
-#------------------#
+extr = readRDS(file.path(envrmt$path_model_training_data, "extraction.RDS"))
+extr = na.omit(extr)
 
-extr = readRDS(file.path(envrmt$model_training_data, "extraction.RDS"))
+buildings = extr[extr$class == "building",]
+other = extr[extr$class == "other",]
 
-# Sample 80 percent of training polygon IDs
-train_ids = sample(unique(extr$OBJ_ID), length(unique(extr$OBJ_ID))*0.8)
+nrow(buildings)
+nrow(other)
 
-# Filter the extracted dataframe
-extr_train = extr%>%filter(OBJ_ID %in% train_ids)
+# reduce the larger class by sampling the same amount of rows as are contained in the smaller class
+set.seed(42)
+other = other[sample(nrow(buildings)), ]
+
+# combine the two dataframes
+extr = rbind(other, buildings)
+
 ```
-Then, compare the number of training pixels per class. If the number is not identical, which is very likely, we will sample the same amount of pixel for each class.
-
+Then we will split the data into one dataframe for the model training, containing 80% of the data and one for testing containing 20% of the data. We will use the function createDataPartition from the caret package for this task. This function is very useful as it tries to maintain the ratio of each class in the datasets.
 ```r
-# Number Pixels per class
-nrow(filter(extr_train, class == "other"))
-nrow(filter(extr_train, class == "SO"))
+trainIndex = caret::createDataPartition(extr$class, p = 0.8, list = FALSE)
+training = extr[ trainIndex,]
+testing = extr[ -trainIndex,]
 
-extr_train = extr_train %>% 
- group_by(class)%>%
-  sample_n(nrow(filter(extr_train, class == "SO")))
 
-# Control
-n_distinct(filter(extr_train, class == "other"))
-n_distinct(filter(extr_train, class == "SO"))
+saveRDS(training, file.path(envrmt$path_model_training_data, "extr_train.RDS"))
+saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 ```
 
 ## Random Forest
 Now you can start your first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. It is also worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
-# 1 - set up ####
-#---------------#
 
-library(caret)
-library(terra)
-library(sf)
+training = na.omit(training)
+training$class <- as.factor(training$class)
+# random forest
+predictors = training[,3:10]
+response = training[,"class"]
 
-predictors = extr[,2:39]
-response = extr[,"class"]
-response <- as.factor(response$class)
 ```
 
 Define your response and predictors, the response is just one column containing your class label, while the predictors are all the columns containing the information extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
 
 ```r
-# 2 - set control settings to random cross-validation ####
-#--------------------------------------------------------#
+# set control settings to random cross-validation
 
 ctrl <- trainControl(method="cv",
                      number =10, #  number of folds
                      savePredictions = TRUE)
+					 
+tgrid <- expand.grid(mtry = 2:4,
+				splitrule = "gini",
+				min.node.size = c(10, 20)
+)					 
+					 
 ```
 
 Train a simple random forest model using the `caret` package. The `train` function offers the method "rf". You could also explore other implementations of the random forest algorithm in `R`, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. Feel free to do some model tuning, as well.
 
 ```r
-# 3 - train a standard random forest model ####
-#---------------------------------------------#
+# train a standard random forest model 
 
 set.seed(100)
-model <- caret::train(predictors,
-                      response,
-                      method="rf",
-                      metric="Kappa",
-                      trControl=ctrl,
-                      importance = TRUE,
-                      ntree=77)
+
+cl <- makeCluster(4)
+registerDoParallel(cl)
+
+model <- train(predictors,
+               response,
+               method = "ranger",
+               trControl =ctrl,
+               tuneGrid = tgrid,
+               num.trees = 100,
+               importance = TRUE)
+
+
+
+stopCluster(cl)
 
 saveRDS(model, "model.RDS")
 ```
@@ -141,7 +142,6 @@ Since you probably want to admire your results now, it is worth bringing your mo
 
 ```r
 model <- readRDS(file.path(envrmt$models, "model.RDS"))
-rasterStack = raster::stack(file.path(envrmt$sentinel, "sentinel.tif"))
    
 prediction <- terra::predict(rasterStack, model, na.rm = TRUE)
    

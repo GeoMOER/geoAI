@@ -18,16 +18,6 @@ To perform a spatial variable selection, we will use another function from the s
 
 Familiarize yourself with the topics by reading the corresponding article.
 
-## Video
-Placeholder, for now:
-
-{% include pdf pdf="GeoAI-03-01_Intro.pdf" %}
-
-
-## Unit 3 slides
-
-{% include pdf pdf="GeoAI-Unit03.pdf" %}
-
 
 ## Further reading
 [Meyer H, Reudenbach C, Hengl T, Katurji M, Nauss T (2018) Improving performance of spatio-temporal machine learning models using forward feature selection and target-oriented validation. Environmental Modelling & Software 101: 1–9. https://doi.org/10.1016/j.envsoft.2017.12.001.](https://www.sciencedirect.com/science/article/abs/pii/S1364815217310976)
