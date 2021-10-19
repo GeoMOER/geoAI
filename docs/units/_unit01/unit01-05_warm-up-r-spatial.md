@@ -260,13 +260,3 @@ For more information, you can look at the following resources:
 
 * [Geocomputation with R](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow is the outstanding reference for everything related to spatiotemporal data analysis and processing with R. 
 
-* [Making Maps with R](https://geocompr.robinlovelace.net/adv-map.html) provides a very useful introduction to the topic. 
-
-
-* [tmap documentation](https://mtennekes.github.io/tmap/index.html).
-
-* [rayshader documentation](https://www.rayshader.com/) gives a great introduction to 3D mapping using the `rayshader` package.
-
-* [rnaturalearth documentation](https://docs.ropensci.org/rnaturalearth) a convinient wrapper for the [Natural Earth](https://www.naturalearthdata.com/) public domain map dataset.
-
-* [ggmap package](https://github.com/dkahle/ggmap) a collection of functions to visualize spatial data and models - works also with open source data.
