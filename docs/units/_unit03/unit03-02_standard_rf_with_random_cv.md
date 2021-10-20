@@ -10,7 +10,7 @@ header:
 Create a random forest model with random cross-validation.
 
 ## Read the data
-In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the **Streuobstwiese** polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
+In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
 
 ```r
 # load rasterStack containing red, green, blue and NIR bands
@@ -38,7 +38,7 @@ pol$OBJ_ID = 1:nrow(pol)
 ```
  
 ## Extract the data 
-Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the **Streuobstwiese**. The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
+Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the buildings. The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
 
 ```r
 # to extract the data use raster::extract or the much faster package exactextractr
@@ -83,7 +83,7 @@ saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 ```
 
 ## Random Forest
-Now we can finally start our first attempt to predict **Streuobstwiese**. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
+Now we can finally start our first attempt to predict the buildings. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
 training = na.omit(training)

@@ -233,7 +233,7 @@ This means:
 It is a good habit to document the knowledge gained and open questions as well as problems. For this purpose, a Rmarkdown documentation is particularly useful. Excellent is the package blogdown suitable for this. The key is practice. not just getting sample source code to run, but changing it and understanding what it does. 
 {: .notice--info}
 
-Please do the following exercises using either the orchard or the sentinel dataset. 
+Please do the following exercises using either the Marburg buildings or the sentinel dataset. 
 
 
 {% capture Assignment-1-2 %}

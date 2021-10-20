@@ -9,9 +9,13 @@ header:
 ---
 
 Predicting spatial features with machine learning and random validation. 
+Our goal is to determine areas containing buildings in the south of Marburg, Hesse. To accomplish this goal, we will use a machine learning approach together with DOPs (digital orthophoto) as well as the digitalized polygons with one class containing buildings, and the other class polygons covering everything else, we created in Unit 1.
 
 <!--more-->
 
+To do this, we want to create a model that is able to separate pixels that belong to a building from their surroundings. For this we need not only the bands of the DOP but also some indices calculated from them. You can simply use the ones we created in [Unit 1]( http://127.0.0.1:4000/geoAI//unit01/unit01-05_warm-up-r-spatial.html#step-4---calculate-rgb-indices). 
+
+Our Area of Interest:
 {% include media4 url="assets/images/unit03/marburg_dop.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
@@ -25,7 +29,7 @@ To accomplish this task, we will use a [random forest](https://en.wikipedia.org/
 
 The random forest algorithm learns about the data by building many decision trees -- hence, the name "forest". For classification tasks, as in the above diagram, the algorithm takes an instance from the training dataset and each tree (again, there are many) classifies that instance into a class. Ultimately, the instance is assigned to the class that is the outcome of the most trees. Of course, this is an oversimplified description of how random forest works. If you are interested in theory and math behind how the algorithm truly works, please see the paper by Breiman (linked below).
 
-Since the random forest algorithm requires training data, it is a supervised learning method. This means that we, as users, must tell the algorithm what it is supposed to predict. In our case, in order for the algorithm to classify areas of **Streuobstwiese** correctly, the training data must include and be labeled with different categories or land cover classifications (i.e., field, building, forest, water).
+Since the random forest algorithm requires training data, it is a supervised learning method. This means that we, as users, must tell the algorithm what it is supposed to predict. In our case, in order for the algorithm to classify areas of buildings correctly, the training data must include and be labeled with different categories or land cover classifications (i.e., field, building, forest, water).
 
 <p align="center">
   <img src="../assets/images/unit03/machine_learning.jpg">
