@@ -38,7 +38,7 @@ The following illustration shows the steps of a supervised classification in mor
 
 
 ## Assignment
-This exercise will prepare the polygon data that is necessary to predict **Streuobstwiese** (engl. orchard meadows) in Hesse. Please follow along with the example of creating a vector layer of buildings in QGIS. Then, complete the same steps for the **Streuobstwiese**. Remember to save your data in the appropriate folder from the setup in Unit 1!
+This exercise will prepare the polygon data that is necessary to predict buildings in Marburg, Hesse. Please follow along with the example of creating a vector layer of buildings in QGIS. Remember to save your data in the appropriate folder from the setup in Unit 1!
 
 ### Creating vector layers in QGIS
 We will use the open source GIS QGIS to create training areas. In this course, we will use the current long-term release (as of October 2021), QGIS 3.16.11 Hannover. You can download QGIS either as a [standalone version](https://qgis.org/en/site/forusers/download.html) or using OSGeo4w.
@@ -53,7 +53,8 @@ Next, we need to create a new GeoPackage layer, in which we will save the polygo
 
 {% include figure image_path="/assets/images/unit02/step2_create_gpkg_layer.png" alt="Create new GeoPackage layer" %}
 
-In the "New GeoPackage Layer" window, give your new GeoPackage a name in the Database field. You also need to assign a name to the Table. Next, select the geometry type -- in this case "Polygon" because we want to create polygons. Then select the CRS for the layer. We want our polygons to have the same CRS as our DOP, so we select the option that begins with "Project CRS:". Finally, we have the option to add fields. Every polygon will have some unique attributes that will appear in the Attribute Table. We can use the attributes of a polygon (or any other geometry) to filter. It's important to think of generic categories for the fields, because they will be headers of columns and each polygon will be an entry in the table. In this example, we have chosen "Region" and "Category" for our polygons, both of type text and length 20. To create the Layer, click OK.
+In the "New GeoPackage Layer" window, give your new GeoPackage a name in the Database field. You also need to assign a name to the Table. Next, select the geometry type -- in this case "Polygon" because we want to create polygons. Then select the CRS for the layer. We want our polygons to have the same CRS as our DOP, so we select the option that begins with "Project CRS:". Finally, we have the option to add fields. Every polygon will have some unique attributes that will appear in the Attribute Table. We can use the attributes of a polygon (or any other geometry) to filter. It's important to think of generic categories for the fields, because they will be headers of columns and each polygon will be an entry in the table. In this example, we have chosen "Region" and "class" for our polygons, both of type text and length 20. To create the Layer, click OK. The category in the "class" field is particularly important for the prediction we will make in unit 3. Create polygons with two categories of "class": one class in which you assign the value "building" to the digitized houses and another class in which you digitize various other aspects of the space, these polygons should have the value "other". Try to mix your polygons well in this category, i.e. include roads, cars, houses, water, fields, meadows and forest, in order to represent as broad a spectrum as possible.
+
 
 Then, we need to toggle editing on for the Buildings layer. Right click on the Buildings layer in the Layer panel and select "Toggle editing". You also have the button to toggle editing on in the toolbar, if you have the Digitizing toolbar enabled ("View" > "Toolbars" > "Digitizing Toolbar"). 
 
@@ -65,7 +66,7 @@ Start by clicking on a point somewhere along the edge of a building's rooftop. C
 
 {% include figure image_path="/assets/images/unit02/step4_draw_polygon.png" alt="Draw first polygon" %}
 
-After you place your last point, right click to finish drawing the polygon. This will finalize the feature and open the Feature Attributes dialogue menu. Here, you can assign the characteristics of that polygon to it -- in this case, the polygon is located in the region "Marburg-Biedenkopf" and belongs to the category "Private".
+After you place your last point, right click to finish drawing the polygon. This will finalize the feature and open the Feature Attributes dialogue menu. Here, you can assign the characteristics of that polygon to it -- in this case, the polygon is located in the region "Marburg-Biedenkopf" and belongs to the class "building".
 
 {% include figure image_path="/assets/images/unit02/step5_assign_attributes.png" alt="Fill in attribute entries" %}
 

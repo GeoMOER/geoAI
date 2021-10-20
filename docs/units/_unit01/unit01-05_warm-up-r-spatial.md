@@ -30,14 +30,14 @@ In detail, the following tasks have to be performed:
 ### Step 1 - Get the data and setup the working environment
 The Hessian State Department of Land Management and Geoinformation ([Hessische Verwaltung fuer Bodenmanagement und Geoinformation; HVBG](https://hvbg.hessen.de/)) uses an image-based DSM *to create what they call "TrueDOPs"*. The HVBG commissions flights for the entire state of Hesse every 2 years and makes the imagery available in 20cm and 40cm resolution with 4 channels: Red (R), Green (G), Blue (B) and Near-Infrared (NIR). More information about the *HVBG's TrueDOPs* is available [here](https://hvbg.hessen.de/geoinformation/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-atkis%C2%AE-dops-und-true) (German only). 
 
-For convenience reasons the 40-cm DOP of our study area is available for [download](http://85.214.102.111/geo_data/data/01_raw_data/aerial/). Please note that the HVBG has provided these digital orthophotos free of charge for the purpose of education and that they may only be used in the context of this course.
+For the 20-cm DOP of our study area is available for [download](http://85.214.102.111/geo_data/data/01_raw_data/aerial/). Please note that the HVBG has provided these digital orthophotos free of charge for the purpose of education and that they may only be used in the context of this course.
 
 
 **Writing it down as a script** 
 Remember. We start **every single script** by reading our script "geoAI_setup.R", from unit 1. 
 Then we start the actual work :
 * We import a digital orthophoto of Marburg.  To import so called raster data we normally use the package `raster` which is loaded with the call `library(raster)`. We don`t need to do this, because we already loaded it via the setup script. 
-* Then we import a vector data set containing the areas of the orchards as polygons. 
+* Then we import a vector data set containing the areas of the buildings. 
 * Then we check the georeferencing.
 * and visualize the data
 {: .notice--info}
@@ -65,27 +65,27 @@ rasterStack = raster::stack(file.path(envrmt$data, "marburg_dop.tif"))
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
 #### Vector Data
-In QGIS, we created the **Streuobstwiese** polygons and exported them as a [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) (.gpkg). The GeoPackage format has several advantages compared to previous formats for saving and exchanging geospatial data. For example, it supports both raster and vector data and it is saved in one file (unlike e.g. [shapefiles](https://en.wikipedia.org/wiki/Shapefile)).
+We will use the [marburg_buildings.gpkg](http://85.214.102.111/geo_data/data/01_raw_data/vector/) containing Polygons of all buildings in the DOP. The  [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) (.gpkg) format has several advantages compared to previous formats for saving and exchanging geospatial data. For example, it supports both raster and vector data and it is saved in one file (unlike e.g. [shapefiles](https://en.wikipedia.org/wiki/Shapefile)).
 
-R can also handle vector data as well. A different package, `sf`, is required to read vector data of many types. Here, we use the function `read_sf` to import the **Streuobstwiese** polygons into R. 
+R can also handle vector data as well. A different package, `sf`, is required to read vector data of many types. Here, we use the function `read_sf` to import the buildings polygons into R. 
 
 ```r
 # Polygons, too:
-orchard = sf::read_sf(file.path(envrmt$data, "streuobst.gpkg"))
+buildings = sf::read_sf(file.path(envrmt$data, "marburg_buildings.gpkg"))
 ```
 #### Coordinate Reference System
-Geospatial data always needs a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). When we created the training areas in QGIS, we assigned the polygons in the GeoPackage the same CRS as the DOP, because they are part of the same project. In R, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
+Geospatial data always needs a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). In R, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
 
 ```r
 # 2 - check CRS and other info
 #-----------------------#
 raster::crs(rasterStack)
-raster::crs(orchard)
+raster::crs(buildings)
 ```
-As we assigned the CRS of the polygons using the DOP, we know that both of these layers will return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use a logical query to test if they are the same.
+Both of these layers should return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use a logical query to test if they are the same.
 
 ```r
-crs(rasterStack) == crs(orchard)
+crs(rasterStack) == crs(buildings)
 ```
 If these layers have the same CRS, this command will return `TRUE`. Otherwise, R will return `FALSE`. Queries like this can be useful for more complex geospatial data workflows, e.g. if two layers have the same CRS, then continue with the analysis, otherwise stop.
 
