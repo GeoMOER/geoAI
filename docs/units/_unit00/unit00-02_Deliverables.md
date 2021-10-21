@@ -1,8 +1,8 @@
 ---
 title: Assignments
 header:
-  image: "/assets/images/00-unit-splash.jpg"
-  caption: 'Photo: [**Environmental Informatics Marburg**](https://www.flickr.com/environmentalinformatics-marburg/)'
+  image: "/assets/images/title.png"
+  caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'
 ---
 
 We distinguish between unmarked and marked deliverables ("Studien- und Prüfungsleistung"). Both are required for passing the course but only the latter is marked, making up your final grade for the course.

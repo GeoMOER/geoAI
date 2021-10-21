@@ -43,7 +43,6 @@ We will also use a validation strategy to measure the quality of the model. We w
 {% include figure image_path="/assets/images/unit03/cross_validation.svg" alt="Leave-Location-Out Cross-validation" %}
 *Image: Random cross-validation. Gufosowa [CC BY-SA 4.0] via [wikipedia.org](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#/media/File:K-fold_cross_validation_EN.svg)*
 
-
 {% include video id="Yh9KGcxT_O4" provider="youtube" %}
 
 ## Unit 3 slides

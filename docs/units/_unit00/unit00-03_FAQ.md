@@ -2,8 +2,8 @@
 title: FAQ
 permalink: /unit00/unit00-02_FAQ.html
 header:
-  image: "/assets/images/00-unit-splash.jpg"
-  caption: 'Photo: [**Environmental Informatics Marburg**](https://www.flickr.com/environmentalinformatics-marburg/)'
+  image: "/assets/images/title.png"
+  caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'
 ---
 
 

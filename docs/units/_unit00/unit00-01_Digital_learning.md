@@ -2,8 +2,8 @@
 title: Digital Learning
 toc: true
 header:
-  image: "/assets/images/00-unit-splash.jpg"
-  caption: 'Photo: [**Environmental Informatics Marburg**](https://www.flickr.com/environmentalinformatics-marburg/)'
+  image: "/assets/images/title.png"
+  caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'
 ---
 
 This course is intended as a blended learning module, although the provided introductions, explanations and examples might be useful for self-study, too.
