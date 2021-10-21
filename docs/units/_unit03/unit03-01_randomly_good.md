@@ -40,6 +40,7 @@ Since the random forest algorithm requires training data, it is a supervised lea
 We will also use a validation strategy to measure the quality of the model. We will use one of the most popular methods for validating models: cross-validation. The goal is to test how well the model generalizes on an independent data set. For example, if we perform a 5-fold cross-validation, the whole dataset available to the model is randomly split five times into a training and a validation dataset. Then the model is trained five times with the respective training data set and the quality of the model is determined with randomly selected validation data set.
 
 
+
 {% include figure image_path="/assets/images/unit03/cross_validation.svg" alt="Leave-Location-Out Cross-validation" %}
 *Image: Random cross-validation. Gufosowa [CC BY-SA 4.0] via [wikipedia.org](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#/media/File:K-fold_cross_validation_EN.svg)*
 
