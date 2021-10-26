@@ -115,10 +115,14 @@ Please *check* the result by navigating to the directory using your favorite fil
 str(envrmt)
 ```
 
-This setup script will only be fully useful if it is executed at the beginning of each project start or at the start of an analysis or data processing script. The easiest way to do this is to use the following template for creating each new script.
-{: .notice--info}
+Again - For the course it is **mandantory** to save this script in the `src` folder named `geoAI_setup.R` and **source it at the beginning** at the beginning of each project start or at the start of an analysis or data processing script that is connected with this project. 
+{: .notice--danger}
+
+The easiest way to do this is to use the following template for creating each new script.
+
 
 <script src="https://gist.github.com/envimar/54c41da9a13146298ea42bffe942a933.js">notification</script>
+
 
 Thus, the provided script:
 
@@ -136,18 +140,8 @@ keras::install_keras()
 ```
 
 That being said, *the implementation is not seamless.* The first time that you run the `moc-courses-setup.R` script, you will likely drink one or more cups of coffee as you receive many errors that need to be worked through. 
+{: .notice--danger}
 
-{: .notice--warning}
-
-It is **mandantory** to save this script in the `src` folder (e.g. under `Get moc-courses-setup.R`) and **source it at the beginning** of every analysis script connected with this project. You can do this easily as follows:
-
-```r
-source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
-                                       alt_env_id = "COMPUTERNAME",
-                                       alt_env_value = "PCRZP",
-                                       alt_env_root_folder = "F:/BEN/edu"),
-                  "src/moc-courses-setup.R"))
-```
 
 
 {% capture Assignment-1-1 %}
