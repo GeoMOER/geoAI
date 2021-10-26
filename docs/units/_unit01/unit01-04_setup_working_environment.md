@@ -47,7 +47,7 @@ require(envimaR)
 # define a project rootfolder
 rootDir = "~/edu/geoAI"  # This is the mandantory rootfolder of the whole project 
 
-c
+
               
 # call the create function
 envimaR::alternativeEnvi(root_folder = rootDir,       # if it exists this is the root dir 
@@ -61,6 +61,8 @@ Provided that I want to create a project with the mandantory folder structure de
 ```r
 # list of packages to load
 packagesToLoad = c("mapview", "raster", "rgdal", "sf", "keras", "reticulate")
+
+projectDirList = c("data", "scripts", "documentation", "results")
 
 # Automatically set root direcory, folder structure and load libraries
 envrmt = envimaR::createEnvi(root_folder = rootDir,
@@ -124,8 +126,7 @@ Thus, the provided script:
 
 ## Install Tensorflow and keras for DL
 
-Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning (DL). The `packagestoLoad` variable in `geoAI_setup.R` includes several Python modules (e.g. `tensorflow`, `keras`) that work in R thanks to the R package `reticulate`.
-
+Please note that while this course is primarily based on R, we also use the programming language Python to supplement R. This is primarily the case in Unit 4, which deals with Deep Learning (DL). 
 ```r
 # install keras & miniconda
 reticulate::install_miniconda()
@@ -136,14 +137,14 @@ That being said, *the implementation is not seamless.* The first time that you r
 
 {: .notice--warning}
 
-It is **mandantory** to save this script in the `src` folder (e.g. under `geoAI_setup.R`) and **source it at the beginning** of every analysis script connected with this project. You can do this easily as follows:
+It is **mandantory** to save this script in the `src` folder (e.g. under `Get moc-courses-setup.R`) and **source it at the beginning** of every analysis script connected with this project. You can do this easily as follows:
 
 ```r
 source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
                                        alt_env_id = "COMPUTERNAME",
                                        alt_env_value = "PCRZP",
                                        alt_env_root_folder = "F:/BEN/edu"),
-                  "src/geoAI_setup.R"))
+                  "src/moc-courses-setup.R"))
 ```
 
 
