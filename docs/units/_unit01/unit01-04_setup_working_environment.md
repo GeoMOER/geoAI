@@ -29,13 +29,11 @@ It would be convenient if the *mandantory* folders were created and initialized 
 devtools::install_github("envima/envimaR")
 ```
 
-Essentially, a project may be split in four categories of tasks:
+Essentially, a project may be split at least in three categories of tasks:
 
 - data 
 - scripts
 - documentation
-- results
-
 
 The basis of the aforementioned categories is an adequate storage structure on a suitable permanent storage medium (hard disk, USB stick, cloud, etc.). We suggest a meaningful hierarchical directory structure. The root folder of a project is the basis of an organizational structure branched below.
 
@@ -105,7 +103,8 @@ Finally, we should initiate some useful settings. It makes sense to have the cur
 
 If we put everything together in one script, it looks like this:
 
-{% gist a2324e11b4342cbd4da29b0a819b58e6 moc-courses-setup.R%}
+{% gist a2324e11b4342cbd4da29b0a819b58e6 %}
+
 [Get moc-courses-setup.R](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6/archive/4e57418e6c645ce09766f7aa6fe2cabb5c431349.zip)
 
 Please *check* the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all of the paths as character strings in a convenient list structure.
@@ -118,6 +117,10 @@ str(envrmt)
 require(listviewer)
 listviewer::jsonedit(envrmt)  
 ```
+For this setup script to be useful, it must be executed at the beginning of each analysis or data processing. The easiest way to do this is to use the following template for creating each new script.
+
+<script src="https://gist.github.com/envimar/54c41da9a13146298ea42bffe942a933.js">notification</script>
+
 Thus, the provided script:
 
 - creates/initializes the mandatory basic folder structure 
