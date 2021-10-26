@@ -74,7 +74,7 @@ envrmt = envimaR::createEnvi(root_folder = rootDir,
 
 ```
 
-I will receive something like the following messages. Note, even if they are red, they are not error messages...
+I will receive something like the following messages. Note, even if they are red, they are not (always) error messages...
 
 
 ```bash
@@ -101,23 +101,22 @@ Loading required package: uavRst
 
 Finally, we should initiate some useful settings. It makes sense to have the current Github versions of the non-CRAN packages installed on our systems and to set an option for temporary actions in the `raster` package.
 
+
 If we put everything together in one script, it looks like this:
+
 
 {% gist a2324e11b4342cbd4da29b0a819b58e6 %}
 
-[Get moc-courses-setup.R](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6/archive/4e57418e6c645ce09766f7aa6fe2cabb5c431349.zip)
+[ **geoAI_setup.R**](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6/archive/4e57418e6c645ce09766f7aa6fe2cabb5c431349.zip)
 
 Please *check* the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all of the paths as character strings in a convenient list structure.
 
 ```r
-# traditionally
 str(envrmt)
-
-# more fancy
-require(listviewer)
-listviewer::jsonedit(envrmt)  
 ```
-For this setup script to be useful, it must be executed at the beginning of each analysis or data processing. The easiest way to do this is to use the following template for creating each new script.
+
+This setup script will only be fully useful if it is executed at the beginning of each project start or at the start of an analysis or data processing script. The easiest way to do this is to use the following template for creating each new script.
+{: .notice--info}
 
 <script src="https://gist.github.com/envimar/54c41da9a13146298ea42bffe942a933.js">notification</script>
 
