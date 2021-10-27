@@ -47,31 +47,31 @@ We will start by creating a new `R` script called `data.R` in the `src` folder.
 
 
 #### Raster Data
-```r
-# 1 - source setup function & import the data 
-#-----------------------#
-source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
-                                       alt_env_id = "COMPUTERNAME",
-                                       alt_env_value = "PCRZP",
-                                       alt_env_root_folder = "F:/BEN/edu"),
-                 "src/geoAI_setup.R"))
 
-# Read DOP as a raster stack 
-# Note the you need the commands `stack` or `brick` to create a pile of all 
-# single raster layers in an image. The simple command `raster` only reads 
-# the first band
-rasterStack = raster::stack(file.path(envrmt$data, "marburg_dop.tif"))
+<script src="https://gist.github.com/gisma/de8351de7183737d5eb77bf7ed4d2b83.js"></script>
+
+```bash
+https://gist.github.com/de8351de7183737d5eb77bf7ed4d2b83.git
 ```
+
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
 #### Vector Data
-We will use the [marburg_buildings.gpkg](http://85.214.102.111/geo_data/data/01_raw_data/vector/) containing polygons of all of the buildings in the DOP. The [GeoPackage](https://en.wikipedia.org/wiki/GeoPackage) (.gpkg) format has several advantages compared to previous formats for saving and exchanging geospatial data. For example, it supports both raster and vector data and it is saved in one file (unlike e.g. [shapefiles](https://en.wikipedia.org/wiki/Shapefile)).
-
 In addition to raster data, `R` can handle vector data as well. A different package, `sf`, is required to read vector data of many types. Here, we use the function `read_sf` to import the buildings polygons into `R`. 
+For training purposes we will download some data from the Openstreetmap (OSM) data base. For an overview of the availabele [feature](https://wiki.openstreetmap.org/wiki/Map_features) have a loook at the website. 
 
 ```r
-# Polygons, too:
-buildings = sf::read_sf(file.path(envrmt$data, "marburg_buildings.gpkg"))
+# Example Polygons
+# OSM public data orchards marburg
+# do not forget to add the osmdata package to your header section of the script
+
+library(osmdata)
+# loading OSM data for the Marburg region with the landuse "orchard"
+orchard = opq(bbox = "marburg de") %>% 
+    add_osm_feature(key = "landuse", value = c("orchard")) %>% 
+    osmdata_sf()
+mapview::mapview(orchard$osm_polygons,zcol="produce")
+
 ```
 #### Coordinate Reference System
 Geospatial data always needs a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). In `R`, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
