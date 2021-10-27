@@ -71,8 +71,15 @@ orchard = opq(bbox = "marburg de") %>%
     add_osm_feature(key = "landuse", value = c("orchard")) %>% 
     osmdata_sf()
 mapview::mapview(orchard$osm_polygons,zcol="produce")
-
 ```
+{% include media2 url="assets/images/unit01/mr_fruit_trees.html" %}
+[Full-screen version of the map]({{ site.baseurl }}/assets/images/unit01/mr_fruit_trees.html){:target="_blank"} 
+<figure>
+  <figcaption>The OSM data set containing the ocrchards in the Marburg distict.
+  </figcaption>
+</figure>
+
+
 #### Coordinate Reference System
 Geospatial data always needs a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). In `R`, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
 
