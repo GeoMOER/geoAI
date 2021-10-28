@@ -107,7 +107,9 @@ If we put everything together in one script, it looks like this:
 
 {% gist a2324e11b4342cbd4da29b0a819b58e6 %}
 
-[ **geoAI_setup.R**](https://gist.github.com/envimar/a2324e11b4342cbd4da29b0a819b58e6/archive/4e57418e6c645ce09766f7aa6fe2cabb5c431349.zip)
+Note that installing the listed packages for the first time needs some time for execution.
+If you encounter errors during this installation process, try to install the packages separately for making troubleshooting more convenient.
+{: .notice--info}
 
 Please *check* the result by navigating to the directory using your favorite file manger. In addition please check the returned `envrmt` list. It contains all of the paths as character strings in a convenient list structure.
 
