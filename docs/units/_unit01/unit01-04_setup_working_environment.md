@@ -117,7 +117,7 @@ Please *check* the result by navigating to the directory using your favorite fil
 str(envrmt)
 ```
 
-Again - For the course it is **mandantory** to save this script in the `src` folder named `geoAI_setup.R` and **source it at the beginning** at the beginning of each project start or at the start of an analysis or data processing script that is connected with this project. 
+Again - For the course it is **mandantory** to save this script in the `src` folder named `geoAI_setup.R` and **source it at the beginning** of each project start or at the start of an analysis or data processing script that is connected with this project. 
 {: .notice--danger}
 
 The easiest way to do this is to use the following template for creating each new script.
@@ -141,7 +141,7 @@ reticulate::install_miniconda()
 keras::install_keras()
 ```
 
-That being said, *the implementation is not seamless.* The first time that you run the `moc-courses-setup.R` script, you will likely drink one or more cups of coffee as you receive many errors that need to be worked through. 
+That being said, *the implementation is not seamless.* The first time that you run the `geoAI_setup.R` script, you will likely drink one or more cups of coffee as you receive many errors that need to be worked through. 
 {: .notice--danger}
 
 
