@@ -13,6 +13,13 @@ Create a random forest model with random cross-validation.
 In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
 
 ```r
+# include set up script here
+```
+
+
+
+
+```r
 # load rasterStack containing red, green, blue and NIR bands
 rasterStack = raster::stack(file.path(envrmt$path_raw_data_aerial, "marburg_dop_rgbi.tif"))
 
@@ -98,7 +105,40 @@ The first step here is to define your response and predictors. The response is j
 
 Now, use the `caret` package to train a simple random forest model. Here, we use the method "rf" in the `train` function to do so. There are many other implementations of the random forest algorithm in `R` that you can explore, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. 
 
-We also use the `expand.grid` function to do some [model tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization), as well. This is complicated, but put simply it returns a model with the parameters optimized for the best accuracy.
+{% capture optional %}
+### Optional
+
+We also use the `expand.grid` function to do some [model tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization), as well. This might seem complicated, but put simply it returns a model with the parameters optimized for the best accuracy. 
+
+
+```r
+# create grid for tuning features
+tgrid <- expand.grid(
+  mtry = 2:4,
+  splitrule = "gini",
+  min.node.size = c(10, 20)
+)
+```
+The function returns a “tuning grid” that contains several possible combinations of parameters for example:
+
+||**mtry**|**splitrule**|**min.node.size**|
+|1|2|gini|10|
+|2|3|gini|10|
+|3|4|gini|10|
+|4|2|gini|20|
+|5|3|gini|20|
+|6|4|gini|20|
+
+For each of this six parameter combinations one model gets trained. You can then determine which of the paramters performed best and use this as your final model. But be **careful** if you are using this method you are calculating not one but several models. The computation time will be a lot higher!
+If you don´t want to tune your model set just one option for every parameter (e.g. mtry = 4).
+
+
+{% endcapture %}
+<div class="notice--info">
+  {{ optional | markdownify }}
+</div> 
+ 
+
 
 ```r
 # create parallel cluster to increase computing speed
@@ -106,12 +146,6 @@ n_cores <- detectCores() - 1
 cl <- makeCluster(n_cores)
 registerDoParallel(cl)
 
-# create grid for tuning features
-tgrid <- expand.grid(
-  mtry = 2:4,
-  splitrule = "gini",
-  min.node.size = c(10, 20)
-)
 
 # control the parameters of the train function
 ctrl <- trainControl(method="cv",
@@ -153,6 +187,14 @@ terra::writeRaster(prediction, file.path(envrmt$prediction, paste0(species, "_pr
 saveRDS(prediction, file.path(envrmt$prediction, paste0(species, "_pred.RDS")))
 ```
 
+Your prediction could look something like this:
+{% include media4 url="assets/images/unit03/marburg_prediction.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
+
+
+
+
+
+
 ## Validation
 Finally, we need one more very important thing: a validation with independent data that has not been included in the model training. For this we use the 20% of the polygons that we left out at the beginning. Simply do the same extraction again as you did at the beginning for the training. Then a prediction is made for all pixels, and the predicted values are compared to the observed values in a matrix.
 
@@ -169,6 +211,22 @@ val_cm = confusionMatrix(table(val_df[,2:3]))
 # output
 saveRDS(val_cm, file.path(envrmt$validation, "confusionmatrix.RDS"))
 ```
+
+
+
+{% capture Assignment-03-1 %}
+
+## Assignment Unit-03-1
+
+Add assignment
+1. ...
+2. ...
+
+{% endcapture %}
+<div class="notice--success">
+  {{ Assignment-03-1 | markdownify }}
+</div> 
+
 
 
 

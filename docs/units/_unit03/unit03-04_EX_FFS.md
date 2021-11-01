@@ -89,4 +89,19 @@ saveRDS(file.path(envrmt$path_unit03_models), "ffsmodel.RDS")
 Now predict the tree species again and compare the results as well as the selected variables to the results you achieved with the traditional random forest model. What are differences, similarities and peculiarities? 
 
 
+{% capture Assignment-03-2 %}
+
+## Assignment Unit-03-2
+
+Add assignment
+1. ...
+2. ...
+
+{% endcapture %}
+<div class="notice--success">
+  {{ Assignment-03-2 | markdownify }}
+</div> 
+
+
+
 <script src="https://gist.github.com/Baldl/963583e6b3ec41369a1cc301a9515ed1.js"></script>
