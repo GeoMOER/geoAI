@@ -57,8 +57,7 @@ ctrl <- trainControl(method="cv",
 Instead of using the train function of the caret package, now we use the ffs function from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables have to be trained with each other. 
 
 ```r
-# 3 - Forward-Feature-Selection (FFS) ####
-#----------------------------------------#
+#Forward-Feature-Selection (FFS)
 
 # no model tuning
 tgrid <- expand.grid(mtry = 2,
@@ -69,16 +68,15 @@ tgrid <- expand.grid(mtry = 2,
 
 
 #run ffs model with Leave-Location-out CV
-
+#set.seed(10)
 
 ffsmodel <- ffs(predictors,
-                response$BAGRu, 
-                metric="Kappa", 
-                method="rf",
-                trControl=ctrl, 
-                importance = TRUE ,
-                tuneLength = 1, 
-                ntree = 50)
+                response,
+                method = "ranger",
+                trControl =ctrl,
+                tuneGrid = tgrid,
+                num.trees = 100,
+                importance = "permutation")
 
 
 
@@ -89,3 +87,6 @@ saveRDS(file.path(envrmt$path_unit03_models), "ffsmodel.RDS")
 ```
 
 Now predict the tree species again and compare the results as well as the selected variables to the results you achieved with the traditional random forest model. What are differences, similarities and peculiarities? 
+
+
+<script src="https://gist.github.com/Baldl/963583e6b3ec41369a1cc301a9515ed1.js"></script>

@@ -169,3 +169,7 @@ val_cm = confusionMatrix(table(val_df[,2:3]))
 # output
 saveRDS(val_cm, file.path(envrmt$validation, "confusionmatrix.RDS"))
 ```
+
+
+
+<script src="https://gist.github.com/Baldl/81f25e80701c19d0bbd320a0114e2e50.js"></script>

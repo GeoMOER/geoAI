@@ -262,3 +262,8 @@ For more information, you can look at the following resources:
 * [Spatial Data Analysis](https://rspatial.org/raster/analysis/2-scale_distance.html) by Robert Hijmans. Very comprehensive and recommended. Many of the examples are based on his lecture and are adapted for our conditions.
 
 * [Geocomputation with R](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow is the outstanding reference for everything related to spatiotemporal data analysis and processing with R. 
+
+
+
+
+<script src="https://gist.github.com/Baldl/51fa03d0865bdf7ddd90a16276779582.js"></script>

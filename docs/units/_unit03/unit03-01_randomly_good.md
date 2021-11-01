@@ -55,11 +55,18 @@ Breiman, Leo (2001). "Random Forests". Machine Learning. 45 (1): 5-32. [https://
 ### Machine learning
 Here are several videos that introduce the broad field of machine learning, in general, as well as the specific algorithm that we will use in this course: random forest. In addition to these videos, we encourage you to conduct independent research, as there are some great tutorials on the Internet.
 
-1. [A Gentle Introduction to Machine Learning (12:44)](https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF){:target="_blank"}  
-2. [Decision Trees (17:21)](https://www.youtube.com/watch?v=7VeUPuFGJHk){:target="_blank"}  
-3. [Decision Trees Part 2 - Feature Selection and Missing Data (5:15)](https://www.youtube.com/watch?v=wpNl-JwwplA){:target="_blank"}  
-4. [Random Forests Part 1 - Building, Using and Evaluating (9:53)](https://www.youtube.com/watch?v=J4Wdy0Wc_xQ){:target="_blank"}  
-5. [Random Forests Part 2 - Missing data and clustering (11:52)](https://www.youtube.com/watch?v=sQ870aTKqiM){:target="_blank"}  
-6. [Random Forests in R (15:09)](https://www.youtube.com/watch?v=6EXPYzbfLCE){:target="_blank"}  
-7. [Machine Learning Fundamentals - Cross Validation (6:04)](https://www.youtube.com/watch?v=fSytzGwwBVw){:target="_blank"}
 
+A Gentle Introduction to Machine Learning (12:44):
+{% include video id="Gv9_4yMHFhI" provider="youtube" %}
+Decision Trees (17:21):
+{% include video id="7VeUPuFGJHk" provider="youtube" %}
+Decision Trees Part 2 - Feature Selection and Missing Data (5:15):
+{% include video id="wpNl-JwwplA" provider="youtube" %}
+Random Forests Part 1 - Building, Using and Evaluating (9:53):
+{% include video id="J4Wdy0Wc_xQ" provider="youtube" %}
+Random Forests Part 2 - Missing data and clustering (11:52):
+{% include video id="sQ870aTKqiM" provider="youtube" %}
+Random Forests in R (15:09):
+{% include video id="6EXPYzbfLCE" provider="youtube" %}
+Machine Learning Fundamentals - Cross Validation (6:04):
+{% include video id="fSytzGwwBVw" provider="youtube" %}
