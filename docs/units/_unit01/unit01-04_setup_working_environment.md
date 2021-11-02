@@ -60,8 +60,14 @@ Provided that I want to create a project with the mandantory folder structure de
 # list of packages to load
 packagesToLoad = c("mapview", "raster", "rgdal", "sf", "keras", "reticulate")
 
-projectDirList = c("data", "scripts", "documentation", "results")
-
+# mandantory folder structure
+projectDirList   = c("data/",               # data folders the following are obligatory but you may add more
+                     "run/",                # folder for runtime data storage
+                     "src/",                # source code
+                     "tmp",                 # all temp stuff
+                     "doc/")                # documentation  and markdown
+					 
+					 
 # Automatically set root direcory, folder structure and load libraries
 envrmt = envimaR::createEnvi(root_folder = rootDir,
                              folders = projectDirList,
@@ -178,5 +184,5 @@ When in doubt (**and before asking your instructor ;-)**), ask Google! Not becau
 </div> 
 
 
-
+## Comments?
 <script src="https://gist.github.com/Baldl/e9a1f9a00da64de1218b5c76875d2b99.js"></script>

@@ -187,7 +187,7 @@ terra::writeRaster(prediction, file.path(envrmt$prediction, paste0(species, "_pr
 saveRDS(prediction, file.path(envrmt$prediction, paste0(species, "_pred.RDS")))
 ```
 
-Your prediction could look something like this:
+Your prediction might look something like the map below. As you can see, the model did not manage to distinguish the roofs of the houses from other sealed surfaces, such as roads and parking lots, even some of the fallow fields were classified as buildings. But the results of your model may look quite different. In general, however, the quality of a model depends to a large degree on its training areas, so try to use your classes to cover as wide a spectrum as possible.
 {% include media4 url="assets/images/unit03/marburg_prediction.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
@@ -229,5 +229,5 @@ Add assignment
 
 
 
-
+## Comments?
 <script src="https://gist.github.com/Baldl/81f25e80701c19d0bbd320a0114e2e50.js"></script>
