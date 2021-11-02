@@ -57,20 +57,21 @@ https://gist.github.com/de8351de7183737d5eb77bf7ed4d2b83.git
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
 #### Vector Data
-In addition to raster data, `R` can handle vector data as well. A different package, `sf`, is required to read vector data of many types. Here, we use the function `read_sf` to import the buildings polygons into `R`. 
-For training purposes we will download some data from the Openstreetmap (OSM) data base. For an overview of the availabele [feature](https://wiki.openstreetmap.org/wiki/Map_features) have a loook at the website. 
-
+In addition to raster data, `R` can handle vector data as well. A different package, `sf`, is required to read vector data of many types.  For training purposes we will download some data from the Openstreetmap (OSM) data base. For an overview of the availabele [feature](https://wiki.openstreetmap.org/wiki/Map_features) have a look at the website.
 ```r
 # Example Polygons
-# OSM public data orchards marburg
+# OSM public data buildings marburg
 # do not forget to add the osmdata package to your header section of the script
 
 library(osmdata)
-# loading OSM data for the Marburg region with the landuse "orchard"
-orchard = opq(bbox = "marburg de") %>% 
-    add_osm_feature(key = "landuse", value = c("orchard")) %>% 
-    osmdata_sf()
-mapview::mapview(orchard$osm_polygons,zcol="produce")
+# loading OSM data for the Marburg region 
+buildings = opq(bbox = "marburg de") %>% 
+  add_osm_feature(key = "building") %>% 
+  osmdata_sf()
+
+buildings = buildings$osm_polygons
+
+mapview::mapview(buildings)
 ```
 
 
@@ -83,12 +84,18 @@ Geospatial data always needs a [coordinate reference system (CRS)](https://en.wi
 raster::crs(rasterStack)
 raster::crs(buildings)
 ```
-Both of these layers should return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use a logical query to test if they are the same.
+If you want to work with both of these layers togehter they should return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use the [compareCRS](https://rdrr.io/cran/raster/man/compareCRS.html) funczion to test if they are the same.
 
 ```r
-crs(rasterStack) == crs(buildings)
+raster::compareCRS(rasterStack, buildings)
 ```
 If these layers have the same CRS, this command will return `TRUE`. Otherwise, `R` will return `FALSE`. Queries like this can be useful for more complex geospatial data workflows, e.g. if two layers have the same CRS, then continue with the analysis, otherwise stop.
+In this case they are not the same, therefore we will transform the crs of the vector data to the crs of the raster data.
+```r
+buildings = sf::st_transform(buildings, crs(rasterStack))
+crs(buildings)
+```
+
 
 ### Step 3 - Visualize the data
 Now that we have the DOP imported into `R`, we want to see what it looks like. There are many options for visualizing geospatial data in `R`, whether it be raster or vector data, with options ranging from basic static plots, e.g. `plotRGB` to interactive plots, e.g. `mapview`.
