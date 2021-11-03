@@ -175,7 +175,7 @@ Finally, now that we have calculated some remote sensing indices that will be ne
 #-----------------------#
 marburg_stack <- stack(rasterStack, rgbI)
 
-saveRDS(marburg_stack, (file.path(envrmt$data_processed, "dop_indices.rds"))
+saveRDS(marburg_stack, (file.path(envrmt$path_data, "dop_indices.RDS")))
 ```
 
 # Now repeat with Sentinel satellite data
