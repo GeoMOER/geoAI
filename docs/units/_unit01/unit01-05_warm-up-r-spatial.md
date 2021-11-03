@@ -255,7 +255,7 @@ Since you will not find sufficient water areas in the data (unlike in Roberts' e
 Put your results (both classified images and your code, remember to use the course setup!) in a `Rmarkdown` file and convert it to a PDF document.
 If there were problems or ambiguities during the implementation, please document them in a comprehensible way.
 
-Please upload this pdf to ILIAS.
+Please upload this PDF file to ILIAS. Recommended deadline November 10.
 
 Hint: If you need help with Rmarkdown have a look at[R Markdown Quick Tour
 ](https://rmarkdown.rstudio.com/authoring_quick_tour.html)
