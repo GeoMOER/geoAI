@@ -150,7 +150,8 @@ keras::install_keras()
 That being said, *the implementation is not seamless.* The first time that you run the `geoAI_setup.R` script, you will likely drink one or more cups of coffee as you receive many errors that need to be worked through. 
 {: .notice--danger}
 
-
+If the installation with the above described approach fails you may follow the following [hints](https://gist.github.com/envimar/79a7249aaced24fafd23149b4fb0a81f#gistcomment-3944383).
+{: .notice--info}
 
 {% capture Assignment-1-1 %}
 ## Assignment Unit-1-1
