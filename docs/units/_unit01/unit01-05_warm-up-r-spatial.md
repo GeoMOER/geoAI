@@ -247,12 +247,15 @@ Please do the following exercises using either the Marburg buildings or the Sent
 1. Read and operate the following chapters: 
 * [Geographic data in R](https://geocompr.robinlovelace.net/spatial-class.html)
 * [Spatial data operations](https://geocompr.robinlovelace.net/spatial-operations.html#spatial-operations)
-* [Spatial Operations](https://geocompr.robinlovelace.net/spatial-operations.html#spatial-operations)
-2. Please visit Robert Hijmans' page about [unsupervised classification](https://rspatial.org/raster/rs/4-unsupclassification.html#unsupervised-classification). Follow his guideline, but instead use:
-* the Sentinel-2 data 
-* the Marburg buildings data
+2. Read and operate  Robert Hijmans' page about [unsupervised classification](https://rspatial.org/raster/rs/4-unsupclassification.html#unsupervised-classification). Follow his guideline. 
+Instead of the example data from Robert's tutorial, please use the Sentinel data or the DOP data independently of each other.
+Since you will not find sufficient water areas in the data (unlike in Roberts' example) you can combine the vegetation-covered classes and the vegetation-free classes.
 
-Put your results and your code (remember to use the course setup!) in an `Rmarkdown` file and `knitr` it to a pdf. Please upload this pdf to ILIAS.
+
+Put your results (both classified images and your code, remember to use the course setup!) in a `Rmarkdown` file and convert it to a PDF document.
+If there were problems or ambiguities during the implementation, please document them in a comprehensible way.
+
+Please upload this PDF file to ILIAS. Recommended deadline November 10.
 
 Hint: If you need help with Rmarkdown have a look at[R Markdown Quick Tour
 ](https://rmarkdown.rstudio.com/authoring_quick_tour.html)
