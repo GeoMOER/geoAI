@@ -292,12 +292,16 @@ What we see is tehre is a lot to learn how to deal with the sampling of training
 ## Assignment Unit-2-2
 
 Now that some basics have been explained, it's time to practice again on your own. The following tasks serve as an orientation framework within which you can practice in a targeted manner.
-
-{% capture Assignment-1-2 %}
-1. Please apply the upper techniques  on either  (1) downloading  a NEW sentinel dataset for the training data as derived by the course server or (2) apply t directly on the airborne imagery dataset.
-1. Read and operate the following [section](https://rspatial.org/raster/rs/5-supclassification.html). Please apply the evaluation and tuning part on the above CART model. What is your finding with respect to model quality and improvement?
 1. Please read  [Review of classifcatin approaches](https://isgindia.org/wp-content/uploads/2017/04/016.pdf)
 
+based on this background please perform the following tasks:
+
+{% capture Assignment-1-2 %}
+1. If not already done, improve your training data and digitize the classes "buildings", "fields", "meadows","forest/trees/hedges", "roads", 
+1. Please apply the upper techniques  on both the sentinel dataset and (2) on the airborne imagery dataset.
+1. Read and operate the following [section](https://rspatial.org/raster/rs/5-supclassification.html). Please apply the evaluation and tuning part on the above CART model. What is your finding with respect to model quality and improvement in comparison to the default  setting of the model and the unsupervised classification? Write a sentence (or two) about your suggestions what we still need for a valid and optionally improved classification.
+
+Again put your code and results in a rmarkdownfile and compile it to a PDF document for upload on  ILIAS.
 
 {% endcapture %}
 <div class="notice--success">
