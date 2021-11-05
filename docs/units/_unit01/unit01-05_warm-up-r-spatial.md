@@ -29,16 +29,16 @@ In detail, we will perform the following tasks:
 ### Step 1 - Get the data and setup the working environment
 The Hessian State Department of Land Management and Geoinformation ([Hessische Verwaltung fuer Bodenmanagement und Geoinformation; HVBG](https://hvbg.hessen.de/)) commissions flights for the entire state of Hesse every 2 years. They make the imagery, known as digital orthophotos (DOPs), available in 20cm and 40cm resolution with 4 channels: Red (R), Green (G), Blue (B) and Near-Infrared (NIR). More information about the HVBG's DOPs is available [here](https://hvbg.hessen.de/geoinformation/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-atkis%C2%AE-dops-und-true) (German only). 
 
-The 20-cm DOP of our study area is available for  [download](http://85.214.102.111/geo_data/data/01_raw_data/aerial/) from the course server. Please note that the HVBG has provided these DOPs free of charge for the purpose of education and that they may only be used in the context of this course.
+The 20-cm DOP of our study area is available for [download](http://85.214.102.111/geo_data/data/01_raw_data/aerial/) from the course server. Please note that the HVBG has provided these DOPs free of charge for the purpose of education and that they may only be used in the context of this course.
 
 
-**Writing it down as a script** 
-Remember. We start **every single script** by reading our script `geoAI_setup.R`, from Unit 1. 
+**Writing it down as a script.** 
+Remember: We start **every single script** by sourcing our script `geoAI_setup.R`, from Unit 1. 
 Then we start the actual work:
 * First, we import a digital orthophoto of Marburg. To import so-called raster data, we normally use the package `raster`, which is loaded with the call `library(raster)`. We don't need to do this, however, because we already loaded the package via the setup script. 
 * Next, we import a vector data set containing the areas of the buildings. 
 * Then, we check the georeferencing.
-* Finally, we visualize the data
+* Finally, we visualize the data.
 {: .notice--info}
 
 ### Step 2 - Prepare the data
@@ -57,7 +57,7 @@ https://gist.github.com/de8351de7183737d5eb77bf7ed4d2b83.git
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
 #### Vector Data
-In addition to raster data, `R` can handle vector data as well. A different package, `sf`, is required to read vector data of many types.  For training purposes we will download some data from the Openstreetmap (OSM) data base. For an overview of the availabele [feature](https://wiki.openstreetmap.org/wiki/Map_features) have a look at the website.
+In addition to raster data, `R` can handle vector data as well. A different package, `sf`, is required to read vector data of many types. For training purposes, we will download some data from the Openstreetmap (OSM) database. Take a look at the website for an overview of the available [features](https://wiki.openstreetmap.org/wiki/Map_features).
 ```r
 # Example Polygons
 # OSM public data buildings marburg
@@ -84,13 +84,14 @@ Geospatial data always needs a [coordinate reference system (CRS)](https://en.wi
 raster::crs(rasterStack)
 raster::crs(buildings)
 ```
-If you want to work with both of these layers togehter they should return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use the [compareCRS](https://rdrr.io/cran/raster/man/compareCRS.html) funczion to test if they are the same.
+If you want to work with both of these layers together they should return the same CRS. In cases when you are uncertain if two layers have the same CRS, you can use the [compareCRS](https://rdrr.io/cran/raster/man/compareCRS.html) function to test if they are the same.
 
 ```r
 raster::compareCRS(rasterStack, buildings)
 ```
 If these layers have the same CRS, this command will return `TRUE`. Otherwise, `R` will return `FALSE`. Queries like this can be useful for more complex geospatial data workflows, e.g. if two layers have the same CRS, then continue with the analysis, otherwise stop.
-In this case they are not the same, therefore we will transform the crs of the vector data to the crs of the raster data.
+
+In this case they are not the same, so we will transform the CRS of the vector data to the CRS of the raster data.
 ```r
 buildings = sf::st_transform(buildings, crs(rasterStack))
 crs(buildings)
@@ -119,11 +120,12 @@ Visualizing spatial data is fantastic and makes sense -- we want to make maps af
 <div align="center">
  <img width="50%" src="../assets/images/unit02/NDVI.svg">
  <figure >  
-  <figcaption class="figure-caption text-start">The equation of calculating the NDVI. For more information, check out [Earth Lab](https://www.earthdatascience.org/courses/earth-analytics/multispectral-remote-sensing-data/vegetation-indices-NDVI-in-R/)
+  <figcaption class="figure-caption text-start">The equation for calculating NDVI.
   </figcaption>
  </figure>
 </div>
 
+For more information, check out [Earth Lab](https://www.earthdatascience.org/courses/earth-analytics/multispectral-remote-sensing-data/vegetation-indices-NDVI-in-R/)
 
 ```r
 # 4 - calculate RGB indices ####
@@ -167,8 +169,17 @@ raster::plot(rgbI)
   {{ Hint | markdownify }}
 </div> 
 
-### Step 5 - Save the results for later usage
-Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an `R` session). RDS is ideal for this purpose, because it allows us to save a single `R` object to a file and restore it. Please note that `saveRDS`is highly efficient for saving a **single** `R` object only.
+### Step 5 - Save the results for later
+Finally, now that we have calculated some remote sensing indices that will be necessary for our machine learning prediction later on, it would be useful and time-efficient to only have to calculate them once (not every time that we open an `R` session). RDS is ideal for this purpose, because it allows us to save a single `R` object to a file and restore it. 
+
+{% capture saveRDS %}
+
+Please note that `saveRDS`is highly efficient for saving a **single** `R` object only.
+
+{% endcapture %}
+<div class="notice--info">
+  {{ saveRDS | markdownify }}
+</div>
 
 ```r
 # 5 - stack and save as RDS ####
@@ -214,10 +225,10 @@ sen2r:sen2r()
 {% include figure image_path="/assets/images/unit01/sen2r.png" alt="sen2r GUI screenshot" caption="Sen2r GUI starting screen. You have to go through the options tab by tab. The selected configuration can be saved and also called as a script. Note that an account at [Copernicus SciHub](https://scihub.copernicus.eu/dhus/#/home) is mandatory." %}
 
 ### The `sen2r` API
-In the following script Sentinel-2 data are used to calculate the surface albedo. For this the following steps are necessary:
-1. set up the working environment (Attention: additional libraries will be loaded here)
-2. download data by configuring and executing `sen2r` using the API
-3. calculate the surface albedo (exemplary) 
+In the following script, Sentinel-2 data are used to calculate the surface albedo. For this the following steps are necessary:
+1. Set up the working environment (Attention: additional libraries will be loaded here)
+2. Download data by configuring and executing `sen2r` using the API
+3. Calculate the surface albedo (exemplary) 
 
 {% gist 7b6eb9122522eb0797407ecf6cc5176b%}
 [Get sentinel_albedo.R](https://gist.github.com/envimar/7b6eb9122522eb0797407ecf6cc5176b/archive/87e28a974913acd62653fef49041a7fdc422cc4a.zip)
@@ -227,17 +238,17 @@ The [sen2r vignette](https://sen2r.ranghetti.info/) offers plenty of helpful inf
 
 ## Assignment Unit-1-2
 
-Now that some basics have been explained, it's time to practice on your own. The following tasks serve as an orientation framework within which you can practice in a targeted manner. It requires you to solve some technical, content-related and conceptual problems. Let's go.
+Now that we've covered some basics, it's time to practice on your own. The following tasks serve as an orientation framework for practicing in a targeted manner. It requires you to solve some technical, content-related and conceptual problems. Let's go.
 
-At Robert Hijmans' `raster` [homepage](https://rspatial.org/raster/index.html#) you will find a lot of straightfoward exercises, including our basic examples from before. Robert also provides the necessary data. Another highly recommend place is [Geocomputation with R](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad and Jannes Muenchow. It is the outstanding reference and a perfect starting point for everything related to spatio-temporal data analysis and processing with `R`. 
+At Robert Hijmans' `raster` [homepage](https://rspatial.org/raster/index.html#) you will find a lot of straightforward exercises, including our basic examples from before. Robert also provides the necessary data. Another highly recommend place is [Geocomputation with R](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad and Jannes Muenchow. It is *the* outstanding reference and a perfect starting point for everything related to spatio-temporal data analysis and processing with `R`. 
 
-A good approach to improve you skills is to dive in these kind of exercises and substitute the example data with your own data.
+A good approach to improving your skills is to dive into these kind of exercises and use your own data in place of the example data.
 This means:
 1. Do the exercises with the example data (technical base check)
 1. Do the exercises with your own data  (advanced technical base check)
 1. Understand the operation
 
-It is a good habit to document what you learn (the knowledge you gain) and any open questions you may have as well as problems that arise. Documenting your progress in an `Rmarkdown` document is particularly useful for this purpose. The package `blogdown` is, in fact, excellent for this. The key is practice: not just getting sample source code to run, but changing it and understanding what it does. 
+It is a good habit to document what you learn (the knowledge you gain) and any open questions you may have as well as problems that arise. Documenting your progress in an `Rmarkdown` document is particularly useful for this purpose. The `blogdown` package is, in fact, excellent for this. The key is practice: not just getting sample source code to run, but changing it and understanding what it does. 
 {: .notice--info}
 
 Please do the following exercises using either the Marburg buildings or the Sentinel-2 dataset. 
@@ -247,17 +258,17 @@ Please do the following exercises using either the Marburg buildings or the Sent
 1. Read and operate the following chapters: 
 * [Geographic data in R](https://geocompr.robinlovelace.net/spatial-class.html)
 * [Spatial data operations](https://geocompr.robinlovelace.net/spatial-operations.html#spatial-operations)
-2. Read and operate  Robert Hijmans' page about [unsupervised classification](https://rspatial.org/raster/rs/4-unsupclassification.html#unsupervised-classification). Follow his guideline. 
-Instead of the example data from Robert's tutorial, please use the Sentinel data or the DOP data independently of each other.
+2. Read and work through Robert Hijmans' page about [unsupervised classification](https://rspatial.org/raster/rs/4-unsupclassification.html#unsupervised-classification). Follow his guidelines. 
+Instead of the example data from Robert's tutorial, please use either the Sentinel data or the DOP data (not both).
 Since you will not find sufficient water areas in the data (unlike in Roberts' example) you can combine the vegetation-covered classes and the vegetation-free classes.
 
 
-Put your results (both classified images and your code, remember to use the course setup!) in a `Rmarkdown` file and convert it to a PDF document.
-If there were problems or ambiguities during the implementation, please document them in a comprehensible way.
+Put your results -- both the classified images and your code -- in a `Rmarkdown` file and convert it to a PDF document. Remember to use the course setup structure!
+If you experienced any problems or there were ambiguities in the implementation, please document them in a comprehensible way.
 
-Please upload this PDF file to ILIAS. Recommended deadline November 10.
+Please upload this PDF file to ILIAS. The recommended deadline is November 10.
 
-Hint: If you need help with Rmarkdown have a look at[R Markdown Quick Tour
+Hint: If you need help with `Rmarkdown`, have a look at [R Markdown Quick Tour
 ](https://rmarkdown.rstudio.com/authoring_quick_tour.html)
 {: .notice--info}
 {% endcapture %}
@@ -271,7 +282,7 @@ For more information, you can look at the following resources:
 
 * [Spatial Data Analysis](https://rspatial.org/raster/analysis/2-scale_distance.html) by Robert Hijmans. Very comprehensive and recommended. Many of the examples are based on his lecture and are adapted for our conditions.
 
-* [Geocomputation with R](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow is the outstanding reference for everything related to spatiotemporal data analysis and processing with R. 
+* [Geocomputation with R](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow is the outstanding reference for everything related to spatio-temporal data analysis and processing with `R`. 
 
 
 
