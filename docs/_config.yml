@@ -24,7 +24,7 @@
 
 # Serve on GitHub
 url: https://geomoer.github.io
-baseurl: "/KI-Kampus-Test/"
+baseurl: "/geoAI/"
 
 
 ##### Title ###################################################################
@@ -46,7 +46,7 @@ description: >- # this means to ignore newlines until next item
 title_separator          : "|"
 excerpt_separator        : <!--more-->
 locale                   : "en-EN"
-repository               : "Baldl/KI-Kampus-Test"
+repository               : "geoAI"
 
 
 # Build settings
