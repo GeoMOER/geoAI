@@ -102,6 +102,17 @@ Add assignment
   {{ Assignment-03-2 | markdownify }}
 </div> 
 
-
 ## Comments?
-<script src="https://gist.github.com/Baldl/963583e6b3ec41369a1cc301a9515ed1.js"></script>
+You can leave comments under this gist if you have questions or comments about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_03_EX_Spatial_prediction"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
