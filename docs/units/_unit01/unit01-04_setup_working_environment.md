@@ -186,4 +186,14 @@ When in doubt (**and before asking your instructor ;-)**), ask Google! Not becau
 
 
 ## Comments?
-<script src="https://gist.github.com/Baldl/e9a1f9a00da64de1218b5c76875d2b99.js"></script>
+You can leave comments under this gist if you have questions or comments about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_01_EX_Setting_up_the_course_environment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
