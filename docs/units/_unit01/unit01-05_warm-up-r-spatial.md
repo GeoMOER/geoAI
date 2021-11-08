@@ -294,8 +294,8 @@ You can leave comments under this gist if you have questions or comments about a
 
 
 <script src="https://utteranc.es/client.js"
-        repo="Baldl/comments"
-        issue-term="warm-up-r-spatial "
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_01_EX_Warm_up_R-spatial"
         theme="github-light"
         crossorigin="anonymous"
         async>
