@@ -224,6 +224,9 @@ Add assignment
 1. ...
 2. ...
 
+
+Again put your code and results in an `Rmarkdown` file and compile it to a PDF document for upload on ILIAS.
+
 {% endcapture %}
 <div class="notice--success">
   {{ Assignment-03-1 | markdownify }}
@@ -232,7 +235,7 @@ Add assignment
 
 
 ## Comments?
-You can leave comments under this gist if you have questions or comments about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
 
 
@@ -244,4 +247,3 @@ You can leave comments under this gist if you have questions or comments about a
         async>
 </script>
 
-GeoAI_2021_unit_03_EX_A_randomly_good_model
