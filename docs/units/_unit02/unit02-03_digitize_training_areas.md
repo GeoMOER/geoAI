@@ -80,3 +80,18 @@ Congratulations, you've hand-drawn and digitized your first set of training area
 * [Digitizing training and test areas](http://wiki.awf.forst.uni-goettingen.de/wiki/index.php/Digitizing_training_and_test_areas) by the [Forest Inventory and Remote Sensing](https://www.uni-goettingen.de/en/67094.html) department at the University of Goettingen (Germany)
 * [Digitizing polygons tutorial](https://docs.qgis.org/3.16/en/docs/training_manual/create_vector_data/create_new_vector.html#basic-ty-digitizing-polygons) in the QGIS 3.16 documentation
 * [Supervised classification tutorial](https://www2.geog.soton.ac.uk/users/trevesr/obs/rseo/supervised_classification.html) by Richard Treves, formerly of the University of Southampton (UK) 
+
+
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the content on this page.
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_02_EX_digitizing_training_areas"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+

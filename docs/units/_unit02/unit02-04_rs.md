@@ -185,7 +185,7 @@ tp = sf::st_transform(train_areas,crs = sf::st_crs(stack))
 # because extracting the raster way is very slow
 DF <- raster::extract(stack, tp, df=TRUE) 
 # we rename the layers for simplicity
-names(DF) = c("id","band1","band2","band3","band4","band5","band6","band7","band8","band9","band10","band11")
+names(DF) = c("id","S2B2A_20210613_108_MOF_BOA_10.1","S2B2A_20210613_108_MOF_BOA_10.2","S2B2A_20210613_108_MOF_BOA_10.3","S2B2A_20210613_108_MOF_BOA_10.4","S2B2A_20210613_108_MOF_BOA_10.5","S2B2A_20210613_108_MOF_BOA_10.6","S2B2A_20210613_108_MOF_BOA_10.7","S2B2A_20210613_108_MOF_BOA_10.8","S2B2A_20210613_108_MOF_BOA_10.9","S2B2A_20210613_108_MOF_BOA_10.10","S2B2A_20210613_108_MOF_BOA_10.11")
 # now we add the "class" category which we need later on for training
 # it was dropped during extraction
 DF_sf =st_as_sf(inner_join(DF,tp))
