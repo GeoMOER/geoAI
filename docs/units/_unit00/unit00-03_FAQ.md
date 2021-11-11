@@ -21,5 +21,9 @@ This course gives 6 (ECTS) credit points, making up a total of 180 hours workloa
 
 <iframe
   src="../assets/timeline.html"
-  style="width:100%; height:500px;"
+  style="width:150%; height:500px;"
 ></iframe>
+
+
+<a id="raw-url" href="https://raw.githubusercontent.com/GeoMOER/geoAI/staging/docs/assets/images/timeline_2021.png">Download as Image</a> or
+[view full screen version]({{ site.baseurl }}assets/timeline.html){:target="_blank"}
