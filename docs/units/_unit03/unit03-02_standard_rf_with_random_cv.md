@@ -24,18 +24,17 @@ packagesToLoad = c("mapview", "raster", "sf", "png", "caret", "exactextractr",
 
 
 # define a project rootfolder
-rootDir = "D:/KI_Kampus/test/unit03/"  # This is the mandantory rootfolder of the whole project 
+rootDir = "~/edu/geoAI"  # This is the mandantory rootfolder of the whole project 
 
 
 projectDirList   = c("data/",
-                     "data/01_raw_data/",
-                     "data/01_raw_data/aerial/",
-                     "data/01_raw_data/vector/",
-                     "data/02_modelling/",
-                     "data/02_modelling/model_training_data/",
-                     "data/02_modelling/models/",
-                     "data/02_modelling/prediction/",
-                     "data/02_modelling/validation/",
+                     "data/modelling/",
+                     "data/modelling/model_training_data/",
+                     "data/modelling/models/",
+                     "data/modelling/prediction/",
+                     "data/modelling/validation/",
+                     "docs/",
+                     "run/",
                      "tmp",
                      "src/",
                      "src/functions/")
@@ -52,6 +51,8 @@ envrmt = envimaR::createEnvi(root_folder = rootDir,
 raster::rasterOptions(tmpdir = envrmt$path_tmp)
 
 
+
+
 ```
 
 ## Read the data
@@ -61,10 +62,10 @@ In the first step, you need to import your previously prepared predictor variabl
 
 ```r
 # load rasterStack containing red, green, blue and NIR bands
-rasterStack = raster::stack(file.path(envrmt$path_aerial, "marburg_dop_rgbi.tif"))
+rasterStack = raster::stack(file.path(envrmt$path_data, "marburg_dop_rgbi.tif"))
 
 # load the indices you calculated in the last exercise
-indices = raster::stack(file.path(envrmt$path_aerial, "dop_indices.tif"))
+indices = raster::stack(file.path(envrmt$path_data, "dop_indices.tif"))
 
 # stack them all into one raster
 rasterStack = raster::stack(rasterStack, indices)
@@ -78,7 +79,7 @@ At this point, it is also a good idea to check that the raster and polygons have
 
 ```r
 # now the vector data: use the sf package to load the file and check if the crs matches with the raster stack
-pol = sf::read_sf(file.path(file.path(envrmt$path_vector, "marburg_buildings.gpkg")))
+pol = sf::read_sf(file.path(file.path(envrmt$path_data, "marburg_buildings_selfmade.gpkg")))
 pol = sf::st_transform(pol, crs(rasterStack))
 
 # add IDs to your polygons, if they don't have them
@@ -180,7 +181,8 @@ If you don´t want to tune your model set just one option for every parameter (e
   {{ optional | markdownify }}
 </div> 
  
-
+With a parallelization you can speed up the training of the model (depending on the performance of your PC). 
+Here we use the `detectCores()` function, which automatically uses all available cores of the PC. To prevent your PC from just bursting into flames one day, it is best to never use all cores (here we leave out two). 
 
 ```r
 # create parallel cluster to increase computing speed
@@ -234,17 +236,14 @@ Your prediction might look something like the map below. As you can see, the mod
 
 
 
-
-
-
 ## Validation
 Finally, we need one more very important thing: a validation with independent data that has not been included in the model training. For this we use the data that we left out at the beginning. A prediction is made for all pixels, and the predicted values are compared to the observed values in a matrix.
 
 ```r
-extr_val = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS")
+test_data = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS")
 model = readRDS(file.path(envrmt$path_models, "model.RDS")))
 
-predicted = stats::predict(object = mod, newdata = extr_val)
+predicted = stats::predict(object = mod, newdata = test_data)
 
 val_df = data.frame(ID = pull(extr_sub, "OBJ_ID"),
                     Observed = pull(extr_val, "class"), 
@@ -257,13 +256,14 @@ saveRDS(val_cm, file.path(envrmt$path_validation, "confusionmatrix.RDS"))
 ```
 
 
-You have created a so called confusion matrix to 
+You have created a so called confusion matrix to get a first impression about the predicition of the model, you will get new parameters for your models have a look at the accurracy and kappa values again, have they changed compared to the internal model parameters? You can see in the confusion matrix which class gets misinterpreted for which other class, which is particulary interesting if you have a lot of classees.
+You are then able to get 
 
 
 
 
 <p align="center">
-  <img src="../assets/images/unit03/confusion_matrix.png" alt="drawing">
+  <img height= 100% width=300% src="../assets/images/unit03/confusion_matrix.png" alt="drawing">
 </p>
 *Image: Confusion Matrix*
 
@@ -272,12 +272,20 @@ You have created a so called confusion matrix to
 
 ## Assignment Unit-03-1
 
-Add assignment
-1. ...
-2. ...
+
+Please follow the exercise above.  
+
+1. Use the DOP data of Marburg, if the amount of data is to large to process or the modelling process takes painfully long you can reduce the amount of pixel you use to train the model.
+Just be careful to include a somewhat balanced amount of data from each class. 
+
+2. Create a nice map of the spatial prediction and add it to 
+
+3. Try to interpret the performance values of your model and your external validation.
+Write a few sentences, how you would interpret your results. The  
 
 
-Again put your code and results in an `Rmarkdown` file and compile it to a PDF document for upload on ILIAS.
+
+Create a .zip file containing a map of your prediction the model and a short description of the 
 
 {% endcapture %}
 <div class="notice--success">
