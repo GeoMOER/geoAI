@@ -22,7 +22,10 @@ So we need a spatial validation model that is better suited for spatial data. To
 
 
 {% include figure image_path="/assets/images/unit03/llo_cv.png" alt="Leave-Location-Out Cross-validation" %}
-*Image: Concept of random and spatial cross-validation (CV): A total dataset (here: 9 different data points represented by different shapes) is split into k folds (here: k=3). Models are then repeatedly trained by always leaving one of the folds out and use it for model validation and not for model training. Random CV means that the data are randomly split into folds. Spatial CV means that the data are split into folds according to spatial location (e.g. a spatial cluster or a spatial block, here represented by unique color). Figure modified from Meyer et al. (2018) and Kuhn & Johnson (2013). Meyer, Hanna & Reudenbach, Christoph & Wöllauer, Stephan & Nauss, Thomas. (2019). Importance of spatial predictor variable selection in machine learning applications -- Moving from data reproduction to spatial prediction. Meyer H, Reudenbach C, Wöllauer S, Nauss T (2019) [CC BY-NC-SA 4.0] via [researchgate.net](https://www.researchgate.net/figure/Concept-of-random-and-spatial-cross-validation-CV-A-total-dataset-here-9-different_fig3_335318909)*
+<figure>
+  <figcaption>Image: Concept of random and spatial cross-validation (CV): A total dataset (here: 9 different data points represented by different shapes) is split into k folds (here: k=3). Models are then repeatedly trained by always leaving one of the folds out and use it for model validation and not for model training. Random CV means that the data are randomly split into folds. Spatial CV means that the data are split into folds according to spatial location (e.g. a spatial cluster or a spatial block, here represented by unique color). Figure modified from Meyer et al. (2018) and Kuhn & Johnson (2013). Meyer, Hanna & Reudenbach, Christoph & Wöllauer, Stephan & Nauss, Thomas. (2019). Importance of spatial predictor variable selection in machine learning applications -- Moving from data reproduction to spatial prediction. Meyer H, Reudenbach C, Wöllauer S, Nauss T (2019) [CC BY-NC-SA 4.0] via [researchgate.net](https://www.researchgate.net/figure/Concept-of-random-and-spatial-cross-validation-CV-A-total-dataset-here-9-different_fig3_335318909)
+  </figcaption>
+</figure>
 
 
 
@@ -36,9 +39,13 @@ Please familiarize yourself with LLO and FFS by reading the corresponding articl
 ## Further reading
 Meyer H, Reudenbach C, Hengl T, Katurji M, Nauss T (2018) Improving performance of spatio-temporal machine learning models using forward feature selection and target-oriented validation. Environmental Modelling & Software 101: 1-9. [https://doi.org/10.1016/j.envsoft.2017.12.001](https://www.sciencedirect.com/science/article/abs/pii/S1364815217310976).
 
-Meyer H, Reudenbach C, Wöllauer S, Nauss T (2019) Importance of spatial predictor variable selection in machine learning applications -- Moving from data reproduction to spatial prediction. Ecological Modelling 411: 108815.[https://dx.doi.org/https://doi.org/10.1016/j.ecolmodel.2019.108815 ](https://www.sciencedirect.com/science/article/abs/pii/S0304380019303230#!)
+Meyer H, Reudenbach C, Wöllauer S, Nauss T (2019) Importance of spatial predictor variable selection in machine learning applications -- Moving from data reproduction to spatial prediction. Ecological Modelling 411: 108815.[https://dx.doi.org/https://doi.org/10.1016/j.ecolmodel.2019.108815](https://www.sciencedirect.com/science/article/abs/pii/S0304380019303230#!)
+
+Meyer, H., & Pebesma, E. (2021). Predicting into unknown space? Estimating the area of applicability of spatial prediction models. Methods in Ecology and Evolution, 12, 1620– 1633. [https://doi.org/10.1111/2041-210X.13650](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13650)
+
 
 ## Still have questions?
-We highly recommend the following talk, which addresses the issues in more detail:
+We highly recommend the following talks, which addresses the issues in more detail:
 
 * Hanna Meyer: ["Machine-learning based modelling of spatial and spatio-temporal data"](https://www.youtube.com/watch?v=QGjdS1igq78&t=2676s) (53:24)
+* Hanna Meyer: ["Estimating the area of applicability of spatial prediction models"](https://www.youtube.com/watch?v=jChikEb4vgE&ab_channel=52North) (22:11)
