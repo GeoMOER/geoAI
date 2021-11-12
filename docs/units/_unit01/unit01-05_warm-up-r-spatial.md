@@ -50,9 +50,6 @@ We will start by creating a new `R` script called `data.R` in the `src` folder.
 
 <script src="https://gist.github.com/gisma/de8351de7183737d5eb77bf7ed4d2b83.js"></script>
 
-```bash
-https://gist.github.com/de8351de7183737d5eb77bf7ed4d2b83.git
-```
 
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
@@ -275,6 +272,7 @@ Hint: If you need help with `Rmarkdown`, have a look at [R Markdown Quick Tour
 <div class="notice--success">
   {{ Assignment-1-2 | markdownify }}
 </div> 
+
 
 
 ## Where can I find more information?
