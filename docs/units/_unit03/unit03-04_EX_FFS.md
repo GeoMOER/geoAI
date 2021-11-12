@@ -7,28 +7,24 @@ header:
   caption: "Image: manfredrichter via [pixabay.com](https://pixabay.com/de/photos/%C3%A4pfel-streuobst-obstbaum-apfelbaum-3684775/)"
  
 ---
-Spatial prediction, right this time!
 
+In this exercise, we will predict buildings in the southern part of Marburg once again. This time, however, it will be a spatial prediction done right -- which is to say that the results will not be spatially autocorrelated and much more robust! You can use the same dataset that we prepared and balanced in the previous exercise. 
 
-We will once again predict orchard meadows in Hesse. You can use the same prepared and balanced dataset as in the last exercise. 
+You can import your extracted data in the same manner as before. In this case, we also need to define the column that contains information about which row belongs to which polygon (Polygon ID).
 
-
-You can read your extracted data in the same manner as before. But now we also need to define the column that contains information about which row belongs to which polygon (Polygon ID).
 ```r
 training =  readRDS(file.path(envrmt$path_model_training_data, "extr_train.RDS")) 
 
-
 training = na.omit(training)
 training$class <- as.factor(training$class)
+
 # random forest
 predictors = training[,3:10]
 response = training[,"class"]
-
 ```
-## Leave-Location-out Cross-Validation
 
-Use a Leave-location-Out cross-validation as spatial cross-validation. For this purpose, the pixels of all polygons are separated into folds, with the function CreateSpacetimeFolds, using their ID.
-
+## Leave-Location-Out Cross-Validation
+Use a Leave-Location-Out Cross-Validation as a spatial cross-validation technique. For this purpose, the function `CreateSpacetimeFolds` separates the pixels of every polygon into folds, based on their ID.
 
 ```r
 # leave location out cross-validation
@@ -36,10 +32,9 @@ indices <- CreateSpacetimeFolds(training,
                                 spacevar = "OBJ_ID", 
                                 k=10, 
                                 class = "class")
-
 ```
 
-The folds are then passed to the trainControl function as an index.
+The folds are then passed to the `trainControl` function as an index.
 
 ```r
 
@@ -48,24 +43,18 @@ ctrl <- trainControl(method="cv",
                      index = indices$index,
                      savePredictions=TRUE,
                      allowParallel = TRUE)
-
-
 ```
 
 ## Forward-Feature-Selection
 
-Instead of using the train function of the caret package, now we use the ffs function from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables have to be trained with each other. 
+Instead of using the `train` function from the `caret` package, we now use the function `ffs` from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables all have to be trained with each other. 
 
 ```r
 #Forward-Feature-Selection (FFS)
-
-# no model tuning
+#no model tuning
 tgrid <- expand.grid(mtry = 2,
                      splitrule = "gini",
                      min.node.size = 1)
-
-
-
 
 #run ffs model with Leave-Location-out CV
 #set.seed(10)
@@ -78,15 +67,11 @@ ffsmodel <- ffs(predictors,
                 num.trees = 100,
                 importance = "permutation")
 
-
-
 ffsmodel
 saveRDS(file.path(envrmt$path_unit03_models), "ffsmodel.RDS")
-
-
 ```
 
-Now predict the tree species again and compare the results as well as the selected variables to the results you achieved with the traditional random forest model. What are differences, similarities and peculiarities? 
+Now predict the location of buildings again and compare the results as well as the selected variables to the results from the traditional random forest model (with random CV). What are differences, similarities and peculiarities? 
 
 
 {% capture Assignment-03-2 %}
@@ -105,8 +90,6 @@ Add assignment
 ## Comments?
 You can leave comments under this gist if you have questions or comments about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
-
-
 <script src="https://utteranc.es/client.js"
         repo="GeoMOER/geoAI"
         issue-term="GeoAI_2021_unit_03_EX_Spatial_prediction"
@@ -114,5 +97,3 @@ You can leave comments under this gist if you have questions or comments about a
         crossorigin="anonymous"
         async>
 </script>
-
-

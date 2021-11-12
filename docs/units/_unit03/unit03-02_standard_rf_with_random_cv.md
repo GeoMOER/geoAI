@@ -11,21 +11,17 @@ Create a random forest model with random cross-validation.
 
 ## Set up a working environment
 
-Set up a working environment as you have learned it in unit 01. Load the DOP from Marburg and the indices you created based on this in the raw data aerial folder and the polygons you created in QGIS in unit 02 in the raw data vector folder.
-
+First, set up the working environment as described in Unit 01.
 
 ```r
 require(envimaR)
 
 packagesToLoad = c("mapview", "raster", "sf", "png", "caret", "exactextractr",  
-                   "foreach",  "doParallel", "CAST", "randomForest",   "reticulate", 
+                   "foreach", "doParallel", "CAST", "randomForest", "reticulate", 
                    "ranger")
-
-
 
 # define a project rootfolder
 rootDir = "~/edu/geoAI"  # This is the mandantory rootfolder of the whole project 
-
 
 projectDirList   = c("data/",
                      "data/modelling/",
@@ -49,16 +45,10 @@ envrmt = envimaR::createEnvi(root_folder = rootDir,
                              alt_env_root_folder = "F:/BEN/edu")
 ## set raster temp path
 raster::rasterOptions(tmpdir = envrmt$path_tmp)
-
-
-
-
 ```
 
 ## Read the data
 In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
-
-
 
 ```r
 # load rasterStack containing red, green, blue and NIR bands
@@ -72,7 +62,6 @@ rasterStack = raster::stack(rasterStack, indices)
 
 # check that all names are unique
 names(rasterStack)
-
 ``` 
 
 At this point, it is also a good idea to check that the raster and polygons have the same Coordinate Reference System (CRS). A [CRS](https://en.wikipedia.org/wiki/Spatial_reference_system) is a set of parameters that determine how to display geographic coordinates (i.e. tell your computer how to represent the Earth and your data on your screen). Also, we need to make sure that each polygon has a unique ID. If the data does not include an ID number, add one.
@@ -100,8 +89,9 @@ saveRDS(extr, file.path(envrmt$path_model_training_data, "extraction.RDS"))
 ```
 
 ## Balancing
-In some cases, you may want to use machine learning algorithms on data that is imbalanced. Imbalanced data occurs when the number of training polygons for one class is significantly larger (or smaller) than that of the other classes in the dataset. If we used imbalanced data, we may create a model that cannot properly predict for unknown data, because one class is either over- or underrepresented in the training data.
-To counteract this, we will balance the data. To do so, we will use the dataframe with the extracted values for each pixel. First, we need to check how many pixel of each class are in our dataframe. Then, we downsample the larger class. This entails that we take a random sample of rows from the larger class that is equal to the number of rows in the smaller class. 
+In some cases, you may want to use machine learning algorithms on data that is imbalanced. This occurs when the number of training polygons for one class is significantly larger (or smaller) than that of the other classes in the dataset. If we used imbalanced data, we may create a model that cannot properly predict for unknown data, because one class is either over- or underrepresented in the training data.
+
+In our next step, we balance the data to counteract this potential error. To do so, we will use the dataframe with the extracted values for each pixel. First, we need to check how many pixel of each class are in our dataframe. Then, we downsample the larger class. This entails taking a random sample of rows from the larger class that is equal to the number of rows in the smaller class. 
 
 ```r
 extr = readRDS(file.path(envrmt$path_model_training_data, "extraction.RDS"))
@@ -113,7 +103,7 @@ other = extr[extr$class == "other",]
 nrow(buildings)
 nrow(other)
 
-# reduce the larger class by sampling the same amount of rows as are contained in the smaller class
+# reduce the larger class by sampling the same number of rows that the smaller class has
 set.seed(42)
 other = other[sample(nrow(buildings)), ]
 
@@ -121,10 +111,9 @@ other = other[sample(nrow(buildings)), ]
 extr = rbind(other, buildings)
 ```
 
-Then, we split the data into two sets: one for model training and the other for testing. We will use 80% of the data for training and 20% of the data for testing. We will use the function `createDataPartition` from the `caret` package for this task. This function is very useful, as it tries to maintain the ratio of each class in the datasets.
+Then, we split the data into two sets: one for model training and the other for testing. Here, we use 80% of the data for training and 20% for testing. We will use the function `createDataPartition` from the `caret` package for this task. This function is very useful, as it tries to maintain the ratio of each class in the datasets.
 
 ```r
-
 trainIndex = caret::createDataPartition(extr$class, p = 0.8, list = FALSE)
 training = extr[ trainIndex,]
 testing = extr[ -trainIndex,]
@@ -134,7 +123,7 @@ saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 ```
 
 ## Random Forest
-Now we can finally start our first attempt to predict the buildings. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from the package `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
+Now we can finally start our first attempt at predicting the buildings. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
 training = na.omit(training)
@@ -145,14 +134,14 @@ predictors = training[,3:10]
 response = training[,"class"]
 ```
 
-The first step here is to define your response and predictors. The response is just one column containing your class label, because we want to classify the rest of the image. The predictors are all of the columns with the information that we extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
+The first step here is to define your response and predictors. The response is simply one column that contains your class label, because we want to classify the rest of the image. The predictors are all of the columns with the information that we extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
 
-Now, use the `caret` package to train a simple random forest model. Here, we use the method "rf" in the `train` function to do so. There are many other implementations of the random forest algorithm in `R` that you can explore, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. 
+Now, use the `caret` package to train a simple random forest model. We can use either the method "rf" or "ranger" in the `train` function to do so. There are many other implementations of the random forest algorithm in `R` that you can explore, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. 
 
 {% capture optional %}
 ### Optional
 
-We also use the `expand.grid` function to do some [model tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization), as well. This might seem complicated, but put simply it returns a model with the parameters optimized for the best accuracy. 
+We also use the `expand.grid` function to do some [model tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization), as well. While it seems complicated, this essentially returns a model with the parameters optimized for the best accuracy. 
 
 
 ```r
@@ -163,7 +152,7 @@ tgrid <- expand.grid(
   min.node.size = c(10, 20)
 )
 ```
-The function returns a “tuning grid” that contains several possible combinations of parameters for example:
+The function returns a "tuning grid" that contains several possible combinations of parameters for example:
 
 ||**mtry**|**splitrule**|**min.node.size**|
 |1|2|gini|10|
@@ -173,8 +162,9 @@ The function returns a “tuning grid” that contains several possible combinat
 |5|3|gini|20|
 |6|4|gini|20|
 
-For each of this six parameter combinations one model gets trained. You can then determine which of the paramters performed best and use this as your final model. But be **careful** if you are using this method you are calculating not one but several models. The computation time will be a lot higher!
-If you don´t want to tune your model set just one option for every parameter (e.g. mtry = 4).
+One model is trained for each of these six combinations of parameters. You can then choose the set of the parameters that performs best for your final model. But **be careful** if you are using this method -- you are calculating not one but several models. The computation time will be a lot higher!
+
+If you don't want to tune your model set just one option for every parameter (e.g. mtry = 4).
 
 
 {% endcapture %}
@@ -182,8 +172,7 @@ If you don´t want to tune your model set just one option for every parameter (e
   {{ optional | markdownify }}
 </div> 
  
-With a parallelization you can speed up the training of the model (depending on the performance of your PC). 
-Here we use the `detectCores()` function, which automatically uses all available cores of the PC. To prevent your PC from just bursting into flames one day, it is best to never use all cores (here we leave out two). 
+You can speed up the model training by using parallelization (depending on the performance of your PC). We can use the `detectCores()` function, which automatically uses all available cores of the PC. To prevent your PC from bursting into flames, it is best to never use all cores (here we leave out two). 
 
 ```r
 # create parallel cluster to increase computing speed
@@ -214,10 +203,10 @@ stopCluster(cl)
 saveRDS(model, file.path(envrmt$path_models, "model.RDS"))
 ```
 
-Congratulations, you have a fully developed random forest model! Now, you can predict the classifications for the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance. What stands out to you about the values?
+Congratulations, you have a fully developed random forest model! Now, you can use your model to classify the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance for your model. What stands out to you about the values?
 
 ## Prediction
-Since you probably want to admire your results now, it is worth bringing your model into the area by making a prediction on your predictor raster stack with your finished model.
+Let's admire our results now. Use your finished model to make a prediction on your predictor raster stack.
 
 ```r
 model <- readRDS(file.path(envrmt$path_models, "model.RDS"))
@@ -232,13 +221,12 @@ terra::writeRaster(prediction, file.path(envrmt$path_prediction, paste0(species,
 saveRDS(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.RDS")))
 ```
 
-Your prediction might look something like the map below. As you can see, the model did not manage to distinguish the roofs of the houses from other sealed surfaces, such as roads and parking lots, even some of the fallow fields were classified as buildings. But the results of your model may look quite different. In general, however, the quality of a model depends to a large degree on its training areas, so try to use your classes to cover as wide a spectrum as possible.
+Your prediction may look something like the map below. As you can see, this model did not manage to distinguish the roofs of the houses from other sealed surfaces, such as roads and parking lots. Even some of the fallow fields were classified as buildings. But the results of your model may look quite different. In general, the quality of a model depends to a large degree on its training areas, so try to cover as wide of a spectrum as possible with your training classes.
 {% include media4 url="assets/images/unit03/marburg_prediction.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
-
 ## Validation
-Finally, we need one more very important thing: a validation with independent data that has not been included in the model training. For this we use the data that we left out at the beginning. A prediction is made for all pixels, and the predicted values are compared to the observed values in a matrix.
+Finally, we need one more very important thing: Validation through independent data that was not included in the training of the model. For this, we use the data that we left out at the very beginning. Then we predict for all pixels, and the predicted values are compared to the observed values in a matrix.
 
 ```r
 test_data = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS")
@@ -256,11 +244,7 @@ val_cm = confusionMatrix(table(val_df[,2:3]))
 saveRDS(val_cm, file.path(envrmt$path_validation, "confusionmatrix.RDS"))
 ```
 
-
-You have created a so called confusion matrix to get a first impression about the predicition of the model, you will get new parameters for your models have a look at the accurracy and kappa values again, have they changed compared to the internal model parameters? You can see in the confusion matrix which class gets misinterpreted for which other class, which is particulary interesting if you have a lot of classees.
-You are then able to get 
-
-
+You have created a so-called confusion matrix. This gives you an initial impression about the model's prediction. Take another look at the accuracy and Kappa values. Have they changed compared to the internal model parameters? The confusion matrix shows you which classes get misinterpreted for which other classes, which is particularly interesting if you have several classes.
 
 
 <p align="center">
@@ -272,21 +256,16 @@ You are then able to get
 {% capture Assignment-03-1 %}
 
 ## Assignment Unit-03-1
-
-
 Please follow the exercise above.  
 
-1. Use the DOP data of Marburg, if the amount of data is to large to process or the modelling process takes painfully long you can reduce the amount of pixel you use to train the model.
-Just be careful to include a somewhat balanced amount of data from each class. 
+1. Use the DOP data from Marburg. If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixel you use to train the model. Just be careful to include a somewhat balanced amount of data from each class. 
 
-2. Create a nice map of the spatial prediction and add it to 
+2. Create a nice map of the spatial prediction and add it to your project. 
 
-3. Try to interpret the performance values of your model and your external validation.
-Write a few sentences, how you would interpret your results. The  
+3. Try to interpret the performance values of your model and your external validation. Write a few sentences about how you would interpret your results.
 
 
-
-Create a .zip file containing a map of your prediction the model and a short description of the 
+Create a .zip file containing your prediction map, the model and a short description of the output values.
 
 {% endcapture %}
 <div class="notice--success">

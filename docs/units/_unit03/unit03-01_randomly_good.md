@@ -8,28 +8,27 @@ header:
  
 ---
 
-Predicting spatial features with machine learning and random validation. 
-Our goal is to determine areas containing buildings in the south of Marburg, Hesse. To accomplish this goal, we will use a machine learning approach together with DOPs (digital orthophoto) as well as the digitalized polygons with one class containing buildings, and the other class polygons covering everything else, we created in Unit 1.
+In this lesson, we will predict spatial features with machine learning techniques and use random validation methods. Don't let the name fool you: The method is not randomly selected, rather the method uses randomized subsamples to cross-validate the accuracy of the machine learning technique. Our goal is to determine the presence or absence of buildings in the southern part of Marburg, Hesse. To accomplish this, we will use a machine learning approach together with a few data sources -- DOPs (digital orthophoto) as well as the digitized polygons that we created in Unit 1 (one class for buildings and another class for everything else).
 
 <!--more-->
 
-To do this, we want to create a model that is able to separate pixels that belong to a building from their surroundings. For this we need not only the bands of the DOP but also some indices calculated from them. You can simply use the ones we created in [Unit 1]( http://127.0.0.1:4000/geoAI//unit01/unit01-05_warm-up-r-spatial.html#step-4---calculate-rgb-indices). 
+We want to create a model that can distinguish between pixels from a building and those that belong to their surroundings. To do this we need the bands of the DOP as well as several indices that are calculated based on them. You can simply use the ones we created in [Unit 1](http://127.0.0.1:4000/geoAI//unit01/unit01-05_warm-up-r-spatial.html#step-4---calculate-rgb-indices). 
 
-Our Area of Interest:
+Our area of interest (AOI):
 {% include media4 url="assets/images/unit03/marburg_dop.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
 ## Random forest -- The basics
-To accomplish this task, we will use a [random forest](https://en.wikipedia.org/wiki/Random_forest) machine learning approach. Random forests can be used for both regression or classification tasks, the latter of which is particularly relevant in environmental remote sensing. As with all other machine learning methods, the random forest model learns to recognize patterns and structures in the data on its own.
+To accomplish this task, we will use a [random forest](https://en.wikipedia.org/wiki/Random_forest) machine learning approach. Random forests can be used for both regression or classification tasks, the latter of which is particularly relevant in environmental remote sensing. As is the case with every machine learning method, the random forest model learns to recognize patterns and structures in the data on its own.
 
 <p align="center">
   <img src = "../assets/images/unit03/Random_forest_diagram_complete.png">
 </p>
 *Image: Simplification of how random forest classifies data during training. Venkata Jagannath [CC BY-SA 4.0] via [wikipedia.org](https://commons.wikimedia.org/wiki/File:Random_forest_diagram_complete.png)*
 
-The random forest algorithm learns about the data by building many decision trees -- hence, the name "forest". For classification tasks, as in the above diagram, the algorithm takes an instance from the training dataset and each tree (again, there are many) classifies that instance into a class. Ultimately, the instance is assigned to the class that is the outcome of the most trees. Of course, this is an oversimplified description of how random forest works. If you are interested in theory and math behind how the algorithm truly works, please see the paper by Breiman (linked below).
+The random forest algorithm learns about the data by building many decision trees -- hence, the name "forest". For classification tasks, the algorithm takes an instance from the training dataset and each tree (again, there are many) classifies that instance into a class, as in the above diagram. Ultimately, the instance is assigned to the class that is the outcome of the most trees. Of course, this is an oversimplified description of how it really works. If you are interested in the theory and math behind how the algorithm truly works, please see the paper by Breiman (linked below).
 
-Since the random forest algorithm requires training data, it is a supervised learning method. This means that we, as users, must tell the algorithm what it is supposed to predict. In our case, in order for the algorithm to classify areas of buildings correctly, the training data must include and be labeled with different categories or land cover classifications (i.e., field, building, forest, water).
+Since the random forest algorithm requires training data, it is a supervised learning method. This means that we, as users, must tell the algorithm what it is supposed to predict. In our case, in order for the algorithm to classify building pixels correctly, the training data must include and be labeled with different categories or land cover classifications (i.e., field, building, forest, water).
 
 <p align="center">
   <img src="../assets/images/unit03/machine_learning.jpg">
@@ -37,7 +36,7 @@ Since the random forest algorithm requires training data, it is a supervised lea
 *Image: Machine Learning. Chitra Sancheti [CC BY-SA 4.0] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_in_E-Commerce.jpg)*
 
 
-We will also use a validation strategy to measure the quality of the model. We will use one of the most popular methods for validating models: cross-validation. The goal is to test how well the model generalizes on an independent data set. For example, if we perform a 5-fold cross-validation, the whole dataset available to the model is randomly split five times into a training and a validation dataset. Then the model is trained five times with the respective training data set and the quality of the model is determined with randomly selected validation data set.
+We also need a validation strategy that tells us how well the model performs. We will use one of the most popular methods for validating model quality: cross-validation. The goal is to test how well the model generalizes on an independent dataset. For example, if we perform a 5-fold cross-validation, the entire dataset available to the model is split five times (randomly) into a training and a validation dataset. Then the model is trained five times with each training dataset and its quality is determined with the randomly selected validation dataset.
 
 
 
@@ -53,7 +52,7 @@ We will also use a validation strategy to measure the quality of the model. We w
 Breiman, Leo (2001). "Random Forests". Machine Learning. 45 (1): 5-32. [https://doi.org/10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324).
 
 ### Machine learning
-Here are several videos that introduce the broad field of machine learning, in general, as well as the specific algorithm that we will use in this course: random forest. In addition to these videos, we encourage you to conduct independent research, as there are some great tutorials on the Internet.
+Here are several videos that introduce the enormous field of machine learning, in general, as well as the specific algorithm that we will use in this course, random forest. In addition to these videos, we encourage you to do your own research, as there are many great tutorials on the Internet for all types of learners.
 
 
 A Gentle Introduction to Machine Learning (12:44):
