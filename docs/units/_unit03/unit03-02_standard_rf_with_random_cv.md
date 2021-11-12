@@ -9,35 +9,76 @@ header:
 ---
 Create a random forest model with random cross-validation.
 
-## Read the data
-In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
+## Set up a working environment
+
+Set up a working environment as you have learned it in unit 01. Load the DOP from Marburg and the indices you created based on this in the raw data aerial folder and the polygons you created in QGIS in unit 02 in the raw data vector folder.
+
 
 ```r
-# include set up script here
+require(envimaR)
+
+packagesToLoad = c("mapview", "raster", "sf", "png", "caret", "exactextractr",  
+                   "foreach",  "doParallel", "CAST", "randomForest",   "reticulate", 
+                   "ranger")
+
+
+
+# define a project rootfolder
+rootDir = "D:/KI_Kampus/test/unit03/"  # This is the mandantory rootfolder of the whole project 
+
+
+projectDirList   = c("data/",
+                     "data/01_raw_data/",
+                     "data/01_raw_data/aerial/",
+                     "data/01_raw_data/vector/",
+                     "data/02_modelling/",
+                     "data/02_modelling/model_training_data/",
+                     "data/02_modelling/models/",
+                     "data/02_modelling/prediction/",
+                     "data/02_modelling/validation/",
+                     "tmp",
+                     "src/",
+                     "src/functions/")
+
+# Now set automatically root direcory, folder structure and load libraries
+envrmt = envimaR::createEnvi(root_folder = rootDir,
+                             folders = projectDirList,
+                             path_prefix = "path_",
+                             libs = packagesToLoad,
+                             alt_env_id = "COMPUTERNAME",
+                             alt_env_value = "PCRZP",
+                             alt_env_root_folder = "F:/BEN/edu")
+## set raster temp path
+raster::rasterOptions(tmpdir = envrmt$path_tmp)
+
+
 ```
 
+## Read the data
+In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
 
 
 
 ```r
 # load rasterStack containing red, green, blue and NIR bands
-rasterStack = raster::stack(file.path(envrmt$path_raw_data_aerial, "marburg_dop_rgbi.tif"))
+rasterStack = raster::stack(file.path(envrmt$path_aerial, "marburg_dop_rgbi.tif"))
 
 # load the indices you calculated in the last exercise
-indices = raster::stack(file.path(envrmt$path_unit03_aerial, "dop_indices.tif"))
+indices = raster::stack(file.path(envrmt$path_aerial, "dop_indices.tif"))
 
 # stack them all into one raster
 rasterStack = raster::stack(rasterStack, indices)
 
 # check that all names are unique
 names(rasterStack)
+
 ``` 
 
 At this point, it is also a good idea to check that the raster and polygons have the same Coordinate Reference System (CRS). A [CRS](https://en.wikipedia.org/wiki/Spatial_reference_system) is a set of parameters that determine how to display geographic coordinates (i.e. tell your computer how to represent the Earth and your data on your screen). Also, we need to make sure that each polygon has a unique ID. If the data does not include an ID number, add one.
 
 ```r
 # now the vector data: use the sf package to load the file and check if the crs matches with the raster stack
-pol = sf::read_sf(file.path(file.path(envrmt$path_raw_data_vector, "marburg_buildings_selfmade.gpkg")))
+pol = sf::read_sf(file.path(file.path(envrmt$path_vector, "marburg_buildings.gpkg")))
 pol = sf::st_transform(pol, crs(rasterStack))
 
 # add IDs to your polygons, if they don't have them
@@ -81,6 +122,7 @@ extr = rbind(other, buildings)
 Then, we split the data into two sets: one for model training and the other for testing. We will use 80% of the data for training and 20% of the data for testing. We will use the function `createDataPartition` from the `caret` package for this task. This function is very useful, as it tries to maintain the ratio of each class in the datasets.
 
 ```r
+
 trainIndex = caret::createDataPartition(extr$class, p = 0.8, list = FALSE)
 training = extr[ trainIndex,]
 testing = extr[ -trainIndex,]
@@ -142,7 +184,7 @@ If you don´t want to tune your model set just one option for every parameter (e
 
 ```r
 # create parallel cluster to increase computing speed
-n_cores <- detectCores() - 1 
+n_cores <- detectCores() - 2 
 cl <- makeCluster(n_cores)
 registerDoParallel(cl)
 
@@ -166,7 +208,7 @@ model <- train(predictors,
 stopCluster(cl)
 
 # save the model
-saveRDS(model, "model.RDS")
+saveRDS(model, file.path(envrmt$path_models, "model.RDS"))
 ```
 
 Congratulations, you have a fully developed random forest model! Now, you can predict the classifications for the whole study area. Take a closer look at the accuracy and Kappa values as well as the variable importance. What stands out to you about the values?
@@ -175,16 +217,16 @@ Congratulations, you have a fully developed random forest model! Now, you can pr
 Since you probably want to admire your results now, it is worth bringing your model into the area by making a prediction on your predictor raster stack with your finished model.
 
 ```r
-model <- readRDS(file.path(envrmt$models, "model.RDS"))
+model <- readRDS(file.path(envrmt$path_models, "model.RDS"))
 
 # use model to make a spatial prediction (SpatRaster)
 prediction <- terra::predict(rasterStack, model, na.rm = TRUE)
 
 # save prediction raster
-terra::writeRaster(prediction, file.path(envrmt$prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
+terra::writeRaster(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
 
 # save SpatRaster as RDS
-saveRDS(prediction, file.path(envrmt$prediction, paste0(species, "_pred.RDS")))
+saveRDS(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.RDS")))
 ```
 
 Your prediction might look something like the map below. As you can see, the model did not manage to distinguish the roofs of the houses from other sealed surfaces, such as roads and parking lots, even some of the fallow fields were classified as buildings. But the results of your model may look quite different. In general, however, the quality of a model depends to a large degree on its training areas, so try to use your classes to cover as wide a spectrum as possible.
@@ -196,24 +238,34 @@ Your prediction might look something like the map below. As you can see, the mod
 
 
 ## Validation
-Finally, we need one more very important thing: a validation with independent data that has not been included in the model training. For this we use the 20% of the polygons that we left out at the beginning. Simply do the same extraction again as you did at the beginning for the training. Then a prediction is made for all pixels, and the predicted values are compared to the observed values in a matrix.
+Finally, we need one more very important thing: a validation with independent data that has not been included in the model training. For this we use the data that we left out at the beginning. A prediction is made for all pixels, and the predicted values are compared to the observed values in a matrix.
 
 ```r
-model = readRDS(file.path(envrmt$models, paste0(model, "_ffs.RDS")))
+extr_val = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS")
+model = readRDS(file.path(envrmt$path_models, "model.RDS")))
+
 predicted = stats::predict(object = mod, newdata = extr_val)
-  
-val_df = data.frame(ID = pull(extr_sub, idCol),
-                      Observed = pull(extr_val, "class"), 
-                      Predicted = predicted)
-  
+
+val_df = data.frame(ID = pull(extr_sub, "OBJ_ID"),
+                    Observed = pull(extr_val, "class"), 
+                    Predicted = predicted)
+
 val_cm = confusionMatrix(table(val_df[,2:3]))
-  
+
 # output
-saveRDS(val_cm, file.path(envrmt$validation, "confusionmatrix.RDS"))
+saveRDS(val_cm, file.path(envrmt$path_validation, "confusionmatrix.RDS"))
 ```
 
 
+You have created a so called confusion matrix to 
 
+
+
+
+<p align="center">
+  <img src="../assets/images/unit03/confusion_matrix.png" alt="drawing">
+</p>
+*Image: Confusion Matrix*
 
 
 {% capture Assignment-03-1 %}
