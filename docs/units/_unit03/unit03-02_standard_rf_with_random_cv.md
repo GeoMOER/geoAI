@@ -62,7 +62,7 @@ In the first step, you need to import your previously prepared predictor variabl
 
 ```r
 # load rasterStack containing red, green, blue and NIR bands
-rasterStack = raster::stack(file.path(envrmt$path_data, "marburg_dop_rgbi.tif"))
+rasterStack = raster::stack(file.path(envrmt$path_data, "marburg_dop.tif"))
 
 # load the indices you calculated in the last exercise
 indices = raster::stack(file.path(envrmt$path_data, "dop_indices.tif"))
@@ -79,7 +79,8 @@ At this point, it is also a good idea to check that the raster and polygons have
 
 ```r
 # now the vector data: use the sf package to load the file and check if the crs matches with the raster stack
-pol = sf::read_sf(file.path(file.path(envrmt$path_data, "marburg_buildings_selfmade.gpkg")))
+# use the vector data you created with QGIS here:
+pol = sf::read_sf(file.path(file.path(envrmt$path_data, "training_data.gpkg")))
 pol = sf::st_transform(pol, crs(rasterStack))
 
 # add IDs to your polygons, if they don't have them
