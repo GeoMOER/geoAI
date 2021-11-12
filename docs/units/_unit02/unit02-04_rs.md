@@ -111,7 +111,7 @@ The next step is optional but offers the possibility to quickly and effectively 
 Just as a reminder, the following command creates a Sentinel true color composite. Combining them with a `+` gives you an object with both layers.
 
 ```r
-# sentinel truecolor composite 
+# sentinel true and false color composite 
 mapview::viewRGB(stack, r = 4, g = 3, b = 2) + mapview::viewRGB(stack, r = 8, g = 4, b = 3)
 ```
 
@@ -307,7 +307,8 @@ For more information, you can look at the following resources:
 
 * [Straightforward overview RS and classification](https://gisgeography.com/image-classification-techniques-remote-sensing/)
 
-* [Typical workflow](https://www.mdpi.com/2072-4292/9/10/1048)
+* An example of a [typical workflow for automated Satellite Image Processing](https://www.mdpi.com/2072-4292/9/10/1048)
+
 
 
 ## Comments?
