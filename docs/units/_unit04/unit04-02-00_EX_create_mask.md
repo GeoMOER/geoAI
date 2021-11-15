@@ -7,11 +7,9 @@ header:
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
-In this exercise we will create a raster mask from vectordata containing the outlines of all buildings in our study area in the south of Marburg (figure below). For this purpose, both the raster mask and the DOP of the study area will be split from large raster (.tif) files into many smaller image files (.png).
+In this exercise, we will create a raster mask from vector data containing the outlines of all buildings in our study area in the southern part of Marburg (image below). For this purpose, both the raster mask and the DOP of the study area will be split from large raster (.tif) files into many smaller image files (.png).
 
 {% include media4 url="assets/images/unit04/marburg_buildings.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
-
-
 
 
 ## Create raster mask from vector file

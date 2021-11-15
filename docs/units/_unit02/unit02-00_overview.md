@@ -17,15 +17,13 @@ In the last session, you learned about human-environmental interactions through 
 ## This session
 We call this unit Remote Sensing 101 because you will learn the basics of optical remote sensing and different types of sensors. In addition, we will introduce a variety of different data formats for working with geodata that will be useful for the final project of this course. The knowledge about the physical laws and properties of sensors that you learn in the first section will support the knowledge that you gain about remote sensing data in the second section.
 
-## Learning Objectives
-
+## Learning objectives
 At the end of this unit you should be able to
 
 * explain the difference between passive and active sensors
 * understand how we take advantage of different wavelengths to measure different properties of the Earth's surface
 * explain the difference between vector and raster data and provide examples of when each type is appropriate to use
 * analyze aerial imagery in R
-
 
 
 {% include video id="TJ54vqTkOXM" provider="youtube" %}
