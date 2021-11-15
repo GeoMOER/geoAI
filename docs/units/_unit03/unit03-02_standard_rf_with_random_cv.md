@@ -11,8 +11,8 @@ Create a random forest model with random cross-validation.
 
 ## Set up a working environment
 
-First, set up the working environment as described in Unit 01.
-
+First, set up the working environment as described in [Unit 01](https://geomoer.github.io/geoAI//unit01/unit01-04_setup_working_environment.html).
+We will add some more packages and an additional folder to your set up script. In the "modelling" folder you can store your prepared data, your models, your predictions etc.
 ```r
 require(envimaR)
 
@@ -48,17 +48,11 @@ raster::rasterOptions(tmpdir = envrmt$path_tmp)
 ```
 
 ## Read the data
-In the first step, you need to import your previously prepared predictor variables (DOP and indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
+In the first step, you need to import your [previously prepared predictor variables (DOP and indices)](https://geomoer.github.io/geoAI/unit01/unit01-05_warm-up-r-spatial.html#step-4---calculate-rgb-indices) as well as the building polygons. Combine all of your raster layers into one raster stack. Finally, make sure that each layer has a unique name. 
 
 ```r
-# load rasterStack containing red, green, blue and NIR bands
-rasterStack = raster::stack(file.path(envrmt$path_data, "marburg_dop.tif"))
-
-# load the indices you calculated in the last exercise
-indices = raster::stack(file.path(envrmt$path_data, "dop_indices.tif"))
-
-# stack them all into one raster
-rasterStack = raster::stack(rasterStack, indices)
+# load rasterStack containing red, green, blue and NIR bands and some indices
+rasterStack = readRDS(file.path(envrmt$path_data, "dop_indices.RDS"))
 
 # check that all names are unique
 names(rasterStack)
@@ -78,6 +72,8 @@ pol$OBJ_ID = 1:nrow(pol)
  
 ## Extract the data 
 Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the buildings. The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
+In the previous Unit we used the `extract` function of the `raster` package as it is easy to use. O somewhat faster approach is to use the `extract` function of the newer `terra` package, but it is still quite slow. As we have a lot of pixel due to the high resolution of the DOP we will use a specific package just for raster extraction here.
+The package [exactextractr](https://cran.r-project.org/web/packages/exactextractr/exactextractr.pdf) provides the function `exact_extract`, which we will use here, as it enables us to extract the data faster.
 
 ```r
 # to extract the data use raster::extract or the much faster package exactextractr
@@ -224,9 +220,10 @@ saveRDS(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.RDS
 Your prediction may look something like the map below. As you can see, this model did not manage to distinguish the roofs of the houses from other sealed surfaces, such as roads and parking lots. Even some of the fallow fields were classified as buildings. But the results of your model may look quite different. In general, the quality of a model depends to a large degree on its training areas, so try to cover as wide of a spectrum as possible with your training classes.
 {% include media4 url="assets/images/unit03/marburg_prediction.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
-
 ## Validation
-Finally, we need one more very important thing: Validation through independent data that was not included in the training of the model. For this, we use the data that we left out at the very beginning. Then we predict for all pixels, and the predicted values are compared to the observed values in a matrix.
+Finally, we need one more very important thing: 
+Validation through independent data that was not included in the training of the model.
+For this, we use the data that we left out at the very beginning and that was not used to train the model. We predict values for each pixel and compare them with the ground truth values in a matrix.
 
 ```r
 test_data = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS")
@@ -244,33 +241,32 @@ val_cm = confusionMatrix(table(val_df[,2:3]))
 saveRDS(val_cm, file.path(envrmt$path_validation, "confusionmatrix.RDS"))
 ```
 
-You have created a so-called confusion matrix. This gives you an initial impression about the model's prediction. Take another look at the accuracy and Kappa values. Have they changed compared to the internal model parameters? The confusion matrix shows you which classes get misinterpreted for which other classes, which is particularly interesting if you have several classes.
+You have created a so-called confusion matrix. This gives you an initial impression about the model's performance. The confusion matrix shows you which classes get misinterpreted for which other class. 
 
+<img src="{{ site.url }}{{ site.baseurl }}/../assets/images/unit03/confusion_matrix.png" alt="" class="full" width="80%"/>
 
-<p align="center">
-  <img height= 100% width=300% src="../assets/images/unit03/confusion_matrix.png" alt="drawing">
-</p>
 *Image: Confusion Matrix*
+
+We will have a look at two common used performance metrics of the models now. The [accuracy]( https://en.wikipedia.org/wiki/Accuracy_and_precision) of the model shows the proportion of true positives and true negatives among all observations. If you have a more imbalanced dataset you can use [Kappa]( https://en.wikipedia.org/wiki/Cohen%27s_kappa), which gets calculated similar to accuracy but takes into account the possibility that an agreement happened due to chance, therefore it is more robust.
 
 
 {% capture Assignment-03-1 %}
 
 ## Assignment Unit-03-1
-Please follow the exercise above.  
 
-1. Use the DOP data from Marburg. If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixel you use to train the model. Just be careful to include a somewhat balanced amount of data from each class. 
+1. Create a model with the DOP data from Marburg following the exercise above. If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixel you use to train the model. Just be careful to include a somewhat balanced amount of data from each class. 
 
-2. Create a nice map of the spatial prediction and add it to your project. 
+2. Create a map of the spatial prediction 
 
-3. Try to interpret the performance values of your model and your external validation. Write a few sentences about how you would interpret your results.
+3. Try to interpret the performance values of your model and your external validation in connection with the confusion matrix. Write a few sentences about how you would interpret your results (map and performance values) (e.g. is there a problem? What could cause a proplem? Is the spatial prediction sufficient?).
 
-
-Create a .zip file containing your prediction map, the model and a short description of the output values.
+Create a .zip file containing your spatial prediction map, the model and a short interpretation of your results (pdf) and upload it to your ILIAS folder.
 
 {% endcapture %}
 <div class="notice--success">
   {{ Assignment-03-1 | markdownify }}
 </div> 
+
 
 
 

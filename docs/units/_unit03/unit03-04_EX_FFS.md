@@ -15,8 +15,6 @@ You can import your extracted data in the same manner as before. In this case, w
 ```r
 training =  readRDS(file.path(envrmt$path_model_training_data, "extr_train.RDS")) 
 
-training = na.omit(training)
-training$class <- as.factor(training$class)
 
 # random forest
 predictors = training[,3:10]
