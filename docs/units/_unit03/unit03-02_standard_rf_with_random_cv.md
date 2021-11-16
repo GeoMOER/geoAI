@@ -188,7 +188,7 @@ model <- train(predictors,
                trControl = ctrl,
                tuneGrid = tgrid,
                num.trees = 100,
-               importance = TRUE)
+               importance = "permutation")
 
 # stop parallel cluster
 stopCluster(cl)
