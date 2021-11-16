@@ -43,10 +43,12 @@ ctrl <- trainControl(method="cv",
                      allowParallel = TRUE)
 ```
 
+
 ## Forward-Feature-Selection
 
-Instead of using the `train` function from the `caret` package, we now use the function `ffs` from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables all have to be trained with each other. 
+Instead of using the `train` function from the `caret` package, we now use the function `ffs` from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables all have to be trained with each other. Depending on the size of your training data, the calculations might take a few days.
 
+You should also be aware that variable selection only makes sense if you have a number of variables to choose from. For a raster stack with only three layers, selection is not reasonable, but for one with 300 it is. The spatial variable selection with the FFS only functions if it is executed with a spatial validation strategy!
 ```r
 #Forward-Feature-Selection (FFS)
 #no model tuning
@@ -66,27 +68,26 @@ ffsmodel <- ffs(predictors,
                 importance = "permutation")
 
 ffsmodel
-saveRDS(file.path(envrmt$path_unit03_models), "ffsmodel.RDS")
+saveRDS(file.path(envrmt$path_models), "ffsmodel.RDS")
 ```
 
-Now predict the location of buildings again and compare the results as well as the selected variables to the results from the traditional random forest model (with random CV). What are differences, similarities and peculiarities? 
 
 
 {% capture Assignment-03-2 %}
 
 ## Assignment Unit-03-2
 
-Add assignment
-1. ...
-2. ...
+1.	Adapt your modeling workflow from the last exercise to the spatial prediction. If the computing power of your PC is not sufficient, you can just perform the LLO cross-validation.
+2.	Create again a map of your spatial prediction and perform a validation as in the last exercise.
+3.	Compare the results with the results from the traditional random forest model (with random CV). Are there things that stand out to you? 
 
 {% endcapture %}
 <div class="notice--success">
   {{ Assignment-03-2 | markdownify }}
-</div> 
+</div>
 
 ## Comments?
-You can leave comments under this gist if you have questions or comments about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
 <script src="https://utteranc.es/client.js"
         repo="GeoMOER/geoAI"
