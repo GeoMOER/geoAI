@@ -16,9 +16,8 @@ We will add some more packages and an additional folder to your set up script. I
 ```r
 require(envimaR)
 
-packagesToLoad = c("mapview", "raster", "sf", "png", "caret", "exactextractr",  
-                   "foreach", "doParallel", "CAST", "randomForest", "reticulate", 
-                   "ranger")
+packagesToLoad = c("mapview", "raster", "sf", "caret", "exactextractr",  
+                    "doParallel", "CAST", "ranger")
 
 # define a project rootfolder
 rootDir = "~/edu/geoAI"  # This is the mandantory rootfolder of the whole project 
@@ -72,7 +71,7 @@ pol$OBJ_ID = 1:nrow(pol)
  
 ## Extract the data 
 Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the buildings. The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
-In the previous Unit we used the `extract` function of the `raster` package as it is easy to use. O somewhat faster approach is to use the `extract` function of the newer `terra` package, but it is still quite slow. As we have a lot of pixel due to the high resolution of the DOP we will use a specific package just for raster extraction here.
+In the previous Unit we used the `extract` function of the `raster` package as it is easy to use. A somewhat faster approach is to use the `extract` function of the newer `terra` package, but it is still quite slow. As we have a lot of pixel due to the high resolution of the DOP we will use a specific package just for raster extraction here.
 The package [exactextractr](https://cran.r-project.org/web/packages/exactextractr/exactextractr.pdf) provides the function `exact_extract`, which we will use here, as it enables us to extract the data faster.
 
 ```r
@@ -122,11 +121,10 @@ saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 Now we can finally start our first attempt at predicting the buildings. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
-training = na.omit(training)
 training$class <- as.factor(training$class)
 
 # random forest
-predictors = training[,3:10]
+predictors = training[,3:9]
 response = training[,"class"]
 ```
 
@@ -135,7 +133,7 @@ The first step here is to define your response and predictors. The response is s
 Now, use the `caret` package to train a simple random forest model. We can use either the method "rf" or "ranger" in the `train` function to do so. There are many other implementations of the random forest algorithm in `R` that you can explore, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. 
 
 {% capture optional %}
-### Optional
+### Note
 
 We also use the `expand.grid` function to do some [model tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization), as well. While it seems complicated, this essentially returns a model with the parameters optimized for the best accuracy. 
 
@@ -208,10 +206,10 @@ Let's admire our results now. Use your finished model to make a prediction on yo
 model <- readRDS(file.path(envrmt$path_models, "model.RDS"))
 
 # use model to make a spatial prediction (SpatRaster)
-prediction <- terra::predict(rasterStack, model, na.rm = TRUE)
+prediction <- raster::predict(rasterStack, model, na.rm = TRUE)
 
 # save prediction raster
-terra::writeRaster(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
+raster::writeRaster(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
 
 # save SpatRaster as RDS
 saveRDS(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.RDS")))
@@ -260,7 +258,7 @@ We will have a look at two common used performance metrics of the models now. Th
 
 3. Try to interpret the performance values of your model and your external validation in connection with the confusion matrix. Write a few sentences about how you would interpret your results (map and performance values) (e.g. is there a problem? What could cause a proplem? Is the spatial prediction sufficient?).
 
-Create a .zip file containing your spatial prediction map, the model and a short interpretation of your results (pdf) and upload it to your ILIAS folder.
+Again put your code and results in an Rmarkdown file and compile it to a PDF document. Create a .zip file containing the PDF and your  model and upload it to your ILIAS folder.
 
 {% endcapture %}
 <div class="notice--success">

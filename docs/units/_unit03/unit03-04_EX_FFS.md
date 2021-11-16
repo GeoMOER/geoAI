@@ -35,7 +35,6 @@ indices <- CreateSpacetimeFolds(training,
 The folds are then passed to the `trainControl` function as an index.
 
 ```r
-
 set.seed(10)
 ctrl <- trainControl(method="cv",
                      index = indices$index,
