@@ -5,6 +5,9 @@ header:
   image: /assets/images/unit02/31031723265_0890cd9547_o.jpg
   image_description: "Cloudscape Over the Philippine Sea"
   caption: "Image: [NASA's Marshall Space Flight Center](https://www.nasa.gov/centers/marshall/home/index.html) [CC BY-NC 2.0] via [flickr.com](https://www.flickr.com/photos/nasamarshall/31031723265/)"
+accordion: 
+  - title: Have a look at the complete digitizing process
+    content: "The [ff-digitize.R](https://gist.github.com/gisma/0b5597a7d776c146029e8c9ea18e796d) script provides a workflow for some classes including the rbind command to merge the single sf objects." 
 ---
 
 Remote sensing is a core method in all spatial knowledge sciences. It is used to generate knowledge about the properties and processes of the Earth's surface and the atmosphere as well as in all microscale imaging techniques.
@@ -134,6 +137,8 @@ Each class is digitized and typed in a single way.
 ```r
 fields <- mapview::viewRGB(stack, r = 8, g = 4, b = 3) %>% mapedit::editMap()
 ```
+This opens an interface like below:
+
 {% include figure image_path="/assets/images/unit01/fields.png" alt="The mapedit GUI. The digitization with mapedit is mostly self-explanatory and GUI-supported. After digitizing click on DONE." %}
 
 Then proceed to the next step. This will assign the attributes *class* and *id*.
@@ -141,35 +146,11 @@ Then proceed to the next step. This will assign the attributes *class* and *id*.
 fields <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "fields", id = 2)
 ```
 
+
 This is the full script for digitizing the training data.
 
-```r
-# note we can combine each of the Sentinel channels to derive a true or false color composite
 
-# digitizing all areas with forest only
-train_area <- mapview::viewRGB(stack, r = 8, g = 4, b = 3) %>% mapedit::editMap()
-# add class (text) and id (integer number)
-forest <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "forest", id = 1)
-
-# fields only
-train_area <- mapview::viewRGB(stack, r = 4, g = 3, b = 2) %>% mapedit::editMap()
-fields <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "fields", id = 2)
-
-# meadows only
-train_area <- mapview::viewRGB(stack, r = 4, g = 3, b = 2) %>% mapedit::editMap()
-meadows <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "meadows", id = 3)
-
-# settlements only
-train_area <- mapview::viewRGB(stack, r = 8, g = 4, b = 3) %>% mapedit::editMap()
-settlement <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "settlement", id = 4)
-
-# bind it together to one file
-train_areas <- rbind(forest, fields, meadows, settlement)
-
-# save results
-saveRDS(train_areas, paste0(envrmt$path_sentinel,"train_areas.rds"))
-
-``` 
+<script src="https://gist.github.com/gisma/0b5597a7d776c146029e8c9ea18e796d.js"></script>
 
 ## Step 4 - Classification 
 There are numerous methods to classify data in feature space. In principle, these can be *unsupervised* or *supervised*.  In the case of unsupervised methods, the number of classes is usually specified and statistical methods are used to search for the best possible aggregation within the number of these classes in the feature space. 
