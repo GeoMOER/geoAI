@@ -252,13 +252,13 @@ We will have a look at two common used performance metrics of the models now. Th
 
 ## Assignment Unit-03-1
 
-1. Create a model with the DOP data from Marburg following the exercise above. If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixel you use to train the model. Just be careful to include a somewhat balanced amount of data from each class. 
+1. Crop the DOP of Marburg to a section of your own choice and use it to follow the exercise above. If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixel you use to train the model. Just be careful to include a somewhat balanced amount of data from each class. 
 
-2. Create a map of the spatial prediction 
+2. Create a map (with a legend of your classes) of the spatial prediction 
 
-3. Try to interpret the performance values of your model and your external validation in connection with the confusion matrix. Write a few sentences about how you would interpret your results (map and performance values) (e.g. is there a problem? What could cause a proplem? Is the spatial prediction sufficient?).
+3. Try to interpret the performance values of your model and your external validation in connection with the confusion matrix. Write 5 sentences about how you would interpret your results (map and performance values) (e.g. is there a problem? What could cause a proplem? Is the spatial prediction sufficient?).
 
-Again put your code and results in an Rmarkdown file and compile it to a PDF document. Create a .zip file containing the PDF and your  model and upload it to your ILIAS folder.
+Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
 
 {% endcapture %}
 <div class="notice--success">

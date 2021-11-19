@@ -78,7 +78,9 @@ saveRDS(file.path(envrmt$path_models), "ffsmodel.RDS")
 
 1.	Adapt your modeling workflow from the last exercise to the spatial prediction. If the computing power of your PC is not sufficient, you can just perform the LLO cross-validation.
 2.	Create again a map of your spatial prediction and perform a validation as in the last exercise.
-3.	Compare the results with the results from the traditional random forest model (with random CV). Are there things that stand out to you? 
+3.	Write 5 sentences in which you compare the results with the results from the traditional random forest model (with random CV). Are there things that stand out to you? 
+
+Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
 
 {% endcapture %}
 <div class="notice--success">
