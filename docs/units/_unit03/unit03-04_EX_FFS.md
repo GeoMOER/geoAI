@@ -8,7 +8,8 @@ header:
  
 ---
 
-In this exercise, we will predict buildings in the southern part of Marburg once again. This time, however, it will be a spatial prediction done right -- which is to say that the results will not be spatially autocorrelated and much more robust! You can use the same dataset that we prepared and balanced in the previous exercise. 
+In this exercise, we will predict buildings in the southern part of Marburg once again. 
+This time, however, it will be a spatial prediction done better -- which is to say that the results will be less spatially autocorrelated and much more robust! You can use the same dataset that we prepared and balanced in the previous exercise. 
 
 You can import your extracted data in the same manner as before. In this case, we also need to define the column that contains information about which row belongs to which polygon (Polygon ID).
 
@@ -22,7 +23,8 @@ response = training[,"class"]
 ```
 
 ## Leave-Location-Out Cross-Validation
-Use a Leave-Location-Out Cross-Validation as a spatial cross-validation technique. For this purpose, the function `CreateSpacetimeFolds` separates the pixels of every polygon into folds, based on their ID.
+Use a Leave-Location-Out Cross-Validation as a spatial cross-validation technique. 
+For this purpose, the function `CreateSpacetimeFolds` separates the pixels of every polygon into folds, based on their ID.
 
 ```r
 # leave location out cross-validation
@@ -45,9 +47,11 @@ ctrl <- trainControl(method="cv",
 
 ## Forward-Feature-Selection
 
-Instead of using the `train` function from the `caret` package, we now use the function `ffs` from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). We do not apply any model tuning, but you should expect that the prediction will take a long time, since the many predictor variables all have to be trained with each other. Depending on the size of your training data, the calculations might take a few days.
+Instead of using the `train` function from the `caret` package, we now use the function `ffs` from the [CAST package](https://cran.r-project.org/web/packages/CAST/index.html). 
+We do not apply any model tuning, but you should expect that the prediction will take a long time to compute, since the many predictor variables all have to be trained with each other. 
+Depending on the size of your training data, the calculations might take a few days.
 
-You should also be aware that variable selection only makes sense if you have a number of variables to choose from. For a raster stack with only three layers, selection is not reasonable, but for one with 300 it is. The spatial variable selection with the FFS only functions if it is executed with a spatial validation strategy!
+You should also be aware that variable selection only makes sense if you have a decent number of variables to choose from. For a raster stack with only three layers, selection is not reasonable, but for one with 300 it is. The spatial variable selection with the FFS only works if it is executed with a spatial validation strategy!
 ```r
 #Forward-Feature-Selection (FFS)
 #no model tuning

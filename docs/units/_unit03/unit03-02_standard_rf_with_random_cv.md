@@ -12,7 +12,7 @@ Create a random forest model with random cross-validation.
 ## Set up a working environment
 
 First, set up the working environment as described in [Unit 01](https://geomoer.github.io/geoAI//unit01/unit01-04_setup_working_environment.html).
-We will add some more packages and an additional folder to your set up script. In the "modelling" folder you can store your prepared data, your models, your predictions etc.
+We will add some more packages and an additional folder to your setup script. In the "modelling" folder you can store your prepared data, your models, your predictions etc.
 ```r
 require(envimaR)
 
@@ -70,8 +70,11 @@ pol$OBJ_ID = 1:nrow(pol)
 ```
  
 ## Extract the data 
-Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the buildings. The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
-In the previous Unit we used the `extract` function of the `raster` package as it is easy to use. A somewhat faster approach is to use the `extract` function of the newer `terra` package, but it is still quite slow. As we have a lot of pixel due to the high resolution of the DOP we will use a specific package just for raster extraction here.
+Next, we want to extract the values from the predictor raster stack for every pixel in the training polygons. You can think about the polygons like cookie cutters and the raster stack like several layers of cookie dough stacked on top of each other -- we want to cut the data out of each raster that corresponds to the polygon area, i.e. the buildings. 
+The data gets formatted in a dataframe that we can merge with the original polygons, so that it returns the class information of the polygons.
+In the previous Unit we used the `extract` function of the `raster` package as it is easy to use. 
+A somewhat faster approach is to use the `extract` function of the newer `terra` package, but it is still quite slow. 
+As we have a lot of pixels due to the high resolution of the DOP we will use a specific package just for raster extraction here.
 The package [exactextractr](https://cran.r-project.org/web/packages/exactextractr/exactextractr.pdf) provides the function `exact_extract`, which we will use here, as it enables us to extract the data faster.
 
 ```r
@@ -128,7 +131,9 @@ predictors = training[,3:9]
 response = training[,"class"]
 ```
 
-The first step here is to define your response and predictors. The response is simply one column that contains your class label, because we want to classify the rest of the image. The predictors are all of the columns with the information that we extracted from your raster stack. Be careful not to include anything else in your dataframe (e.g. the geometry).
+The first step here is to define your response and predictors. The response is simply one column that contains your class label, because we want to classify the rest of the image. 
+The predictors are all of the columns with the information that we extracted from your raster stack. 
+Be careful not to include anything else in your dataframe (e.g. the geometry or additional IDs).
 
 Now, use the `caret` package to train a simple random forest model. We can use either the method "rf" or "ranger" in the `train` function to do so. There are many other implementations of the random forest algorithm in `R` that you can explore, for example the `ranger` [package](https://cran.r-project.org/web/packages/ranger/index.html), which performs better. 
 
@@ -252,9 +257,11 @@ We will have a look at two common used performance metrics of the models now. Th
 
 ## Assignment Unit-03-1
 
-1. Crop the DOP of Marburg to a section of your own choice and use it to follow the exercise above. If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixel you use to train the model. Just be careful to include a somewhat balanced amount of data from each class. 
+1. Crop the DOP of Marburg to a section of your own choice and use it to follow the exercise above. 
+If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixels you use to train the model. 
+Just be careful to include a somewhat balanced amount of data from each class. 
 
-2. Create a map (with a legend of your classes) of the spatial prediction 
+2. Create a map of the spatial prediction with a legend of your classes.
 
 3. Try to interpret the performance values of your model and your external validation in connection with the confusion matrix. Write 5 sentences about how you would interpret your results (map and performance values) (e.g. is there a problem? What could cause a proplem? Is the spatial prediction sufficient?).
 
