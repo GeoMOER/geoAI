@@ -59,6 +59,7 @@ You can either use the saved data from the previous unit or download and edit a 
 # 0 - specific setup
 #-----------------------------
 library(envimaR)
+# append this packages to the default list
 appendpackagesToLoad = c("rprojroot","sen2R","terra","patchwork","ggplot2",
                          "mapedit","dplyr","mapview","tidyverse","rpart","rpart.plot",
                          "rasterVis","caret","forcats","RStoolbox","randomForest",
@@ -71,11 +72,8 @@ appendProjectDirList = c("data/sentinel/",
                          "data/sentinel/SAFE/",
                          "data/sentinel/research_area/")
 
-source(file.path(envimaR::alternativeEnvi(root_folder = "~/edu/geoAI",
-                                          alt_env_id = "COMPUTERNAME",
-                                          alt_env_value = "PCRZP",
-                                          alt_env_root_folder = "F:/BEN/edu"),
-                 "src/geoAI_setup.R"))
+# now run setup
+source(file.path(envimaR::alternativeEnvi(root_folder = rootDir,"src/geoAI_setup.R"))
 
 
 # 2 - define variables

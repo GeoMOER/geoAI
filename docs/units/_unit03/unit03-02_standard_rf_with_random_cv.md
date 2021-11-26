@@ -16,34 +16,27 @@ We will add some more packages and an additional folder to your setup script. In
 ```r
 require(envimaR)
 
-packagesToLoad = c("mapview", "raster", "sf", "caret", "exactextractr",  
-                    "doParallel", "CAST", "ranger")
-
 # define a project rootfolder
 rootDir = "~/edu/geoAI"  # This is the mandantory rootfolder of the whole project 
 
-projectDirList   = c("data/",
-                     "data/modelling/",
-                     "data/modelling/model_training_data/",
-                     "data/modelling/models/",
-                     "data/modelling/prediction/",
-                     "data/modelling/validation/",
-                     "docs/",
-                     "run/",
-                     "tmp",
-                     "src/",
-                     "src/functions/")
+appendpackagesToLoad = c("mapview", "raster", "sf", "caret", "exactextractr",  
+                         "doParallel", "CAST", "ranger")
 
-# Now set automatically root direcory, folder structure and load libraries
-envrmt = envimaR::createEnvi(root_folder = rootDir,
-                             folders = projectDirList,
-                             path_prefix = "path_",
-                             libs = packagesToLoad,
-                             alt_env_id = "COMPUTERNAME",
-                             alt_env_value = "PCRZP",
-                             alt_env_root_folder = "F:/BEN/edu")
-## set raster temp path
-raster::rasterOptions(tmpdir = envrmt$path_tmp)
+appendProjectDirList = c("data/",
+                         "data/modelling/",
+                         "data/modelling/model_training_data/",
+                         "data/modelling/models/",
+                         "data/modelling/prediction/",
+                         "data/modelling/validation/",
+                         "docs/",
+                         "run/",
+                         "tmp",
+                         "src/",
+                         "src/functions/")
+
+# now run setup
+source(file.path(envimaR::alternativeEnvi(root_folder = rootDir,"src/geoAI_setup.R"))
+
 ```
 
 ## Read the data
