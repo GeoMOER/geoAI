@@ -209,10 +209,10 @@ model <- readRDS(file.path(envrmt$path_models, "model.RDS"))
 prediction <- raster::predict(rasterStack, model, na.rm = TRUE)
 
 # save prediction raster
-raster::writeRaster(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.tif")), overwrite = TRUE)
+raster::writeRaster(prediction, file.path(envrmt$path_prediction, "pred.tif"), overwrite = TRUE)
 
 # save SpatRaster as RDS
-saveRDS(prediction, file.path(envrmt$path_prediction, paste0(species, "_pred.RDS")))
+saveRDS(prediction, file.path(envrmt$path_prediction, "pred.RDS"))
 ```
 
 Your prediction may look something like the map below. As you can see, this model did not manage to distinguish the roofs of the houses from other sealed surfaces, such as roads and parking lots. Even some of the fallow fields were classified as buildings. But the results of your model may look quite different. In general, the quality of a model depends to a large degree on its training areas, so try to cover as wide of a spectrum as possible with your training classes.
@@ -224,13 +224,13 @@ Validation through independent data that was not included in the training of the
 For this, we use the data that we left out at the very beginning and that was not used to train the model. We predict values for each pixel and compare them with the ground truth values in a matrix.
 
 ```r
-test_data = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS")
-model = readRDS(file.path(envrmt$path_models, "model.RDS")))
+test_data = readRDS(file.path(envrmt$path_model_training_data, "extr_test.RDS"))
+mod = readRDS(file.path(envrmt$path_models, "model.RDS"))
 
 predicted = stats::predict(object = mod, newdata = test_data)
 
-val_df = data.frame(ID = pull(extr_sub, "OBJ_ID"),
-                    Observed = pull(extr_val, "class"), 
+val_df = data.frame(ID = dplyr::pull(test_data, "OBJ_ID"),
+                    Observed = dplyr::pull(test_data, "class"), 
                     Predicted = predicted)
 
 val_cm = confusionMatrix(table(val_df[,2:3]))

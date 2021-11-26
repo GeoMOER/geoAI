@@ -17,7 +17,7 @@ training =  readRDS(file.path(envrmt$path_model_training_data, "extr_train.RDS")
 
 
 # random forest
-predictors = training[,3:10]
+predictors = training[,3:9]
 response = training[,"class"]
 ```
 
