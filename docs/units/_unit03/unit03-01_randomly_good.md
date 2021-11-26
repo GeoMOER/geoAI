@@ -8,7 +8,7 @@ header:
  
 ---
 
-In this lesson, we will predict spatial features with machine learning techniques and use random validation methods. Don't let the name fool you: The method is not randomly selected, rather the method uses randomized subsamples to cross-validate the accuracy of the machine learning technique. Our goal is to determine the presence or absence of buildings in the southern part of Marburg, Hesse. To accomplish this, we will use a machine learning approach together with a few data sources -- DOPs (digital orthophoto) as well as the digitized polygons that we created in Unit 1 (one class for buildings and another class for everything else).
+In this lesson, we will predict spatial features with machine learning techniques and use random validation methods. Don't let the name fool you: The method is not randomly selected, rather the method uses randomized subsamples to cross-validate the accuracy of the machine learning technique. Our goal is to determine the presence or absence of buildings in the southern part of Marburg, Hesse. To accomplish this, we will use a machine learning approach together with a few data sources -- digital orthophotos (DOPs) as well as the digitized polygons that we created in Unit 1 (one class for buildings and another class for everything else).
 
 <!--more-->
 

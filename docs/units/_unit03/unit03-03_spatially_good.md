@@ -27,9 +27,11 @@ So we need a spatial validation model that is better suited for spatial data. To
 </figure>
 
 
-The function `CreateSpacetimeFolds` from the package `CAST` implements LLO CV. It does so by grouping the pixels in a dataframe according to the polygon, in which they are located. In the process, only whole locations (polygons) are used for either validation **or** training. Ultimately, this prevents us from assuming that the model is better than it actually is.
+The function `CreateSpacetimeFolds` from the package `CAST` implements LLO CV. It does so by grouping the pixels in a dataframe according to the polygon, in which they are located. In the process, only whole locations (polygons) are used for either validation **or** training. 
+Ultimately, this better prevents us from assuming that the model is better than it actually is.
 
-LLO CV removes spatial autocorrelation, which is critical to finding out how accurate our model is. But we want efficient models as well, so we will also perform a spatial variable selection. Variable selection is a process that selects only the most relevant predictors from all of our variables and disregards all of the rest. For the spatial variable selection, we will use another function from the same package: forward feature selection (FFS). In a nutshell, FFS trains models using every possible combination of 2 predictors and keeps the model with the best performance. Then, it continues to add additional variables (3, 4, 5, etc.) until the performance stops improving. Read more about FFS [here](https://www.rdocumentation.org/packages/CAST/versions/0.2.0/topics/ffs).
+LLO CV reduces spatial autocorrelation, which is critical to finding out how accurate our model is. But we want efficient models as well, so we will also perform a spatial variable selection. Variable selection is a process that selects only the most relevant predictors from all of our variables and disregards all of the rest. For the spatial variable selection, we will use another function from the same package: forward feature selection (FFS). In a nutshell, FFS trains models using every possible combination of 2 predictors and keeps the model with the best performance. Then, it continues to add additional variables (3, 4, 5, etc.) until the performance stops improving. 
+Read more about FFS, e.g. [here](https://www.rdocumentation.org/packages/CAST/versions/0.2.0/topics/ffs) or [here](https://geomoer.github.io/moer-mpg-data-analysis/unit07/unit07-01_select_variables.html).
 
 Please familiarize yourself with LLO and FFS by reading the corresponding articles.
 
