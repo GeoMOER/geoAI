@@ -15,7 +15,7 @@ In this lesson, we will predict spatial features with machine learning technique
 We want to create a model that can distinguish between pixels from a building and those that belong to their surroundings. To do this we need the bands of the DOP as well as several indices that are calculated based on them. You can simply use the ones we created in [Unit 1](http://127.0.0.1:4000/geoAI//unit01/unit01-05_warm-up-r-spatial.html#step-4---calculate-rgb-indices). 
 
 Our area of interest (AOI):
-{% include media4 url="assets/images/unit03/marburg_dop.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
+{% include media4 url="assets/images/unit03/marburg_dop.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit03/marburg_dop.html){:target="_blank"}
 
 
 ## Random forest -- The basics

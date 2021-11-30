@@ -39,6 +39,17 @@ This and further information can be found in the paper on the U-Net algorithm: [
 
 {% include pdf pdf="GeoAI-Unit04.pdf" %}
 
+## Further reading
+
+Goodfellow, I., Bengio, Y. & A. Courville (2016): Deep Learning. MIT Press. [http://www.deeplearningbook.org](http://www.deeplearningbook.org)
+
+Chollet, F. & J.J. ALlaire (2018): Deep Learning with R. Manning Publication, 360 pp. ISBN 9781617295546
+
+Zhu, X. X., Tuia, D., Mou, L., Xia, G.-S., Zhang, L., Xu, F. & F. Fraundorfer (2017): Deep Learning in Remote Sensing: A Comprehensive Review and List of Resources. 
+IEEE Geoscience and Remote Sensing Magazine, Vol. 5, No. 4, 8-36. [10.1109/MGRS.2017.2762307](https://ieeexplore.ieee.org/document/8113128)
+
+Nielsen, M. A. (2015): Neural Networks and Deep Learning. Determination Press. [http://neuralnetworksanddeeplearning.com/index.html](http://neuralnetworksanddeeplearning.com/index.html)
+
 
 ## Comments?
 You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 

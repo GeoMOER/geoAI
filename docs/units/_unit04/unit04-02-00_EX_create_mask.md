@@ -25,7 +25,6 @@ packagesToLoad = c(
    "rgdal",
    "png",
    "gdalUtils",
-   "future.apply",
    "tensorflow",
    "keras",
    "reticulate",
@@ -116,11 +115,6 @@ To train the U-Net, many smaller images of the same size are needed instead of t
 5. crop every polygon to both the house mask and the DOP and save the small 128x128 images as .png
 
 ```r
-
-
-# subset data set function
-# this function uses future.apply package so it multicore process
-
 subset_ds <-
    function(input_raster,
             model_input_shape,
@@ -165,13 +159,8 @@ subset_ds <-
       names(agg_poly) <- "polis"
       
       if (mask) {
-         future_lapply(
-            ### error ### 
-            # one time a warning
-            # one time this does not work!
-            # genauer gesagt taucht der fehler nur beim dop auf Lösung lapply
-            # also could not remove subs --> sollte an local liegen 
-            seq_along(agg),
+         lapply(
+           seq_along(agg),
             FUN = function(i) {
                subs <- local({
                   e1  <- extent(agg_poly[agg_poly$polis == i,])
@@ -185,7 +174,7 @@ subset_ds <-
          )
       }
       else{
-         future_lapply(
+         lapply(
             seq_along(agg),
             FUN = function(i) {
                subs <- local({
@@ -222,7 +211,7 @@ In this example we will only use the images to train the U-Net that also contain
 # keep the foreground (building) information
 
 remove_files <- function(df) {
-   future_lapply(
+   lapply(
       seq(1, nrow(df)),
       FUN = function(i) {
          local({
@@ -319,11 +308,6 @@ marburg_dop_train <-
 
 # set the size of each image
 model_input_shape = c(128, 128)
-
-# start your paralell computing
-# with plan(multisession, workers = 2) 
-# you can set the number of background process
-plan(multisession)
 
 # subsets for the mask
 

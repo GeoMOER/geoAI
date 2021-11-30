@@ -56,7 +56,7 @@ A spectral augmentation is also performed on the image at each step, randomly ch
 
 
 ![image](../assets/images/unit04/augmentation.png)
-*Image: Data augmentation: Below are the original images and above after data augmentation (Hessische Verwaltung für Bodenmanagement und Geoinformation)
+Image: Data augmentation: Below are the original images and above after data augmentation (Hessische Verwaltung für Bodenmanagement und Geoinformation)
 
 
 ```r
