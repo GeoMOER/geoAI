@@ -1,5 +1,5 @@
 ---
-title: EX | Unet
+title: EX | U-Net
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
@@ -11,18 +11,18 @@ Deep learning and spatial patterns
 
 <!--more-->
 
-## U-net 
+## U-Net 
 
 Now we are ready to define a unet. Don´t get frightened of by the length of this code section. Even if it might look scary at first glance the structure of the individual layers is actually quite repetitive.
 
 
 ```r
 
-# 1 - U-net ####
+# 1 - U-Net ####
 #--------------#
 
 
-# function to build a u-net
+# function to build a U-Net
 # of course it is possible to change the input_shape
 get_unet_128 <- function(input_shape = c(128, 128, 3),
                          num_classes = 1) {

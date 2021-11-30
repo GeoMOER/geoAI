@@ -1,5 +1,5 @@
 ---
-title: EX | Predicting using Unet
+title: EX | Predicting using U-Net
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg

@@ -109,7 +109,7 @@ buildings <- sf::st_crop(buildings[1], ras_extent)
 ## Function to split the data
 
 
-To train the unet, many smaller images of the same size are needed instead of the large raster files we have at the moment. We will use the function below to split the raster files. Although it may seem a bit complex at first glance, it basically consists of five simple steps: 
+To train the U-Net, many smaller images of the same size are needed instead of the large raster files we have at the moment. We will use the function below to split the raster files. Although it may seem a bit complex at first glance, it basically consists of five simple steps: 
 
 1. determine the size of the original raster (DOP)
 2. determine how many images of a certain size (e.g. 128 by 128) can fit into it and how large the extent of all the images is in total.
@@ -216,7 +216,7 @@ subset_ds <-
 
 ## Function to remove files without training data
 
-In this example we will only use the images to train the unet that also contains one of the objects we want to detect (a building). Therefore we will use the following function to remove from all .pngs, that have only one value in the mask (0 no house), both the mask image and the corresponding DOP .png.
+In this example we will only use the images to train the U-Net that also contain one of the objects we want to detect (a building). Therefore we will use the following function to remove from all .pngs, that have only one value in the mask (0 no house), both the mask image and the corresponding DOP .png.
 
 ```r
 
@@ -240,12 +240,7 @@ remove_files <- function(df) {
 ```
 
 
-
-
-## Split Mask and DOP and remove empty files
-
-Now we can apply our functions defined above to our data. Both the DOP and the mask are split into smaller .pngs using the subset_ds function. The output path for both functions is in a different folder, where the images should be stored.  
-
+## Rasterize the buildings
 ```r
 # rasterize the buildings
 rasterized_vector <- rasterize(buildings, ras[[1]])
@@ -259,7 +254,7 @@ raster::writeRaster(rasterized_vector,
                     file.path(envrmt$path_data, "marburg_mask.tif"),
                     overwrite = T)
 ```
-## 2. Divide dataset to training and testing 
+## Divide dataset to training and testing 
 ```r
 # divide to training and testing extent
 e_test <- extent(483000, 484000, 5626000, 5628000)
@@ -295,8 +290,12 @@ writeRaster(
 
 
 
+
+
+## Subset the datasets
+
 ```r
-# 3. Subset the datasets  -------------------------------------------------
+
 
 # subset data set function
 # this function uses future.apply package so it multicore process
@@ -420,6 +419,8 @@ subset_ds(
    model_input_shape = model_input_shape
 )
 ```
+## Remove empty files
+Now we can apply our functions defined above to our data. Both the DOP and the mask are split into smaller .pngs using the subset_ds function. The output path for both functions is in a different folder, where the images should be stored.  
 
 ```r
 # remove all masks with just background information and
