@@ -102,3 +102,13 @@ rebuild_img(
 # block #
 # map view an example output # 
 ```
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_EX_performance"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

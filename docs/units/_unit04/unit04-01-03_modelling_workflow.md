@@ -16,3 +16,12 @@ In the following exercises, we want to use a deep neural network, specifically U
 In the first exercise, we will create masks and split the data. Then, we will prepare the data for the actual U-Net and complete a step called augmentation. Next, we will apply the actual U-Net model and calculate performance metrics. Finally, we will use the U-Net to make spatial predictions that we can then compare with the random forest models from the previous unit.
 
 This entire example is based on the tutorial [Introduction to Deep Learning in R for the Analysis of UAV-based Remote Sensing Data]( https://av.tib.eu/media/49550) [CC BY 3.0 DE] by Christian Knoth. The scripts from this tutorial are available [here]( https://dachro.github.io/ogh_summer_school_2020/Tutorial_DL_UAV.html#introduction).
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_LM_Modelling_Workflow"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

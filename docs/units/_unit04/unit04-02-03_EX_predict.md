@@ -125,3 +125,12 @@ for (i in t_sample) {
 }
 
 ```
+
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_EX_Predicting_using_Unet"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

@@ -211,3 +211,10 @@ unet_model %>% save_model_hdf5(file.path(envrmt$path_models, "unet_buildings.hdf
 ```
 
 
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_EX_unet"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

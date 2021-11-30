@@ -264,6 +264,12 @@ At the end of this exercise you should have three data sets. One based on 80% of
 
 
 
-
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_EX_Prepare_your_data"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
 
    

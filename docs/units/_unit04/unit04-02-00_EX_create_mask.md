@@ -469,3 +469,10 @@ At the end of this exercise you should have created a raster mask from the v
 ![image](../assets/images/unit04/masks.png)
 *Image: *
 
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_EX_Create Masks"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>

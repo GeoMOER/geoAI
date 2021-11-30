@@ -38,3 +38,17 @@ This and further information can be found in the paper on the U-Net algorithm: [
 ## Unit 4 slides
 
 {% include pdf pdf="GeoAI-Unit04.pdf" %}
+
+
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+
+<script src="https://utteranc.es/client.js"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_04_LM_Deeply_Good"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
