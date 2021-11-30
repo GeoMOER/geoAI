@@ -12,25 +12,96 @@ In this exercise, we will create a raster mask from vector data containing the o
 {% include media4 url="assets/images/unit04/marburg_buildings.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
+## Set up a working environment
+
+First, set up the working environment as described in [Unit 01](https://geomoer.github.io/geoAI//unit01/unit01-04_setup_working_environment.html).
+We will add some more packages and an additional folder to your setup script. In the "modelling" folder you can store your prepared data, your models, your predictions etc.
+
+```r
+require(envimaR)
+
+packagesToLoad = c(
+   "raster",
+   "rgdal",
+   "png",
+   "gdalUtils",
+   "future.apply",
+   "tensorflow",
+   "keras",
+   "reticulate",
+   "sf",
+   "osmdata",
+   "greenbrown",
+   "rsample",
+   "tfdatasets",
+   "purrr",
+   "stars",
+   "magick"
+)
+
+# define a project rootfolder
+rootDir = "~/edu/geoAI"  
+
+# some new paths
+projectDirList   = c(
+   "data/",
+   "data/modelling/",
+   "data/modelling/model_training_data/",
+   "data/modelling/model_training_data/dop/",
+   "data/modelling/model_training_data/bui/",
+   "data/modelling/models/",
+   "data/modelling/prediction/",
+   "data/modelling/validation/",
+   "data/modelling/model_testing_data/",
+   "data/modelling/model_testing_data/dop/",
+   "data/modelling/model_testing_data/bui/",
+   "docs/",
+   "run/",
+   "tmp",
+   "src/",
+   "src/functions/"
+)
+
+# Now set automatically root direcory, folder structure and load libraries
+envrmt = envimaR::createEnvi(
+   root_folder = rootDir,
+   folders = projectDirList,
+   path_prefix = "path_",
+   libs = packagesToLoad,
+   alt_env_id = "COMPUTERNAME",
+   alt_env_value = "PCRZP",
+   alt_env_root_folder = "F:/BEN/edu"
+)
+## set raster temp path
+raster::rasterOptions(tmpdir = envrmt$path_tmp)
+```
+
 ## Create raster mask from vector file
 
 From the file shown in the figure above, containing the outlines of the buildings in the study area, we will first create a raster mask. To do this, we use the DOP of the study area as a reference raster, to ensure that the mask will have the same extent and the same resolution. The transformation of polygons into a raster file with the same properties as the DOP is done by the function rasterize of the raster package. Afterwards a reclassification of the values is performed, where all values that do not represent a building are 0 and all values that represent a building are 1. You can roughly see how the mask for the study area might look in the map below (layer mask).
 
 
 ```r
+
 # read data
-input_vector <- sf::read_sf(file.path(envrmt$path_vector, "marburg_buildings.gpkg"))
-r <- raster::stack(file.path(envrmt$path_01_raw_data_aerial, "marburg_dop.tif"))
+ras <- raster::stack(file.path(envrmt$path_data, "marburg_dop.tif"))
 
-# rasterize
-rasterized_vector <- rasterize(input_vector,r[[1]])
+# subset to three channels
+ras <- subset(ras, c("red", "green", "blue"))
 
-# reclassify
-rasterized_vector[is.na(rasterized_vector[])] <- 0
-rasterized_vector[rasterized_vector > 1] <- 1
+# download and crop the OSM building data to the extent of the raster data
+buildings = opq(bbox = "marburg de") %>%
+   add_osm_feature(key = "building") %>%
+   osmdata_sf()
 
-#save
-raster::writeRaster(file.path(envrmt$path_masks, "marburg_mask.tif"),overwrite=T)
+buildings = buildings$osm_polygons
+
+buildings = sf::st_transform(buildings, crs(ras))
+
+ras_extent <- extent(ras)
+
+buildings <- sf::st_crop(buildings[1], ras_extent)
+
 ```
 
 
@@ -176,42 +247,218 @@ remove_files <- function(df) {
 Now we can apply our functions defined above to our data. Both the DOP and the mask are split into smaller .pngs using the subset_ds function. The output path for both functions is in a different folder, where the images should be stored.  
 
 ```r
-rasterized_vector <- stack(file.path(envrmt$path_masks, "marburg_mask.tif"))
+# rasterize the buildings
+rasterized_vector <- rasterize(buildings, ras[[1]])
 
+# reclassify to 0 and 1
+rasterized_vector[is.na(rasterized_vector[])] <- 0
+rasterized_vector[rasterized_vector > 1] <- 1
 
-# subsets for the mask
-target_rst <- subset_ds(
-  input_raster = rasterized_vector,
-  path = file.path(envrmt$path_masks_split),
-  mask = TRUE,
-  model_input_shape = c(128,128) # set the size of the output images
+#save
+raster::writeRaster(rasterized_vector,
+                    file.path(envrmt$path_data, "marburg_mask.tif"),
+                    overwrite = T)
+```
+## 2. Divide dataset to training and testing 
+```r
+# divide to training and testing extent
+e_test <- extent(483000, 484000, 5626000, 5628000)
+e_train <- extent(480000, 483000, 5626000, 5628000)
+
+marburg_mask_train <- crop(rasterized_vector, e_train)
+marburg_dop_train <- crop(ras, e_train)
+
+marburg_mask_test <-  crop(rasterized_vector, e_test)
+marburg_dop_test <- crop(ras, e_test)
+
+writeRaster(
+   marburg_mask_test,
+   file.path(envrmt$path_model_testing_data, "marburg_mask_test.tif"),
+   overwrite = T
 )
-
-
-# subsets for the training data
-input_raster <- raster::stack(file.path(envrmt$path_01_raw_data_aerial, "marburg_dop.tif"))
-
-subset_ds(
-  input_raster = input_raster,
-  path = file.path(envrmt$path_aerial_split),
-  mask = FALSE,
-  model_input_shape = c(128,128)
+writeRaster(
+   marburg_dop_test,
+   file.path(envrmt$path_model_testing_data, "marburg_dop_test.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_mask_train,
+   file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_dop_train,
+   file.path(envrmt$path_model_training_data, "marburg_dop_train.tif"),
+   overwrite = T
 )
 ```
-All files from these two folders are sorted into a dataframe and then the files that do not contain houses in the image in the mask column get deleted.
+
+
 
 ```r
+# 3. Subset the datasets  -------------------------------------------------
+
+# subset data set function
+# this function uses future.apply package so it multicore process
+
+subset_ds <-
+   function(input_raster,
+            model_input_shape,
+            path,
+            targetname = "",
+            mask = FALSE) {
+      # determine next number of quadrats in x and y direction, by simple rounding
+      targetsizeX <- model_input_shape[1]
+      targetsizeY <- model_input_shape[2]
+      inputX <- ncol(input_raster)
+      inputY <- nrow(input_raster)
+      
+      # determine dimensions of raster so that
+      # it can be split by whole number of subsets (by shrinking it)
+      while (inputX %% targetsizeX != 0) {
+         inputX = inputX - 1
+      }
+      while (inputY %% targetsizeY != 0) {
+         inputY = inputY - 1
+      }
+      
+      # determine difference
+      diffX <- ncol(input_raster) - inputX
+      diffY <- nrow(input_raster) - inputY
+      
+      # determine new dimensions of raster and crop,
+      # cutting evenly on all sides if possible
+      newXmin <- floor(diffX / 2)
+      newXmax <- ncol(input_raster) - ceiling(diffX / 2) - 1
+      newYmin <- floor(diffY / 2)
+      newYmax <- nrow(input_raster) - ceiling(diffY / 2) - 1
+      rst_cropped <-
+         suppressMessages(crop(
+            input_raster,
+            extent(input_raster, newYmin, newYmax, newXmin, newXmax)
+         ))
+      
+      agg <-
+         suppressMessages(aggregate(rst_cropped[[1]], c(targetsizeX, targetsizeY)))
+      agg[]    <- suppressMessages(1:ncell(agg))
+      agg_poly <- suppressMessages(rasterToPolygons(agg))
+      names(agg_poly) <- "polis"
+      
+      if (mask) {
+         future_lapply(
+            ### error ### 
+            # one time a warning
+            # one time this does not work!
+            # genauer gesagt taucht der fehler nur beim dop auf Lösung lapply
+            # also could not remove subs --> sollte an local liegen 
+            seq_along(agg),
+            FUN = function(i) {
+               subs <- local({
+                  e1  <- extent(agg_poly[agg_poly$polis == i,])
+                  
+                  subs <- suppressMessages(crop(rst_cropped, e1))
+                  
+               })
+               writePNG(as.array(subs),
+                        target = paste0(path, targetname, i, ".png"))
+            }
+         )
+      }
+      else{
+         future_lapply(
+            seq_along(agg),
+            FUN = function(i) {
+               subs <- local({
+                  e1  <- extent(agg_poly[agg_poly$polis == i,])
+                  
+                  subs <- suppressMessages(crop(rst_cropped, e1))
+                  # rescale to 0-1, for png export
+                  if (mask == FALSE) {
+                     subs <-
+                        suppressMessages((subs - cellStats(subs, "min")) / (cellStats(subs, "max") -
+                                                                               cellStats(subs, "min")))
+                  }
+               })
+               writePNG(as.array(subs),
+                        target = paste0(path, targetname, i, ".png"))
+            }
+         )
+      }
+      rm(subs, agg, agg_poly)
+      gc()
+      return(rst_cropped)
+   }
+
+# read training data
+marburg_mask_train <-
+   stack(file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"))
+marburg_dop_train <-
+   stack(file.path(envrmt$path_model_training_data, "marburg_dop_train.tif"))
+
+# set the size of each image
+model_input_shape = c(128, 128)
+
+# start your paralell computing
+# with plan(multisession, workers = 2) 
+# you can set the number of background process
+plan(multisession)
+
+# subsets for the mask
+
+subset_ds(
+   input_raster = marburg_mask_train,
+   path = paste0(file.path(envrmt$path_model_training_data_bui), "/"),
+   mask = TRUE,
+   model_input_shape = model_input_shape
+)
+
+# subsets for the dop
+subset_ds(
+   input_raster = marburg_dop_train,
+   path = paste0(file.path(envrmt$path_model_training_data_dop), "/"),
+   mask = FALSE,
+   model_input_shape = model_input_shape
+)
+```
+
+```r
+# remove all masks with just background information and
+# keep the foreground (building) information
+
+remove_files <- function(df) {
+   future_lapply(
+      seq(1, nrow(df)),
+      FUN = function(i) {
+         local({
+            fil = df$list_masks[i]
+            png = readPNG(fil)
+            len = length(png)
+            if (AllEqual(png)) {
+               file.remove(df$list_dops[i])
+               file.remove(df$list_masks[i])
+            } else {
+               
+            }
+         })
+      }
+   )
+}
+
+# list all created files in both folders
 list_dops <-
-  list.files(file.path(envrmt$path_aerial_split), full.names = TRUE, pattern = "*.png")
+   list.files(paste0(file.path(envrmt$path_model_training_data_dop), "/"),
+              full.names = TRUE,
+              pattern = "*.png")
 list_masks <-
-  list.files(file.path(envrmt$path_masks_split), full.names = TRUE, pattern = "*.png")
+   list.files(paste0(file.path(envrmt$path_model_training_data_bui), "/"),
+              full.names = TRUE,
+              pattern = "*.png")
+
+# create a data frame
 df = data.frame(list_dops, list_masks)
 
 remove_files(df)
-
 ```
-
-
 
 
 

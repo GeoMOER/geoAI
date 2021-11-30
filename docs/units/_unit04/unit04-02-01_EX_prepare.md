@@ -14,33 +14,25 @@ In this exercise we will split our image and mask files into a training, a valid
 ## Breaking down the data set
 We will now split the data into three parts. To do this, we will again place the file paths to the images and their corresponding masks in a data.frame() and then use 80% of it for the training set, 10% to validate it, and 10% to test the results. 
 ```r
-
-
+# list the files again
 files <- data.frame(
-  img = list.files(file.path(envrmt$path_aerial_split), full.names = TRUE, pattern = "*.png"),
-  mask = list.files(file.path(envrmt$path_masks_split), full.names = TRUE, pattern = "*.png")
+   img = list.files(
+      file.path(envrmt$path_model_training_data_dop),
+      full.names = TRUE,
+      pattern = "*.png"
+   ),
+   mask = list.files(
+      file.path(envrmt$path_model_training_data_bui),
+      full.names = TRUE,
+      pattern = "*.png"
+   )
 )
 
+# split randomly into training and validation (not testing!!) data sets
 set.seed(7)
+data <- initial_split(files, prop = 0.8)
 
-# proportion of training/validation/testing data
-# set the amount of test sample to 80%. Another 10% is used for validation. The remaining 10% can be used later for 
-# an independent validation
-training_sample <- 0.8
-validation_sample <- 0.9
-
-# create sample size for the above defined training/testing propotions
-sample_size <- sample(rep(1:3, 
-                          diff(floor(nrow(files) *c(0,training_sample,validation_sample,1)))
-)
-)
-
-# divide the datafame to 
-training <- files[sample_size==1,]
-validation <- files[sample_size==2,]
-testing <- files[sample_size==3,]
-
-rm(files, sample_size, training_sample, validation_sample)
+# take a look at the amount of data
 ```
 
 ## Data Augmentation
@@ -67,15 +59,18 @@ A spectral augmentation is also performed on the image at each step, randomly ch
 
 ```r
 
+# one more parameter
+batch_size = 8
 
+# function to prepare your data set for all further processes
 prepare_ds <-
    function(files = NULL,
             train,
             predict = FALSE,
             subsets_path = NULL,
-            img_size = c(256, 256),
+            model_input_shape = c(256, 256),
             batch_size = batch_size,
-            visual =FALSE) {
+            visual = FALSE) {
       if (!predict) {
          # function for random change of saturation,brightness and hue,
          # will be used as part of the augmentation
@@ -141,7 +136,7 @@ prepare_ds <-
                   ))
             
             dataset_augmented <-
-               dataset_concatenate(augmentation,dataset)
+               dataset_concatenate(augmentation, dataset)
             
             # augmentation 2: flip up down,
             # including random change of saturation, brightness and contrast
@@ -158,7 +153,7 @@ prepare_ds <-
                   ))
             
             dataset_augmented <-
-               dataset_concatenate(augmentation,dataset_augmented)
+               dataset_concatenate(augmentation, dataset_augmented)
             
             # augmentation 3: flip left right AND up down,
             # including random change of saturation, brightness and contrast
@@ -184,7 +179,7 @@ prepare_ds <-
                   ))
             
             dataset_augmented <-
-               dataset_concatenate(augmentation,dataset_augmented)
+               dataset_concatenate(augmentation, dataset_augmented)
             
          }
          
@@ -200,7 +195,7 @@ prepare_ds <-
             # available memory
             dataset <- dataset_batch(dataset, batch_size)
          }
-         if(visual){
+         if (visual) {
             dataset <- dataset_augmented
          }
          
@@ -244,20 +239,21 @@ We will now apply the function for preparing the datasets to the training and va
 # prepare data for training
 training_dataset <-
    prepare_ds(
-      training,
+      training(data),
       train = TRUE,
       predict = FALSE,
-      img_size = img_size,
+      model_input_shape = model_input_shape,
       batch_size = batch_size
    )
 
 # also prepare validation data
+
 validation_dataset <-
    prepare_ds(
-      validation,
+      testing(data),
       train = FALSE,
       predict = FALSE,
-      img_size = img_size,
+      model_input_shape = model_input_shape,
       batch_size = batch_size
    )
 ```
