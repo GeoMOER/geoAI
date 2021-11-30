@@ -55,6 +55,8 @@ A spectral augmentation is also performed on the image at each step, randomly ch
 
 
 
+![image](../assets/images/unit04/augmentation.png)
+*Image: *
 
 
 ```r

@@ -119,183 +119,6 @@ To train the U-Net, many smaller images of the same size are needed instead of t
 
 ```r
 
-subset_ds <-
-  function(input_raster,
-           model_input_shape,
-           path,
-           targetname = "",
-           mask = FALSE) {
-    # determine next number of quadrats in x and y direction, by simple rounding
-    targetsizeX <- model_input_shape[1]
-    targetsizeY <- model_input_shape[2]
-    inputX <- ncol(input_raster)
-    inputY <- nrow(input_raster)
-    
-    # determine dimensions of raster so that
-    # it can be split by whole number of subsets (by shrinking it)
-    while (inputX %% targetsizeX != 0) {
-      inputX = inputX - 1
-    }
-    while (inputY %% targetsizeY != 0) {
-      inputY = inputY - 1
-    }
-    
-    # determine difference
-    diffX <- ncol(input_raster) - inputX
-    diffY <- nrow(input_raster) - inputY
-    
-    # determine new dimensions of raster and crop,
-    # cutting evenly on all sides if possible
-    newXmin <- floor(diffX / 2)
-    newXmax <- ncol(input_raster) - ceiling(diffX / 2) - 1
-    newYmin <- floor(diffY / 2)
-    newYmax <- nrow(input_raster) - ceiling(diffY / 2) - 1
-    rst_cropped <-
-      suppressMessages(crop(
-        input_raster,
-        extent(input_raster, newYmin, newYmax, newXmin, newXmax)
-      ))
-    
-    agg <-
-      suppressMessages(aggregate(rst_cropped[[1]], c(targetsizeX, targetsizeY)))
-    agg[]    <- suppressMessages(1:ncell(agg))
-    agg_poly <- suppressMessages(rasterToPolygons(agg))
-    names(agg_poly) <- "polis"
-    
-    if (mask) {
-      future_lapply(
-        seq_along(agg),
-        FUN = function(i) {
-          subs <- local({
-            e1  <- extent(agg_poly[agg_poly$polis == i, ])
-            
-            subs <- suppressMessages(crop(rst_cropped, e1))
-            
-          })
-          writePNG(
-            as.array(subs),
-            target = paste0(path, targetname, i, ".png")
-          )
-        }
-      )
-    }
-    else{
-      future_lapply(
-        seq_along(agg),
-        FUN = function(i) {
-          subs <- local({
-            e1  <- extent(agg_poly[agg_poly$polis == i, ])
-            
-            subs <- suppressMessages(crop(rst_cropped, e1))
-            # rescale to 0-1, for png export
-            if (mask == FALSE) {
-              subs <-
-                suppressMessages((subs - cellStats(subs, "min")) / (cellStats(subs, "max") -
-                                                                      cellStats(subs, "min")))
-            }
-          })
-          writePNG(
-            as.array(subs),
-            target = paste0(path, targetname, i, ".png")
-          )
-        }
-      )
-    }
-    rm(subs, agg, agg_poly)
-    gc()
-    return(rst_cropped)
-  }
-
-
-```
-
-
-{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
-
-
-
-## Function to remove files without training data
-
-In this example we will only use the images to train the U-Net that also contain one of the objects we want to detect (a building). Therefore we will use the following function to remove from all .pngs, that have only one value in the mask (0 no house), both the mask image and the corresponding DOP .png.
-
-```r
-
-remove_files <- function(df) {
-  future_lapply(
-    seq(1, nrow(df)),
-    FUN = function(i) {
-      local({
-        fil = df$list_m[i]
-        png = readPNG(fil)
-        len = length(png)
-        if (AllEqual(png)) {
-          file.remove(df$list_s[i])
-          file.remove(df$list_m[i])
-        } else {
-        }
-      })
-    }
-  )
-}
-```
-
-
-## Rasterize the buildings
-```r
-# rasterize the buildings
-rasterized_vector <- rasterize(buildings, ras[[1]])
-
-# reclassify to 0 and 1
-rasterized_vector[is.na(rasterized_vector[])] <- 0
-rasterized_vector[rasterized_vector > 1] <- 1
-
-#save
-raster::writeRaster(rasterized_vector,
-                    file.path(envrmt$path_data, "marburg_mask.tif"),
-                    overwrite = T)
-```
-## Divide dataset to training and testing 
-```r
-# divide to training and testing extent
-e_test <- extent(483000, 484000, 5626000, 5628000)
-e_train <- extent(480000, 483000, 5626000, 5628000)
-
-marburg_mask_train <- crop(rasterized_vector, e_train)
-marburg_dop_train <- crop(ras, e_train)
-
-marburg_mask_test <-  crop(rasterized_vector, e_test)
-marburg_dop_test <- crop(ras, e_test)
-
-writeRaster(
-   marburg_mask_test,
-   file.path(envrmt$path_model_testing_data, "marburg_mask_test.tif"),
-   overwrite = T
-)
-writeRaster(
-   marburg_dop_test,
-   file.path(envrmt$path_model_testing_data, "marburg_dop_test.tif"),
-   overwrite = T
-)
-writeRaster(
-   marburg_mask_train,
-   file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"),
-   overwrite = T
-)
-writeRaster(
-   marburg_dop_train,
-   file.path(envrmt$path_model_training_data, "marburg_dop_train.tif"),
-   overwrite = T
-)
-```
-
-
-
-
-
-## Subset the datasets
-
-```r
-
 
 # subset data set function
 # this function uses future.apply package so it multicore process
@@ -388,6 +211,94 @@ subset_ds <-
       return(rst_cropped)
    }
 
+```
+
+
+{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
+
+
+
+## Function to remove files without training data
+
+In this example we will only use the images to train the U-Net that also contain one of the objects we want to detect (a building). Therefore we will use the following function to remove from all .pngs, that have only one value in the mask (0 no house), both the mask image and the corresponding DOP .png.
+
+```r
+
+remove_files <- function(df) {
+  future_lapply(
+    seq(1, nrow(df)),
+    FUN = function(i) {
+      local({
+        fil = df$list_m[i]
+        png = readPNG(fil)
+        len = length(png)
+        if (AllEqual(png)) {
+          file.remove(df$list_s[i])
+          file.remove(df$list_m[i])
+        } else {
+        }
+      })
+    }
+  )
+}
+```
+
+
+## Rasterize the buildings
+```r
+# rasterize the buildings
+rasterized_vector <- rasterize(buildings, ras[[1]])
+
+# reclassify to 0 and 1
+rasterized_vector[is.na(rasterized_vector[])] <- 0
+rasterized_vector[rasterized_vector > 1] <- 1
+
+#save
+raster::writeRaster(rasterized_vector,
+                    file.path(envrmt$path_data, "marburg_mask.tif"),
+                    overwrite = T)
+```
+## Divide dataset to training and testing 
+```r
+# divide to training and testing extent
+e_test <- extent(483000, 484000, 5626000, 5628000)
+e_train <- extent(480000, 483000, 5626000, 5628000)
+
+marburg_mask_train <- crop(rasterized_vector, e_train)
+marburg_dop_train <- crop(ras, e_train)
+
+marburg_mask_test <-  crop(rasterized_vector, e_test)
+marburg_dop_test <- crop(ras, e_test)
+
+writeRaster(
+   marburg_mask_test,
+   file.path(envrmt$path_model_testing_data, "marburg_mask_test.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_dop_test,
+   file.path(envrmt$path_model_testing_data, "marburg_dop_test.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_mask_train,
+   file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_dop_train,
+   file.path(envrmt$path_model_training_data, "marburg_dop_train.tif"),
+   overwrite = T
+)
+```
+
+
+
+
+
+## Subset the datasets
+
+```r
 # read training data
 marburg_mask_train <-
    stack(file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"))
