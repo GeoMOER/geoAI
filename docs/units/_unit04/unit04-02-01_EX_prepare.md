@@ -56,7 +56,7 @@ A spectral augmentation is also performed on the image at each step, randomly ch
 
 
 ![image](../assets/images/unit04/augmentation.png)
-*Image: *
+*Image: Data augmentation: Below are the original images and above after data augmentation (Hessische Verwaltung für Bodenmanagement und Geoinformation)
 
 
 ```r
@@ -259,10 +259,6 @@ validation_dataset <-
       batch_size = batch_size
    )
 ```
-
-
-## Expected Output
-At the end of this exercise you should have three data sets. One based on 80% of the input data for training, one with 10% of the input data for the validation and one with the last 10% of the input data for testing the results. Furthermore, data augmentation was applied to the training data.
 
 
 
