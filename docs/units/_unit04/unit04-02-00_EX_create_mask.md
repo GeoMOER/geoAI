@@ -76,9 +76,7 @@ envrmt = envimaR::createEnvi(
 raster::rasterOptions(tmpdir = envrmt$path_tmp)
 ```
 
-## Create raster mask from vector file
-
-From the file shown in the figure above, containing the outlines of the buildings in the study area, we will first create a raster mask. To do this, we use the DOP of the study area as a reference raster, to ensure that the mask will have the same extent and the same resolution. The transformation of polygons into a raster file with the same properties as the DOP is done by the function rasterize of the raster package. Afterwards a reclassification of the values is performed, where all values that do not represent a building are 0 and all values that represent a building are 1. You can roughly see how the mask for the study area might look in the map below (layer mask).
+## Read the data
 
 
 ```r
@@ -223,28 +221,36 @@ subset_ds <-
 In this example we will only use the images to train the U-Net that also contain one of the objects we want to detect (a building). Therefore we will use the following function to remove from all .pngs, that have only one value in the mask (0 no house), both the mask image and the corresponding DOP .png.
 
 ```r
+# remove all masks with just background information and
+# keep the foreground (building) information
 
 remove_files <- function(df) {
-  future_lapply(
-    seq(1, nrow(df)),
-    FUN = function(i) {
-      local({
-        fil = df$list_m[i]
-        png = readPNG(fil)
-        len = length(png)
-        if (AllEqual(png)) {
-          file.remove(df$list_s[i])
-          file.remove(df$list_m[i])
-        } else {
-        }
-      })
-    }
-  )
+   future_lapply(
+      seq(1, nrow(df)),
+      FUN = function(i) {
+         local({
+            fil = df$list_masks[i]
+            png = readPNG(fil)
+            len = length(png)
+            if (AllEqual(png)) {
+               file.remove(df$list_dops[i])
+               file.remove(df$list_masks[i])
+            } else {
+               
+            }
+         })
+      }
+   )
 }
 ```
 
 
 ## Rasterize the buildings
+
+
+From the file shown in the figure above, containing the outlines of the buildings in the study area, we will first create a raster mask. To do this, we use the DOP of the study area as a reference raster, to ensure that the mask will have the same extent and the same resolution. The transformation of polygons into a raster file with the same properties as the DOP is done by the function rasterize of the raster package. Afterwards a reclassification of the values is performed, where all values that do not represent a building are 0 and all values that represent a building are 1. You can roughly see how the mask for the study area might look in the map below (layer mask).
+
+
 ```r
 # rasterize the buildings
 rasterized_vector <- rasterize(buildings, ras[[1]])
@@ -334,28 +340,6 @@ subset_ds(
 Now we can apply our functions defined above to our data. Both the DOP and the mask are split into smaller .pngs using the subset_ds function. The output path for both functions is in a different folder, where the images should be stored.  
 
 ```r
-# remove all masks with just background information and
-# keep the foreground (building) information
-
-remove_files <- function(df) {
-   future_lapply(
-      seq(1, nrow(df)),
-      FUN = function(i) {
-         local({
-            fil = df$list_masks[i]
-            png = readPNG(fil)
-            len = length(png)
-            if (AllEqual(png)) {
-               file.remove(df$list_dops[i])
-               file.remove(df$list_masks[i])
-            } else {
-               
-            }
-         })
-      }
-   )
-}
-
 # list all created files in both folders
 list_dops <-
    list.files(paste0(file.path(envrmt$path_model_training_data_dop), "/"),
