@@ -212,9 +212,6 @@ subset_ds <-
 ```
 
 
-{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
-
-
 
 ## Function to remove files without training data
 
@@ -264,7 +261,14 @@ raster::writeRaster(rasterized_vector,
                     file.path(envrmt$path_data, "marburg_mask.tif"),
                     overwrite = T)
 ```
+
+
+{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
+
+
+
 ## Divide dataset to training and testing 
+Now we will cut the DOP and the mask in two pieces. You can use the extents from below, or choose two on your own from the image. The larger section will be used to train the model, while the smaller section will be used for validation.
 ```r
 # divide to training and testing extent
 e_test <- extent(483000, 484000, 5626000, 5628000)
@@ -303,6 +307,8 @@ writeRaster(
 
 
 ## Subset the datasets
+
+Both the DOP and the mask are split into smaller .pngs using the subset_ds function. The output path for both functions is in a different folder, where the images should be stored.
 
 ```r
 # read training data
@@ -363,7 +369,7 @@ remove_files(df)
 At the end of this exercise you should have created a raster mask from the v
 
 ![image](../assets/images/unit04/masks.png)
-*Image: *
+*Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
 
 <script src="https://utteranc.es/client.js"
         repo="GeoMOER/geoAI"
