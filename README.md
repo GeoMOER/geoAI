@@ -3,8 +3,8 @@ Understand spatial problems, apply remote sensing, and use AI to resiliently pre
 
 Module on geospatial data prediction and remote sensing of the Honour Degree Programm „AI und Entrepreneurship"
 
-## Responsible for the module
-Lisa Bald, Kevin Frac, Thomas Nauss, Christoph Reudenbach and Dirk Zeuss (in agreement with Hanna Meyer, University of Münster, https://www.uni-muenster.de/RemoteSensing/team/meyer/index.html for use in teaching there as well).  
+## Authors of the module
+Lisa Bald, Kevin Frac, Thomas Nauss, Christoph Reudenbach and Dirk Zeuss.  
 
 ## Motivation
 “Everything is related to everything else, but near things are more related than distant things” (Tobler, 1970). With this sentence, Waldo R. Tobler made geographic history, although his main concern was to reduce the complexity of his population simulation model so that it could be calculated at all on the IT infrastructure of the 1970s.
