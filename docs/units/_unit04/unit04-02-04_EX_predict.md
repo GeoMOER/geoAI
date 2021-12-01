@@ -7,7 +7,7 @@ header:
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
-Now that we have the prepared data, we can make a prediction on each of the individual prepared images and then reassemble them to a prediction map. Therefore we firstly need a function for rebuilding our images.
+Now that we have the prepared data, we can make a prediction on each of the individual prepared images and then reassemble them to a prediction map. Therefore we firstly need a function to rebuilding our images.
 
 ```r
 # function to rebuild your image
@@ -67,7 +67,7 @@ rebuild_img <-
 
 
 ```
-
+Now we can load the target raster and predict:
 
 ```r
 
@@ -76,12 +76,14 @@ target_rst <- raster(file.path(envrmt$path_model_testing_data, "marburg_mask_tes
 # make the actual prediction
 pred_subsets <- predict(object = unet_model, x = prediction_dataset)
 
-# name your output path
-model_name <- "unet_abc" 
+ 
 ```
 The corresponding prediction map can be found within the folder below (with the name mosaic.tif) and might look something like the map below.
 
 ```r
+# name your output path
+model_name <- "unet_abc"
+
 # rebuild .tif from each patch
 rebuild_img(
    pred_subsets = pred_subsets,
@@ -93,6 +95,17 @@ rebuild_img(
 ```
 {% include media4 url="assets/images/unit04/marburg_prediction_unet.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_prediction_unet.html){:target="_blank"}
 
+
+{% capture Assignment-04 %}
+
+## Assignment Unit-04
+
+Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
+
+{% endcapture %}
+<div class="notice--success">
+  {{ Assignment-03-2 | markdownify }}
+</div>
 
 
 <script src="https://utteranc.es/client.js"

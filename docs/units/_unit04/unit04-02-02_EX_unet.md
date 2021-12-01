@@ -7,13 +7,13 @@ header:
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
-Deep learning and spatial patterns
+
+
+Now we are ready to define a U-Net. Don´t get frightened of by the length of this code section. Even if it might look scary at first glance the structure of the individual layers is actually quite repetitive.
 
 <!--more-->
 
-## U-Net 
 
-Now we are ready to define a unet. Don´t get frightened of by the length of this code section. Even if it might look scary at first glance the structure of the individual layers is actually quite repetitive.
 
 
 ```r
@@ -183,11 +183,10 @@ get_unet_128 <- function(input_shape = c(128, 128, 3),
 }
 ```
 {% capture optional %}
-### Note
 ## Note
 The creation of a Convolutional Neural Network tends to be more computationally intensive compared to the Random Forest. For this reason, it is likely that the example shown here of a U-Net, 
 which is trained with about 1713 training images over 10 epochs, will probably require several hours on your CPU to train. Accordingly, it is a good idea to run the training process at a time when you do not need your computer (e.g. over night). 
-The main reason for the calculation time is the large number of trainable parameters (just take look when you print out the variable unet_model). Of course, there are some ways to shorten the calculation time.
+The main reason for the calculation time is the large number of trainable parameters (just take look when you print out the variable ´unet_model´). Of course, there are some ways to shorten the calculation time.
 However, these approaches must be modified with care, as they will affect the accuracy of the model. Some suggestions that can be easily modified from the existing example would be:
 
 - Changing the input size. Results in the spatial context being reduced, thus the generalisability of the model may be degraded and the training process may also become poor.
@@ -209,7 +208,6 @@ but for beginners this approach is not recommended, as the installation is much 
 
 ```r
 unet_model <- get_unet_128()
-# history <- testen!
 # compile the model 
 unet_model %>% compile(
    optimizer = optimizer_adam(learning_rate = 0.0001),
@@ -218,19 +216,25 @@ unet_model %>% compile(
 )
 
 # train the model
-unet_model %>% fit(
-   training_dataset,
-   validation_data = validation_dataset,
-   epochs = 10,
-   verbose = 1
+hist <- unet_model %>% fit(
+		training_dataset,
+		validation_data = validation_dataset,
+		epochs = 10,
+		verbose = 1
 )
+
 
 # save the model
 unet_model %>% save_model_hdf5(file.path(envrmt$path_models, "unet_buildings.hdf5"))
+
+plot(hist)
 ```
 
+histogramm html einfügen !!!!
 
 <script src="https://utteranc.es/client.js"
+
+
         repo="GeoMOER/geoAI"
         issue-term="GeoAI_2021_unit_04_EX_unet"
         theme="github-light"
