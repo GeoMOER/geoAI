@@ -18,10 +18,7 @@ Now we are ready to define a U-Net. Don´t get frightened of by the length of th
 
 ```r
 
-# 1 - U-Net ####
-#--------------#
-
-
+#U-Net
 # function to build a U-Net
 # of course it is possible to change the input_shape
 get_unet_128 <- function(input_shape = c(128, 128, 3),
@@ -206,7 +203,7 @@ but for beginners this approach is not recommended, as the installation is much 
 
 ## Model training
 
-... get your network combine it train it ...
+The actual modelling is rather short, we load the network and compile and train it.
 
 ```r
 unet_model <- get_unet_128()
@@ -232,7 +229,14 @@ unet_model %>% save_model_hdf5(file.path(envrmt$path_models, "unet_buildings.hdf
 plot(hist)
 ```
 
-histogramm html einfügen !!!!
+<iframe
+  src="../assets/unit04/hist.html"
+  style="width:150%; height:500px;"
+></iframe>
+
+
+<a id="raw-url" href="https://raw.githubusercontent.com/GeoMOER/geoAI/staging/docs/assets/images/unit04/hist.png">Download as Image</a> or
+[view full screen version]({{ site.baseurl }}assets/timeline.html){:target="_blank"}
 
 ... beschreibung histogram
 
