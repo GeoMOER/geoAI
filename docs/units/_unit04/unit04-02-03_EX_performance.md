@@ -146,6 +146,8 @@ for (i in t_sample) {
 ![image](../assets/images/unit04/prediction.png)
 *Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
 
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
 
 <script src="https://utteranc.es/client.js"

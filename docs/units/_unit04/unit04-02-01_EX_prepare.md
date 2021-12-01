@@ -60,10 +60,6 @@ Image: Data augmentation: Below are the original images and above after data aug
 
 
 ```r
-
-# one more parameter
-batch_size = 8
-
 # function to prepare your data set for all further processes
 prepare_ds <-
    function(files = NULL,
@@ -238,6 +234,9 @@ prepare_ds <-
 We will now apply the function for preparing the datasets to the training and validation data. The parameter train is always set to FALSE except for the training data, since the data augmentation is only performed there. You can also already prepare the testing data, but it is not necessary at this point.
 
 ```r
+# one more parameter
+batch_size = 8
+
 # prepare data for training
 training_dataset <-
    prepare_ds(
@@ -260,6 +259,8 @@ validation_dataset <-
    )
 ```
 
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
 
 <script src="https://utteranc.es/client.js"

@@ -103,6 +103,70 @@ buildings <- sf::st_crop(buildings[1], ras_extent)
 
 
 
+## Rasterize the buildings
+
+
+From the file shown in the figure above, containing the outlines of the buildings in the study area, we will first create a raster mask. To do this, we use the DOP of the study area as a reference raster, to ensure that the mask will have the same extent and the same resolution. The transformation of polygons into a raster file with the same properties as the DOP is done by the function rasterize of the raster package. Afterwards a reclassification of the values is performed, where all values that do not represent a building are 0 and all values that represent a building are 1. You can roughly see how the mask for the study area might look in the map below (layer mask).
+
+
+```r
+# rasterize the buildings
+rasterized_vector <- rasterize(buildings, ras[[1]])
+
+# reclassify to 0 and 1
+rasterized_vector[is.na(rasterized_vector[])] <- 0
+rasterized_vector[rasterized_vector > 1] <- 1
+
+#save
+raster::writeRaster(rasterized_vector,
+                    file.path(envrmt$path_data, "marburg_mask.tif"),
+                    overwrite = T)
+```
+
+
+{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
+
+
+
+## Divide dataset to training and testing 
+Now we will cut the DOP and the mask in two pieces. You can use the extents from below, or choose two on your own from the image. The larger section will be used to train the model, while the smaller section will be used for validation.
+```r
+# divide to training and testing extent
+e_test <- extent(483000, 484000, 5626000, 5628000)
+e_train <- extent(480000, 483000, 5626000, 5628000)
+
+marburg_mask_train <- crop(rasterized_vector, e_train)
+marburg_dop_train <- crop(ras, e_train)
+
+marburg_mask_test <-  crop(rasterized_vector, e_test)
+marburg_dop_test <- crop(ras, e_test)
+
+writeRaster(
+   marburg_mask_test,
+   file.path(envrmt$path_model_testing_data, "marburg_mask_test.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_dop_test,
+   file.path(envrmt$path_model_testing_data, "marburg_dop_test.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_mask_train,
+   file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"),
+   overwrite = T
+)
+writeRaster(
+   marburg_dop_train,
+   file.path(envrmt$path_model_training_data, "marburg_dop_train.tif"),
+   overwrite = T
+)
+```
+
+
+
+
+
 ## Function to split the data
 
 
@@ -229,70 +293,6 @@ remove_files <- function(df) {
    )
 }
 ```
-
-
-## Rasterize the buildings
-
-
-From the file shown in the figure above, containing the outlines of the buildings in the study area, we will first create a raster mask. To do this, we use the DOP of the study area as a reference raster, to ensure that the mask will have the same extent and the same resolution. The transformation of polygons into a raster file with the same properties as the DOP is done by the function rasterize of the raster package. Afterwards a reclassification of the values is performed, where all values that do not represent a building are 0 and all values that represent a building are 1. You can roughly see how the mask for the study area might look in the map below (layer mask).
-
-
-```r
-# rasterize the buildings
-rasterized_vector <- rasterize(buildings, ras[[1]])
-
-# reclassify to 0 and 1
-rasterized_vector[is.na(rasterized_vector[])] <- 0
-rasterized_vector[rasterized_vector > 1] <- 1
-
-#save
-raster::writeRaster(rasterized_vector,
-                    file.path(envrmt$path_data, "marburg_mask.tif"),
-                    overwrite = T)
-```
-
-
-{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
-
-
-
-## Divide dataset to training and testing 
-Now we will cut the DOP and the mask in two pieces. You can use the extents from below, or choose two on your own from the image. The larger section will be used to train the model, while the smaller section will be used for validation.
-```r
-# divide to training and testing extent
-e_test <- extent(483000, 484000, 5626000, 5628000)
-e_train <- extent(480000, 483000, 5626000, 5628000)
-
-marburg_mask_train <- crop(rasterized_vector, e_train)
-marburg_dop_train <- crop(ras, e_train)
-
-marburg_mask_test <-  crop(rasterized_vector, e_test)
-marburg_dop_test <- crop(ras, e_test)
-
-writeRaster(
-   marburg_mask_test,
-   file.path(envrmt$path_model_testing_data, "marburg_mask_test.tif"),
-   overwrite = T
-)
-writeRaster(
-   marburg_dop_test,
-   file.path(envrmt$path_model_testing_data, "marburg_dop_test.tif"),
-   overwrite = T
-)
-writeRaster(
-   marburg_mask_train,
-   file.path(envrmt$path_model_training_data, "marburg_mask_train.tif"),
-   overwrite = T
-)
-writeRaster(
-   marburg_dop_train,
-   file.path(envrmt$path_model_training_data, "marburg_dop_train.tif"),
-   overwrite = T
-)
-```
-
-
-
 
 
 ## Subset the datasets

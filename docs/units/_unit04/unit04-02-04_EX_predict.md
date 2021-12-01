@@ -107,6 +107,9 @@ Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF
   {{ Assignment-03-2 | markdownify }}
 </div>
 
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+
 
 <script src="https://utteranc.es/client.js"
         repo="GeoMOER/geoAI"

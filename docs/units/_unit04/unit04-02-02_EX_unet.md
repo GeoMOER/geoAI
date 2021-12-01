@@ -186,7 +186,7 @@ get_unet_128 <- function(input_shape = c(128, 128, 3),
 ## Note
 The creation of a Convolutional Neural Network tends to be more computationally intensive compared to the Random Forest. For this reason, it is likely that the example shown here of a U-Net, 
 which is trained with about 1713 training images over 10 epochs, will probably require several hours on your CPU to train. Accordingly, it is a good idea to run the training process at a time when you do not need your computer (e.g. over night). 
-The main reason for the calculation time is the large number of trainable parameters (just take look when you print out the variable ´unet_model´). Of course, there are some ways to shorten the calculation time.
+The main reason for the calculation time is the large number of trainable parameters (just take look when you print out the variable `unet_model`). Of course, there are some ways to shorten the calculation time.
 However, these approaches must be modified with care, as they will affect the accuracy of the model. Some suggestions that can be easily modified from the existing example would be:
 
 - Changing the input size. Results in the spatial context being reduced, thus the generalisability of the model may be degraded and the training process may also become poor.
@@ -205,6 +205,8 @@ but for beginners this approach is not recommended, as the installation is much 
 
 
 ## Model training
+
+... get your network combine it train it ...
 
 ```r
 unet_model <- get_unet_128()
@@ -231,6 +233,12 @@ plot(hist)
 ```
 
 histogramm html einfügen !!!!
+
+... beschreibung histogram
+
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+
 
 <script src="https://utteranc.es/client.js"
 
