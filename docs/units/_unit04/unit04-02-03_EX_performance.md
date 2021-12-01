@@ -10,16 +10,11 @@ header:
 
 So far we have built and trained the U-Net. Two different approaches are now used to evaluate the model. First, in this exercise, the data is prepared, the accuracy of the test data set is calculated and a first visual comparison is made by simply comparing mask, original image and prediciton. In the second exercise, a prediction map is created.
 
-
-<!--more-->
-
 ## Testing the model performance
 For this, the data must first be prepared, as already done in the training process. This time, however, the variable target_rst is also saved for the later prediction map. 
 
 ```r
-
-
-# split and prepare the testing data
+# load the test data
 marburg_mask_test <-
    stack(file.path(envrmt$path_model_testing_data, "marburg_mask_test.tif"))
 marburg_dop_test <-
@@ -74,7 +69,7 @@ testing_dataset <-
    )
 ```
 
-After the data has been prepared, the model is loaded and the evaluation is carried out using this prepared test data. You can compare these values with history of the training process. We simply use the built-in method of tensorflow.
+After the data has been prepared, the model is loaded and the evaluation is carried out using this prepared test data. You can compare these values with history of the training process [here](). We simply use the built-in method of TensorFlow.
 
 ```r
 # load a U-Net
@@ -145,9 +140,14 @@ for (i in t_sample) {
 ```
 
 ## Expected output
+
+...
+
 ![image](../assets/images/unit04/prediction.png)
 *Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
 
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
 
 <script src="https://utteranc.es/client.js"
