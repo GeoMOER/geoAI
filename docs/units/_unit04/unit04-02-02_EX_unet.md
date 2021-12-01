@@ -230,13 +230,13 @@ plot(hist)
 ```
 
 <iframe
-  src="../assets/unit04/hist.html"
+  src="../assets/images/unit04/hist.html"
   style="width:150%; height:500px;"
 ></iframe>
 
 
 <a id="raw-url" href="https://raw.githubusercontent.com/GeoMOER/geoAI/staging/docs/assets/images/unit04/hist.png">Download as Image</a> or
-[view full screen version]({{ site.baseurl }}assets/timeline.html){:target="_blank"}
+[view full screen version]({{ site.baseurl }}assets/unit04/hist.html){:target="_blank"}
 
 ... beschreibung histogram
 
