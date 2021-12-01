@@ -76,7 +76,7 @@ raster::rasterOptions(tmpdir = envrmt$path_tmp)
 ```
 
 ## Read the data
-
+Load the data and crop it to the extent of the Marburg DOP.
 
 ```r
 
@@ -350,10 +350,14 @@ remove_files(df)
 
 
 ## Expected Output
-At the end of this exercise you should have created a raster mask from the v
+At the end of this exercise you should have created a raster mask from the vector file and created a subset of the DOP and the mask which you can finde in two different folders, the images should look similar to the images below.
 
 ![image](../assets/images/unit04/masks.png)
 *Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
+
+## Comments?
+You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
+
 
 <script src="https://utteranc.es/client.js"
         repo="GeoMOER/geoAI"

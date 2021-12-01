@@ -8,6 +8,8 @@ header:
 ---
 
 Deep learning and spatial patterns
+Nur ein erstes beispiel auf dem man aufbauen kann, sehr viele möglichkeit wie man ein cnn bauen kann  (example workflow) 
+
 
 <!--more-->
 
@@ -22,6 +24,8 @@ At the end of this unit you should be able to
 
 * understand the basic concept of a U-Net convolutional neural network
 * get your first U-Net up and running and use it to recognize some spatial structures
+* Datenvorbereitung und in tensorflow einlesen
+* build unet with dop rgb bild ...
 
 
 {% include video id="3WcUTMWa9fU" provider="youtube" %}

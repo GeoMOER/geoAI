@@ -18,7 +18,7 @@ If this is your first exposure to deep learning, this section serves as an incre
   <img width="300" height="300" src="../assets/images/unit04/deep_learning_image.png" alt="drawing">
 </p>
 
-Deep learning algorithms are a machine learning tool, just like random forest models. Deep learning is a special form of neural networks, as we can see in the image above, that are used frequently in image recognition.
+Deep learning algorithms are a machine learning tool, just like random forest models. Deep learning is a special form of neural networks, as we can see in the image above, that are used frequently e.g. in computer vision.
 
 {% include video id="RbcHiAYPbC0" provider="youtube" %}
 
