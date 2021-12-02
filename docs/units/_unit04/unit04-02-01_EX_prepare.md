@@ -259,6 +259,28 @@ validation_dataset <-
    )
 ```
 
+Now your data is prepared as a python iterator for TensorFlow it is a little bit difficult to visualize our preparation again.
+
+```r 
+# we first get a all our training data 
+it <- as_iterator(training_dataset)
+it <- iterate(it)
+# head(it)
+
+# we convert our data to an array and also subset our iterator e.g. 
+# with the 4th batch ([[4]]) of the images ([[1]])
+im <-as.array(it[[4]][[1]])
+# then we subset just take the first image out of our batch
+im <- im[1,,,]
+# and plot it
+plot(as.raster(im))
+
+# and for the according mask it is almost the same
+ma <-as.array(it[[4]][[2]])
+ma <- ma[1,,,]
+plot(as.raster(ma))
+```
+
 ## Comments?
 You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 
