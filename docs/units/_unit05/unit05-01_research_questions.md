@@ -3,10 +3,6 @@ title: Research Question
 toc: true
 ---
 
-From curiosity to research question and project planning.
-
-<!--more-->
-
 
 ## Choosing a research question
 
@@ -15,7 +11,7 @@ Your question can emphasize the methodological aspects or explicitly focus on th
 
 
 
-## Developing a research project
+## Project management and implementation
 
 Creativity in research and project management are not incompatible. 
 In fact, professional research requires the definition of some kind of aim or the organization of tasks in time schedules. 
@@ -29,13 +25,11 @@ Common project management steps are:
 * design workflows for each task and implement them, and last but not least
 * adjust your tasks, solve problems and be flexible.
 
-Obviously, it makes sense to start your research project with a short **project outline**, which should include the project management step outlined above.
+Obviously, it makes sense to start your research project with a short **project outline**, which should include the project management steps outlined above.
+Based on your project outline and the feedback we will give you on it, you will realize and submit your final team project.
+See the *Requirements* page in this unit for details.
 
 
-
-
-
-
-For a more details on project management for scientists, 
+For more details on project management for scientists, 
 see e.g. the paper of [Portny & Austin 2002](https://www.sciencemag.org/careers/2002/07/project-management-scientists).
 .

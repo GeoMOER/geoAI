@@ -13,7 +13,7 @@ In Unit 4 we dealt with the recognition of spatial structures using the convolut
 ## This unit
 
 You have almost made it!  This is the last unit of the course in which you will apply what you have learned in the past units. 
-Now you will be challenged to create your own project from scratch that uses a machine learning or deep learning method for spatial prediction.
+Now you will be challenged to create your own project from scratch that uses a machine learning or deep learning method for making spatial predictions.
 
 
 ## Learning objectives
