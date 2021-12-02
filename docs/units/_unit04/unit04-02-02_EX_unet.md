@@ -203,7 +203,7 @@ but for beginners this approach is not recommended, as the installation is much 
 
 ## Model training
 
-The actual modelling is rather short, we load the network and compile and train it.
+The actual modelling is rather short, we load the network,compile and train it.
 
 ```r
 unet_model <- get_unet_128()
@@ -231,7 +231,7 @@ plot(hist)
 
 <iframe
   src="../assets/images/unit04/hist.html"
-  style="width:150%; height:300px;"
+  style="width:100%; height:500;"
 ></iframe>
 
 

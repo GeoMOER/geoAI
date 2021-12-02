@@ -104,7 +104,7 @@ Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF
 
 {% endcapture %}
 <div class="notice--success">
-  {{ Assignment-03-2 | markdownify }}
+  {{ Assignment-04 | markdownify }}
 </div>
 
 ## Comments?
