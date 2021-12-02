@@ -193,7 +193,6 @@ However, these approaches must be modified with care, as they will affect the ac
 but for beginners this approach is not recommended, as the installation is much more difficult. [Take a look](https://tensorflow.rstudio.com/installation/gpu/local_gpu/).
 - Increasing the learning rate could make your U-Net converge faster, but it is also possible that your U-Net is not able to learn something. 
 - Shortening the number of epochs.  
-- In order to test the whole approach we have provided you with the model here, which we also used for this map.
 
 {% endcapture %}
 <div class="notice--info">

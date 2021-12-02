@@ -279,6 +279,26 @@ ma <- ma[1,,,]
 plot(as.raster(ma))
 ```
 
+
+{% capture Assignment-04 %}
+
+## Assignment Unit-04-01
+
+Follow the first two exercise of Unit 04. Then change the workflow in a way that you can use your selfmade training polygons you used in the last exercise to train the random forest model to create a raster mask.
+1.	Ändert, den code so ab, dass ihr das selbstkreierte polygon als maske und bilder herausgeben könnt.
+2.	Create a map containing the created raster mask.
+
+Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
+
+{% endcapture %}
+<div class="notice--success">
+  {{ Assignment-04 | markdownify }}
+</div>
+
+
+
+
+
 ## Comments?
 You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
 

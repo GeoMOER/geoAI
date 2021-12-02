@@ -19,11 +19,12 @@ If this is your first exposure to deep learning, this section serves as an incre
 </p>
 
 Deep learning algorithms are a machine learning tool, just like random forest models. Deep learning is a special form of neural networks, as we can see in the image above, that are used frequently e.g. in computer vision.
-
+In the video above some operations were mentioned, that are used in the calculation of CNNs to transform the data, which are not explained in depth in this module. 
+These also partially represent hyperparameters that are in the code of the exercises that occur in this unit. For a deeper understanding and the mathematical basics see: 
+[Dumoulin and Visin (2018)](https://arxiv.org/abs/1603.07285) , [Nielsen(2015)] (http://neuralnetworksanddeeplearning.com/index.html) and [StatQuest](https://youtube.com/playlist?list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1).
 {% include video id="RbcHiAYPbC0" provider="youtube" %}
 
-Die genaue Algorithmen, die die in einem CNN ablaufen werden an dieser Stelle nicht erklärt.
-D
+
 
 ## U-Net
 The following exercises will use a U-Net convolutional neural network to recognize spatial structures. Originally, the technique was developed to segment biomedical images. U-Net performs a semantic segmentation, in which each pixel is assigned to a class. For a short introduction, have a look at the U-Net teaser:

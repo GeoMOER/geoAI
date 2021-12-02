@@ -100,6 +100,12 @@ rebuild_img(
 
 ## Assignment Unit-04
 
+Follow the exercises in unit 04:
+1.	Erstelle Karte wie in der unit beschrieben
+2.	 Find a way to add also masks with background information (no builidngs) to the training data and train your model again
+1.	Prediction map 
+2.	Vergleiche beide karten drei sätze
+
 Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
 
 {% endcapture %}
