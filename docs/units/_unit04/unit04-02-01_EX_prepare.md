@@ -12,7 +12,7 @@ In this exercise we will split our image and mask files into a training, a valid
 <!--more-->
 
 ## Breaking down the data set
-We will now split the data into three parts. To do this, we will again place the file paths to the images and their corresponding masks in a data.frame() and then use 80% of it for the training set, 10% to validate it, and 10% to test the results. 
+We will now split the data into two parts. To do this, we will again place the file paths to the images and their corresponding masks in a data.frame() and then use 80% of it for the training set, 20% to validate it.
 ```r
 # list the files again
 files <- data.frame(

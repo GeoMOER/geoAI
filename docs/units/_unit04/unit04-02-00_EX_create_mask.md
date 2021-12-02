@@ -7,9 +7,8 @@ header:
   caption: "Image: ulrichstill [CC BY-SA 2.0 DE] via [wikimedia.org](https://commons.wikimedia.org/wiki/File:Tuebingen_Streuobstwiese.jpg)"
 ---
 
-In this exercise, we will create a raster mask from vector data containing the outlines of all buildings in our study area in the southern part of Marburg (image below). For this purpose, both the raster mask and the DOP of the study area will be split from large raster (.tif) files into many smaller image files (.png).
+In this exercise, we will create a raster mask from vector data containing the outlines of all buildings in our study area in the southern part of Marburg (map below). For this purpose, both the raster mask and the DOP of the study area will be split from large raster (.tif) files into many smaller image files (.png).
 
-{% include media4 url="assets/images/unit04/marburg_buildings.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
 ## Set up a working environment
@@ -101,6 +100,7 @@ buildings <- sf::st_crop(buildings[1], ras_extent)
 
 ```
 
+{% include media4 url="assets/images/unit04/marburg_buildings.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings.html){:target="_blank"}
 
 
 ## Rasterize the buildings
@@ -124,7 +124,8 @@ raster::writeRaster(rasterized_vector,
 ```
 
 
-{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
+{% include media4 url="assets/images/unit04/marburg_mask.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_mask.html){:target="_blank"}
+
 
 
 
@@ -264,6 +265,7 @@ subset_ds <-
 
 ```
 
+{% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
 
 
 ## Function to remove files without training data
@@ -353,7 +355,7 @@ remove_files(df)
 At the end of this exercise you should have created a raster mask from the vector file and created a subset of the DOP and the mask which you can finde in two different folders, the images should look similar to the images below.
 
 ![image](../assets/images/unit04/masks.png)
-*Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
+Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
 
 ## Comments?
 You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
