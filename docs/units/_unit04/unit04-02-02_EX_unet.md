@@ -234,14 +234,14 @@ Otherwise your model tends under- or overfit.
 
 <iframe
   src="../assets/images/unit04/hist.html"
-  style="width:100%; height:800%;"
+  style="width:100%; height:100%;"
 ></iframe>
 
 
 <a id="raw-url" href="https://raw.githubusercontent.com/GeoMOER/geoAI/staging/docs/assets/images/unit04/hist.png">Download as Image</a> or
 [view full screen version]({{ site.baseurl }}assets/images/unit04/hist.html){:target="_blank"}
 
-... beschreibung histogram
+
 
 ## Comments?
 You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 
