@@ -22,6 +22,9 @@ Deep learning algorithms are a machine learning tool, just like random forest mo
 
 {% include video id="RbcHiAYPbC0" provider="youtube" %}
 
+Die genaue Algorithmen, die die in einem CNN ablaufen werden an dieser Stelle nicht erklärt.
+D
+
 ## U-Net
 The following exercises will use a U-Net convolutional neural network to recognize spatial structures. Originally, the technique was developed to segment biomedical images. U-Net performs a semantic segmentation, in which each pixel is assigned to a class. For a short introduction, have a look at the U-Net teaser:
 [5 Minute Teaser Presentation of the U-net: Convolutional Networks for Biomedical Image Segmentation (5:03)](https://www.youtube.com/watch?v=81AvQQnpG4Q){:target="_blank"} 

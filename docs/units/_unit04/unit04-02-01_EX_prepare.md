@@ -31,8 +31,6 @@ files <- data.frame(
 # split randomly into training and validation (not testing!!) data sets
 set.seed(7)
 data <- initial_split(files, prop = 0.8)
-
-# take a look at the amount of data
 ```
 
 ## Data Augmentation

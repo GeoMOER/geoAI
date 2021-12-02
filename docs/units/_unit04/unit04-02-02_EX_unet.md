@@ -228,10 +228,13 @@ unet_model %>% save_model_hdf5(file.path(envrmt$path_models, "unet_buildings.hdf
 
 plot(hist)
 ```
+One of the first things you will notice when your fitting your model is this type of line plot. The upper plot shows the progress of the loss. Since we would like to reduce the loss it should continually decrease.
+In contrast to the loss the accuracy of the model should increase. If you have such a converging plot your model is currently learning. But it is important that not only the training loss and accuracy is improving but also the validation loss/accuracy.
+Otherwise your model tends under- or overfit.
 
 <iframe
   src="../assets/images/unit04/hist.html"
-  style="width:100%; height:800;"
+  style="width:100%; height:800%;"
 ></iframe>
 
 

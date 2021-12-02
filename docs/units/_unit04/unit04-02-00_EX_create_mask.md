@@ -130,7 +130,7 @@ raster::writeRaster(rasterized_vector,
 
 
 ## Divide dataset to training and testing 
-Now we will cut the DOP and the mask in two pieces. You can use the extents from below, or choose two on your own from the image. The larger section will be used to train the model, while the smaller section will be used for validation.
+Now we will cut the DOP and the mask in two pieces. You can use the extents from below, or choose two on your own from the image. The larger section will be used to train the model, while the smaller section will be used for testing.
 ```r
 # divide to training and testing extent
 e_test <- extent(483000, 484000, 5626000, 5628000)

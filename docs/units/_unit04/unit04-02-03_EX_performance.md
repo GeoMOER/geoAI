@@ -96,7 +96,7 @@ prediction_dataset <-
 
 # get sample of data from testing data
 t_sample <-
-   floor(runif(n = 5, min = 1, max = nrow(test_file))
+   floor(runif(n = 5, min = 1, max = nrow(test_file)))
 
 
 # simple visual comparison of mask, image and prediction
@@ -140,8 +140,8 @@ for (i in t_sample) {
 ```
 
 ## Expected output
+At the end of this exercise you should have something like the plot below to get a first visual impression of your prediction. How does the result look for you?
 
-...
 
 ![image](../assets/images/unit04/prediction.png)
 Image: © OpenStreetMap contributors; Hessische Verwaltung für Bodenmanagement und Geoinformation 
