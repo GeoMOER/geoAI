@@ -98,14 +98,13 @@ rebuild_img(
 
 {% capture Assignment-04 %}
 
-## Assignment Unit-04
+## Assignment Unit-04-02
 
-Follow the exercises in unit 04:
-1.	Erstelle Karte wie in der unit beschrieben
-2.	 Find a way to add also masks with background information (no builidngs) to the training data and train your model again
-1.	Prediction map 
-2.	Vergleiche beide karten drei sätze
-
+Follow all the exercises in unit 04:
+1.	Create a map of the prediction according to the exemplary workflow described in the unit
+2.	Find a way to add also masks with background information (no builidngs) to the training data and train your model again.
+3.	Create a map of the prediction with your new model.
+4.	Compare both maps of predictions in three sentences.
 Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
 
 {% endcapture %}

@@ -284,9 +284,9 @@ plot(as.raster(ma))
 
 ## Assignment Unit-04-01
 
-Follow the first two exercise of Unit 04. Then change the workflow in a way that you can use your selfmade training polygons you used in the last exercise to train the random forest model to create a raster mask.
-1.	Ändert, den code so ab, dass ihr das selbstkreierte polygon als maske und bilder herausgeben könnt.
-2.	Create a map containing the created raster mask.
+Follow the first two exercise of Unit 04. Then change the workflow in a way that you can use your selfmade training polygons (you used in the last exercise to train the random forest model) to create a raster mask.
+1.	Modify the code in such a way that you can export the self-created polygon as a raster mask and . png images.
+2.	Create a map on which the created raster mask is displayed.
 
 Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
 
