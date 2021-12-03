@@ -53,14 +53,7 @@ The final product of your research project will be a research article.
 
 
 
-### Working in groups
-
-You are encouraged to work in groups of up to four persons.
-This has the advantage that you can split up different work packages, 
-but has the disadvantage that you are also responsible for harmonizing the different parts into one seamless piece of work without redundancies.
-One submission for one group is sufficient.
-Note that we expect group submissions to be larger in the total amount of work compared to single persons submitting individual work.
-
+### Submission
 
 
 
