@@ -8,7 +8,7 @@ header:
 ---
 
 Besides traditional machine learning methods like Random Forest, Convolutional Neural Networks (CNN) as part of Deep Learning are nowadays a default algorithm for many perceptual tasks like computer vision or speech recognition.
-These CNNs are particularly suitable for such task because (spatial) patterns can be recognized at different hierachy levels. According to the properties of CNNs, they can also be adapted for remote sensing.
+These CNNs are particularly suitable for such tasks because (spatial) patterns can be recognized at different hierachy levels. According to the properties of CNNs, they can also be adapted for the field of remote sensing.
 
 
 <!--more-->

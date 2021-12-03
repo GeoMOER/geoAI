@@ -187,8 +187,8 @@ The main reason for the calculation time is the large number of trainable parame
 However, these approaches must be modified with care, as they will affect the accuracy of the model. Some suggestions that can be easily modified from the existing example would be:
 
 - Changing the input size. Results in the spatial context being reduced, thus the generalisability of the model may be degraded and the training process may also become poor.
-- Decrease the batch size. Causes the number of input data per run to be reduced. The load on computing power is reduced and the computation time becomes longer.
-- Reduction in the number of training data. Either the training process takes place on a smaller image section or the ratio of training and validation data have to be changed.
+- Decrease the batch size. Causes the number of input data per run to be reduced.
+- Reduction of the number of training data. Either the training process takes place on a smaller image section or the ratio of training and validation data have to be changed.
 - If you have a dedicated GPU, TensorFlow can also be installed on it. In this way, the large number of parameters can be calculated side by side, to put it simply. This approach makes the training much faster, 
 but for beginners this approach is not recommended, as the installation is much more difficult. [Take a look](https://tensorflow.rstudio.com/installation/gpu/local_gpu/).
 - Increasing the learning rate could make your U-Net converge faster, but it is also possible that your U-Net is not able to learn something. 
