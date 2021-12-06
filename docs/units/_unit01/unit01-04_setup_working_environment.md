@@ -110,8 +110,8 @@ Finally, we should initiate some useful settings. It makes sense to have the cur
 
 If we put everything together in one script, it looks like this:
 
+<script src="https://gist.github.com/gisma/3dfbdd4de0d5b23e51df9885475da82f.js"></script>
 
-{% gist a2324e11b4342cbd4da29b0a819b58e6 %}
 
 Note that installing the listed packages for the first time needs some time for execution.
 If you encounter errors during this installation process, try to install the packages separately for making troubleshooting more convenient.
