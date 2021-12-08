@@ -149,6 +149,6 @@ timevisDataGroups <- data.frame(
 
 # finally just call the timevis function to get your plot/timeline
 # we can change the width, but this is not recommend; e.g.: height = 500,width = 800
-t <- timevis(timevisData,groups=timevisDataGroups,fit=FALSE) 
+t <- timevis(timevisData,groups=timevisDataGroups,fit=FALSE, width = '100%') 
 
 t
