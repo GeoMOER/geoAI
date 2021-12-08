@@ -13,7 +13,7 @@ library(timevis)
 # for clarity I would suggest to designate each date with a name or number
 
 timevisData <- data.frame(
-  id = 1:32,
+  id = 1:33,
   content = c( 
     # sessions
     "Unit 1",                                    # 1
@@ -23,7 +23,7 @@ timevisData <- data.frame(
     "Unit 2",                                    # 5
     "Unit 3",                                    # 6
     "Unit 3",                                    # 7 
-    "Unit 4",                                    # 8
+    "Unit 4 + Talk Prof. Dr. Hanna Meyer",       # 8
     "Unit 4 + Start team project",               # 9
     "Built-in hold",                             # 10
     "Unit 5: Concept discussion/presentation",   # 11
@@ -43,7 +43,8 @@ timevisData <- data.frame(
     "Assignment Unit 2",                         # 23
     "Assignment Unit 03-1",                      # 24
     "Assignment Unit 03-2",                      # 25
-    "Assignment Unit 4",                         # 26
+    "Assignment Unit 04-1",                      # 25.5
+    "Assignment Unit 04-2",                      # 26
     "Concept submission",                        # 27
     "Team project submission",                   # 28  
     # other
@@ -83,6 +84,7 @@ timevisData <- data.frame(
     "2021-11-19",                                # 23
     "2021-11-26",                                # 24
     "2021-12-03",                                # 25
+    "2021-12-10",                                # 25.5
     "2021-12-17",                                # 26
     "2022-01-17",                                # 27
     "2022-02-17",                                # 28
@@ -121,6 +123,7 @@ timevisData <- data.frame(
     NA,                                          # 23 
     NA,                                          # 24
     NA,                                          # 25
+    NA,                                          # 25.5
     NA,                                          # 26
     NA,                                          # 27
     NA,                                          # 28
@@ -133,8 +136,8 @@ timevisData <- data.frame(
   ),
   
   
-  group = c(rep("sess", 15),rep("sl",6), rep("sub", 7), rep("oth",4)),
-  type = c(rep("point", 15),rep("range",6),rep("point",7), rep("background",4))
+  group = c(rep("sess", 15),rep("sl",6), rep("sub", 8), rep("oth",4)),
+  type = c(rep("point", 15),rep("range",6),rep("point",8), rep("background",4))
 )
 
 
@@ -146,7 +149,6 @@ timevisDataGroups <- data.frame(
 
 # finally just call the timevis function to get your plot/timeline
 # we can change the width, but this is not recommend; e.g.: height = 500,width = 800
-t <- timevis(timevisData,groups=timevisDataGroups,fit=FALSE, width = '100%') 
+t <- timevis(timevisData,groups=timevisDataGroups,fit=FALSE) 
 
 t
-
