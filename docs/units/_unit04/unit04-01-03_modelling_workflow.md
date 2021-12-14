@@ -1,5 +1,5 @@
 ---
-title: LM | Modelling Workflow
+title: LM | Modelling workflow
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
