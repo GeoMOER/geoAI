@@ -1,5 +1,5 @@
 ---
-title: Digital Learning
+title: Digital learning
 toc: true
 header:
   image: "/assets/images/title.png"
