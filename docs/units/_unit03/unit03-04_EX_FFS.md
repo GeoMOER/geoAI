@@ -1,5 +1,5 @@
 ---
-title: EX | Spatial Prediction
+title: EX | Spatial prediction
 toc: true
 header:
   image: /assets/images/unit03/streuobst.jpg
@@ -78,7 +78,7 @@ saveRDS(file.path(envrmt$path_models), "ffsmodel.RDS")
 
 {% capture Assignment-03-2 %}
 
-## Assignment Unit-03-2
+## Assignment unit-03-2
 
 1.	Adapt your modeling workflow from the last exercise to the spatial prediction. If the computing power of your PC is not sufficient, you can just perform the LLO cross-validation.
 2.	Create again a map of your spatial prediction and perform a validation as in the last exercise.
