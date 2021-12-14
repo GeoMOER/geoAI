@@ -98,7 +98,7 @@ rebuild_img(
 
 {% capture Assignment-04 %}
 
-## Assignment Unit-04-02
+## Assignment unit-04-02
 
 Follow all the exercises in unit 04:
 1.	Create a map of the prediction according to the exemplary workflow described in the unit
