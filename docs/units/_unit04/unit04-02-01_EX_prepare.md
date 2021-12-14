@@ -33,20 +33,20 @@ set.seed(7)
 data <- initial_split(files, prop = 0.8)
 ```
 
-## Data Augmentation
+## Data augmentation
 
 Data augmentation is applied to the two datasets that are intended for training.
 Data augmentation is a technique that allows to increase the number of training data in small datasets by changing the existing data, e.g. by rotating the input images, thus creating additional artificial training data that can also prevent overfitting of deep learning models [(Shorten & Khoshgoftaar)]( https://journalofbigdata.springeropen.com/track/pdf/10.1186/s40537-019-0197-0.pdf).
 
  Here we will use the function below to create some additional training data. It prepares the images for the U-Net and performs a total of three different data augmentations: 
 
-**Augmentation 1:**
+**augmentation 1:**
 The image as well as the mask will be rotated to the left and to the right
 
-**Augmentation 2:**
+**augmentation 2:**
 The image and the mask are rotated up and down
 
-**Augmentation 3:**
+**augmentation 3:**
 The image is rotated left and right and up and down. 
 
 A spectral augmentation is also performed on the image at each step, randomly changing saturation, brightness and contrast. 
@@ -282,7 +282,7 @@ plot(as.raster(ma))
 
 {% capture Assignment-04 %}
 
-## Assignment Unit-04-01
+## Assignment unit-04-01
 
 Follow the first two exercise of Unit 04. Then change the workflow in a way that you can use your selfmade training polygons (you used in the last exercise to train the random forest model) to create a raster mask.
 1.	Modify the code in such a way that you can export the self-created polygon as a raster mask and . png images.
