@@ -1,5 +1,5 @@
 ---
-title: LM | Randomly Good
+title: LM | Randomly good
 toc: true
 header:
   image: /assets/images/unit03/streuobst.jpg
@@ -18,7 +18,7 @@ Our area of interest (AOI):
 {% include media4 url="assets/images/unit03/marburg_dop.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit03/marburg_dop.html){:target="_blank"}
 
 
-## Random forest -- The basics
+## Random forest -- the basics
 To accomplish this task, we will use a [random forest](https://en.wikipedia.org/wiki/Random_forest) machine learning approach. Random forests can be used for both regression or classification tasks, the latter of which is particularly relevant in environmental remote sensing. As is the case with every machine learning method, the random forest model learns to recognize patterns and structures in the data on its own.
 
 <p align="center">
