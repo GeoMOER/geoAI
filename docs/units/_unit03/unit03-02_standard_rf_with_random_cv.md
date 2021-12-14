@@ -110,7 +110,7 @@ saveRDS(training, file.path(envrmt$path_model_training_data, "extr_train.RDS"))
 saveRDS(testing, file.path(envrmt$path_model_training_data, "extr_test.RDS"))
 ```
 
-## Random Forest
+## Random forest
 Now we can finally start our first attempt at predicting the buildings. As discussed before, we will use a simple random forest model with 10-fold cross-validation. Define your train control settings and use the `train` function from `caret` [(on CRAN)]( https://cran.r-project.org/web/packages/caret/index.html) to train your model. For an in-depth understanding of everything that this package is capable of, it is worth taking a look at the book [The caret Package](https://topepo.github.io/caret/).
 
 ```r
@@ -245,7 +245,7 @@ We will have a look at two common used performance metrics of the models now. Th
 
 {% capture Assignment-03-1 %}
 
-## Assignment Unit-03-1
+## Assignment unit-03-1
 
 1. Crop the DOP of Marburg to a section of your own choice and use it to follow the exercise above. 
 If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixels you use to train the model. 
