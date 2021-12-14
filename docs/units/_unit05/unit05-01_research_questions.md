@@ -10,7 +10,7 @@ header:
    
 Now it is your turn to decide for a self-chosen research question to work on in your final team project.
 
-## Research Question
+## Research question
 Design a research question that incorporates one of the two methods introduced in the course. If you still need inspiration, you can check the example page.
 
 
