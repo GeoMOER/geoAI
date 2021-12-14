@@ -154,7 +154,7 @@ If the installation with the above described approach fails you may follow the f
 {: .notice--info}
 
 {% capture Assignment-1-1 %}
-## Assignment Unit-1-1
+## Assignment unit-1-1
 Implement and check working environment setup
 
 1. Set up and check the basic working environment as explained above.
