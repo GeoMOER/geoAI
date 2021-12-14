@@ -1,5 +1,5 @@
 ---
-title: LM | Spatially Good
+title: LM | Spatially good
 toc: true
 header:
   image: /assets/images/unit03/streuobst.jpg
