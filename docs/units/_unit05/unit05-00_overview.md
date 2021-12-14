@@ -1,6 +1,6 @@
 ---
 title: Overview
-published: false
+published: true
 header:
   image: /assets/images/unit05/notebook.jpg
   caption: "Image: Neil Conway [Public Domain Mark 1.0] via [flickr.com](https://www.flickr.com/photos/neilconway/5625707813/in/photostream/)"

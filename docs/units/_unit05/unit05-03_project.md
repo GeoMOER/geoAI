@@ -1,6 +1,6 @@
 ---
-title: Final Project
-published: false
+title: Final project
+published: true
 header:
   image: /assets/images/unit05/notebook.jpg
   caption: "Image: Neil Conway [Public Domain Mark 1.0] via [flickr.com](https://www.flickr.com/photos/neilconway/5625707813/in/photostream/)"
@@ -28,20 +28,18 @@ The final product of your research project will be a research article.
 * Include an abstract after the title, which mirrors the content and structure of your project (250 words maximum).
 * Do not include a timetable (only in the project outline).
 * Do a sound literature review and properly cite peer-reviewed articles. Roughly aim to include 20-50 references.
+* Add the code for reproducing *all* of your results as part of the supplementary material of your pdf and properly format it as you alread did in the assignments.
 
 
-### Submission   
-To receive your final grade it is mandatory to finish and submit your team project until the 17.02.2022 24:00.
 
-<!--stimmt das?-->
-   
+
 {% capture Assignment-05-02 %}
+# Assignment Unit-05-02
+Bring it to an end. Therefore
+1. implement the feedback to your outline, 
+2. realize your team project, and
+1. upload your pdf until 17 February 2022 23:59 on ILIAS.
 
-## Assignment Unit-05-02
-1.	Implement your feedback to your outline
-2.	Realize the team project
-Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
-<!--stimmt das?-->
 
 
 {% endcapture %}
@@ -49,8 +47,10 @@ Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF
   {{ Assignment-05-02 | markdownify }}
 </div>   
    
-   
-   
+### Remarks   
+To receive your final grade and the ECTS for the course it is mandatory to finish and submit your team project in time.
+
+
    
 
 ## Comments?

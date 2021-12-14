@@ -1,7 +1,7 @@
 ---
-title: Research Question
+title: Research question and project
 toc: true
-published: false
+published: true
 header:
   image: /assets/images/unit05/notebook.jpg
   caption: "Image: Neil Conway [Public Domain Mark 1.0] via [flickr.com](https://www.flickr.com/photos/neilconway/5625707813/in/photostream/)"
@@ -13,9 +13,27 @@ Now it is your turn to decide for a self-chosen research question to work on in 
 ## Research Question
 Design a research question that incorporates one of the two methods introduced in the course. If you still need inspiration, you can check the example page.
 
+
+Below you can find some examples for research question or topics, which you might work on in your final team project.
+However, you are encouraged to work on self-developed research questions in your projects! 
+
+Some ideas for your team project might be related to the classification, quantification, or change detection of
+
+* orchard meadows, hedges, or any biotope type
+* cars, bicycles roads, parking lots
+* solar panels, pools, trampolines,
+* rooftop greening 
+* city parks
+* bridges
+* wind parks
+* airfields
+* military structures
+* ...
+
+
 ## Working in groups
 
-please organize yourselves in groups of up to four people. 
+Please organize yourselves in groups of up to four people. 
 This has the advantage that you can split up different work packages, but has the disadvantage that you are also responsible for harmonizing the different parts into one seamless piece of work without redundancies.
 Each group submits **ONE** team project at the end. 
 Please note that we expect submissions of groups with greater size to be larger in the total amount of work compared to smaller groups project.
