@@ -51,13 +51,13 @@ where (&lambda;) is the wavelength of the maximum intensity and (&Tau;) is the a
 
 {% include video id="i-4lh67TQuE" provider="youtube" %}
 
-### Passive Sensors
+### Passive sensors
 The most common remote sensing imagery comes from passive multispectral sensors. These sensors pick up the natural light from the sun and its reflectance from the Earth's surface. The images are similar to an ordinary photograph with a digital camera and consist of different channels for particular wavelengths. Most multispectral platforms have at least three spectral channels (red, green, blue aka RGB) and a maximum of twelve spectral channels. Hyperspectral sensors take this to the next level and consist of over 100 channels for different wavelengths.
 
 ![image](../assets/images/unit02/satellite_reflectance.png)
 *Image: Satellite reflectance. Hanna Meyer and Thomas Nauss [CC BY-NC 4.0] via [uni-marburg.de](https://ilias.uni-marburg.de/ilias.php?ref_id=1652369&obj_id=195392&cmd=layout&cmdClass=illmpresentationgui&cmdNode=g5&baseClass=ilLMPresentationGUI)*
 
-### Active Sensors
+### Active sensors
 Active sensors emit their radiation by themselves. This makes them less dependent on environmental conditions, such as the angle of the sun. Some sensors, such as radar, have long wavelengths that can penetrate through clouds, which means no interruptions in the data collection and makes the imagery more consistent. LiDAR is another such type of sensor that emits and measures light (just like radar uses radio waves) to collect measurements. As light has a much shorter wavelength than radio, LiDAR is adept at detecting small objects and is growing in popularity among the remote sensing community.
 
 
