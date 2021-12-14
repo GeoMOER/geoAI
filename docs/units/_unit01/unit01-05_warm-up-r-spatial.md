@@ -1,5 +1,5 @@
 --- 
-title: EX | Warm Up R-spatial
+title: EX | Warm up R-spatial
 toc: true
 header:
   image: /assets/images/01-splash.jpg
@@ -46,14 +46,14 @@ After downloading the data, move them into the `data` path of our working enviro
 We will start by creating a new `R` script called `data.R` in the `src` folder.
 
 
-#### Raster Data
+#### Raster data
 
 <script src="https://gist.github.com/gisma/de8351de7183737d5eb77bf7ed4d2b83.js"></script>
 
 
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
-#### Vector Data
+#### Vector data
 In addition to raster data, `R` can handle vector data as well. A different package, `sf`, is required to read vector data of many types. For training purposes, we will download some data from the Openstreetmap (OSM) database. Take a look at the website for an overview of the available [features](https://wiki.openstreetmap.org/wiki/Map_features).
 ```r
 # Example Polygons
@@ -72,7 +72,7 @@ mapview::mapview(buildings)
 ```
 
 
-#### Coordinate Reference System
+#### Coordinate reference system
 Geospatial data always needs a [coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). In `R`, you can check the CRS of an imported layer using the `crs` function in the `raster` package.
 
 ```r
@@ -153,7 +153,7 @@ raster::plot(rgbI)
 ```
 
 {% capture Hint %}
-**Further Reading** There are plenty of remote sensing indices that can be calculated from simple RGB imagery as well -- take a look [here](https://www.indexdatabase.de/db/i.php) for some ideas.
+**Further reading** There are plenty of remote sensing indices that can be calculated from simple RGB imagery as well -- take a look [here](https://www.indexdatabase.de/db/i.php) for some ideas.
 
 **Hint:** For those interested in doing less typing and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these three and many more RGB indices in one simple function. The challenge is to get all the features of the package working, since it accesses the command line interfaces of SAGA, GRASS, and Orfeo toolbox. If you're keen to challenge yourself -- good luck!
 
@@ -233,7 +233,7 @@ In the following script, Sentinel-2 data are used to calculate the surface albed
 The [sen2r vignette](https://sen2r.ranghetti.info/) offers plenty of helpful information about how to use the GUI as well as to access the functionality of `sen2r` from within `R`.
 
 
-## Assignment Unit-1-2
+## Assignment unit-1-2
 
 Now that we've covered some basics, it's time to practice on your own. The following tasks serve as an orientation framework for practicing in a targeted manner. It requires you to solve some technical, content-related and conceptual problems. Let's go.
 
