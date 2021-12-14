@@ -1,5 +1,5 @@
 ---
-title: Course Units
+title: Course units
 id: Units
 header:
   image: "/assets/images/title.png"
