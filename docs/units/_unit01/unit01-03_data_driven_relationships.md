@@ -14,7 +14,7 @@ For many decades, deterministic interpolation techniques ([inverse distance weig
 Machine learning algorithms like random forest have become very popular for spatial environmental prediction. One major reason for this is that they are can take into account non-linear and complex relationships, i.e. compensate for certain disadvantages that are present in the usual regression methods.
 
 
-## Proximity Concepts
+## Proximity concepts
 
 ### Voronoi polygons -- dividing space geometrically
 [Voronoi polygons](https://en.wikipedia.org/wiki/Voronoi_diagram){:target="_blank"} (aka Thiessen polygons) are an elementary method for geometrically determining *proximity* or *neighborhoods*. Voronoi polygons (see figure below) divide an area into regions that are closest to a given point in a set of irregularly distributed points. In two dimensions, a Voronoi polygon encompasses an area around a point, such that every spatial point within the Voronoi polygon is closer to this point than to any other point in the set. Such constructs can also be formed in higher dimensions, giving rise to Voronoi polyhedra.
