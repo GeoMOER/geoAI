@@ -1,5 +1,5 @@
 ---
-title: EX | Create Masks
+title: EX | Create masks
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
@@ -351,7 +351,7 @@ remove_files(df)
 
 
 
-## Expected Output
+## Expected output
 At the end of this exercise you should have created a raster mask from the vector file and created a subset of the DOP and the mask which you can finde in two different folders, the images should look similar to the images below.
 
 ![image](../assets/images/unit04/masks.png)
