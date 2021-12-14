@@ -34,7 +34,7 @@ The final product of your research project will be a research article.
 
 
 {% capture Assignment-05-02 %}
-# Assignment Unit-05-02
+# Assignment unit-05-02
 Bring it to an end. Therefore
 1. implement the feedback to your outline, 
 2. realize your team project, and
