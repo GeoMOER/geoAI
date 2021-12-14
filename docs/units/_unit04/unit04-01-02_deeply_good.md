@@ -1,5 +1,5 @@
 ---
-title: LM | Deeply Good
+title: LM | Deeply good
 toc: true
 header:
   image: /assets/images/unit04/streuobst.jpg
