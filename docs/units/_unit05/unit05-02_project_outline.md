@@ -65,7 +65,7 @@ Feedback on the outline will be given at the session on 21.01.2021. On the one h
 
 {% capture Assignment-05-01 %}
 
-# Assignment Unit-05-01
+# Assignment unit-05-01
 Write your project outline. Therefore
 1. find your group members and get to know each other,
 2. choose a research question,
