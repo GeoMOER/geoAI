@@ -28,7 +28,7 @@ In 1854, the London district Soho experienced a [cholera outbreak](https://en.wi
 *Image: Dr. John Snow's map of the 1854 cholera outbreak in Soho, London via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Snow-cholera-map-1.jpg)*
 
 
-## What is the role of Artificial Intelligence?
+## What is the role of Artificial intelligence?
 Linking nature and people, we are still in the same realm that started with Dr. Snow's analysis of the cholera outbreak. Yet, it is much more complex. Regardless of whether we are interested in air temperature, degree of vegetation coverage, or solar irradiance at a given location, geodata always have a spatial component. But just because two points on Earth are close together, they are not necessarily similar in every respect. After all, different topographies can mean that moving just a few meters in one direction has a very drastic result in your altitude -- valleys, cliffs or mountain peaks are just a few clear examples of this idea.
 
 And what's more, all of these aspects are influenced by the people who act, who continuously exert influence as actors, who implement the processes in different cultural and economic ways. In order to be able to recognize valid patterns and structures in this complexity and to arrive at relevant statements and insights, parametric or deterministic models are insufficient. Instead, we need intelligent self-learning methods of data analysis and data retrieval.
