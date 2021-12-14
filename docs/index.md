@@ -54,7 +54,7 @@ The course covers 10 sessions, with the exception of session 10 on a weekly basi
 | Unit | Topic | Learning Content |
 |-------------|-------|-------------|
 |**01**| **Big questions are spatial** |On the invalidity of the first law of geography in heterogeneous spaces.|
-|**02**| **Remote Sensing 101** |A brief introduction to remote sensing using optical sensors as an example.|
+|**02**| **Remote sensing 101** |A brief introduction to remote sensing using optical sensors as an example.|
 |**03**| **Randomly correct is not predicted** |From data reproduction to spatial prediction.|
 |**04**| **Deep learning** |Deep-learning and spatial patterns.|
 |**05**| **Final team project: spatial prediction** |From curiosity to research question and project planning.|
