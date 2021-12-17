@@ -54,9 +54,9 @@ Common project management steps are:
 * design workflows for each task and implement them, and last but not least
 * adjust your tasks, solve problems and be flexible.
 
-Obviously, it makes sense to start your research project with a short [project outline](), which should include the project management steps outlined above.
+Obviously, it makes sense to start your research project with a short [project outline](https://geomoer.github.io/geoAI//unit05/unit05-02_project_outline.html), which should include the project management steps outlined above.
 Based on your project outline and the feedback we will give you on it, you will realize and submit your final team project.
-More information about the final team project and there requirements can be found [here]().
+More information about the final team project and there requirements can be found [here](https://geomoer.github.io/geoAI//unit05/unit05-03_project.html).
 
 For more details on project management for scientists, 
 see e.g. the paper of [Portny & Austin 2002](https://www.sciencemag.org/careers/2002/07/project-management-scientists).
