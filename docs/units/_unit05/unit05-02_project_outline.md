@@ -60,7 +60,7 @@ This could be well necessary if there is no available data set for your (specifi
 
 
 # Feedback
-Feedback on the outline will be given at the session on 21.01.2021. On the one hand, it is necessary to submit the outline in time (17.1.2022!), so that there is enough time for the instructors to prepare feedback. On the other hand, the feedback will be given in the session. In order to make the feedback understandable for everyone, your group should briefly present your outline within 5 minutes. No slides are needed, the two-page outline is sufficient.
+Feedback on the outline will be given at the session on 21.01.2022. On the one hand, it is necessary to submit the outline in time (17.1.2022!), so that there is enough time for the instructors to prepare feedback. On the other hand, the feedback will be given in the session. In order to make the feedback understandable for everyone, your group should briefly present your outline within 5 minutes. No slides are needed, the two-page outline is sufficient.
 
 
 {% capture Assignment-05-01 %}
