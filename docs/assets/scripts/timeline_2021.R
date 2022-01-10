@@ -13,7 +13,7 @@ library(timevis)
 # for clarity I would suggest to designate each date with a name or number
 
 timevisData <- data.frame(
-  id = 1:33,
+  id = 1:32,
   content = c( 
     # sessions
     "Unit 1",                                    # 1
@@ -25,7 +25,7 @@ timevisData <- data.frame(
     "Unit 3",                                    # 7 
     "Unit 4 + Talk Prof. Dr. Hanna Meyer",       # 8
     "Unit 4 + Start team project",               # 9
-    "Built-in hold",                             # 10
+   # "Built-in hold",                             # 10
     "Unit 5: Concept discussion/presentation",   # 11
     "Unit 5: Supervised learning",               # 12
     "Unit 5: Supervised learning",               # 13
@@ -65,7 +65,7 @@ timevisData <- data.frame(
     "2021-12-03 12:15:00",                       # 7
     "2021-12-10 12:15:00",                       # 8
     "2021-12-17 12:15:00",                       # 9
-    "2022-01-14 12:15:00",                       # 10 
+   # "2022-01-14 12:15:00",                       # 10 
     "2022-01-21 12:15:00",                       # 11
     "2022-01-28 12:15:00",                       # 12
     "2022-02-04 12:15:00",                       # 13               
@@ -105,7 +105,7 @@ timevisData <- data.frame(
     NA,                                          # 7
     NA,                                          # 8
     NA,                                          # 9
-    NA,                                          # 10
+  #  NA,                                          # 10
     NA,                                          # 11
     NA,                                          # 12
     NA,                                          # 13
@@ -136,8 +136,8 @@ timevisData <- data.frame(
   ),
   
   
-  group = c(rep("sess", 15),rep("sl",6), rep("sub", 8), rep("oth",4)),
-  type = c(rep("point", 15),rep("range",6),rep("point",8), rep("background",4))
+  group = c(rep("sess", 14),rep("sl",6), rep("sub", 8), rep("oth",4)),
+  type = c(rep("point", 14),rep("range",6),rep("point",8), rep("background",4))
 )
 
 
