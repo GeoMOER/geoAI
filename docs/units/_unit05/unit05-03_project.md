@@ -38,7 +38,7 @@ The final product of your research project will be a research article.
 Bring it to an end. Therefore
 1. implement the feedback to your outline, 
 2. realize your team project, and
-1. upload your pdf until 17 February 2022 23:59 on ILIAS.
+3. upload your pdf until 13th March 2022 23:59 on ILIAS.
 
 
 
