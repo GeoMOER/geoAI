@@ -87,11 +87,11 @@ You can leave comments under this Issue if you have questions or remarks about a
 
 
 
+
 <script src="https://utteranc.es/client.js"
-        repo="GeoMOER/moer-mpg-upscaling"
-        issue-term="moer_mpg_upscaling_unit04_Overview"
+        repo="GeoMOER/geoAI"
+        issue-term="GeoAI_2021_unit_02_EX_digitizing_training_areas"
         theme="github-light"
         crossorigin="anonymous"
         async>
 </script>
-
