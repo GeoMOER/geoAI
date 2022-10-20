@@ -60,25 +60,7 @@ This could be well necessary if there is no available data set for your (specifi
 
 
 # Feedback
-Feedback on the outline will be given at the session on 21.01.2022. On the one hand, it is necessary to submit the outline in time (17.1.2022!), so that there is enough time for the instructors to prepare feedback. On the other hand, the feedback will be given in the session. In order to make the feedback understandable for everyone, your group should briefly present your outline within 5 minutes. No slides are needed, the two-page outline is sufficient.
-
-
-{% capture Assignment-05-01 %}
-
-# Assignment unit-05-01
-Write your project outline. Therefore
-1. find your group members and get to know each other,
-2. choose a research question,
-3. strictly follow the points mentioned under "Content and structure" above,
-4. upload your project outline to ILIAS until 17 January 2022 23:59 as one pdf file, and 
-5. choose one person for presenting your outline in the session on 21 January 2022.
-
-Again put your outline in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
-
-{% endcapture %}
-<div class="notice--success">
-  {{ Assignment-05-01 | markdownify }}
-</div>   
+Feedback on the outline will be given at the session on 13.01.2023. On the one hand, it is necessary to submit the outline in time (09.01.2023!), so that there is enough time for the instructors to prepare feedback. On the other hand, the feedback will be given in the session. In order to make the feedback understandable for everyone, your group should briefly present your outline within 5 minutes. No slides are needed, the two-page outline is sufficient.
 
 
 

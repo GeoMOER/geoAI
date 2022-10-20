@@ -10,7 +10,7 @@ sidebar:
   nav: "units"
 ---
 
-This course introduces you to using artificial intelligence (AI) in the geosciences. Over approximately 5 sessions, you will learn about remote sensing as well as how to work with different types of spatial data and use AI to make spatial predictions about variables. 
+This course introduces you to using artificial intelligence (AI) in the geosciences. Over 5 units, you will learn about remote sensing as well as how to work with different types of spatial data and use AI to make spatial predictions about variables. One of the units can be covered by several course sessions.
 
 The first two units introduce concepts and approaches that are crucial to environmental geography. The next two units build upon this basis by introducing methods for using AI to make reliable predictions of variables in space where no measurements are available. 
 

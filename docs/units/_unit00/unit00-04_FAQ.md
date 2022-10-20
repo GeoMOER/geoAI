@@ -1,6 +1,6 @@
 ---
 title: FAQ
-permalink: /unit00/unit00-02_FAQ.html
+permalink: /unit00/unit00-04_FAQ.html
 header:
   image: "/assets/images/title.png"
   caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'

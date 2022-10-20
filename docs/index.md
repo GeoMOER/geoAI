@@ -39,8 +39,6 @@ The participants will be able to:
 
 * select and create appropriate representations for visual analysis and presentation of results;
 
-* use digital platforms for collaborative project management, software development, and active data management;
-
 * work together in teams in an agile manner;
 
 * document procedures and results in a comprehensible and transparent manner and critically evaluate results.

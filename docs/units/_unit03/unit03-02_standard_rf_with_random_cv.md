@@ -243,27 +243,6 @@ You have created a so-called confusion matrix. This gives you an initial impress
 We will have a look at two common used performance metrics of the models now. The [accuracy]( https://en.wikipedia.org/wiki/Accuracy_and_precision) of the model shows the proportion of true positives and true negatives among all observations. If you have a more imbalanced dataset you can use [Kappa]( https://en.wikipedia.org/wiki/Cohen%27s_kappa), which gets calculated similar to accuracy but takes into account the possibility that an agreement happened due to chance, therefore it is more robust.
 
 
-{% capture Assignment-03-1 %}
-
-## Assignment unit-03-1
-
-1. Crop the DOP of Marburg to a section of your own choice and use it to follow the exercise above. 
-If the amount of data is too large to process or the modelling process takes painfully long, you can reduce the amount of pixels you use to train the model. 
-Just be careful to include a somewhat balanced amount of data from each class. 
-
-2. Create a map of the spatial prediction with a legend of your classes.
-
-3. Try to interpret the performance values of your model and your external validation in connection with the confusion matrix. Write 5 sentences about how you would interpret your results (map and performance values) (e.g. is there a problem? What could cause a proplem? Is the spatial prediction sufficient?).
-
-Again put your code and results in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
-
-{% endcapture %}
-<div class="notice--success">
-  {{ Assignment-03-1 | markdownify }}
-</div> 
-
-
-
 
 ## Comments?
 You can leave comments under this Issue if you have questions or remarks about any of the code chunks that are not included as gist. Please copy the corresponding line into your comment to make it easier to answer the question. 

@@ -1,6 +1,6 @@
 ---
 title: Timeline
-permalink: /unit00/unit00-03_FAQ.html
+permalink: /unit00/unit00-03_Timeline.html
 header:
   image: "/assets/images/title.png"
   caption: 'Image: Hessische Verwaltung für Bodenmanagement und Geoinformation'
@@ -16,7 +16,6 @@ header:
 ></iframe>
 
 
-<a id="raw-url" href="https://raw.githubusercontent.com/GeoMOER/geoAI/staging/docs/assets/images/timeline_2021.png">Download as Image</a> or
 [view full screen version]({{ site.baseurl }}assets/timeline.html){:target="_blank"}
 
 

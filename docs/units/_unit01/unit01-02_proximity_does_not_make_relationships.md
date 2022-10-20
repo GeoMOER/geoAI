@@ -55,7 +55,5 @@ Manning, P., van der Plas, F., Soliveres, S. et al. (2018) Redefining ecosystem 
 
 Tobler, W. (2004) On the First Law of Geography: A Reply, Annals of the Association of American Geographers, 94:2, 304-310: [https://doi.org/10.1111/j.1467-8306.2004.09402009.x](https://doi.org/10.1111/j.1467-8306.2004.09402009.x)
 
-## Assignment
-Choose one of the articles from the further reading section. Your assignment is to summarize the essence of the article in approximately one half page (5-8 sentences) for your own understanding.
 
 <div class="tenor-gif-embed" data-postid="21779286" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/adam-savage-mythbusters-science-write-it-down-gif-21779286">Adam Savage Mythbusters GIF</a>from <a href="https://tenor.com/search/adam+savage-gifs">Adam Savage GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>

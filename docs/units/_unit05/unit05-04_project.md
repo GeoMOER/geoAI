@@ -32,21 +32,6 @@ The final product of your research project will be a research article.
 
 
 
-
-{% capture Assignment-05-02 %}
-# Assignment unit-05-02
-Bring it to an end. Therefore
-1. implement the feedback to your outline, 
-2. realize your team project, and
-3. upload your pdf until 13th March 2022 23:59 on ILIAS.
-
-
-
-{% endcapture %}
-<div class="notice--success">
-  {{ Assignment-05-02 | markdownify }}
-</div>   
-   
 ### Remarks   
 To receive your final grade and the ECTS for the course it is mandatory to finish and submit your team project in time.
 
