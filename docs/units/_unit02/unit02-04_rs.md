@@ -148,8 +148,7 @@ fields <- train_area$finished$geometry %>% st_sf() %>% mutate(class = "fields", 
 This is the full script for digitizing the training data.
 
 
-<script src="https://gist.github.com/gisma/0b5597a7d776c146029e8c9ea18e796d.js"></script>
-
+<script src="https://gist.github.com/uilehre/a810c1284fcbc75f8987a028927cf9a3.js"></script>
 ## Step 4 - Classification 
 There are numerous methods to classify data in feature space. In principle, these can be *unsupervised* or *supervised*.  In the case of unsupervised methods, the number of classes is usually specified and statistical methods are used to search for the best possible aggregation within the number of these classes in the feature space. 
 

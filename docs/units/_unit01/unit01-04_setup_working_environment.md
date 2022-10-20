@@ -110,8 +110,7 @@ Finally, we should initiate some useful settings. It makes sense to have the cur
 
 If we put everything together in one script, it looks like this:
 
-<script src="https://gist.github.com/gisma/3dfbdd4de0d5b23e51df9885475da82f.js"></script>
-
+<script src="https://gist.github.com/uilehre/42f8869864340e72e591dd6280ad54fc.js"></script>
 
 Note that installing the listed packages for the first time needs some time for execution.
 If you encounter errors during this installation process, try to install the packages separately for making troubleshooting more convenient.
@@ -129,8 +128,7 @@ Again - For the course it is **mandantory** to save this script in the `src` fol
 The easiest way to do this is to use the following template for creating each new script.
 
 
-<script src="https://gist.github.com/envimar/54c41da9a13146298ea42bffe942a933.js">notification</script>
-
+<script src="https://gist.github.com/uilehre/f9b367ec483e78a2c8a8d03bb9f0729d.js"></script>
 
 Thus, the provided script:
 
@@ -159,8 +157,7 @@ Implement and check working environment setup
 
 1. Set up and check the basic working environment as explained above.
 1. Check if the installation of `tensorflow` and `keras` was successful. Copy the following script from the vignette "Getting Started with Keras" into the editor and execute it step by step. Compare the results with the vignette. 
-{% gist 79a7249aaced24fafd23149b4fb0a81f%}
-[Get keras-test.R](https://gist.github.com/envimar/79a7249aaced24fafd23149b4fb0a81f/archive/5fde2a75343ee741c45b29a2ca997f61ec0861e9.zip)
+<script src="https://gist.github.com/uilehre/7e70cba9f3a9fa4a57ea2ea2cfc6d616.js"></script>
 1. If it fails, write and upload a short error report. Your report should include what you have done so far to attempt to solve the problem. Please include the output of `sessionInfo()` in your report as well. If everything works fine, just write this in the report.
 
 

@@ -49,7 +49,7 @@ The participants will be able to:
 
 
 # Syllabus
-The course covers 10 sessions, with the exception of session 10 on a weekly basis.
+The course covers 5 units:
 
 | Unit | Topic | Learning Content |
 |-------------|-------|-------------|

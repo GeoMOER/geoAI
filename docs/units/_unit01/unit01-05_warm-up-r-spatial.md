@@ -48,8 +48,7 @@ We will start by creating a new `R` script called `data.R` in the `src` folder.
 
 #### Raster data
 
-<script src="https://gist.github.com/gisma/de8351de7183737d5eb77bf7ed4d2b83.js"></script>
-
+<script src="https://gist.github.com/uilehre/bada4c4a2b7bd37d464a8170a1f22f08.js"></script>
 
 Specifically, we use the `stack` function from the `raster` package to import the TIF file here. By using the `::` syntax, i.e. `package::function`, we guarantee that we are using a specific function from a specific package. This concept is important to ensure that we are using the correct function (because some packages use the same function names, which is called masking).
 
@@ -158,9 +157,7 @@ raster::plot(rgbI)
 **Hint:** For those interested in doing less typing and learning more about R package development and maintenance, the `uavRst` [package](https://github.com/gisma/uavRst) contains these three and many more RGB indices in one simple function. The challenge is to get all the features of the package working, since it accesses the command line interfaces of SAGA, GRASS, and Orfeo toolbox. If you're keen to challenge yourself -- good luck!
 
 
-{% gist 65b54a38e078ec0e0e8ceca1c460c950 %}
-[Get snippet](https://gist.github.com/envimar/65b54a38e078ec0e0e8ceca1c460c950/archive/82dea04aa4bcdf97b347b1feb9edd4b9d5e34109.zip)
-
+<script src="https://gist.github.com/uilehre/29291674ae646e7c065ef07eef66300d.js"></script>
 {% endcapture %}
 <div class="notice--info">
   {{ Hint | markdownify }}
@@ -227,9 +224,7 @@ In the following script, Sentinel-2 data are used to calculate the surface albed
 2. Download data by configuring and executing `sen2r` using the API
 3. Calculate the surface albedo (exemplary) 
 
-{% gist 7b6eb9122522eb0797407ecf6cc5176b%}
-[Get sentinel_albedo.R](https://gist.github.com/envimar/7b6eb9122522eb0797407ecf6cc5176b/archive/87e28a974913acd62653fef49041a7fdc422cc4a.zip)
-
+<script src="https://gist.github.com/uilehre/b95d49f3741efc9cdfbe6e6a4175a762.js"></script>
 The [sen2r vignette](https://sen2r.ranghetti.info/) offers plenty of helpful information about how to use the GUI as well as to access the functionality of `sen2r` from within `R`.
 
 
@@ -263,7 +258,7 @@ Since you will not find sufficient water areas in the data (unlike in Roberts' e
 Put your results -- both the classified images and your code -- in a `Rmarkdown` file and convert it to a PDF document. Remember to use the course setup structure!
 If you experienced any problems or there were ambiguities in the implementation, please document them in a comprehensible way.
 
-Please upload this PDF file to ILIAS. The recommended deadline is November 10.
+Please upload this PDF file to ILIAS.
 
 Hint: If you need help with `Rmarkdown`, have a look at [R Markdown Quick Tour
 ](https://rmarkdown.rstudio.com/authoring_quick_tour.html)
