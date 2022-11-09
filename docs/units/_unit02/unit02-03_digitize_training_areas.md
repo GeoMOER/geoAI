@@ -74,7 +74,10 @@ Complete this process for as much of the area as you can. Once you're done with 
 
 Congratulations, you've hand-drawn and digitized your first set of training areas! This step is important for the machine learning algorithms that we will use in the next unit.
 
+## WMS in QGIS
+To digitize your training area you can also work with a [Web Map Service]( https://en.wikipedia.org/wiki/Web_Map_Service) from the [Hesse Open data portal]( https://gds.hessen.de/INTERSHOP/web/WFS/HLBG-Geodaten-Site/de_DE/-/EUR/ViewSearch-Start;pgid=NIZSrncl7gBSRpNPt1AR16YC0000c3t_BPfE). In the QGIS browser window you can go to WMS/WMTS there you can chose `add new connection`. For the Hessen DOPs add the following URL: https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-images.ows?
 
+DOPs Hessen is now available as WMS and you can add it to your current map.
 ## Additional resources
 * [Digitizing training and test areas](http://wiki.awf.forst.uni-goettingen.de/wiki/index.php/Digitizing_training_and_test_areas) by the [Forest Inventory and Remote Sensing](https://www.uni-goettingen.de/en/67094.html) department at the University of Goettingen (Germany)
 * [Digitizing polygons tutorial](https://docs.qgis.org/3.16/en/docs/training_manual/create_vector_data/create_new_vector.html#basic-ty-digitizing-polygons) in the QGIS 3.16 documentation
