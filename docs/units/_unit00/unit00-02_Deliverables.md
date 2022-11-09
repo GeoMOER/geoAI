@@ -18,9 +18,8 @@ Upload your assignments to ILIAS at least 15 minutes before the start of the nex
 
 |Assignment|Date|
 |unit01-1|28.10.2022| 
-|unit01-2|04.11.2022|
-|unit02-1|11.11.2022|
-|unit02-2|18.11.2022|
+|unit01-2|11.11.2022|
+|unit02|18.11.2022|
 |unit03-1|25.11.2022|
 |unit03-2|02.12.2022|
 |unit04-1|09.12.2022|

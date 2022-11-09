@@ -13,12 +13,12 @@ library(timevis)
 # for clarity I would suggest to designate each date with a name or number
 
 timevisData <- data.frame(
-  id = 1:31,
+  id = 1:29,
   content = c( 
     # sessions
     "Kick off & Unit 1",                         # 1
     "Unit 1",                                    # 2
-    "Unit 2",                                    # 3
+  #  "Unit 2",                                    # 3
     "Unit 2",                                    # 4
     "Unit 3",                                    # 5
     "Unit 3",                                    # 6
@@ -42,9 +42,9 @@ timevisData <- data.frame(
     "Team project",                              # 21
     # submission
     "Assignment Unit 1-1",                         # 22
-    "Assignment Unit 1-1",                         # 23
-    "Assignment Unit 2-1",                         # 24
-    "Assignment Unit 2-2",                         # 25
+    "Assignment Unit 1-2",                         # 23
+ #   "Assignment Unit 2-1",                         # 24
+    "Assignment Unit 2",                         # 25
     "Assignment Unit 03-1",                      # 26
     "Assignment Unit 03-2",                      # 27
     "Assignment Unit 04-1",                      # 28
@@ -58,7 +58,7 @@ timevisData <- data.frame(
     # sessions
     "2022-10-21 09:15:00",                       # 1
     "2022-10-28 09:15:00",                       # 2
-    "2022-11-04 09:15:00",                       # 3
+  #  "2022-11-04 09:15:00",                       # 3
     "2022-11-11 09:15:00",                       # 4
     "2022-11-18 09:15:00",                       # 5
     "2022-11-25 09:15:00",                       # 6
@@ -75,7 +75,7 @@ timevisData <- data.frame(
     
     # self-learning
     "2022-10-21 11:45:00",                       # 16
-    "2022-11-04 11:45:00",                       # 17
+    "2022-11-11 11:45:00",                       # 17
     "2022-11-18 11:45:00",                       # 18
     "2022-12-02 11:45:00",                       # 19
     "2022-12-23 11:45:00",                       # 20
@@ -84,7 +84,7 @@ timevisData <- data.frame(
     
     # submission
     "2022-10-28 09:00:00",                                # 22
-    "2022-11-04 09:00:00",                                # 23
+  #  "2022-11-04 09:00:00",                                # 23
     "2022-11-11 09:00:00",                                # 24
     "2022-11-18 09:00:00",                                # 25
     "2022-11-25 09:00:00",                                # 26
@@ -99,7 +99,7 @@ timevisData <- data.frame(
     # sessions
     NA,                                          # 1 
     NA,                                          # 2
-    NA,                                          # 3
+ #   NA,                                          # 3
     NA,                                          # 4
     NA,                                          # 5
     NA,                                          # 6
@@ -113,7 +113,7 @@ timevisData <- data.frame(
     NA,                                          # 14
     NA,                                          # 15
     # self-learning
-    "2022-11-04 09:15:00",                       # 16
+    "2022-11-11 09:15:00",                       # 16
     "2022-11-18 09:15:00",                       # 17
     "2022-12-02 09:15:00",                       # 18
     "2022-12-23 09:15:00",                       # 19
@@ -121,7 +121,7 @@ timevisData <- data.frame(
     "2023-03-10 23:59:00",                       # 21
     # submission
     NA,                                          # 22
-    NA,                                          # 23 
+  #  NA,                                          # 23 
     NA,                                          # 24
     NA,                                          # 25
     NA,                                          # 26
@@ -139,8 +139,8 @@ timevisData <- data.frame(
   ),
   
   
-  group = c(rep("sessions", 15),rep("selfLearning",6), rep("submission", 10)),
-  type = c(rep("point", 15),rep("range",6),rep("point",10))
+  group = c(rep("sessions", 14),rep("selfLearning",6), rep("submission", 9)),
+  type = c(rep("point", 14),rep("range",6),rep("point",9))
 )
 
 
