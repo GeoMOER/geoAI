@@ -52,11 +52,13 @@ At this point, it is also a good idea to check that the raster and polygons have
 ```r
 # now the vector data: use the sf package to load the file and check if the crs matches with the raster stack
 # use the vector data you created with QGIS here:
-pol = sf::read_sf(paste0(envrmt$path_data,"training_data.gpkg"))
+pol = sf::read_sf(file.path(envrmt$path_data,"training_data.gpkg"))
 pol = sf::st_transform(pol, crs(rasterStack))
 
 # add IDs to your polygons, if they don't have them
 pol$OBJ_ID = 1:nrow(pol)
+# if you have more than two classes combine them
+pol[pol$class != "buildings",]$class <- "other"
 ```
  
 ## Extract the data 
@@ -85,7 +87,7 @@ In our next step, we balance the data to counteract this potential error. To do 
 extr = readRDS(file.path(envrmt$path_model_training_data, "extraction.RDS"))
 extr = na.omit(extr)
 
-buildings = extr[extr$class == "building",]
+buildings = extr[extr$class == "buildings",]
 other = extr[extr$class == "other",]
 
 nrow(buildings)
