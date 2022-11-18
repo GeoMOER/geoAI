@@ -12,15 +12,15 @@ Create a random forest model with random cross-validation.
 ## Set up a working environment
 
 First, set up the working environment as described in [Unit 01](https://geomoer.github.io/geoAI//unit01/unit01-04_setup_working_environment.html).
-We will add some more packages and an additional folder to your setup script. In the "modelling" folder you can store your prepared data, your models, your predictions etc.
+Add some more packages and additional folders to your setup script. In the "modelling" folder you can store your prepared data, your models, your predictions etc.
 ```r
 # setup call using the default values for the course
 require(envimaR)
 
-appendpackagesToLoad = c("mapview", "raster", "sf", "caret", "exactextractr",  
+packagesToLoad = c("mapview", "raster", "sf", "caret", "exactextractr",  
                          "doParallel", "CAST", "ranger")
 
-appendProjectDirList = c("data/",
+projectDirList = c("data/",
                          "data/modelling/",
                          "data/modelling/model_training_data/",
                          "data/modelling/models/",
@@ -32,8 +32,7 @@ appendProjectDirList = c("data/",
                          "src/",
                          "src/functions/")
 
-# now run setup
-source(file.path(envimaR::alternativeEnvi("src/geoAI_setup.R")))
+
 ```
 
 ## Read the data
