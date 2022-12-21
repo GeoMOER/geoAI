@@ -11,7 +11,7 @@ header:
 Now it is your turn to decide for a self-chosen research question to work on in your final team project.
 
 ## Research question
-Design a research question that incorporates one of the two methods introduced in the course. If you still need inspiration, you can check the example page.
+Design a research question that incorporates one of the two methods introduced in the course.
 
 
 Below you can find some examples for research question or topics, which you might work on in your final team project.
@@ -56,7 +56,7 @@ Common project management steps are:
 
 Obviously, it makes sense to start your research project with a short [project outline](https://geomoer.github.io/geoAI//unit05/unit05-02_project_outline.html), which should include the project management steps outlined above.
 Based on your project outline and the feedback we will give you on it, you will realize and submit your final team project.
-More information about the final team project and there requirements can be found [here](https://geomoer.github.io/geoAI//unit05/unit05-03_project.html).
+More information about the final team project and there requirements can be found [here](https://geomoer.github.io/geoAI//unit05/unit05-04_project.html).
 
 For more details on project management for scientists, 
 see e.g. the paper of [Portny & Austin 2002](https://www.sciencemag.org/careers/2002/07/project-management-scientists).

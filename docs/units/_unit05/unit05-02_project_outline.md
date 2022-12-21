@@ -29,19 +29,13 @@ These pages will help the instructors to give feedback on especially the feasibi
 After identifying the research question, a critical step is to find or create appropriate data sets for your modeling workflow.
 Some data source suggestions are:
 
-## Digital orthophotos Hesse
 
-We can provide you with DOP data for the study area of your research question in Hesse.
-Theses data will be provided by the Hessische Verwaltung für Bodenmanagement und Geoinformation.
-Therefore, they require the  bounding boxes of your study area as shapefile.
-Note that these data inquiries will need several days to process, so please send us your shapefiles in due time.
+## Digital orthophotos
+You can download e.g. digital orthophotos of Hesse provided by the Hessische Verwaltung für Bodenmanagement und Geoinformation, [here](https://gds.hessen.de/INTERSHOP/web/WFS/HLBG-Geodaten-Site/de_DE/-/EUR/ViewDownloadcenter-Start).
+You can also download e.g. almost all geodata of North Rhine-Westphalia ([Geoportal NRW](https://www.geoportal.nrw/)) free of charge.
+
 Please also take into consideration that the file size and hence processing time of the DOPs depends on the selected study area.
 As a rough guideline,1GB roughly corresponds to 30km² (40cm resolution, RGBA).
-
-
-## Digital orthophotos North Rhine-Westphalia
-You can also download almost all geodata of North Rhine-Westphalia ([Geoportal NRW](https://www.geoportal.nrw/)) free of charge.
-Next to the DOPs there is also the possibility to download some shapefiles which could be used as mask data.
    
    
 ## Sentinel-2

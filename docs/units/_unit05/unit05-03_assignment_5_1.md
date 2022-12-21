@@ -36,7 +36,7 @@ Again put your outline in an ´Rmarkdown´ file and compile it to a PDF document
    
    
    
-   ## Comments?
+## Comments?
 You can leave comments under this Issue if you have questions or remarks about the assignment. 
 
 
