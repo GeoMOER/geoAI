@@ -11,7 +11,7 @@ header:
   cta_url: "/units.html"
 excerpt: Understand spatial problems, apply remote sensing, and use AI to resiliently predict spatial patterns.
 feature_row_intro:
-- excerpt: This Module is part of Honors Degree Program "AI and Entrepreneurship" - a contribution of [Environmental Informatics Lab of Philipps-University of Marburg](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik) to [hessian.AI - The Hessian Center for Artificial Intelligence](https://hessian.ai/).
+- excerpt: This Module is part of Honors Degree Program "AI and Entrepreneurship" - a contribution of [Environmental Informatics Lab of Philipps-University of Marburg](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik) to [hessian.AI - The Hessian Center for Artificial Intelligence](https://hessian.ai/), co-funded by the German Federal Ministry of Education and Research.
 feature_row_ilos:
 - image_path: "/assets/images/envobs_ilos.jpg"
   alt: PC monitor laying in the garden of the institute.
