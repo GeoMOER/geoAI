@@ -277,17 +277,15 @@ model_input_shape = c(128, 128)
 
 subset_ds(
    input_raster = marburg_mask_train,
-   path = paste0(file.path(envrmt$path_model_training_data_bui), "/"),
-   mask = TRUE,
-   model_input_shape = model_input_shape
+   model_input_shape = model_input_shape,
+   path = envrmt$path_model_training_data_bui
 )
 
 # subsets for the dop
 subset_ds(
    input_raster = marburg_dop_train,
-   path = paste0(file.path(envrmt$path_model_training_data_dop), "/"),
-   mask = FALSE,
-   model_input_shape = model_input_shape
+   model_input_shape = model_input_shape,
+   path = envrmt$path_model_training_data_dop
 )
 ```
 ## Remove empty files
@@ -296,11 +294,12 @@ Now we can apply our functions defined above to our data. Both the DOP and the m
 ```r
 # list all created files in both folders
 list_dops <-
-   list.files(paste0(file.path(envrmt$path_model_training_data_dop), "/"),
+   list.files(envrmt$path_model_training_data_dop,
               full.names = TRUE,
               pattern = "*.png")
+
 list_masks <-
-   list.files(paste0(file.path(envrmt$path_model_training_data_bui), "/"),
+   list.files(envrmt$path_model_training_data_bui,
               full.names = TRUE,
               pattern = "*.png")
 
