@@ -243,22 +243,18 @@ In this example we will only use the images to train the U-Net that also contain
 # keep the foreground (building) information
 
 remove_files <- function(df) {
-   lapply(
-      seq(1, nrow(df)),
-      FUN = function(i) {
-         local({
+    lapply(seq(1, nrow(df)), function(i) {
+        local({
             fil = df$list_masks[i]
             png = readPNG(fil)
             len = length(png)
-            if (AllEqual(png)) {
-               file.remove(df$list_dops[i])
-               file.remove(df$list_masks[i])
-            } else {
-               
+            if((sum(png) == len) | (sum(png) == 0)) {
+                file.remove(df$list_dops[i])
+                file.remove(df$list_masks[i])
             }
-         })
-      }
-   )
+        })
+    })
+    return("Done")
 }
 ```
 
