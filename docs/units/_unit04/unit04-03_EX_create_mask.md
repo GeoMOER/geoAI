@@ -177,89 +177,58 @@ To train the U-Net, many smaller images of the same size are needed instead of t
 5. crop every polygon to both the house mask and the DOP and save the small 128x128 images as .png
 
 ```r
-subset_ds <-
-   function(input_raster,
-            model_input_shape,
-            path,
-            targetname = "",
-            mask = FALSE) {
-      # determine next number of quadrats in x and y direction, by simple rounding
-      targetsizeX <- model_input_shape[1]
-      targetsizeY <- model_input_shape[2]
-      inputX <- ncol(input_raster)
-      inputY <- nrow(input_raster)
-      
-      # determine dimensions of raster so that
-      # it can be split by whole number of subsets (by shrinking it)
-      while (inputX %% targetsizeX != 0) {
-         inputX = inputX - 1
-      }
-      while (inputY %% targetsizeY != 0) {
-         inputY = inputY - 1
-      }
-      
-      # determine difference
-      diffX <- ncol(input_raster) - inputX
-      diffY <- nrow(input_raster) - inputY
-      
-      # determine new dimensions of raster and crop,
-      # cutting evenly on all sides if possible
-      newXmin <- floor(diffX / 2)
-      newXmax <- ncol(input_raster) - ceiling(diffX / 2) - 1
-      newYmin <- floor(diffY / 2)
-      newYmax <- nrow(input_raster) - ceiling(diffY / 2) - 1
-      rst_cropped <-
-         suppressMessages(crop(
-            input_raster,
-            extent(input_raster, newYmin, newYmax, newXmin, newXmax)
-         ))
-      
-      agg <-
-         suppressMessages(aggregate(rst_cropped[[1]], c(targetsizeX, targetsizeY)))
-      agg[]    <- suppressMessages(1:ncell(agg))
-      agg_poly <- suppressMessages(rasterToPolygons(agg))
-      names(agg_poly) <- "polis"
-      
-      if (mask) {
-         lapply(
-           seq_along(agg),
-            FUN = function(i) {
-               subs <- local({
-                  e1  <- extent(agg_poly[agg_poly$polis == i,])
-                  
-                  subs <- suppressMessages(crop(rst_cropped, e1))
-                  
-               })
-               writePNG(as.array(subs),
-                        target = paste0(path, targetname, i, ".png"))
-            }
-         )
-      }
-      else{
-         lapply(
-            seq_along(agg),
-            FUN = function(i) {
-               subs <- local({
-                  e1  <- extent(agg_poly[agg_poly$polis == i,])
-                  
-                  subs <- suppressMessages(crop(rst_cropped, e1))
-                  # rescale to 0-1, for png export
-                  if (mask == FALSE) {
-                     subs <-
-                        suppressMessages((subs - cellStats(subs, "min")) / (cellStats(subs, "max") -
-                                                                               cellStats(subs, "min")))
-                  }
-               })
-               writePNG(as.array(subs),
-                        target = paste0(path, targetname, i, ".png"))
-            }
-         )
-      }
-      rm(subs, agg, agg_poly)
-      gc()
-      return(rst_cropped)
-   }
+subset_ds <- function(
+    input_raster,
+    model_input_shape,
+    path,
+    targetname = ""
+) {
+    targetSizeX <- model_input_shape[1]
+    targetSizeY <- model_input_shape[2]
+    inputX <- ncol(input_raster)
+    inputY <- nrow(input_raster)
 
+    diffX <- inputX %% targetSizeX
+    diffY <- inputY %% targetSizeY
+
+    # determine new dimensions of raster and crop,
+    # cutting evenly on all sides if possible
+    newXmin <- ext(input_raster)[1] + ceiling(diffX / 2) * res(input_raster)[1]
+    newXmax <- ext(input_raster)[2] - floor(diffX / 2) * res(input_raster)[1]
+    newYmin <- ext(input_raster)[3] + ceiling(diffY / 2) * res(input_raster)[2]
+    newYmax <- ext(input_raster)[4] - floor(diffY / 2) * res(input_raster)[2]
+    rst_cropped <- crop(
+        input_raster,
+        ext(newXmin, newXmax, newYmin, newYmax)
+    )
+
+    # grid for splitting
+    agg <- terra::aggregate(
+        rst_cropped[[1]],
+        c(targetSizeX, targetSizeY)
+    )
+    agg[] <- 1:ncell(agg)
+    agg_poly <- as.polygons(agg)
+    names(agg_poly) <- "polis"
+
+    # split and save
+    lapply(seq_along(agg), FUN = function(i) {
+        subs <- local({
+            e1 <- ext(agg_poly[agg_poly$polis == i, ])
+            subs <- crop(rst_cropped, e1)
+        })
+        writePNG(
+            as.array(subs),
+            target = file.path(path, paste0(targetname, i, ".png"))
+        )
+    })
+    
+    # free memory
+    rm(agg, agg_poly)
+    gc()
+    
+    return(rst_cropped)
+}
 ```
 
 {% include media4 url="assets/images/unit04/marburg_buildings_masked.html" %} [Full screen version of the map]({{ site.baseurl }}assets/images/unit04/marburg_buildings_masked.html){:target="_blank"}
