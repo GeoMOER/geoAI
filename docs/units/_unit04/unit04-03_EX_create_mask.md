@@ -20,16 +20,13 @@ We will add some more packages and an additional folder to your setup script. In
 require(envimaR)
 
 packagesToLoad = c(
-   "raster",
-   "rgdal",
+   "terra",
    "png",
-   "gdalUtils",
    "tensorflow",
    "keras",
    "reticulate",
    "sf",
    "osmdata",
-   "greenbrown",
    "rsample",
    "tfdatasets",
    "purrr",
@@ -70,8 +67,8 @@ envrmt = envimaR::createEnvi(
    alt_env_value = "PCRZP",
    alt_env_root_folder = "F:/BEN/edu"
 )
-## set raster temp path
-raster::rasterOptions(tmpdir = envrmt$path_tmp)
+## set terra temp path
+terra::terra(tempdir = envrmt$path_tmp)
 ```
 
 ## Read the data
