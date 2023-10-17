@@ -77,7 +77,7 @@ Load the data and crop it to the extent of the Marburg DOP.
 ```r
 
 # read data
-ras <- raster::stack(file.path(envrmt$path_data, "marburg_dop.tif"))
+ras <- terra::rast(file.path(envrmt$path_data, "marburg_dop.tif"))
 
 # subset to three channels
 ras <- subset(ras, c("red", "green", "blue"))
@@ -91,7 +91,7 @@ buildings = buildings$osm_polygons
 
 buildings = sf::st_transform(buildings, crs(ras))
 
-ras_extent <- extent(ras)
+ras_extent <- ext(ras)
 
 buildings <- sf::st_crop(buildings[1], ras_extent)
 
@@ -115,9 +115,9 @@ rasterized_vector[is.na(rasterized_vector[])] <- 0
 rasterized_vector[rasterized_vector > 1] <- 1
 
 #save
-raster::writeRaster(rasterized_vector,
-                    file.path(envrmt$path_data, "marburg_mask.tif"),
-                    overwrite = T)
+terra::writeRaster(rasterized_vector,
+                   file.path(envrmt$path_data, "marburg_mask.tif"),
+                   overwrite = T)
 ```
 
 
