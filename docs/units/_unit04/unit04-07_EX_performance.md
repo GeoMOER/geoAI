@@ -20,19 +20,16 @@ marburg_mask_test <-
 marburg_dop_test <-
    stack(file.path(envrmt$path_model_testing_data, "marburg_dop_test.tif"))
 
-target_rst <-
-   subset_ds(
-      input_raster = marburg_mask_test,
-      path = paste0(file.path(envrmt$path_model_testing_data_bui), "/"),
-      mask = TRUE,
-      model_input_shape = model_input_shape
-   )
+target_rst <- subset_ds(
+   input_raster = marburg_mask_test,
+   model_input_shape = model_input_shape,
+   path = envrmt$path_model_testing_data_bui
+)
 
 subset_ds(
    input_raster = marburg_dop_test,
-   path = paste0(file.path(envrmt$path_model_testing_data_dop), "/"),
-   mask = FALSE,
-   model_input_shape = model_input_shape
+   model_input_shape = model_input_shape,
+   path = envrmt$path_model_testing_data_dop
 )
 
 # write the target_rst to later rebuild your image
@@ -48,12 +45,12 @@ Once again list and prepare the files.
 
 test_file <- data.frame(
    img = list.files(
-      file.path(envrmt$path_model_testing_data_dop),
+      envrmt$path_model_testing_data_dop,
       full.names = T,
       pattern = "*.png"
    ),
    mask = list.files(
-      file.path(envrmt$path_model_testing_data_bui),
+      envrmt$path_model_testing_data_bui,
       full.names = T,
       pattern = "*.png"
    )
@@ -62,7 +59,7 @@ test_file <- data.frame(
 testing_dataset <-
    prepare_ds(
       test_file,
-      train =FALSE,
+      train = FALSE,
       predict = FALSE,
       model_input_shape = model_input_shape,
       batch_size = batch_size
@@ -89,7 +86,7 @@ This is followed by a comparison between the mask, the original image and the pr
 prediction_dataset <-
    prepare_ds(
       predict = TRUE,
-      subsets_path =  paste0(file.path(envrmt$path_model_testing_data_dop), "/"),
+      subsets_path = envrmt$path_model_testing_data_dop,
       model_input_shape = model_input_shape,
       batch_size = batch_size
    )

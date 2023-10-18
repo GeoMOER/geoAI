@@ -71,7 +71,7 @@ Now we can load the target raster and predict:
 
 ```r
 
-target_rst <- raster(file.path(envrmt$path_model_testing_data, "marburg_mask_test_target.tif"))
+target_rst <- rast(file.path(envrmt$path_model_testing_data, "marburg_mask_test_target.tif"))
 
 # make the actual prediction
 pred_subsets <- predict(object = unet_model, x = prediction_dataset)
@@ -87,7 +87,7 @@ model_name <- "unet_abc"
 # rebuild .tif from each patch
 rebuild_img(
    pred_subsets = pred_subsets,
-   out_path = paste0(file.path(envrmt$path_prediction),"/"),
+   out_path = envrmt$path_prediction,
    target_rst = target_rst,
    model_name = model_name
 )

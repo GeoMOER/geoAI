@@ -206,6 +206,7 @@ The actual modelling is rather short, we load the network,compile and train it.
 
 ```r
 unet_model <- get_unet_128()
+
 # compile the model 
 unet_model %>% compile(
    optimizer = optimizer_adam(learning_rate = 0.0001),
@@ -215,10 +216,10 @@ unet_model %>% compile(
 
 # train the model
 hist <- unet_model %>% fit(
-		training_dataset,
-		validation_data = validation_dataset,
-		epochs = 10,
-		verbose = 1
+    training_dataset,
+    validation_data = validation_dataset,
+    epochs = 10,
+    verbose = 1
 )
 
 

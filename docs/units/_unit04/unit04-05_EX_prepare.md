@@ -17,12 +17,12 @@ We will now split the data into two parts. To do this, we will again place the f
 # list the files again
 files <- data.frame(
    img = list.files(
-      file.path(envrmt$path_model_training_data_dop),
+      envrmt$path_model_training_data_dop,
       full.names = TRUE,
       pattern = "*.png"
    ),
    mask = list.files(
-      file.path(envrmt$path_model_training_data_bui),
+      envrmt$path_model_training_data_bui,
       full.names = TRUE,
       pattern = "*.png"
    )
